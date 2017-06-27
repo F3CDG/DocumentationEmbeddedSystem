@@ -1,4 +1,4 @@
-# DocumentationEmbeddedSystem
+# Embedded System Documentation
 Documentazione del lavoro di Sistemi Embedded
 In questo repository è caricato il lavoro di documentazione in Lyx.
 

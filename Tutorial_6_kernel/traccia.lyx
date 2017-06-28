@@ -128,8 +128,7 @@ Traccia
 \end_layout
 
 \begin_layout Standard
-In questo elaborato viene mostrato come eseguire il booting su board Zybo
- Zynq 7000 attraverso una SD-card.
+Eseguire il booting di Linux su board Zybo Zynq 7000 attraverso una SD-card.
  In particolare, con riferimento alla fig.
  
 \begin_inset CommandInset ref
@@ -138,7 +137,7 @@ reference "fig:Schema-di-progetto"
 
 \end_inset
 
-, a partire da un componente GPIO e il Processing System Zinq, si inseriesce
+, a partire da un componente GPIO e il Processing System Zinq, si inseriesca
  lo strato di Sistema Operativo per poi scrivere un driver, al fine di pilotare
  i led della board.
 \end_layout

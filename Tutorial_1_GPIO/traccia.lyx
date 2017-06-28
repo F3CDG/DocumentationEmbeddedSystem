@@ -128,15 +128,14 @@ Traccia
 \end_layout
 
 \begin_layout Standard
-In questo elaborato viene mostrato come utilizzare un General Purpose Input/Outp
+Utilizzare un General Purpose Input/Outp
 ut per pilotare i led della board Digilent Zybo Zynq-7000.
- Per la realizzazione di tale obiettivo, si divide il lavoro in due parti.
+ Per la realizzazione di tale obiettivo, si divida il lavoro in due parti.
  Nella prima parte, dopo aver definito manualmente un componente GPIO lo
- si impacchetta in un IP-Core e lo si utilizza insieme al Processing System
+ si impacchetti in un IP-Core e lo si utilizzi insieme al Processing System
  Zinq.
- Nella seconda parte, invece, in aggiunta all'architettura già creata, viene
- introdotto uno strato driver, utile al controllo dei led.
- Viene seguito, pertanto, lo schema di progetto in fig.
+ Nella seconda parte, invece, in aggiunta all'architettura creata, si introduca uno strato driver, utile al controllo dei led.
+ Seguire, pertanto, lo schema di progetto in fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref

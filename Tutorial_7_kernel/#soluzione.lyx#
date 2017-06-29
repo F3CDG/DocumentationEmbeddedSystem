@@ -37,7 +37,7 @@ morecomment=[s]{--}
 }
 
 
-\renewcommand*{\lstlistingname}{Codice Componente}
+\renewcommand*{\lstlistingname}{Codice}
 
 
 \usepackage{fancyhdr}
@@ -132,7 +132,7 @@ Procedimento
 \end_layout
 
 \begin_layout Subsection
-Indirizzo fisico
+Prima tipologia
 \end_layout
 
 \begin_layout Standard
@@ -202,6 +202,11 @@ status open
 
 \backslash
 begin{lstlisting}[language=C, caption="nodriver header.h"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
 \end_layout
 
 \begin_layout Plain Layout
@@ -375,38 +380,38 @@ begin{lstlisting}[language=C, caption="nodriver header.h"]
 
 \begin_layout Plain Layout
 
-void usage(char *name);
+void usage(char *name);	/*!< usage function is called to help the user */
 \end_layout
 
 \begin_layout Plain Layout
 
 int parse_command(int argc,char **argv,int* address,int* r_w,int* value);
+ /*!< parse_command function is called to parse arguments passed to driver
+ */
 \end_layout
 
 \begin_layout Plain Layout
 
-int open_memory(int* fd, int phy_address, int* page_offset,void** virtual_addres
-s);
+int open_memory(int* fd,int phy_address, int* page_offset,void** virtual_address
+);/*!< open_memory function is called to open memory file */
 \end_layout
 
 \begin_layout Plain Layout
 
-void read_gpio(int* value,void* virtual_address,int page_offset);
+void read_gpio(int* value,void* virtual_address,int page_offset);/*!< read_gpio
+ function is called to do read operation from GPIO */
 \end_layout
 
 \begin_layout Plain Layout
 
 void write_gpio(int value,int phy_address,void* virtual_address, int page_offset
-);
+);/*!< write_gpio function is called to do write operation on GPIO */
 \end_layout
 
 \begin_layout Plain Layout
 
-void close_memory(int fd, void* virtual_address);
-\end_layout
-
-\begin_layout Plain Layout
-
+void close_memory(int fd, void* virtual_address);/*!< close_memory function
+ is called to close memory file */
 \end_layout
 
 \begin_layout Plain Layout
@@ -478,7 +483,7 @@ begin{lstlisting}[language=C, firstnumber=14, caption="nodriver function.h"]
 
 \begin_layout Plain Layout
 
-  * @param  name: Specifies nodriver name.
+  * @param  [in]	name: Specifies nodriver name.
 \end_layout
 
 \begin_layout Plain Layout
@@ -621,6 +626,204 @@ n");
 \begin_layout Plain Layout
 
 	return;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Reads the <value> in input to GPIO port.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [out]	value: read value.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	virtual_address: GPIO's virtual address.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	page_offset: page offset which GPIO finds.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void read_gpio(int* value,void* virtual_address,int page_offset){
+\end_layout
+
+\begin_layout Plain Layout
+
+	*value = *((unsigned *)(virtual_address + page_offset));
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("The value on GPIO input is: %08x
+\backslash
+n",*value);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Writes <value> in output to GPIO port.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	value: write value.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	phy_address: GPIO's physical address.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	virtual_address: GPIO's virtual address.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	page_offset: page offset which GPIO finds.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void write_gpio(int value,int phy_address,void* virtual_address, int page_offset
+){
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("Going to write onto %08x the value %08x
+\backslash
+n", phy_address, value );
+\end_layout
+
+\begin_layout Plain Layout
+
+	*((unsigned *)(virtual_address + page_offset)) = value;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Closes /dev/mem file.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	fd: file descriptor name.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in]	virtual_address: GPIO's virtual address.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void close_memory(int fd,void* virtual_address){
+\end_layout
+
+\begin_layout Plain Layout
+
+	munmap(virtual_address,PAGE_SIZE);
+\end_layout
+
+\begin_layout Plain Layout
+
+	close(fd);
 \end_layout
 
 \begin_layout Plain Layout
@@ -808,58 +1011,54 @@ begin{lstlisting}[language=C, firstnumber=29, caption="nodriver function.h"]
 
 \begin_layout Plain Layout
 
-/**
-\end_layout
-
-\begin_layout Plain Layout
-
   * @brief  Parses nodriver arguments.
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @param  argc: 	number of parameters, passed to main function.
+  * @param  [in]	argc: number of parameters, passed to main function.
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @param  argv: 	parameters passed to main function
+  * @param  [in]	argv: parameters passed to main function
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @param  address: 	physical address of GPIO component
+  * @param  [out] 	address: physical address of GPIO component
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @param  r_w: 	specifies if the operation on GPIO is a read or a write
+  * @param  [out]	r_w: specifies if the operation on GPIO is a read or a
+ write
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @param  value: 	contains the read value (if the operation on GPIO is
- a read) 
+  * @param  [out]	value: contains the read value (if the operation on GPIO
+ is a read) 
 \end_layout
 
 \begin_layout Plain Layout
 
-  *		   or the value to write (if the operation on GPIO is a write)
+  * 			or the value to write (if the operation on GPIO is a write)
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @retval Integer status.
+  * @retval Integer status:
 \end_layout
 
 \begin_layout Plain Layout
 
-  *         -1		An error occurred.
+  *	    -1		An error occurred;
 \end_layout
 
 \begin_layout Plain Layout
 
-  *	     1		Help function is called.		
+  *	     1		Help function is called;		
 \end_layout
 
 \begin_layout Plain Layout
@@ -884,13 +1083,13 @@ int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 
 \begin_layout Plain Layout
 
-	int mandatory_opt=-1; /*!< Keep track if the mandatory option 'g' is parsed
+	int mandatory_opt=-1; /* Keep track if the mandatory option 'g' is parsed
  */
 \end_layout
 
 \begin_layout Plain Layout
 
-	int i_or_o=0;	/*!< Keep track if an i|o operation is requested */
+	int i_or_o=0;	/* Keep track if an i|o operation is requested */
 \end_layout
 
 \begin_layout Plain Layout
@@ -919,7 +1118,7 @@ int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 
 \begin_layout Plain Layout
 
-					mandatory_opt=atoi(optarg);	/*!< Change mandatory_opt value to memorize
+					mandatory_opt=atoi(optarg);	/* Change mandatory_opt value to memorize
  that the mandatory option is parsed */
 \end_layout
 
@@ -930,7 +1129,7 @@ int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 
 \begin_layout Plain Layout
 
-					/*! Check if address passed is not 0x0 */
+					/* Check if address passed is not 0x0 */
 \end_layout
 
 \begin_layout Plain Layout
@@ -977,7 +1176,7 @@ n");
 
 \begin_layout Plain Layout
 
-						*r_w=READ; /*!< Set READ operation for GPIO */
+						*r_w=READ; /* Set READ operation for GPIO */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1029,8 +1228,7 @@ n");
 
 \begin_layout Plain Layout
 
-					/*! Check if before 'o' option was passed the mandatory option 'g'
- */
+					/* Check if before 'o' option was passed the mandatory option 'g' */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1040,7 +1238,7 @@ n");
 
 \begin_layout Plain Layout
 
-						*r_w=WRITE; /*!< Set WRITE operation for GPIO */
+						*r_w=WRITE; /* Set WRITE operation for GPIO */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1201,7 +1399,7 @@ n", optopt);
 
 \begin_layout Plain Layout
 
-	/*! Check if an i|o operation is requested */	
+	/* Check if an i|o operation is requested */	
 \end_layout
 
 \begin_layout Plain Layout
@@ -1341,22 +1539,27 @@ begin{lstlisting}[language=C, firstnumber=114, caption="nodriver function.h"]
 
 \begin_layout Plain Layout
 
-  * @param  phy_address: 	GPIO's physical address.
+  * @param  [in]	fd: file descriptor name.
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @param  page_offset: 	page offset which GPIO finds.
+  * @param  [in] 	phy_address: GPIO's physical address.
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @param  virtual_address: 	GPIO's virtual address.
+  * @param  [out]	page_offset: page offset which GPIO finds.
 \end_layout
 
 \begin_layout Plain Layout
 
-  * @retval Integer status.
+  * @param  [out]	virtual_address: GPIO's virtual address.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval Integer status:
 \end_layout
 
 \begin_layout Plain Layout
@@ -1377,7 +1580,7 @@ s){
 
 \begin_layout Plain Layout
 
-	int *fd = open ("/dev/mem", O_RDWR);
+	*fd = open ("/dev/mem", O_RDWR);
 \end_layout
 
 \begin_layout Plain Layout
@@ -1407,7 +1610,7 @@ s){
 
 \begin_layout Plain Layout
 
-		/*! Calculates page offset */
+		/* Calculates page offset */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1417,7 +1620,7 @@ s){
 
 \begin_layout Plain Layout
 
-		/*! mmap system call returns virtual address of GPIO */
+		/* mmap system call returns virtual address of GPIO */
 \end_layout
 
 \begin_layout Plain Layout
@@ -1469,52 +1672,63 @@ status open
 
 
 \backslash
-begin{lstlisting}[language=C, firstnumber=136, caption="nodriver function.h"]
+begin{lstlisting}[language=C, firstnumber=137, caption="nodriver function.h"]
 \end_layout
 
 \begin_layout Plain Layout
+
 /**
 \end_layout
 
 \begin_layout Plain Layout
+
   * @brief  Reads the <value> in input to GPIO port.
 \end_layout
 
 \begin_layout Plain Layout
+
   * @param  value: 		read value.
 \end_layout
 
 \begin_layout Plain Layout
+
   * @param  virtual_address: 	GPIO's virtual address.
 \end_layout
 
 \begin_layout Plain Layout
+
   * @param  page_offset: 	page offset which GPIO finds.
 \end_layout
 
 \begin_layout Plain Layout
+
   * @retval None.
 \end_layout
 
 \begin_layout Plain Layout
+
   */
 \end_layout
 
 \begin_layout Plain Layout
+
 void read_gpio(int* value,void* virtual_address,int page_offset){
 \end_layout
 
 \begin_layout Plain Layout
+
 	*value = *((unsigned *)(virtual_address + page_offset));
 \end_layout
 
 \begin_layout Plain Layout
+
 	printf("The value on GPIO input is: %08x
 \backslash
 n",*value);
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1715,7 +1929,21 @@ end{lstlisting}
 \end_layout
 
 \begin_layout Subsubsection
-nodriver.c
+main.c
+\end_layout
+
+\begin_layout Standard
+La funzione main è molto semplice.
+ Dopo aver dichiarato una serie di variabili da passare alle funzioni, la
+ prima operazione eseguita è verificare che la funzione adibita al parsing
+ degli argomenti non restituisca nessun errore.
+ Dopodichè si controlla che l'accesso in memoria non provochi errore.
+ In funzione del valore della variabile 
+\shape italic
+r_or_w
+\shape default
+, quindi, viene richiamata la funzione di lettura o di scrittura.
+ Infine, c'è la chiamata alla close_memory.
 \end_layout
 
 \begin_layout Standard
@@ -1726,7 +1954,324 @@ status open
 
 
 \backslash
-begin{lstlisting}[language=C, firstnumber=161, caption="nodriver function.h"]
+begin{lstlisting}[language=C, caption="main.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	main.c
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @authors	Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV -
+ Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	22-June-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	driver "nodriver" to control gpio
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Includes ------------------------------------------------------------------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "nodriver_header.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main(int argc, char *argv[]){
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	int file_descriptor; /*!< Memory file descriptor */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int r_w=READ;	/*!< Saves operation's type to do with GPIO */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int r_or_w_value = 0;	/*!< Saves read/write value from/on GPIO */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int ret_parse;	/*!< Returned value from parse_command function */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	unsigned phy_addr, page_off;	/*!< Respectively physical address of GPIO
+ and page offset */
+\end_layout
+
+\begin_layout Plain Layout
+
+	void *virt_addr;	/*!< Virtual address of GPIO */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*! Check if parse_command function returns error */
+\end_layout
+
+\begin_layout Plain Layout
+
+	if((ret_parse=parse_command(argc,argv,&phy_addr,&r_w,&r_or_w_value))==1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	else
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(ret_parse==-1)
+\end_layout
+
+\begin_layout Plain Layout
+
+			return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*! Check if open_memory function returns error */
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(open_memory(&file_descriptor,phy_addr,&page_off,&virt_addr)==-1){
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("nodriver aborted!
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+		return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*! Calls conveniently read_gpio or write_gpio */
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (r_w == READ) read_gpio(&r_or_w_value,virt_addr,page_off);
+\end_layout
+
+\begin_layout Plain Layout
+
+	else write_gpio(r_or_w_value,phy_addr,virt_addr,page_off);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	close_memory(file_descriptor,virt_addr);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+makefile
+\end_layout
+
+\begin_layout Standard
+Per completezza, si riporta anche un semplice makefile realizzato per agevolare
+ la fase di compilazione del driver, utilizzando la primitiva 
+\family typewriter
+make
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=bash, caption="makefile"]
+\end_layout
+
+\begin_layout Plain Layout
+
+nodriver : main.o nodriver_function.o
+\end_layout
+
+\begin_layout Plain Layout
+
+	cc -o nodriver main.o nodriver_function.o
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+main.o : main.c nodriver_function.c nodriver_header.h
+\end_layout
+
+\begin_layout Plain Layout
+
+	cc -c main.c -o main.o
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+nodriver_function.o : nodriver_function.c nodriver_header.h
+\end_layout
+
+\begin_layout Plain Layout
+
+	cc -c nodriver_function.c -o nodriver_function.o
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+clean :
+\end_layout
+
+\begin_layout Plain Layout
+
+	rm -f nodriver
+\end_layout
+
+\begin_layout Plain Layout
+
+	rm *.o
+\end_layout
+
+\begin_layout Plain Layout
+
+	echo "Clean all file!"
 \end_layout
 
 \begin_layout Plain Layout
@@ -1743,6 +2288,457 @@ end{lstlisting}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Esempio di esecuzione
+\end_layout
+
+\begin_layout Standard
+In questa sezione viene mostrato come eseguire il driver appena scritto
+ per pilotare led, switch e button della board Zybo.
+ Per la buona riuscita di questa parte esercitativa, si precisa che è necessario
+ essere riusciti a completare il booting da SD card, descritto nel capitolo
+ precedente.
+\end_layout
+
+\begin_layout Standard
+Per prima cosa, all'interno della partizione BOOT_F della SD card, si crea
+ una cartella 
+\shape italic
+driver
+\shape default
+ al cui interno si andranno a mettere le 3 tipologie di driver richieste
+ dalla traccia.
+ Collegare la scheda al computer, aprire un terminale ed eseguire
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+mkdir /media/daniele/BOOT_F/driver
+\end_layout
+
+\begin_layout Standard
+digitare, infine, i comandi
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+mkdir /media/daniele/BOOT_F/driver/nodriver 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+mkdir /media/daniele/BOOT_F/driver/uio 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+mkdir /media/daniele/BOOT_F/driver/uio_int 
+\end_layout
+
+\begin_layout Standard
+per creare rispettivamente le cartelle in cui vanno inseriti il primo, secondo
+ e terzo tipo di driver.
+\end_layout
+
+\begin_layout Standard
+Si copiano, quindi, i file scritti all'interno della cartella corrispondente.
+ Nel caso considerato il comando è
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+cp -a Sistemi_Embedded/Esercitazione_7/Driver/0_noDriver/.
+ /media/daniele/BOOT_F/driver/nodriver/
+\end_layout
+
+\begin_layout Standard
+Eseguire l'operazione di umount delle partizioni
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+umount /media/daniele/BOOT_F 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+umount /media/daniele/ROOT_FS 
+\end_layout
+
+\begin_layout Standard
+Seguendo le indicazioni del precedente capitolo, si setta la board in modo
+ tale da essere avviata via SD.
+ Si apre un emulatore di terminale e si fa il reboot del SO.
+\end_layout
+
+\begin_layout Standard
+Per prima, cosa si monta la partizione BOOT_F in 
+\shape italic
+/mnt
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+mount /dev/mmcblk0p1 /mnt/
+\end_layout
+
+\begin_layout Standard
+Con i comandi seguenti, si accede quindi alla cartella nella quale è stato
+ caricato il driver
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+cd /mnt/driver/nodriver
+\end_layout
+
+\begin_layout Standard
+digitando 
+\family typewriter
+ls
+\family default
+ il risultato dovrebbe essere
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+\color red
+main.c makefile nodriver_function.c nodriver_header.h
+\end_layout
+
+\begin_layout Standard
+Compiliamo il driver con la primitiva
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+make
+\end_layout
+
+\begin_layout Standard
+Per passare i giusti parametri al driver, bisogna conoscere gli esatti indirizzi
+ delle periferiche sviluppate nel capitolo precedente.
+ A tal fine, si avvia Vivado, si apre il progetto in questione e, dopo aver
+ aperto il block diagram, si apre la paletta 
+\series bold
+Address Editor
+\series default
+, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Address-Editor"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_0.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Address-Editor"
+
+\end_inset
+
+Address Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dove
+\end_layout
+
+\begin_layout Itemize
+axi_gpio_0 è la GPIO associata ai bottoni;
+\end_layout
+
+\begin_layout Itemize
+axi_gpio_1 è la GPIO associata agli switch;
+\end_layout
+
+\begin_layout Itemize
+axi_gpio_2 è la GPIO associata ai led.
+\end_layout
+
+\begin_layout Standard
+Nelle figure che seguono si riportano alcuni esempi di funzionamento, in
+ particolare si mostra:
+\end_layout
+
+\begin_layout Itemize
+una lettura sui button, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:button"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+una lettura sugli switch, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:switch"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+una scrittura sui led, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:led"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+il richiamo della funzione di help, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:usage"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:button"
+
+\end_inset
+
+Messaggio restituito dopo la pressione di BTN2(V16) e BTN3(Y16) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:switch"
+
+\end_inset
+
+Messaggio restituito dopo aver alzato SW0(G15) e SW2(W13)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:led"
+
+\end_inset
+
+Messaggio restituito dopo che sulla board si sono accesi LD0(M14), LD1(M15)
+ e LD2(G14)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:usage"
+
+\end_inset
+
+Usage function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Seconda tipologia
 \end_layout
 
 \end_body

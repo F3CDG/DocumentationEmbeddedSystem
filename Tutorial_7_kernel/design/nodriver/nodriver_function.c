@@ -13,7 +13,7 @@
 
 /**
   * @brief  Describes how 'nodriver' must be used, specifing all supported options.
-  * @param  name: Specifies nodriver name.
+  * @param  [in]	name: Specifies nodriver name.
   * @retval None.
   */
 void usage(char *name){
@@ -28,29 +28,29 @@ void usage(char *name){
 
 /**
   * @brief  Parses nodriver arguments.
-  * @param  argc: 	number of parameters, passed to main function.
-  * @param  argv: 	parameters passed to main function
-  * @param  address: 	physical address of GPIO component
-  * @param  r_w: 	specifies if the operation on GPIO is a read or a write
-  * @param  value: 	contains the read value (if the operation on GPIO is a read) 
-  *		   or the value to write (if the operation on GPIO is a write)
-  * @retval Integer status.
-  *         -1		An error occurred.
-  *	     1		Help function is called.		
+  * @param  [in]	argc: number of parameters, passed to main function.
+  * @param  [in]	argv: parameters passed to main function
+  * @param  [out] 	address: physical address of GPIO component
+  * @param  [out]	r_w: specifies if the operation on GPIO is a read or a write
+  * @param  [out]	value: contains the read value (if the operation on GPIO is a read) 
+  * 			or the value to write (if the operation on GPIO is a write)
+  * @retval Integer status:
+  *	    -1		An error occurred;
+  *	     1		Help function is called;		
   * 	     0		Everything is ok.
   */
 int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 	int index=0;
-	int mandatory_opt=-1; /*!< Keep track if the mandatory option 'g' is parsed */
-	int i_or_o=0;	/*!< Keep track if an i|o operation is requested */
+	int mandatory_opt=-1; /* Keep track if the mandatory option 'g' is parsed */
+	int i_or_o=0;	/* Keep track if an i|o operation is requested */
 	static char *optstring = ":g:io:h";
 
 		while((index = getopt(argc, argv, optstring)) != -1) {
 				switch(index) {
 				case 'g':
-					mandatory_opt=atoi(optarg);	/*!< Change mandatory_opt value to memorize that the mandatory option is parsed */
+					mandatory_opt=atoi(optarg);	/* Change mandatory_opt value to memorize that the mandatory option is parsed */
 					*address=strtoul(optarg,NULL, 0);
-					/*! Check if address passed is not 0x0 */
+					/* Check if address passed is not 0x0 */
 					if(*address==0){
 						printf("Wrong physical address inserted!\n");
 						return -1;
@@ -59,7 +59,7 @@ int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 				case 'i':
 					/* Check if before 'i' option was passed the mandatory option 'g' */
 					if(mandatory_opt!=-1){
-						*r_w=READ; /*!< Set READ operation for GPIO */
+						*r_w=READ; /* Set READ operation for GPIO */
 						i_or_o=1;
 					}
 					else{
@@ -69,9 +69,9 @@ int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 					}
 					break;
 				case 'o':
-					/*! Check if before 'o' option was passed the mandatory option 'g' */
+					/* Check if before 'o' option was passed the mandatory option 'g' */
 					if(mandatory_opt!=-1){
-						*r_w=WRITE; /*!< Set WRITE operation for GPIO */
+						*r_w=WRITE; /* Set WRITE operation for GPIO */
 						*value=strtoul(optarg, NULL, 0);
 						i_or_o=1;
 					}
@@ -102,7 +102,7 @@ int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 				}
 		
 			}
-	/*! Check if an i|o operation is requested */	
+	/* Check if an i|o operation is requested */	
 	if(i_or_o==0){
 		printf("Can't use "BOLDWHITE"nodriver "RESET"without specify i|o option\n");
 		usage(argv[0]);
@@ -113,10 +113,11 @@ int parse_command(int argc,char **argv,int* address,int* r_w,int* value){
 
 /**
   * @brief  Opens /dev/mem file in order to access GPIO address and calculates page offset and virtual address of GPIO file.
-  * @param  phy_address: 	GPIO's physical address.
-  * @param  page_offset: 	page offset which GPIO finds.
-  * @param  virtual_address: 	GPIO's virtual address.
-  * @retval Integer status.
+  * @param  [in]	fd: file descriptor name.
+  * @param  [in] 	phy_address: GPIO's physical address.
+  * @param  [out]	page_offset: page offset which GPIO finds.
+  * @param  [out]	virtual_address: GPIO's virtual address.
+  * @retval Integer status:
   *         -1		An error occurred.
   */
 int open_memory(int* fd, int phy_address, int* page_offset,void** virtual_address){
@@ -126,18 +127,18 @@ int open_memory(int* fd, int phy_address, int* page_offset,void** virtual_addres
 			return -1;
 		}
 		int page_addr = phy_address & MASK_SIZE;
-		/*! Calculates page offset */
+		/* Calculates page offset */
 		*page_offset = phy_address - page_addr;
-		/*! mmap system call returns virtual address of GPIO */
+		/* mmap system call returns virtual address of GPIO */
 		*virtual_address = mmap(NULL, PAGE_SIZE, PROT_READ|PROT_WRITE, MAP_SHARED, *fd, page_addr);
 	return 0;
 }
 
 /**
   * @brief  Reads the <value> in input to GPIO port.
-  * @param  value: 		read value.
-  * @param  virtual_address: 	GPIO's virtual address.
-  * @param  page_offset: 	page offset which GPIO finds.
+  * @param  [out]	value: read value.
+  * @param  [in]	virtual_address: GPIO's virtual address.
+  * @param  [in]	page_offset: page offset which GPIO finds.
   * @retval None.
   */
 void read_gpio(int* value,void* virtual_address,int page_offset){
@@ -147,10 +148,10 @@ void read_gpio(int* value,void* virtual_address,int page_offset){
 
 /**
   * @brief  Writes <value> in output to GPIO port.
-  * @param  value: 		write value.
-  * @param  phy_address: 	GPIO's physical address.
-  * @param  virtual_address: 	GPIO's virtual address.
-  * @param  page_offset: 	page offset which GPIO finds.
+  * @param  [in]	value: write value.
+  * @param  [in]	phy_address: GPIO's physical address.
+  * @param  [in]	virtual_address: GPIO's virtual address.
+  * @param  [in]	page_offset: page offset which GPIO finds.
   * @retval None.
   */
 void write_gpio(int value,int phy_address,void* virtual_address, int page_offset){
@@ -160,7 +161,8 @@ void write_gpio(int value,int phy_address,void* virtual_address, int page_offset
 
 /**
   * @brief  Closes /dev/mem file.
-  * @param  virtual_address: 	GPIO's virtual address.
+  * @param  [in]	fd: file descriptor name.
+  * @param  [in]	virtual_address: GPIO's virtual address.
   * @retval None.
   */
 void close_memory(int fd,void* virtual_address){

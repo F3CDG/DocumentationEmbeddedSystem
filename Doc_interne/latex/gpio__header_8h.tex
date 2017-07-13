@@ -1,0 +1,794 @@
+\hypertarget{gpio__header_8h}{}\section{Riferimenti per il file Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/gpio\+\_\+header.h}
+\label{gpio__header_8h}\index{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/gpio\+\_\+header.\+h@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/gpio\+\_\+header.\+h}}
+
+
+Header file della libreria H\+AL driver per gestione G\+P\+IO custom.  
+
+
+{\ttfamily \#include \char`\"{}xparameters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}my\+\_\+gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+Grafo delle dipendenze di inclusione per gpio\+\_\+header.\+h\+:
+% FIG 0
+Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\+:
+% FIG 1
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{gpio__header_8h_afca63cd0c45ddebc9b5f95a9ac9d2aa8}{G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS}~(uint32\+\_\+t$\ast$) X\+P\+A\+R\+\_\+\+M\+Y\+\_\+\+G\+P\+I\+O\+\_\+0\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+B\+A\+S\+E\+A\+D\+DR
+\begin{DoxyCompactList}\small\item\em Macro indirizzo base G\+P\+IO. \end{DoxyCompactList}\item 
+\#define \hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{P\+A\+D\+\_\+\+O\+UT}~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G0\+\_\+\+O\+F\+F\+S\+ET
+\begin{DoxyCompactList}\small\item\em Spiazzamenti registri periferica. \end{DoxyCompactList}\item 
+\#define \hyperlink{gpio__header_8h_a7131a1cda6cbf6062c0acfc5bef7c57f}{P\+A\+D\+\_\+\+R\+W\+\_\+N}~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G1\+\_\+\+O\+F\+F\+S\+ET
+\item 
+\#define \hyperlink{gpio__header_8h_aa521423b6826519fe6ec74bb55c3d007}{P\+A\+D\+\_\+\+EN}~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G2\+\_\+\+O\+F\+F\+S\+ET
+\item 
+\#define \hyperlink{gpio__header_8h_a634ebf70e4e4b77102fd401746b6b697}{P\+A\+D\+\_\+\+IN}~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G3\+\_\+\+O\+F\+F\+S\+ET
+\item 
+\#define \hyperlink{gpio__header_8h_a49c02fcb61184b6a7665a22e452a2606}{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN}~0xF
+\begin{DoxyCompactList}\small\item\em Impostazione della modalità su ogni pin di G\+P\+IO. \end{DoxyCompactList}\item 
+\#define \hyperlink{gpio__header_8h_a0c8e56065468abf3917fd45ee0fa4e1a}{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN}~0x0
+\item 
+\#define \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{H\+I\+GH}~1
+\begin{DoxyCompactList}\small\item\em Definizione dei valori alto e basso. \end{DoxyCompactList}\item 
+\#define \hyperlink{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}{L\+OW}~0
+\item 
+\#define \hyperlink{gpio__header_8h_a133e39ec8efbbe0b32fc0f276f416872}{S\+E\+T\+\_\+\+S\+W\+I\+T\+CH}~0
+\begin{DoxyCompactList}\small\item\em Posizionamento su G\+P\+IO di L\+ED e Switch. \end{DoxyCompactList}\item 
+\#define \hyperlink{gpio__header_8h_ae64f9b67d50323de9ce986c546b5f4df}{S\+E\+T\+\_\+\+L\+ED}~4
+\item 
+\#define \hyperlink{gpio__header_8h_ac328e551bde3d39b6d7b8cc9e048d941}{Z\+E\+RO}~0
+\begin{DoxyCompactList}\small\item\em Alias per alfabeto esadecimale. \end{DoxyCompactList}\item 
+\#define \hyperlink{gpio__header_8h_a206b6f5362e56b51ca957635350b70b6}{O\+NE}~1
+\item 
+\#define \hyperlink{gpio__header_8h_a888e15353eb3d330c743dbdeb47117e2}{T\+WO}~2
+\item 
+\#define \hyperlink{gpio__header_8h_a1859c475c0bde19dfc1101e35d71b939}{T\+H\+R\+EE}~3
+\item 
+\#define \hyperlink{gpio__header_8h_a64a9b58c6a5bcd3724f3b56ad6d006a7}{F\+O\+UR}~4
+\item 
+\#define \hyperlink{gpio__header_8h_a18ced145d1fdc806b5006bd4c2857026}{F\+I\+VE}~5
+\item 
+\#define \hyperlink{gpio__header_8h_afad3d8b3d66fceadb1732af784734c75}{S\+IX}~6
+\item 
+\#define \hyperlink{gpio__header_8h_ac537e6e7dad3ecef73fc3fc4f14fe020}{S\+E\+V\+EN}~7
+\item 
+\#define \hyperlink{gpio__header_8h_aaf6cfeda610d5092df7deb18fd5d63c2}{E\+I\+G\+HT}~8
+\item 
+\#define \hyperlink{gpio__header_8h_aef08329d0c1db97d7b269330ae9a70af}{N\+I\+NE}~9
+\item 
+\#define \hyperlink{gpio__header_8h_a09731b4569901a5008e219da69e920ae}{\+\_\+\+A\+\_\+}~10
+\item 
+\#define \hyperlink{gpio__header_8h_afff934ab60a047d4092d5e8c4a14e48a}{\+\_\+\+B\+\_\+}~11
+\item 
+\#define \hyperlink{gpio__header_8h_ac11ee8334d3e3d1551143b92e219bf44}{\+\_\+\+C\+\_\+}~12
+\item 
+\#define \hyperlink{gpio__header_8h_a0ca47e0287d010875dc56e36c9304eb5}{\+\_\+\+D\+\_\+}~13
+\item 
+\#define \hyperlink{gpio__header_8h_a894cfd8084c23f47ad6f1070839fe40a}{\+\_\+\+E\+\_\+}~14
+\item 
+\#define \hyperlink{gpio__header_8h_a2f13240b5b75c50de1b7ad750c67bbf5}{\+\_\+\+F\+\_\+}~15
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gpio__header_8h_a884bc5b263fad8501c4beb6128e4848c}{gpio\+\_\+init} (uint32\+\_\+t $\ast$base\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di inizializzare correttamente un G\+P\+IO. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__header_8h_a49129295b0ac872f833d084384b15dc1}{set\+\_\+value\+\_\+reg} (uint32\+\_\+t reg, uint32\+\_\+t mask, uint32\+\_\+t mask\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di settare all\textquotesingle{}interno di uno specifico registro, dei valori in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__header_8h_aeea54157b1758f322c9f80a7b8a34a19}{gpio\+\_\+write\+\_\+mask} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di scrivere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__header_8h_a44bdf7002b25db5ef93d7a4753706ba9}{gpio\+\_\+write\+\_\+one} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t position, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di scrivere un unico all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{gpio__header_8h_a5c65ade937947342cac436831f024a3c}{gpio\+\_\+read\+\_\+mask} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di leggere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{gpio__header_8h_ab18e7a479743320788db476b65a798d3}{gpio\+\_\+read\+\_\+one} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t position)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di leggere un unico valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__header_8h_a2a85ace98252a361c05d214d4e9d50db}{gpio\+\_\+toggle\+\_\+one} (uint32\+\_\+t reg, uint8\+\_\+t set, uint8\+\_\+t position)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di un singolo valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__header_8h_a03752192a08f5c5f1c802b2233a58698}{gpio\+\_\+toggle\+\_\+mask} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di un gruppo di bit all\textquotesingle{}interno di uno specifico registro in base ad una determinata masschera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Header file della libreria H\+AL driver per gestione G\+P\+IO custom. 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+10-\/\+May-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{gpio__header_8h_a09731b4569901a5008e219da69e920ae}\label{gpio__header_8h_a09731b4569901a5008e219da69e920ae}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!\+\_\+\+A\+\_\+@{\+\_\+\+A\+\_\+}}
+\index{\+\_\+\+A\+\_\+@{\+\_\+\+A\+\_\+}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+A\+\_\+}{\_A\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+A\+\_\+~10}
+
+
+
+Definizione alla linea 63 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_afff934ab60a047d4092d5e8c4a14e48a}\label{gpio__header_8h_afff934ab60a047d4092d5e8c4a14e48a}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!\+\_\+\+B\+\_\+@{\+\_\+\+B\+\_\+}}
+\index{\+\_\+\+B\+\_\+@{\+\_\+\+B\+\_\+}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+B\+\_\+}{\_B\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+B\+\_\+~11}
+
+
+
+Definizione alla linea 64 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_ac11ee8334d3e3d1551143b92e219bf44}\label{gpio__header_8h_ac11ee8334d3e3d1551143b92e219bf44}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!\+\_\+\+C\+\_\+@{\+\_\+\+C\+\_\+}}
+\index{\+\_\+\+C\+\_\+@{\+\_\+\+C\+\_\+}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+\_\+}{\_C\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+C\+\_\+~12}
+
+
+
+Definizione alla linea 65 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a0ca47e0287d010875dc56e36c9304eb5}\label{gpio__header_8h_a0ca47e0287d010875dc56e36c9304eb5}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!\+\_\+\+D\+\_\+@{\+\_\+\+D\+\_\+}}
+\index{\+\_\+\+D\+\_\+@{\+\_\+\+D\+\_\+}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+D\+\_\+}{\_D\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+D\+\_\+~13}
+
+
+
+Definizione alla linea 66 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a894cfd8084c23f47ad6f1070839fe40a}\label{gpio__header_8h_a894cfd8084c23f47ad6f1070839fe40a}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!\+\_\+\+E\+\_\+@{\+\_\+\+E\+\_\+}}
+\index{\+\_\+\+E\+\_\+@{\+\_\+\+E\+\_\+}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+E\+\_\+}{\_E\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+E\+\_\+~14}
+
+
+
+Definizione alla linea 67 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a2f13240b5b75c50de1b7ad750c67bbf5}\label{gpio__header_8h_a2f13240b5b75c50de1b7ad750c67bbf5}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!\+\_\+\+F\+\_\+@{\+\_\+\+F\+\_\+}}
+\index{\+\_\+\+F\+\_\+@{\+\_\+\+F\+\_\+}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+\_\+}{\_F\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+\_\+~15}
+
+
+
+Definizione alla linea 68 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da init().
+
+\mbox{\Hypertarget{gpio__header_8h_aaf6cfeda610d5092df7deb18fd5d63c2}\label{gpio__header_8h_aaf6cfeda610d5092df7deb18fd5d63c2}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!E\+I\+G\+HT@{E\+I\+G\+HT}}
+\index{E\+I\+G\+HT@{E\+I\+G\+HT}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{E\+I\+G\+HT}{EIGHT}}
+{\footnotesize\ttfamily \#define E\+I\+G\+HT~8}
+
+
+
+Definizione alla linea 61 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a18ced145d1fdc806b5006bd4c2857026}\label{gpio__header_8h_a18ced145d1fdc806b5006bd4c2857026}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!F\+I\+VE@{F\+I\+VE}}
+\index{F\+I\+VE@{F\+I\+VE}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{F\+I\+VE}{FIVE}}
+{\footnotesize\ttfamily \#define F\+I\+VE~5}
+
+
+
+Definizione alla linea 58 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a64a9b58c6a5bcd3724f3b56ad6d006a7}\label{gpio__header_8h_a64a9b58c6a5bcd3724f3b56ad6d006a7}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!F\+O\+UR@{F\+O\+UR}}
+\index{F\+O\+UR@{F\+O\+UR}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{F\+O\+UR}{FOUR}}
+{\footnotesize\ttfamily \#define F\+O\+UR~4}
+
+
+
+Definizione alla linea 57 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_afca63cd0c45ddebc9b5f95a9ac9d2aa8}\label{gpio__header_8h_afca63cd0c45ddebc9b5f95a9ac9d2aa8}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS@{G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS@{G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS}{GPIO\_ADDRESS}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS~(uint32\+\_\+t$\ast$) X\+P\+A\+R\+\_\+\+M\+Y\+\_\+\+G\+P\+I\+O\+\_\+0\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+B\+A\+S\+E\+A\+D\+DR}
+
+
+
+Macro indirizzo base G\+P\+IO. 
+
+
+
+Definizione alla linea 22 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da init().
+
+\mbox{\Hypertarget{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}\label{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!H\+I\+GH@{H\+I\+GH}}
+\index{H\+I\+GH@{H\+I\+GH}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{H\+I\+GH}{HIGH}}
+{\footnotesize\ttfamily \#define H\+I\+GH~1}
+
+
+
+Definizione dei valori alto e basso. 
+
+
+
+Definizione alla linea 41 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one(), gpio\+\_\+custom\+\_\+\+Write\+\_\+mask(), gpio\+\_\+toggle\+\_\+one(), gpio\+\_\+write\+\_\+mask(), init(), main(), mygpio\+\_\+read\+\_\+gpio(), e mygpio\+\_\+write\+\_\+gpio().
+
+\mbox{\Hypertarget{gpio__header_8h_a0c8e56065468abf3917fd45ee0fa4e1a}\label{gpio__header_8h_a0c8e56065468abf3917fd45ee0fa4e1a}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN@{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN}}
+\index{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN@{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN}{INIT\_CONFIG\_EN}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN~0x0}
+
+
+
+Definizione alla linea 36 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a49c02fcb61184b6a7665a22e452a2606}\label{gpio__header_8h_a49c02fcb61184b6a7665a22e452a2606}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN@{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN}}
+\index{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN@{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN}{INIT\_CONFIG\_RWN}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN~0xF}
+
+
+
+Impostazione della modalità su ogni pin di G\+P\+IO. 
+
+
+
+Definizione alla linea 35 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}\label{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!L\+OW@{L\+OW}}
+\index{L\+OW@{L\+OW}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{L\+OW}{LOW}}
+{\footnotesize\ttfamily \#define L\+OW~0}
+
+
+
+Definizione alla linea 42 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one(), gpio\+\_\+toggle\+\_\+one(), init(), mygpio\+\_\+read\+\_\+gpio(), e mygpio\+\_\+write\+\_\+gpio().
+
+\mbox{\Hypertarget{gpio__header_8h_aef08329d0c1db97d7b269330ae9a70af}\label{gpio__header_8h_aef08329d0c1db97d7b269330ae9a70af}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!N\+I\+NE@{N\+I\+NE}}
+\index{N\+I\+NE@{N\+I\+NE}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{N\+I\+NE}{NINE}}
+{\footnotesize\ttfamily \#define N\+I\+NE~9}
+
+
+
+Definizione alla linea 62 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a206b6f5362e56b51ca957635350b70b6}\label{gpio__header_8h_a206b6f5362e56b51ca957635350b70b6}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!O\+NE@{O\+NE}}
+\index{O\+NE@{O\+NE}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{O\+NE}{ONE}}
+{\footnotesize\ttfamily \#define O\+NE~1}
+
+
+
+Definizione alla linea 54 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_aa521423b6826519fe6ec74bb55c3d007}\label{gpio__header_8h_aa521423b6826519fe6ec74bb55c3d007}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!P\+A\+D\+\_\+\+EN@{P\+A\+D\+\_\+\+EN}}
+\index{P\+A\+D\+\_\+\+EN@{P\+A\+D\+\_\+\+EN}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+D\+\_\+\+EN}{PAD\_EN}}
+{\footnotesize\ttfamily \#define P\+A\+D\+\_\+\+EN~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G2\+\_\+\+O\+F\+F\+S\+ET}
+
+0x8 
+
+Definizione alla linea 29 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da gpio\+\_\+init(), e init().
+
+\mbox{\Hypertarget{gpio__header_8h_a634ebf70e4e4b77102fd401746b6b697}\label{gpio__header_8h_a634ebf70e4e4b77102fd401746b6b697}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!P\+A\+D\+\_\+\+IN@{P\+A\+D\+\_\+\+IN}}
+\index{P\+A\+D\+\_\+\+IN@{P\+A\+D\+\_\+\+IN}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+D\+\_\+\+IN}{PAD\_IN}}
+{\footnotesize\ttfamily \#define P\+A\+D\+\_\+\+IN~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G3\+\_\+\+O\+F\+F\+S\+ET}
+
+0xC 
+
+Definizione alla linea 30 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}\label{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!P\+A\+D\+\_\+\+O\+UT@{P\+A\+D\+\_\+\+O\+UT}}
+\index{P\+A\+D\+\_\+\+O\+UT@{P\+A\+D\+\_\+\+O\+UT}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+D\+\_\+\+O\+UT}{PAD\_OUT}}
+{\footnotesize\ttfamily \#define P\+A\+D\+\_\+\+O\+UT~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G0\+\_\+\+O\+F\+F\+S\+ET}
+
+
+
+Spiazzamenti registri periferica. 
+
+0x0 
+
+Definizione alla linea 27 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da init(), e supercar().
+
+\mbox{\Hypertarget{gpio__header_8h_a7131a1cda6cbf6062c0acfc5bef7c57f}\label{gpio__header_8h_a7131a1cda6cbf6062c0acfc5bef7c57f}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!P\+A\+D\+\_\+\+R\+W\+\_\+N@{P\+A\+D\+\_\+\+R\+W\+\_\+N}}
+\index{P\+A\+D\+\_\+\+R\+W\+\_\+N@{P\+A\+D\+\_\+\+R\+W\+\_\+N}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+D\+\_\+\+R\+W\+\_\+N}{PAD\_RW\_N}}
+{\footnotesize\ttfamily \#define P\+A\+D\+\_\+\+R\+W\+\_\+N~M\+Y\+\_\+\+G\+P\+I\+O\+\_\+\+S00\+\_\+\+A\+X\+I\+\_\+\+S\+L\+V\+\_\+\+R\+E\+G1\+\_\+\+O\+F\+F\+S\+ET}
+
+0x4 
+
+Definizione alla linea 28 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da gpio\+\_\+init().
+
+\mbox{\Hypertarget{gpio__header_8h_ae64f9b67d50323de9ce986c546b5f4df}\label{gpio__header_8h_ae64f9b67d50323de9ce986c546b5f4df}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!S\+E\+T\+\_\+\+L\+ED@{S\+E\+T\+\_\+\+L\+ED}}
+\index{S\+E\+T\+\_\+\+L\+ED@{S\+E\+T\+\_\+\+L\+ED}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+T\+\_\+\+L\+ED}{SET\_LED}}
+{\footnotesize\ttfamily \#define S\+E\+T\+\_\+\+L\+ED~4}
+
+
+
+Definizione alla linea 48 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a133e39ec8efbbe0b32fc0f276f416872}\label{gpio__header_8h_a133e39ec8efbbe0b32fc0f276f416872}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!S\+E\+T\+\_\+\+S\+W\+I\+T\+CH@{S\+E\+T\+\_\+\+S\+W\+I\+T\+CH}}
+\index{S\+E\+T\+\_\+\+S\+W\+I\+T\+CH@{S\+E\+T\+\_\+\+S\+W\+I\+T\+CH}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+T\+\_\+\+S\+W\+I\+T\+CH}{SET\_SWITCH}}
+{\footnotesize\ttfamily \#define S\+E\+T\+\_\+\+S\+W\+I\+T\+CH~0}
+
+
+
+Posizionamento su G\+P\+IO di L\+ED e Switch. 
+
+
+
+Definizione alla linea 47 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_ac537e6e7dad3ecef73fc3fc4f14fe020}\label{gpio__header_8h_ac537e6e7dad3ecef73fc3fc4f14fe020}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!S\+E\+V\+EN@{S\+E\+V\+EN}}
+\index{S\+E\+V\+EN@{S\+E\+V\+EN}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+V\+EN}{SEVEN}}
+{\footnotesize\ttfamily \#define S\+E\+V\+EN~7}
+
+
+
+Definizione alla linea 60 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_afad3d8b3d66fceadb1732af784734c75}\label{gpio__header_8h_afad3d8b3d66fceadb1732af784734c75}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!S\+IX@{S\+IX}}
+\index{S\+IX@{S\+IX}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{S\+IX}{SIX}}
+{\footnotesize\ttfamily \#define S\+IX~6}
+
+
+
+Definizione alla linea 59 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_a1859c475c0bde19dfc1101e35d71b939}\label{gpio__header_8h_a1859c475c0bde19dfc1101e35d71b939}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!T\+H\+R\+EE@{T\+H\+R\+EE}}
+\index{T\+H\+R\+EE@{T\+H\+R\+EE}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{T\+H\+R\+EE}{THREE}}
+{\footnotesize\ttfamily \#define T\+H\+R\+EE~3}
+
+
+
+Definizione alla linea 56 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da supercar().
+
+\mbox{\Hypertarget{gpio__header_8h_a888e15353eb3d330c743dbdeb47117e2}\label{gpio__header_8h_a888e15353eb3d330c743dbdeb47117e2}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!T\+WO@{T\+WO}}
+\index{T\+WO@{T\+WO}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{T\+WO}{TWO}}
+{\footnotesize\ttfamily \#define T\+WO~2}
+
+
+
+Definizione alla linea 55 del file gpio\+\_\+header.\+h.
+
+\mbox{\Hypertarget{gpio__header_8h_ac328e551bde3d39b6d7b8cc9e048d941}\label{gpio__header_8h_ac328e551bde3d39b6d7b8cc9e048d941}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!Z\+E\+RO@{Z\+E\+RO}}
+\index{Z\+E\+RO@{Z\+E\+RO}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{Z\+E\+RO}{ZERO}}
+{\footnotesize\ttfamily \#define Z\+E\+RO~0}
+
+
+
+Alias per alfabeto esadecimale. 
+
+
+
+Definizione alla linea 53 del file gpio\+\_\+header.\+h.
+
+
+
+Referenziato da supercar().
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{gpio__header_8h_a884bc5b263fad8501c4beb6128e4848c}\label{gpio__header_8h_a884bc5b263fad8501c4beb6128e4848c}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!gpio\+\_\+init@{gpio\+\_\+init}}
+\index{gpio\+\_\+init@{gpio\+\_\+init}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+init()}{gpio\_init()}}
+{\footnotesize\ttfamily void gpio\+\_\+init (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{base\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di inizializzare correttamente un G\+P\+IO. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em base\+\_\+addr} & puntatore ad un intero di 32 bit per il corretto indirizzamento della periferica\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 23 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN, I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN, my\+\_\+gpio\+\_\+pointer, P\+A\+D\+\_\+\+EN, e P\+A\+D\+\_\+\+R\+W\+\_\+N.
+
+
+
+Referenziato da init().
+
+
+\begin{DoxyCode}
+23                                     \{
+24     \textcolor{comment}{/*Verifica se l'indirizzo passato è allineato a 4 byte*/}
+25     assert((uint32\_t)base\_addr%4==0 && \textcolor{stringliteral}{"Base address non allineato a 4 byte"});
+26 
+27     \hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}=base\_addr;
+28 
+29     \textcolor{comment}{/*Configurazione pin di GPIO*/}
+30     *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+\hyperlink{gpio__header_8h_aa521423b6826519fe6ec74bb55c3d007}{PAD\_EN}/4)=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a9b6b577baba111c6e473146eca19b2c9adc582cc6d5ff4ac919a8e25774246ff1}{INIT\_CONFIG\_EN};
+31     *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+\hyperlink{gpio__header_8h_a7131a1cda6cbf6062c0acfc5bef7c57f}{PAD\_RW\_N}/4)=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a9b6b577baba111c6e473146eca19b2c9ac831347c85e0a37b11d8bf8576b5b588}{INIT\_CONFIG\_RWN};
+32 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__header_8h_a5c65ade937947342cac436831f024a3c}\label{gpio__header_8h_a5c65ade937947342cac436831f024a3c}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!gpio\+\_\+read\+\_\+mask@{gpio\+\_\+read\+\_\+mask}}
+\index{gpio\+\_\+read\+\_\+mask@{gpio\+\_\+read\+\_\+mask}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+read\+\_\+mask()}{gpio\_read\_mask()}}
+{\footnotesize\ttfamily uint32\+\_\+t gpio\+\_\+read\+\_\+mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di leggere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a leggere in quella posizione, viceversa se 0\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em intero} & a 32 bit \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 104 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia my\+\_\+gpio\+\_\+pointer.
+
+
+
+Referenziato da gpio\+\_\+read\+\_\+one().
+
+
+\begin{DoxyCode}
+104                                                                 \{
+105     mask = mask<<\textcolor{keyword}{set};
+106     \textcolor{keywordflow}{if}(((0x0000000F<<\textcolor{keyword}{set}) & mask) == mask)\{
+107         \textcolor{keywordflow}{return} *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer} + reg/4) & mask;
+108     \}
+109     \textcolor{keywordflow}{return} -1;
+110 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__header_8h_ab18e7a479743320788db476b65a798d3}\label{gpio__header_8h_ab18e7a479743320788db476b65a798d3}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!gpio\+\_\+read\+\_\+one@{gpio\+\_\+read\+\_\+one}}
+\index{gpio\+\_\+read\+\_\+one@{gpio\+\_\+read\+\_\+one}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+read\+\_\+one()}{gpio\_read\_one()}}
+{\footnotesize\ttfamily uint32\+\_\+t gpio\+\_\+read\+\_\+one (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di leggere un unico valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la posizione in cui leggere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em intero} & a 32 bit \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 124 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+read\+\_\+mask().
+
+
+
+Referenziato da gpio\+\_\+toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+124                                                                     \{
+125     \textcolor{keywordflow}{return} \hyperlink{gpio__functions_8c_a5c65ade937947342cac436831f024a3c}{gpio\_read\_mask}(reg,\textcolor{keyword}{set},0x1<<position) == (0x1<<(position+\textcolor{keyword}{set}));
+126 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__header_8h_a03752192a08f5c5f1c802b2233a58698}\label{gpio__header_8h_a03752192a08f5c5f1c802b2233a58698}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!gpio\+\_\+toggle\+\_\+mask@{gpio\+\_\+toggle\+\_\+mask}}
+\index{gpio\+\_\+toggle\+\_\+mask@{gpio\+\_\+toggle\+\_\+mask}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+toggle\+\_\+mask()}{gpio\_toggle\_mask()}}
+{\footnotesize\ttfamily void gpio\+\_\+toggle\+\_\+mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di un gruppo di bit all\textquotesingle{}interno di uno specifico registro in base ad una determinata masschera. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui effettuare il toggle \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la maschera di bit, in particolare se il valore i-\/esimo è pari a 1 allora in quella posizione si è abilitati ad effettuare il toggle, viceversa non si effettua tale operazione\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 160 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+160                                                               \{
+161     \textcolor{keywordtype}{int} i;
+162     \textcolor{keywordflow}{for}(i=0;i<4;i++)\{
+163         \textcolor{keywordflow}{if}((0x1<<(\textcolor{keyword}{set}*4+i)) == ((0x1<<(\textcolor{keyword}{set}*4+i)) & mask))\{
+164             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(reg, \textcolor{keyword}{set},i+\textcolor{keyword}{set}*4);
+165         \}
+166     \}
+167 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__header_8h_a2a85ace98252a361c05d214d4e9d50db}\label{gpio__header_8h_a2a85ace98252a361c05d214d4e9d50db}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!gpio\+\_\+toggle\+\_\+one@{gpio\+\_\+toggle\+\_\+one}}
+\index{gpio\+\_\+toggle\+\_\+one@{gpio\+\_\+toggle\+\_\+one}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+toggle\+\_\+one()}{gpio\_toggle\_one()}}
+{\footnotesize\ttfamily void gpio\+\_\+toggle\+\_\+one (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint8\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di un singolo valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui effettuare il toggle \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 8 bit che specifica la posizione in cui effettuare il toggle\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 141 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+read\+\_\+one(), gpio\+\_\+write\+\_\+one(), H\+I\+GH, e L\+OW.
+
+
+
+Referenziato da gpio\+\_\+toggle\+\_\+mask(), e supercar().
+
+
+\begin{DoxyCode}
+141                                                                 \{
+142     \hyperlink{gpio__functions_8c_ab18e7a479743320788db476b65a798d3}{gpio\_read\_one}(reg,\textcolor{keyword}{set},position) == \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH} ? \hyperlink{gpio__functions_8c_a44bdf7002b25db5ef93d7a4753706ba9}{gpio\_write\_one}(reg ,\textcolor{keyword}{set},
+      position,\hyperlink{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}{LOW}) : gpio\_write\_one(reg,set,position,\hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+143 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__header_8h_aeea54157b1758f322c9f80a7b8a34a19}\label{gpio__header_8h_aeea54157b1758f322c9f80a7b8a34a19}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!gpio\+\_\+write\+\_\+mask@{gpio\+\_\+write\+\_\+mask}}
+\index{gpio\+\_\+write\+\_\+mask@{gpio\+\_\+write\+\_\+mask}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+write\+\_\+mask()}{gpio\_write\_mask()}}
+{\footnotesize\ttfamily void gpio\+\_\+write\+\_\+mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di scrivere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato \\
+\hline
+{\em value} & intero a 8 bit che indica il valore da scrivere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 65 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia H\+I\+GH, e set\+\_\+value\+\_\+reg().
+
+
+
+Referenziato da gpio\+\_\+write\+\_\+one(), e init().
+
+
+\begin{DoxyCode}
+65                                                                              \{
+66     assert((reg==0 || reg%12!=0) && \textcolor{stringliteral}{"Scrittura in una locazione di memoria non consentita"});
+67     mask = mask<<\textcolor{keyword}{set};
+68     \textcolor{keywordflow}{if}(((0x0000000F<<\textcolor{keyword}{set}) & mask)==mask)
+69         \textcolor{comment}{/*Se value è pari a 1 allora si andrà a scrivere tanti 1 in base alla maschera */}
+70         value == \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH} ? \hyperlink{gpio__functions_8c_a49129295b0ac872f833d084384b15dc1}{set\_value\_reg}(reg,mask,0xF<<\textcolor{keyword}{set}) : set\_value\_reg(reg,mask,0x0);
+71 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__header_8h_a44bdf7002b25db5ef93d7a4753706ba9}\label{gpio__header_8h_a44bdf7002b25db5ef93d7a4753706ba9}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!gpio\+\_\+write\+\_\+one@{gpio\+\_\+write\+\_\+one}}
+\index{gpio\+\_\+write\+\_\+one@{gpio\+\_\+write\+\_\+one}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+write\+\_\+one()}{gpio\_write\_one()}}
+{\footnotesize\ttfamily void gpio\+\_\+write\+\_\+one (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{position,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di scrivere un unico all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la posizione in cui scrivere \\
+\hline
+{\em mask\+\_\+value} & intero a 8 bit che indica il valore da scrivere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 86 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+write\+\_\+mask().
+
+
+
+Referenziato da gpio\+\_\+toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+86                                                                                 \{
+87     \hyperlink{gpio__functions_8c_aeea54157b1758f322c9f80a7b8a34a19}{gpio\_write\_mask}(reg, \textcolor{keyword}{set}, 0x1<<position, value);
+88 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__header_8h_a49129295b0ac872f833d084384b15dc1}\label{gpio__header_8h_a49129295b0ac872f833d084384b15dc1}} 
+\index{gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}!set\+\_\+value\+\_\+reg@{set\+\_\+value\+\_\+reg}}
+\index{set\+\_\+value\+\_\+reg@{set\+\_\+value\+\_\+reg}!gpio\+\_\+header.\+h@{gpio\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+value\+\_\+reg()}{set\_value\_reg()}}
+{\footnotesize\ttfamily void set\+\_\+value\+\_\+reg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint32\+\_\+t}]{mask,  }\item[{uint32\+\_\+t}]{mask\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di settare all\textquotesingle{}interno di uno specifico registro, dei valori in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato \\
+\hline
+{\em mask\+\_\+value} & intero a 32 bit da scrivere all\textquotesingle{}interno del registro \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 46 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia my\+\_\+gpio\+\_\+pointer.
+
+
+
+Referenziato da gpio\+\_\+write\+\_\+mask().
+
+
+\begin{DoxyCode}
+46                                                                    \{
+47     *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+reg/4) = (*(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+reg/4) & ~mask) | (mask & 
+      mask\_value);
+48 \}
+\end{DoxyCode}

@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['hal_5fgpio_5fexti_5fcallback',['HAL_GPIO_EXTI_Callback',['../_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c.html#a0cd91fd3a9608559c2a87a8ba6cba55f',1,'HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin):&#160;main.c'],['../main__master__i2c_8c.html#a0cd91fd3a9608559c2a87a8ba6cba55f',1,'HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin):&#160;main_master_i2c.c'],['../main__slave__i2c_8c.html#a0cd91fd3a9608559c2a87a8ba6cba55f',1,'HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin):&#160;main_slave_i2c.c'],['../main__spi__master__it_8c.html#a0cd91fd3a9608559c2a87a8ba6cba55f',1,'HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin):&#160;main_spi_master_it.c']]],
+  ['hal_5fi2c_5ferrorcallback',['HAL_I2C_ErrorCallback',['../main__master__i2c_8c.html#a4d5338cd64a656dfdc4154773bc4f05d',1,'HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c):&#160;main_master_i2c.c'],['../main__slave__i2c_8c.html#a4d5338cd64a656dfdc4154773bc4f05d',1,'HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c):&#160;main_slave_i2c.c']]],
+  ['hal_5fi2c_5fmastertxcpltcallback',['HAL_I2C_MasterTxCpltCallback',['../main__master__i2c_8c.html#aa258e0eb52bbc34002a46dc2db89a84b',1,'main_master_i2c.c']]],
+  ['hal_5fi2c_5fslaverxcpltcallback',['HAL_I2C_SlaveRxCpltCallback',['../main__slave__i2c_8c.html#ae23a5b1ce68867c35093ff2b5931e9a0',1,'main_slave_i2c.c']]],
+  ['hal_5fspi_5ferrorcallback',['HAL_SPI_ErrorCallback',['../main__spi__master__it_8c.html#a3db7835e7e7ac335887f62fedf156926',1,'HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi):&#160;main_spi_master_it.c'],['../main__spi__slave_8c.html#a3db7835e7e7ac335887f62fedf156926',1,'HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi):&#160;main_spi_slave.c']]],
+  ['hal_5fspi_5frxcpltcallback',['HAL_SPI_RxCpltCallback',['../main__spi__slave_8c.html#a3df7021fe24cf874f8b1eec5bd5f4cb3',1,'main_spi_slave.c']]],
+  ['hal_5fspi_5ftxcpltcallback',['HAL_SPI_TxCpltCallback',['../main__spi__master__it_8c.html#a0a99ab4f6aa6ee7dc2abca5483910dde',1,'main_spi_master_it.c']]],
+  ['hal_5fuart_5ferrorcallback',['HAL_UART_ErrorCallback',['../main__master__uart_8c.html#a51234b271615f20600cc5d30a3bc810d',1,'HAL_UART_ErrorCallback(UART_HandleTypeDef *huart2):&#160;main_master_uart.c'],['../main__slave__uart_8c.html#a51234b271615f20600cc5d30a3bc810d',1,'HAL_UART_ErrorCallback(UART_HandleTypeDef *huart2):&#160;main_slave_uart.c']]]
+];

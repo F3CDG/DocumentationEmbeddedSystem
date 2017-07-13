@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Esame di Sistemi Embedded 2016/17 - Gruppo 4:  File sorgente Elaborato2/src/driver.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="LogoGruppoIV.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Esame di Sistemi Embedded 2016/17 - Gruppo 4
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a4c832c8e59fb70f0c403cb87d6aa690.html">Elaborato2</a></li><li class="navelem"><a class="el" href="dir_1ddf08f6c9d9520ba01ec82a9f47876e.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">driver.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="driver_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef DRIVER_H_</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define DRIVER_H_</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/* Librerie Incluse ------------------------------------------------------------------*/</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="my__bsp__custom_8h.html">my_bsp_custom.h</a>&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* Prototipi funzioni -------------------------------------------------------*/</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="driver_8h.html#aeed266a1e7ed9e5f20de05db0f02024e">toggleAll</a>(); <span class="comment">/*&lt;! Toggle dei led utente*/</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="driver_8h.html#a13d137800a4aa08c54508e67722620f4">counter</a>(); <span class="comment">/*&lt;! Conteggio con output sui led*/</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="driver_8h.html#a7cd563c35d04fafa3c3657de92c1a5a0">supercar</a>(); <span class="comment">/*&lt;! Shift a destra e sinistra di un bit e mostrato sui led*/</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* DRIVER_H_ */</span><span class="preprocessor"></span></div><div class="ttc" id="driver_8h_html_a13d137800a4aa08c54508e67722620f4"><div class="ttname"><a href="driver_8h.html#a13d137800a4aa08c54508e67722620f4">counter</a></div><div class="ttdeci">void counter()</div><div class="ttdoc">Questa funzione permette di implementare un contatore modulo 16 e di visualizzare il contenuto sui le...</div><div class="ttdef"><b>Definition:</b> <a href="driver_8c_source.html#l00052">driver.c:52</a></div></div>
+<div class="ttc" id="my__bsp__custom_8h_html"><div class="ttname"><a href="my__bsp__custom_8h.html">my_bsp_custom.h</a></div><div class="ttdoc">Libreria per BSP custom STM32F4 Discovery. </div></div>
+<div class="ttc" id="driver_8h_html_aeed266a1e7ed9e5f20de05db0f02024e"><div class="ttname"><a href="driver_8h.html#aeed266a1e7ed9e5f20de05db0f02024e">toggleAll</a></div><div class="ttdeci">void toggleAll()</div><div class="ttdoc">Questa funzione permette il toggle di tutti e 4 i led utente. </div><div class="ttdef"><b>Definition:</b> <a href="driver_8c_source.html#l00025">driver.c:25</a></div></div>
+<div class="ttc" id="driver_8h_html_a7cd563c35d04fafa3c3657de92c1a5a0"><div class="ttname"><a href="driver_8h.html#a7cd563c35d04fafa3c3657de92c1a5a0">supercar</a></div><div class="ttdeci">void supercar()</div><div class="ttdoc">Implementazione del driver per il pilotaggio della periferica. </div><div class="ttdef"><b>Definition:</b> <a href="_elaborato1_21__1___driver___c___no_int_2main_8c_source.html#l00058">main.c:58</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

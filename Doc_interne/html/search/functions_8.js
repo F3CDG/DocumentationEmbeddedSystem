@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['open_5fdevice',['open_device',['../uiodriver__function_8c.html#ac6c251d508dbd46e49aa0efce35acd03',1,'open_device(int *fd, char *uiod, void **virtual_address):&#160;uiodriver_function.c'],['../uiodriver__header_8h.html#ac6c251d508dbd46e49aa0efce35acd03',1,'open_device(int *fd, char *uiod, void **virtual_address):&#160;uiodriver_function.c'],['../uiointdriver__function_8c.html#ac6c251d508dbd46e49aa0efce35acd03',1,'open_device(int *fd, char *uiod, void **virtual_address):&#160;uiointdriver_function.c'],['../uiointdriver__header_8h.html#ac6c251d508dbd46e49aa0efce35acd03',1,'open_device(int *fd, char *uiod, void **virtual_address):&#160;uiodriver_function.c']]],
+  ['open_5fmemory',['open_memory',['../nodriver__function_8c.html#ab1fce32e83ddc128ebf724c0e9018dbb',1,'open_memory(int *fd, int phy_address, int *page_offset, void **virtual_address):&#160;nodriver_function.c'],['../nodriver__header_8h.html#ab1fce32e83ddc128ebf724c0e9018dbb',1,'open_memory(int *fd, int phy_address, int *page_offset, void **virtual_address):&#160;nodriver_function.c']]]
+];

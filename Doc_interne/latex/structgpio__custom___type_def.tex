@@ -1,0 +1,173 @@
+\hypertarget{structgpio__custom___type_def}{}\section{Riferimenti per la struct gpio\+\_\+custom\+\_\+\+Type\+Def}
+\label{structgpio__custom___type_def}\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+
+
+Definizione struttura dati per la gestione del G\+P\+IO.  
+
+
+
+
+{\ttfamily \#include $<$gpio\+\_\+custom.\+h$>$}
+
+\subsection*{Attributi pubblici}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t $\ast$ \hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\+\_\+address}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_aff972444f01c9a62a3406f68a135dbde}{pad\+\_\+out\+\_\+offset}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_a4390c6ba1b5edf3651577c4588fd46a6}{pad\+\_\+rw\+\_\+n\+\_\+offset}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_a2acf047838d804ed71c46b9c305e651c}{pad\+\_\+en\+\_\+offset}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_a506ff6030cded799ee3ee361b1fb4e05}{pad\+\_\+in\+\_\+offset}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_adcb3a20532084b02d7af698ae73c3c9f}{imr\+\_\+offset}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_afd636112e1d82c5c047672f6822c4791}{sr\+\_\+offset}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_a19aace2e656510f2de58623aef9640db}{iack\+\_\+offset}
+\item 
+uint8\+\_\+t \hyperlink{structgpio__custom___type_def_acfe1beb8be446fbf8cf25f972f8d94bc}{gie\+\_\+offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Definizione struttura dati per la gestione del G\+P\+IO. 
+
+Definizione alla linea 22 del file gpio\+\_\+custom.\+h.
+
+
+
+\subsection{Documentazione dei membri dato}
+\mbox{\Hypertarget{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}\label{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!base\+\_\+address@{base\+\_\+address}}
+\index{base\+\_\+address@{base\+\_\+address}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{base\+\_\+address}{base\_address}}
+{\footnotesize\ttfamily uint32\+\_\+t $\ast$ gpio\+\_\+custom\+\_\+\+Type\+Def\+::base\+\_\+address}
+
+G\+P\+IO Base address 
+
+Definizione alla linea 23 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init(), gpio\+\_\+custom\+\_\+\+Read\+\_\+mask(), gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg(), gpio\+\_\+custom\+\_\+\+Write\+\_\+mask(), mygpio\+\_\+close\+\_\+memory(), e mygpio\+\_\+open\+\_\+memory().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_acfe1beb8be446fbf8cf25f972f8d94bc}\label{structgpio__custom___type_def_acfe1beb8be446fbf8cf25f972f8d94bc}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!gie\+\_\+offset@{gie\+\_\+offset}}
+\index{gie\+\_\+offset@{gie\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{gie\+\_\+offset}{gie\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::gie\+\_\+offset}
+
+G\+P\+IO offset registro global interrupt enable 
+
+Definizione alla linea 33 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_a19aace2e656510f2de58623aef9640db}\label{structgpio__custom___type_def_a19aace2e656510f2de58623aef9640db}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!iack\+\_\+offset@{iack\+\_\+offset}}
+\index{iack\+\_\+offset@{iack\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{iack\+\_\+offset}{iack\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::iack\+\_\+offset}
+
+G\+P\+IO offset registro interrupt ack 
+
+Definizione alla linea 32 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_adcb3a20532084b02d7af698ae73c3c9f}\label{structgpio__custom___type_def_adcb3a20532084b02d7af698ae73c3c9f}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!imr\+\_\+offset@{imr\+\_\+offset}}
+\index{imr\+\_\+offset@{imr\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{imr\+\_\+offset}{imr\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::imr\+\_\+offset}
+
+G\+P\+IO offset registro interrupt mask 
+
+Definizione alla linea 30 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_a2acf047838d804ed71c46b9c305e651c}\label{structgpio__custom___type_def_a2acf047838d804ed71c46b9c305e651c}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!pad\+\_\+en\+\_\+offset@{pad\+\_\+en\+\_\+offset}}
+\index{pad\+\_\+en\+\_\+offset@{pad\+\_\+en\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{pad\+\_\+en\+\_\+offset}{pad\_en\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::pad\+\_\+en\+\_\+offset}
+
+G\+P\+IO offset registro abilitazione pin 
+
+Definizione alla linea 26 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_a506ff6030cded799ee3ee361b1fb4e05}\label{structgpio__custom___type_def_a506ff6030cded799ee3ee361b1fb4e05}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!pad\+\_\+in\+\_\+offset@{pad\+\_\+in\+\_\+offset}}
+\index{pad\+\_\+in\+\_\+offset@{pad\+\_\+in\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{pad\+\_\+in\+\_\+offset}{pad\_in\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::pad\+\_\+in\+\_\+offset}
+
+G\+P\+IO offset registro pad\+\_\+in 
+
+Definizione alla linea 27 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_aff972444f01c9a62a3406f68a135dbde}\label{structgpio__custom___type_def_aff972444f01c9a62a3406f68a135dbde}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!pad\+\_\+out\+\_\+offset@{pad\+\_\+out\+\_\+offset}}
+\index{pad\+\_\+out\+\_\+offset@{pad\+\_\+out\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{pad\+\_\+out\+\_\+offset}{pad\_out\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::pad\+\_\+out\+\_\+offset}
+
+G\+P\+IO offset registro di pad\+\_\+out 
+
+Definizione alla linea 24 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_a4390c6ba1b5edf3651577c4588fd46a6}\label{structgpio__custom___type_def_a4390c6ba1b5edf3651577c4588fd46a6}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!pad\+\_\+rw\+\_\+n\+\_\+offset@{pad\+\_\+rw\+\_\+n\+\_\+offset}}
+\index{pad\+\_\+rw\+\_\+n\+\_\+offset@{pad\+\_\+rw\+\_\+n\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{pad\+\_\+rw\+\_\+n\+\_\+offset}{pad\_rw\_n\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::pad\+\_\+rw\+\_\+n\+\_\+offset}
+
+G\+P\+IO offset registro modalità read/write 
+
+Definizione alla linea 25 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+\mbox{\Hypertarget{structgpio__custom___type_def_afd636112e1d82c5c047672f6822c4791}\label{structgpio__custom___type_def_afd636112e1d82c5c047672f6822c4791}} 
+\index{gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}!sr\+\_\+offset@{sr\+\_\+offset}}
+\index{sr\+\_\+offset@{sr\+\_\+offset}!gpio\+\_\+custom\+\_\+\+Type\+Def@{gpio\+\_\+custom\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{sr\+\_\+offset}{sr\_offset}}
+{\footnotesize\ttfamily uint8\+\_\+t gpio\+\_\+custom\+\_\+\+Type\+Def\+::sr\+\_\+offset}
+
+G\+P\+IO offset registro di stato 
+
+Definizione alla linea 31 del file gpio\+\_\+custom.\+h.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Init().
+
+
+
+La documentazione per questa struct è stata generata a partire dal seguente file\+:\begin{DoxyCompactItemize}
+\item 
+Elaborato1/1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h}{gpio\+\_\+custom.\+h}\end{DoxyCompactItemize}

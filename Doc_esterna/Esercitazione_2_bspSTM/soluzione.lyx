@@ -1,0 +1,2473 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{listings,xcolor,courier,bookmark}
+\usepackage{listingsutf8}
+\definecolor{darkblue}{named}{blue}
+\definecolor{darkred}{named}{red}
+\definecolor{grau}{named}{gray}
+\let\Righttorque\relax
+\lstset{
+captionpos=b,
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+keywordstyle=\color{darkblue},
+stringstyle=\color{darkred},
+extendedchars=true,
+basicstyle=\small\ttfamily,
+showstringspaces=false,
+tabsize=2,
+numbers=left,
+numberstyle=\tiny,
+breakautoindent  = true,
+breakindent      = 2em,
+breaklines       = true,
+postbreak        = ,
+prebreak         = \raisebox{-.8ex}[0ex][0ex]{\Righttorque},
+showspaces=false, 
+showtabs=false, 
+showstringspaces=false,
+language=VHDL,
+frame=single,
+morecomment=[s]{--}
+}
+
+
+\renewcommand*{\lstlistingname}{Codice}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{} 
+\fancyfoot{} 
+
+\fancyhead[RO,LE]{\bfseries \leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Tesina in SE: Sistemi Embedded}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\date{}
+\cfoot{}
+\end_preamble
+\use_default_options true
+\master Tesina.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Procedimento
+\end_layout
+
+\begin_layout Standard
+Trattandosi di un primo approccio alla programmazione su microcontrollore,
+ i paragrafi presentati mettono in evidenza dapprima come creare un nuovo
+ progetto in 
+\shape slanted
+System Workbench for STM32, 
+\shape default
+successivamente un'implementazione di una BSP (Board Support Package) custom
+ .
+\end_layout
+
+\begin_layout Subsection
+Creazione di un nuovo progetto
+\end_layout
+
+\begin_layout Standard
+Nell'IDE di sviluppo dirigersi in 
+\series bold
+File → New → C Project
+\series default
+.Qui viene mostrato un wizard in cui è necessario definire il nome del progetto.
+ Si sceglie di salvare il progetto nel workspace selezionato spuntando il
+ flag 
+\shape slanted
+Use default location
+\shape default
+, ed infine si specifica il tipo di progetto da creare.
+ Selezionare 
+\series bold
+Executable → Empty Project
+\series default
+, e si sceglie come Toolchains 
+\shape italic
+\color blue
+Ac6 STM32 MCU GCC
+\shape default
+\color inherit
+, come mostrato in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:NewCproject"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_00.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:NewCproject"
+
+\end_inset
+
+C Project
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cliccando su 
+\series bold
+Next 
+\series default
+si sceglie la configurazione da usare e si spuntano sia 
+\shape italic
+Debug 
+\shape default
+che 
+\shape italic
+Release
+\shape default
+, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Select-Configuration"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_01.png
+	lyxscale 60
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Select-Configuration"
+
+\end_inset
+
+Select Configurations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nella finestra successiva, viene chiesto di selezionare la board da associare
+ al progetto che si sta creando.
+ In 
+\series bold
+Series
+\series default
+ si sceglie 
+\color blue
+STM32F4
+\color inherit
+ e in 
+\series bold
+Boards
+\series default
+ si seleziona 
+\color blue
+STM32F4DISCOVERY
+\color inherit
+, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MCU-Configuration"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_02.png
+	lyxscale 60
+	scale 45
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MCU-Configuration"
+
+\end_inset
+
+MCU Configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In 
+\series bold
+Project Firmware configuration 
+\series default
+si sceglie Hardware Abstraction Layer (Cube HAL).
+\end_layout
+
+\begin_layout Standard
+Se l'ambiente non riconosce che esiste già il firmware selezionato, permette
+ di fare direttamente il download, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:download-firmware"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_04.png
+	lyxscale 50
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:download-firmware"
+
+\end_inset
+
+Download target firmware
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Essendo lo scopo di questa documentazione definire una bsp custom, non è
+ necessario aggiungere ulteriori driver o utilities di terze parti, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Project-firmware"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_03.png
+	lyxscale 50
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Project-firmware"
+
+\end_inset
+
+Project Firmware configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Funzioni
+\end_layout
+
+\begin_layout Standard
+Passando ora alla parte operativa, è necessario creare due file: il primo
+ è un header in cui viene definita la libreria per la bsp, il secondo invece
+ per l'implementazione di essa.
+ Dunque in 
+\series bold
+Project Explorer
+\series default
+ da 
+\series bold
+Esercitazione2
+\series default
+ → 
+\series bold
+src 
+\series default
+si clicca con il tasto destro, 
+\series bold
+New
+\series default
+ → 
+\series bold
+Source File 
+\series default
+per il .c e 
+\series bold
+New
+\series default
+ → 
+\series bold
+Header File 
+\series default
+per il .
+\series bold
+h
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Di seguito, si elencano le funzioni implementate:
+\end_layout
+
+\begin_layout Itemize
+init_led_user;
+\end_layout
+
+\begin_layout Itemize
+init_button_user;
+\end_layout
+
+\begin_layout Itemize
+write_led_user;
+\end_layout
+
+\begin_layout Itemize
+read_botton_user;
+\end_layout
+
+\begin_layout Itemize
+init_timer2;
+\end_layout
+
+\begin_layout Itemize
+start_timer2;
+\end_layout
+
+\begin_layout Itemize
+is_timer2_stopped.
+\end_layout
+
+\begin_layout Standard
+Il seguente codice evidenzia i prototipi delle funzioni appena elencate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption={my led button bsp.h}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+***
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	my_led_button_bsp.h
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @author	Colella Gianni - Guida Ciro - Lombardi Daniele
+\end_layout
+
+\begin_layout Plain Layout
+
+  *		Group IV - Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	12-June-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Libreria per BSP custom STM32F4 Discovery
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+****
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#ifndef MY_BSP_CUSTOM_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MY_BSP_CUSTOM_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Librerie Incluse ------------------------------------------------------------
+------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "stm32f407xx.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Prototipi funzioni -------------------------------------------------------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_led_user(); /*!< inizializza i led utente */
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_button_user(); /*!< inizializza il bottone utente*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void write_led_user(); /*!< scrittura valori su led utente */
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t read_button_user(); /*!< lettura bottone utente */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_timer2(uint32_t delay); /*!< inizializzazione timer */
+\end_layout
+
+\begin_layout Plain Layout
+
+void start_timer2(); /*!< start conteggio*/
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t is_timer2_stopped(); /*!< interroga se il timer ha terminato il
+ conteggio*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#endif /* MY_BSP_CUSTOM_H_ */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+init_led_user
+\end_layout
+
+\begin_layout Standard
+Tale funzione permette di settare i 4 led utente in modo tale da poter visualizz
+are i valori di un nibble.
+ Si provvede a fornire l'abilitazione alla GPIOD.
+ I pin da 12 a 15 vengono settati a funzionare come output (tali pin di
+ GPIOD sono quelli direttamente collegati ai led) ed infine viene resettato
+ il relativo registro d'uscita in modo tale da pulirlo da eventuali valori
+ scritti durante esecuzioni precedenti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=15, caption={my led button bsp.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione inizializza i 4 led utente in modo tale da poter
+ essere
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         utilizzati come display di valori a 4 bit.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_led_user(){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Abilitazione a GPIOD*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	RCC->AHB1ENR |= (1<<3);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si indica ai pin 15-14-13-12 di PD di funzionare come output*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	GPIOD->MODER|=(0x55<<24);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si spengono eventualmente i led accesi da un programma eseguito in precedenza
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	GPIOD->ODR=0x0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+init_botton_user
+\end_layout
+
+\begin_layout Standard
+Prevede il settaggio del bottone utente a funzionare come periferica di
+ input, in particolare viene fornita l'abilitazione alla periferica GPIOA
+ e viene settato il pin PA0 a funzionare da input, poiché quest'ultimo è
+ quello direttamente collegato al bottone.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=34, caption={my led button bsp.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione inizializza il bottone utente.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_button_user(){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Abilitazione GPIOA*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	RCC->AHB1ENR |= 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Valore di reset al moder di GPIOA, si indica a PA0 di funzionare da input*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	GPIOA->MODER=0xA8000000;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+init_timer2
+\end_layout
+
+\begin_layout Standard
+Viene inizializzata la periferica TIM2 per funzionare da contatore alla
+ rovescia.
+ In particolare, viene fornita l'abilitazione, viene indicato che un evento
+ di timeout genera un'interruzione, vengono settati il numero di colpi di
+ clock da contare e, infine, viene scartato l'utilizzo del prescaler e resettato
+ un'eventuale conteggio iniziato in precedenza.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=49, caption={my led button bsp.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_timer2(uint32_t clock){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Abilitazione al Timer2*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	RCC->APB1ENR|=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si indica al Timer2 che solo un overflow/underflow può generare l'interruzion
+e*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	TIM2->CR1|=(1<<2);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Numero di colpi di clock da contare*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	TIM2->ARR=clock;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Non si utilizza il prescaler (divisione per 1)*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	TIM2->PSC=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Azzeramento conteggio*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	TIM2->CNT=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+write_led
+\end_layout
+
+\begin_layout Standard
+La funzione permette semplicemente di scrivere un valore direttamente sui
+ led.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=75, caption={my led button bsp.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di scrivere sui led utente.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param [in] value: intero a 8 bit che indica il valore da mostrare sui
+ led
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void write_led(uint8_t value){
+\end_layout
+
+\begin_layout Plain Layout
+
+	GPIOD->ODR|=value<<12;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+read_botton 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:read_botton-read_button"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tramite un'operazione di AND con un bit pari a 1, viene interrogato direttamente
+ l'LSB del registro di output di GPIOA mappato fisicamente sul bottone utente.
+ La funzione restituisce 1 se il bottone è premuto, 0 altrimenti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=86, caption={my led button bsp.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di leggere lo stato del bottone utente.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param [in] value: intero a 8 bit che indica il valore da mostrare sui
+ led
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval Intero a 8 bit:
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		1 bottone premuto;
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		0 bottone non premuto.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t read_button(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	return GPIOA->IDR&1;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+start_timer2
+\end_layout
+
+\begin_layout Standard
+Funzione per indicare alla periferica TIM2 di iniziare il conto alla rovescia:
+ lo start viene indicato settando a 1 l'LSB del registro di controllo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=99, caption={my led button bsp.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione indica al timer2 l'inizio di un countdown.
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void start_timer2(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	TIM2->CR1=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+is_timer2_stopped
+\end_layout
+
+\begin_layout Standard
+Per capire se il conteggio del timer è esaurito, si può interrogare il registro
+ di stato della periferica.
+ A tal scopo è necessario leggere il valore dell'LSB con lo stesso metodo
+ visto in par.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:read_botton-read_button"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=108, caption={my led button bsp.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di interrogare il timer2 se il countdown
+ è avvenuto.
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval Intero a 8 bit:
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		1 countdown avvenuto;
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		0 countdown non avvenuto.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t is_timer2_stopped(){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Se l'ultimo bit dello status register è pari a 1 allora il conteggio
+ è terminato*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(TIM2->SR&1){
+\end_layout
+
+\begin_layout Plain Layout
+
+			/*Si resetta l'ultimo bit per il prossimo conteggio*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			TIM2->SR=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+			return 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Driver
+\end_layout
+
+\begin_layout Standard
+In questo paragrafo vengono mostrati 3 possibili esempi di driver che utilizzano
+ le funzioni precedentemente descritte.
+ Di seguito, l'elenco dei driver implementati:
+\end_layout
+
+\begin_layout Itemize
+toggleAll;
+\end_layout
+
+\begin_layout Itemize
+counter;
+\end_layout
+
+\begin_layout Itemize
+supercar.
+\end_layout
+
+\begin_layout Standard
+Per poter richiamare i driver in qualsiasi applicativo, viene proposto un
+ header file adatto allo scopo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption={driver.h}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+***
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	driver.h
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @author	Colella Gianni - Guida Ciro - Lombardi Daniele
+\end_layout
+
+\begin_layout Plain Layout
+
+  *		Group IV - Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	12-June-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Libreria per pilotaggio periferiche
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+****
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#ifndef DRIVER_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+#define DRIVER_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Librerie Incluse ------------------------------------------------------------
+------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "my_bsp_custom.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Prototipi funzioni -------------------------------------------------------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void toggleAll(); /*<! Toggle dei led utente*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void supercar(); /*<! Shift a destra e sinistra di un bit e mostrato sui
+ led*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void counter(); /*<! Conteggio con output sui led*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#endif /* DRIVER_H_ */
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+toggleAll
+\end_layout
+
+\begin_layout Standard
+Come è intuibile dal nome tale driver permette il toggle dei 4 led utente;
+ tale evento viene scatenato alla pressione e al successivo rilascio del
+ bottone utente
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=21, caption={driver.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette il toggle di tutti e 4 i led utente.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void toggleAll(){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si attende pressione bottone*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(read_button()){
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Si attende rilascio bottone*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		while(read_button());
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Se i led sono spenti allora si accendono*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(!on){
+\end_layout
+
+\begin_layout Plain Layout
+
+			write_led(0xF);
+\end_layout
+
+\begin_layout Plain Layout
+
+			on=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		else{
+\end_layout
+
+\begin_layout Plain Layout
+
+			/*Altrimenti si spengono*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			write_led(0x0);
+\end_layout
+
+\begin_layout Plain Layout
+
+			on=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+counter
+\end_layout
+
+\begin_layout Standard
+Il seguente driver permette di effettuare un conteggio modulo 16 premendo
+ il bottone utente.
+ Il contenuto della variabile di conteggio viene mostrato sui led tramite
+ la funzione write_led().
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=46, caption={driver.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * @brief  Questa funzione permette di implementare un contatore modulo
+ 16 e di visualizzare il
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		contenuto sui led.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note   Il conteggio avviene premendo e successivamente rilasciando
+ il bottone utente
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void counter(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Se viene premuto il bottone si computa il conteggio*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(read_button()){
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Si attende che il bottone sia rilasciato*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		while(read_button());
+\end_layout
+
+\begin_layout Plain Layout
+
+		count++;
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Stampa conteggio sui led*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		write_led(count);
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Se il conteggio è arrivato a 15 si resetta la variabile associata*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(count==15)
+\end_layout
+
+\begin_layout Plain Layout
+
+			count=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+supercar
+\end_layout
+
+\begin_layout Standard
+Terzo ed ultimo esempio di driver proposto mostra come shiftare da destra
+ verso sinistra e viceversa un bit lungo i 4 led utente, simulando il lampeggiam
+ento dei led sul muso anteriore di K.I.T.T.
+ Per un risultato apprezzabile sono sfruttate le funzioni relative alla
+ periferica TIM2 la quale lancia un segnale di countdown ogni 500 ms.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=68, caption={driver.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+void supercar(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Inizio conteggio*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	start_timer2();
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Se il conteggio è terminato allora inizia lo shift*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(is_timer2_stopped()){
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Se non è stato illuminato il led più a sinistra si shifta da destra
+ a sinistra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(!dx){
+\end_layout
+
+\begin_layout Plain Layout
+
+				val_shift=val_shift<<1;
+\end_layout
+
+\begin_layout Plain Layout
+
+				write_led(val_shift);
+\end_layout
+
+\begin_layout Plain Layout
+
+				/*Se il led illuminato è quello più a sinistra si setta una variabile
+ pari a 1
+\end_layout
+
+\begin_layout Plain Layout
+
+				 * per iniziare lo shift verso destra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+				if(val_shift==0x8)
+\end_layout
+
+\begin_layout Plain Layout
+
+					dx=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		else{
+\end_layout
+
+\begin_layout Plain Layout
+
+			/*Computazione dello shift verso destra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			val_shift=val_shift>>1;
+\end_layout
+
+\begin_layout Plain Layout
+
+			write_led(val_shift);
+\end_layout
+
+\begin_layout Plain Layout
+
+			/*Se il led illuminato è quello più a destra si setta una variabile pari
+ a 0
+\end_layout
+
+\begin_layout Plain Layout
+
+			 * per iniziare lo shift verso sinistra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			if(val_shift==0x1)
+\end_layout
+
+\begin_layout Plain Layout
+
+				dx=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Applicazione
+\end_layout
+
+\begin_layout Standard
+Infine viene proposto il seguente applicativo per l'utilizzo dei driver
+ precedentemente descritti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption={main.c}]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+*
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	my_led_button_bsp.c
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @author	Colella Gianni - Guida Ciro - Lombardi Daniele
+\end_layout
+
+\begin_layout Plain Layout
+
+  *		Group IV - Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	12-June-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Main per pilotaggio periferiche
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+**
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Librerie Incluse ------------------------------------------------------------
+------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "driver.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* MACRO per selezione driver --------------------------------------------------
+----*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#define TOGGLEALL 0
+\end_layout
+
+\begin_layout Plain Layout
+
+#define COUNTER 1
+\end_layout
+
+\begin_layout Plain Layout
+
+#define SUPERCAR 2
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Prototipi funzioni ----------------------------------------------------------
+--------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void loop(short int);
+\end_layout
+
+\begin_layout Plain Layout
+
+void init();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	init();
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(;;) loop(SUPERCAR);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione inizializza led, bottone utente e timer2.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void init(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	init_led_user();
+\end_layout
+
+\begin_layout Plain Layout
+
+	init_button_user();
+\end_layout
+
+\begin_layout Plain Layout
+
+	init_timer2(8000000);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di selezionare ed eseguire un driver
+ tra quelli implementati.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void loop(short int f){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	switch(f){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		case TOGGLEALL:
+\end_layout
+
+\begin_layout Plain Layout
+
+			toggleAll();
+\end_layout
+
+\begin_layout Plain Layout
+
+			break;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		case COUNTER:
+\end_layout
+
+\begin_layout Plain Layout
+
+			counter();
+\end_layout
+
+\begin_layout Plain Layout
+
+			break;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		case SUPERCAR:
+\end_layout
+
+\begin_layout Plain Layout
+
+			supercar();
+\end_layout
+
+\begin_layout Plain Layout
+
+			break;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		default:
+\end_layout
+
+\begin_layout Plain Layout
+
+			break;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

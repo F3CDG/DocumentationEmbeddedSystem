@@ -1,0 +1,672 @@
+\hypertarget{_elaborato8_2main_8c}{}\section{Riferimenti per il file Elaborato8/main.c}
+\label{_elaborato8_2main_8c}\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+
+
+main in cui si creano diversi task per essere schedulati da Free\+R\+T\+OS  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cmsis\+\_\+os.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usb\+\_\+device.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_ae3261077e259f41f43ebe352f710cb6e}{P\+R\+I\+O\+R\+I\+T\+Y1}~1
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_aa4a1cc2fc9ed73f89b0d44d195ca2ea2}{P\+R\+I\+O\+R\+I\+T\+Y2}~6
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_af0b1897ecdad26db28aaeffa288d7a6f}{P\+R\+I\+O\+R\+I\+T\+Y3}~3
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_a6a757b9946b6fcabf9963d14a48aa155}{P\+R\+I\+O\+R\+I\+T\+Y4}~6
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_a8c5d5597c8e7b779bcd00098025b4905}{D\+E\+L\+A\+Y1}~350
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_adb6a4a335f8619ccb1c6143d79cc976b}{D\+E\+L\+A\+Y2}~450
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_af24ff16ac4cbb818adbf034823cda666}{D\+E\+L\+A\+Y3}~250
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_aab9d0fbf3b21368a82ff5bfb73681f7a}{D\+E\+L\+A\+Y4}~150
+\item 
+\#define \hyperlink{_elaborato8_2main_8c_ae375e75ecd22db3282c064e14d2a68e6}{S\+T\+A\+C\+K\+\_\+\+D\+IM}~200
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_elaborato8_2main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config} (void)
+\item 
+static void \hyperlink{_elaborato8_2main_8c_ae89fdd15729ad41a66911190fcbab23a}{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init} (void)
+\item 
+void \hyperlink{_elaborato8_2main_8c_a016544463b4842ced7191baf8f449cea}{Start\+Default\+Task} (void const $\ast$argument)
+\item 
+static void \hyperlink{_elaborato8_2main_8c_a902a64ca782182bd7360b69639f74063}{Task1} (void $\ast$pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Task 1, in cui si fa un Toggle del L\+E\+D6 ogni 450 ms. Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit \char`\"{}\+T\+A\+S\+K -\/-\/-\/1\char`\"{} che è utile per un debug da terminale. \end{DoxyCompactList}\item 
+static void \hyperlink{_elaborato8_2main_8c_a96f58fe7aff22386bdb1bf2c6bd0a260}{Task2} (void $\ast$pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Task 2, in cui si fa un Toggle del L\+E\+D4 ogni D\+E\+L\+A\+Y2 ms.\+Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit \char`\"{}\+T\+A\+S\+K $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$2\char`\"{} che è utile per un debug da terminale. \end{DoxyCompactList}\item 
+static void \hyperlink{_elaborato8_2main_8c_aedef8dc3e0d85b69fa7667224f7fb4e9}{Task3} (void $\ast$pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Task 3, in cui si fa un Toggle del L\+E\+D5 ogni 450 ms. Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit \char`\"{}\+T\+A\+S\+K-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/3\char`\"{} che è utile per un debug da terminale. \end{DoxyCompactList}\item 
+static void \hyperlink{_elaborato8_2main_8c_a9f850635fe105925d19b136f89ac8916}{Task4} (void $\ast$pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Task 1, in cui si fa un Toggle del L\+E\+D3 ogni 450 ms. Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit T\+A\+S\+K$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$4" che è utile per un debug da terminale. \end{DoxyCompactList}\item 
+int \hyperlink{_elaborato8_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\begin{DoxyCompactList}\small\item\em main in cui sono creati e schedulati i task definiti successivamente \end{DoxyCompactList}\item 
+void \hyperlink{_elaborato8_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\+\_\+\+Error\+\_\+\+Handler} (char $\ast$file, int line)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+os\+Thread\+Id \hyperlink{_elaborato8_2main_8c_aa658fe134a5d1309d7a15c8116fa142c}{default\+Task\+Handle}
+\item 
+static const char $\ast$ \hyperlink{_elaborato8_2main_8c_ab4cf31f791a8766994ee18a7405b0789}{pc\+Text\+For\+Task1} =\char`\"{}Task 1 is running\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{_elaborato8_2main_8c_a4a084cb1c2be3dc1005cf18e337d4b7e}{pc\+Text\+For\+Task2} =\char`\"{}Task 2 is running\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{_elaborato8_2main_8c_a50b9836c935cf006cc1c0a807402cb3d}{pc\+Text\+For\+Task3} =\char`\"{}Task 3 is running\textbackslash{}r\textbackslash{}n\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{_elaborato8_2main_8c_ab1fec8baabb141f454ddd58d9dd69c06}{pc\+Text\+For\+Task4} =\char`\"{}Task 4 is running\textbackslash{}r\textbackslash{}n\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+main in cui si creano diversi task per essere schedulati da Free\+R\+T\+OS 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+10-\/\+July-\/2017 
+\end{DoxyDate}
+\begin{DoxyNote}{Nota}
+Sono stati prodotti diversi esempi per poter analizzare il funzionamento dello scheduler di questo Sistema Operativo Real Time. 
+\end{DoxyNote}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a8c5d5597c8e7b779bcd00098025b4905}\label{_elaborato8_2main_8c_a8c5d5597c8e7b779bcd00098025b4905}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!D\+E\+L\+A\+Y1@{D\+E\+L\+A\+Y1}}
+\index{D\+E\+L\+A\+Y1@{D\+E\+L\+A\+Y1}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+L\+A\+Y1}{DELAY1}}
+{\footnotesize\ttfamily \#define D\+E\+L\+A\+Y1~350}
+
+
+
+Definizione alla linea 24 del file main.\+c.
+
+
+
+Referenziato da Task1().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_adb6a4a335f8619ccb1c6143d79cc976b}\label{_elaborato8_2main_8c_adb6a4a335f8619ccb1c6143d79cc976b}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!D\+E\+L\+A\+Y2@{D\+E\+L\+A\+Y2}}
+\index{D\+E\+L\+A\+Y2@{D\+E\+L\+A\+Y2}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+L\+A\+Y2}{DELAY2}}
+{\footnotesize\ttfamily \#define D\+E\+L\+A\+Y2~450}
+
+
+
+Definizione alla linea 25 del file main.\+c.
+
+
+
+Referenziato da Task2().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_af24ff16ac4cbb818adbf034823cda666}\label{_elaborato8_2main_8c_af24ff16ac4cbb818adbf034823cda666}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!D\+E\+L\+A\+Y3@{D\+E\+L\+A\+Y3}}
+\index{D\+E\+L\+A\+Y3@{D\+E\+L\+A\+Y3}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+L\+A\+Y3}{DELAY3}}
+{\footnotesize\ttfamily \#define D\+E\+L\+A\+Y3~250}
+
+
+
+Definizione alla linea 26 del file main.\+c.
+
+
+
+Referenziato da Task3().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_aab9d0fbf3b21368a82ff5bfb73681f7a}\label{_elaborato8_2main_8c_aab9d0fbf3b21368a82ff5bfb73681f7a}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!D\+E\+L\+A\+Y4@{D\+E\+L\+A\+Y4}}
+\index{D\+E\+L\+A\+Y4@{D\+E\+L\+A\+Y4}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+L\+A\+Y4}{DELAY4}}
+{\footnotesize\ttfamily \#define D\+E\+L\+A\+Y4~150}
+
+
+
+Definizione alla linea 27 del file main.\+c.
+
+
+
+Referenziato da Task4().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_ae3261077e259f41f43ebe352f710cb6e}\label{_elaborato8_2main_8c_ae3261077e259f41f43ebe352f710cb6e}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!P\+R\+I\+O\+R\+I\+T\+Y1@{P\+R\+I\+O\+R\+I\+T\+Y1}}
+\index{P\+R\+I\+O\+R\+I\+T\+Y1@{P\+R\+I\+O\+R\+I\+T\+Y1}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{P\+R\+I\+O\+R\+I\+T\+Y1}{PRIORITY1}}
+{\footnotesize\ttfamily \#define P\+R\+I\+O\+R\+I\+T\+Y1~1}
+
+
+
+Definizione alla linea 19 del file main.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_aa4a1cc2fc9ed73f89b0d44d195ca2ea2}\label{_elaborato8_2main_8c_aa4a1cc2fc9ed73f89b0d44d195ca2ea2}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!P\+R\+I\+O\+R\+I\+T\+Y2@{P\+R\+I\+O\+R\+I\+T\+Y2}}
+\index{P\+R\+I\+O\+R\+I\+T\+Y2@{P\+R\+I\+O\+R\+I\+T\+Y2}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{P\+R\+I\+O\+R\+I\+T\+Y2}{PRIORITY2}}
+{\footnotesize\ttfamily \#define P\+R\+I\+O\+R\+I\+T\+Y2~6}
+
+
+
+Definizione alla linea 20 del file main.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_af0b1897ecdad26db28aaeffa288d7a6f}\label{_elaborato8_2main_8c_af0b1897ecdad26db28aaeffa288d7a6f}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!P\+R\+I\+O\+R\+I\+T\+Y3@{P\+R\+I\+O\+R\+I\+T\+Y3}}
+\index{P\+R\+I\+O\+R\+I\+T\+Y3@{P\+R\+I\+O\+R\+I\+T\+Y3}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{P\+R\+I\+O\+R\+I\+T\+Y3}{PRIORITY3}}
+{\footnotesize\ttfamily \#define P\+R\+I\+O\+R\+I\+T\+Y3~3}
+
+
+
+Definizione alla linea 21 del file main.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_a6a757b9946b6fcabf9963d14a48aa155}\label{_elaborato8_2main_8c_a6a757b9946b6fcabf9963d14a48aa155}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!P\+R\+I\+O\+R\+I\+T\+Y4@{P\+R\+I\+O\+R\+I\+T\+Y4}}
+\index{P\+R\+I\+O\+R\+I\+T\+Y4@{P\+R\+I\+O\+R\+I\+T\+Y4}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{P\+R\+I\+O\+R\+I\+T\+Y4}{PRIORITY4}}
+{\footnotesize\ttfamily \#define P\+R\+I\+O\+R\+I\+T\+Y4~6}
+
+
+
+Definizione alla linea 22 del file main.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_ae375e75ecd22db3282c064e14d2a68e6}\label{_elaborato8_2main_8c_ae375e75ecd22db3282c064e14d2a68e6}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!S\+T\+A\+C\+K\+\_\+\+D\+IM@{S\+T\+A\+C\+K\+\_\+\+D\+IM}}
+\index{S\+T\+A\+C\+K\+\_\+\+D\+IM@{S\+T\+A\+C\+K\+\_\+\+D\+IM}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{S\+T\+A\+C\+K\+\_\+\+D\+IM}{STACK\_DIM}}
+{\footnotesize\ttfamily \#define S\+T\+A\+C\+K\+\_\+\+D\+IM~200}
+
+
+
+Definizione alla linea 29 del file main.\+c.
+
+
+
+Referenziato da main().
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a829116a51f1db1a72ebd1120f60719d5}\label{_elaborato8_2main_8c_a829116a51f1db1a72ebd1120f60719d5}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}}
+\index{\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+Error\+\_\+\+Handler()}{\_Error\_Handler()}}
+{\footnotesize\ttfamily void \+\_\+\+Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 257 del file main.\+c.
+
+
+\begin{DoxyCode}
+258 \{
+259   \textcolor{comment}{/* USER CODE BEGIN Error\_Handler\_Debug */}
+260   \textcolor{comment}{/* User can add his own implementation to report the HAL error return state */}
+261   \textcolor{keywordflow}{while}(1) 
+262   \{
+263   \}
+264   \textcolor{comment}{/* USER CODE END Error\_Handler\_Debug */} 
+265 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{_elaborato8_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+main in cui sono creati e schedulati i task definiti successivamente 
+
+\begin{DoxyNote}{Nota}
+None 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 58 del file main.\+c.
+
+
+
+Referenzia M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init(), pc\+Text\+For\+Task1, pc\+Text\+For\+Task2, pc\+Text\+For\+Task3, pc\+Text\+For\+Task4, P\+R\+I\+O\+R\+I\+T\+Y1, P\+R\+I\+O\+R\+I\+T\+Y2, P\+R\+I\+O\+R\+I\+T\+Y3, P\+R\+I\+O\+R\+I\+T\+Y4, S\+T\+A\+C\+K\+\_\+\+D\+IM, System\+Clock\+\_\+\+Config(), Task1(), Task2(), Task3(), e Task4().
+
+
+\begin{DoxyCode}
+59 \{
+60   HAL\_Init();
+61   \textcolor{comment}{/* Configure the system clock */}
+62   \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a70af21c671abfcc773614a9a4f63d920}{SystemClock\_Config}();
+63   \textcolor{comment}{/* Initialize all configured peripherals */}
+64   \hyperlink{_elaborato8_2main_8c_ae89fdd15729ad41a66911190fcbab23a}{MX\_GPIO\_Init}();
+65   \textcolor{comment}{/*Initialize USB*/}
+66   MX\_USB\_DEVICE\_Init();
+67   \textcolor{comment}{/* definition and creation dei 4 Task */}
+68     xTaskCreate(\hyperlink{_elaborato8_2main_8c_a902a64ca782182bd7360b69639f74063}{Task1},\textcolor{stringliteral}{"Task1"},\hyperlink{_elaborato8_2main_8c_ae375e75ecd22db3282c064e14d2a68e6}{STACK\_DIM},(\textcolor{keywordtype}{void}*)\hyperlink{_elaborato8_2main_8c_ab4cf31f791a8766994ee18a7405b0789}{pcTextForTask1},
+      \hyperlink{_elaborato8_2main_8c_ae3261077e259f41f43ebe352f710cb6e}{PRIORITY1},NULL);
+69     xTaskCreate(\hyperlink{_elaborato8_2main_8c_a96f58fe7aff22386bdb1bf2c6bd0a260}{Task2},\textcolor{stringliteral}{"Task2"},\hyperlink{_elaborato8_2main_8c_ae375e75ecd22db3282c064e14d2a68e6}{STACK\_DIM},(\textcolor{keywordtype}{void}*)\hyperlink{_elaborato8_2main_8c_a4a084cb1c2be3dc1005cf18e337d4b7e}{pcTextForTask2},
+      \hyperlink{_elaborato8_2main_8c_aa4a1cc2fc9ed73f89b0d44d195ca2ea2}{PRIORITY2},NULL);
+70     xTaskCreate(\hyperlink{_elaborato8_2main_8c_aedef8dc3e0d85b69fa7667224f7fb4e9}{Task3},\textcolor{stringliteral}{"Task3"},\hyperlink{_elaborato8_2main_8c_ae375e75ecd22db3282c064e14d2a68e6}{STACK\_DIM},(\textcolor{keywordtype}{void}*)\hyperlink{_elaborato8_2main_8c_a50b9836c935cf006cc1c0a807402cb3d}{pcTextForTask3},
+      \hyperlink{_elaborato8_2main_8c_af0b1897ecdad26db28aaeffa288d7a6f}{PRIORITY3},NULL);
+71     xTaskCreate(\hyperlink{_elaborato8_2main_8c_a9f850635fe105925d19b136f89ac8916}{Task4},\textcolor{stringliteral}{"Task4"},\hyperlink{_elaborato8_2main_8c_ae375e75ecd22db3282c064e14d2a68e6}{STACK\_DIM},(\textcolor{keywordtype}{void}*)\hyperlink{_elaborato8_2main_8c_ab1fec8baabb141f454ddd58d9dd69c06}{pcTextForTask4},
+      \hyperlink{_elaborato8_2main_8c_a6a757b9946b6fcabf9963d14a48aa155}{PRIORITY4},NULL);
+72 
+73 
+74     vTaskStartScheduler();
+75 
+76   \textcolor{comment}{/* Start scheduler */}
+77   osKernelStart();
+78 
+79   \textcolor{keywordflow}{while} (1)\{
+80   \}
+81 
+82 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_ae89fdd15729ad41a66911190fcbab23a}\label{_elaborato8_2main_8c_ae89fdd15729ad41a66911190fcbab23a}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}}
+\index{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init()}{MX\_GPIO\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Configure pins as Analog Input Output E\+V\+E\+N\+T\+\_\+\+O\+UT E\+X\+TI 
+
+Definizione alla linea 211 del file main.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+212 \{
+213 
+214   GPIO\_InitTypeDef GPIO\_InitStruct;
+215 
+216   \textcolor{comment}{/* GPIO Ports Clock Enable */}
+217   \_\_HAL\_RCC\_GPIOH\_CLK\_ENABLE();
+218   \_\_HAL\_RCC\_GPIOD\_CLK\_ENABLE();
+219   \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();
+220 
+221   \textcolor{comment}{/*Configure GPIO pin Output Level */}
+222   HAL\_GPIO\_WritePin(GPIOD, GPIO\_PIN\_12|GPIO\_PIN\_13|GPIO\_PIN\_14|GPIO\_PIN\_15, GPIO\_PIN\_RESET);
+223 
+224   \textcolor{comment}{/*Configure GPIO pins : PD12 PD13 PD14 PD15 */}
+225   GPIO\_InitStruct.Pin = GPIO\_PIN\_12|GPIO\_PIN\_13|GPIO\_PIN\_14|GPIO\_PIN\_15;
+226   GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+227   GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+228   GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_LOW;
+229   HAL\_GPIO\_Init(GPIOD, &GPIO\_InitStruct);
+230 
+231 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a016544463b4842ced7191baf8f449cea}\label{_elaborato8_2main_8c_a016544463b4842ced7191baf8f449cea}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!Start\+Default\+Task@{Start\+Default\+Task}}
+\index{Start\+Default\+Task@{Start\+Default\+Task}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{Start\+Default\+Task()}{StartDefaultTask()}}
+{\footnotesize\ttfamily void Start\+Default\+Task (\begin{DoxyParamCaption}\item[{void const $\ast$}]{argument }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 238 del file main.\+c.
+
+
+\begin{DoxyCode}
+239 \{
+240   \textcolor{comment}{/* init code for USB\_DEVICE */}
+241   MX\_USB\_DEVICE\_Init();
+242 
+243   \textcolor{comment}{/* USER CODE BEGIN 5 */}
+244   \textcolor{comment}{/* Infinite loop */}
+245   \textcolor{keywordflow}{for}(;;)
+246   \{
+247     osDelay(1);
+248   \}
+249   \textcolor{comment}{/* USER CODE END 5 */} 
+250 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a70af21c671abfcc773614a9a4f63d920}\label{_elaborato8_2main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+System Clock Configuration\+System Clock Configuration Configure the main internal regulator output voltage
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Configure the Systick interrupt time
+
+Configure the Systick
+
+Definizione alla linea 151 del file main.\+c.
+
+
+
+Referenzia \+\_\+\+Error\+\_\+\+Handler().
+
+
+\begin{DoxyCode}
+152 \{
+153 
+154   RCC\_OscInitTypeDef RCC\_OscInitStruct;
+155   RCC\_ClkInitTypeDef RCC\_ClkInitStruct;
+156 
+159   \_\_HAL\_RCC\_PWR\_CLK\_ENABLE();
+160 
+161   \_\_HAL\_PWR\_VOLTAGESCALING\_CONFIG(PWR\_REGULATOR\_VOLTAGE\_SCALE1);
+162 
+165   RCC\_OscInitStruct.OscillatorType = RCC\_OSCILLATORTYPE\_HSE;
+166   RCC\_OscInitStruct.HSEState = RCC\_HSE\_ON;
+167   RCC\_OscInitStruct.PLL.PLLState = RCC\_PLL\_ON;
+168   RCC\_OscInitStruct.PLL.PLLSource = RCC\_PLLSOURCE\_HSE;
+169   RCC\_OscInitStruct.PLL.PLLM = 4;
+170   RCC\_OscInitStruct.PLL.PLLN = 72;
+171   RCC\_OscInitStruct.PLL.PLLP = RCC\_PLLP\_DIV2;
+172   RCC\_OscInitStruct.PLL.PLLQ = 3;
+173   \textcolor{keywordflow}{if} (HAL\_RCC\_OscConfig(&RCC\_OscInitStruct) != HAL\_OK)
+174   \{
+175     \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+176   \}
+177 
+180   RCC\_ClkInitStruct.ClockType = RCC\_CLOCKTYPE\_HCLK|RCC\_CLOCKTYPE\_SYSCLK
+181                               |RCC\_CLOCKTYPE\_PCLK1|RCC\_CLOCKTYPE\_PCLK2;
+182   RCC\_ClkInitStruct.SYSCLKSource = RCC\_SYSCLKSOURCE\_PLLCLK;
+183   RCC\_ClkInitStruct.AHBCLKDivider = RCC\_SYSCLK\_DIV1;
+184   RCC\_ClkInitStruct.APB1CLKDivider = RCC\_HCLK\_DIV2;
+185   RCC\_ClkInitStruct.APB2CLKDivider = RCC\_HCLK\_DIV1;
+186 
+187   \textcolor{keywordflow}{if} (HAL\_RCC\_ClockConfig(&RCC\_ClkInitStruct, FLASH\_LATENCY\_2) != HAL\_OK)
+188   \{
+189     \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+190   \}
+191 
+194   HAL\_SYSTICK\_Config(HAL\_RCC\_GetHCLKFreq()/1000);
+195 
+198   HAL\_SYSTICK\_CLKSourceConfig(SYSTICK\_CLKSOURCE\_HCLK);
+199 
+200   \textcolor{comment}{/* SysTick\_IRQn interrupt configuration */}
+201   HAL\_NVIC\_SetPriority(SysTick\_IRQn, 15, 0);
+202 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a902a64ca782182bd7360b69639f74063}\label{_elaborato8_2main_8c_a902a64ca782182bd7360b69639f74063}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!Task1@{Task1}}
+\index{Task1@{Task1}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{Task1()}{Task1()}}
+{\footnotesize\ttfamily void Task1 (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Task 1, in cui si fa un Toggle del L\+E\+D6 ogni 450 ms. Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit \char`\"{}\+T\+A\+S\+K -\/-\/-\/1\char`\"{} che è utile per un debug da terminale. 
+
+\begin{DoxyNote}{Nota}
+pv\+Parameters 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 90 del file main.\+c.
+
+
+
+Referenzia D\+E\+L\+A\+Y1.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+90                                \{
+91     \textcolor{keywordtype}{char} testo[]=\textcolor{stringliteral}{"Task---1\(\backslash\)n"};
+92     \textcolor{keywordflow}{for} (;;) \{
+93           osDelay(\hyperlink{_elaborato8_2main_8c_a8c5d5597c8e7b779bcd00098025b4905}{DELAY1});
+94           HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_15);
+95           CDC\_Transmit\_FS((uint8\_t*)testo,strlen(testo));
+96             \}
+97 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a96f58fe7aff22386bdb1bf2c6bd0a260}\label{_elaborato8_2main_8c_a96f58fe7aff22386bdb1bf2c6bd0a260}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!Task2@{Task2}}
+\index{Task2@{Task2}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{Task2()}{Task2()}}
+{\footnotesize\ttfamily static void Task2 (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Task 2, in cui si fa un Toggle del L\+E\+D4 ogni D\+E\+L\+A\+Y2 ms.\+Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit \char`\"{}\+T\+A\+S\+K $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$2\char`\"{} che è utile per un debug da terminale. 
+
+\begin{DoxyNote}{Nota}
+pv\+Parameters 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 104 del file main.\+c.
+
+
+
+Referenzia D\+E\+L\+A\+Y2.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+104                                       \{
+105 
+106     \textcolor{keywordtype}{char} testo[]=\textcolor{stringliteral}{"Task**********2\(\backslash\)n"};
+107     \textcolor{keywordflow}{for} (;;) \{
+108           osDelay(\hyperlink{_elaborato8_2main_8c_adb6a4a335f8619ccb1c6143d79cc976b}{DELAY2});
+109           HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_12);
+110           CDC\_Transmit\_FS((uint8\_t*)testo,strlen(testo));
+111             \}
+112 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_aedef8dc3e0d85b69fa7667224f7fb4e9}\label{_elaborato8_2main_8c_aedef8dc3e0d85b69fa7667224f7fb4e9}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!Task3@{Task3}}
+\index{Task3@{Task3}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{Task3()}{Task3()}}
+{\footnotesize\ttfamily static void Task3 (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Task 3, in cui si fa un Toggle del L\+E\+D5 ogni 450 ms. Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit \char`\"{}\+T\+A\+S\+K-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/3\char`\"{} che è utile per un debug da terminale. 
+
+\begin{DoxyNote}{Nota}
+pv\+Parameters 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 120 del file main.\+c.
+
+
+
+Referenzia D\+E\+L\+A\+Y3.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+120                                       \{
+121     \textcolor{keywordtype}{char} testo[]=\textcolor{stringliteral}{"Task-----------------3\(\backslash\)n"};
+122     \textcolor{keywordflow}{for} (;;) \{
+123           osDelay(\hyperlink{_elaborato8_2main_8c_af24ff16ac4cbb818adbf034823cda666}{DELAY3});
+124           HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_14);
+125           CDC\_Transmit\_FS((uint8\_t*)testo,strlen(testo));
+126             \}
+127 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato8_2main_8c_a9f850635fe105925d19b136f89ac8916}\label{_elaborato8_2main_8c_a9f850635fe105925d19b136f89ac8916}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!Task4@{Task4}}
+\index{Task4@{Task4}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{Task4()}{Task4()}}
+{\footnotesize\ttfamily static void Task4 (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Task 1, in cui si fa un Toggle del L\+E\+D3 ogni 450 ms. Ogni volta che è richiamato questo Task, si invia una C\+DC Transmit T\+A\+S\+K$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$4" che è utile per un debug da terminale. 
+
+\begin{DoxyNote}{Nota}
+pv\+Parameters 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 137 del file main.\+c.
+
+
+
+Referenzia D\+E\+L\+A\+Y4.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+137                                       \{
+138 
+139     \textcolor{keywordtype}{char} testo[]=\textcolor{stringliteral}{"Task************************4\(\backslash\)n"};
+140     \textcolor{keywordflow}{for} (;;) \{
+141           osDelay(\hyperlink{_elaborato8_2main_8c_aab9d0fbf3b21368a82ff5bfb73681f7a}{DELAY4});
+142           HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_13);
+143           CDC\_Transmit\_FS((uint8\_t*)testo,strlen(testo));
+144             \}
+145 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{_elaborato8_2main_8c_aa658fe134a5d1309d7a15c8116fa142c}\label{_elaborato8_2main_8c_aa658fe134a5d1309d7a15c8116fa142c}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!default\+Task\+Handle@{default\+Task\+Handle}}
+\index{default\+Task\+Handle@{default\+Task\+Handle}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{default\+Task\+Handle}{defaultTaskHandle}}
+{\footnotesize\ttfamily os\+Thread\+Id default\+Task\+Handle}
+
+
+
+Definizione alla linea 32 del file main.\+c.
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_ab4cf31f791a8766994ee18a7405b0789}\label{_elaborato8_2main_8c_ab4cf31f791a8766994ee18a7405b0789}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!pc\+Text\+For\+Task1@{pc\+Text\+For\+Task1}}
+\index{pc\+Text\+For\+Task1@{pc\+Text\+For\+Task1}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{pc\+Text\+For\+Task1}{pcTextForTask1}}
+{\footnotesize\ttfamily const char$\ast$ pc\+Text\+For\+Task1 =\char`\"{}Task 1 is running\textbackslash{}r\textbackslash{}n\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definizione alla linea 45 del file main.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_a4a084cb1c2be3dc1005cf18e337d4b7e}\label{_elaborato8_2main_8c_a4a084cb1c2be3dc1005cf18e337d4b7e}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!pc\+Text\+For\+Task2@{pc\+Text\+For\+Task2}}
+\index{pc\+Text\+For\+Task2@{pc\+Text\+For\+Task2}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{pc\+Text\+For\+Task2}{pcTextForTask2}}
+{\footnotesize\ttfamily const char$\ast$ pc\+Text\+For\+Task2 =\char`\"{}Task 2 is running\textbackslash{}r\textbackslash{}n\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definizione alla linea 46 del file main.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_a50b9836c935cf006cc1c0a807402cb3d}\label{_elaborato8_2main_8c_a50b9836c935cf006cc1c0a807402cb3d}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!pc\+Text\+For\+Task3@{pc\+Text\+For\+Task3}}
+\index{pc\+Text\+For\+Task3@{pc\+Text\+For\+Task3}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{pc\+Text\+For\+Task3}{pcTextForTask3}}
+{\footnotesize\ttfamily const char$\ast$ pc\+Text\+For\+Task3 =\char`\"{}Task 3 is running\textbackslash{}r\textbackslash{}n\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definizione alla linea 47 del file main.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato8_2main_8c_ab1fec8baabb141f454ddd58d9dd69c06}\label{_elaborato8_2main_8c_ab1fec8baabb141f454ddd58d9dd69c06}} 
+\index{Elaborato8/main.\+c@{Elaborato8/main.\+c}!pc\+Text\+For\+Task4@{pc\+Text\+For\+Task4}}
+\index{pc\+Text\+For\+Task4@{pc\+Text\+For\+Task4}!Elaborato8/main.\+c@{Elaborato8/main.\+c}}
+\subsubsection{\texorpdfstring{pc\+Text\+For\+Task4}{pcTextForTask4}}
+{\footnotesize\ttfamily const char$\ast$ pc\+Text\+For\+Task4 =\char`\"{}Task 4 is running\textbackslash{}r\textbackslash{}n\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definizione alla linea 48 del file main.\+c.
+
+
+
+Referenziato da main().
+

@@ -1,0 +1,246 @@
+\hypertarget{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c}{}\section{Riferimenti per il file Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.c}
+\label{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c}\index{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}}
+
+
+esempio di trasmissione seriale su virtual C\+OM P\+O\+RT  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usb\+\_\+device.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbd\+\_\+cdc\+\_\+if.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config} (void)
+\item 
+static void \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_ae89fdd15729ad41a66911190fcbab23a}{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init} (void)
+\item 
+int \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\item 
+void \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\+\_\+\+Error\+\_\+\+Handler} (char $\ast$file, int line)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+esempio di trasmissione seriale su virtual C\+OM P\+O\+RT 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+05-\/\+July-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}\label{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}} 
+\index{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}!\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}}
+\index{\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}!Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+Error\+\_\+\+Handler()}{\_Error\_Handler()}}
+{\footnotesize\ttfamily void \+\_\+\+Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 177 del file main.\+c.
+
+
+
+Referenziato da M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init(), e System\+Clock\+\_\+\+Config().
+
+
+\begin{DoxyCode}
+178 \{
+179   \textcolor{comment}{/* USER CODE BEGIN Error\_Handler\_Debug */}
+180   \textcolor{comment}{/* User can add his own implementation to report the HAL error return state */}
+181   \textcolor{keywordflow}{while}(1) 
+182   \{
+183   \}
+184   \textcolor{comment}{/* USER CODE END Error\_Handler\_Debug */} 
+185 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 42 del file main.\+c.
+
+
+
+Referenzia M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init(), e System\+Clock\+\_\+\+Config().
+
+
+\begin{DoxyCode}
+43 \{
+44 
+45   \textcolor{comment}{/* USER CODE BEGIN 1 */}
+46 
+47   \textcolor{comment}{/* USER CODE END 1 */}
+48 
+49   \textcolor{comment}{/* MCU Configuration----------------------------------------------------------*/}
+50 
+51   \textcolor{comment}{/* Reset of all peripherals, Initializes the Flash interface and the Systick. */}
+52   HAL\_Init();
+53 
+54   \textcolor{comment}{/* USER CODE BEGIN Init */}
+55 
+56   \textcolor{comment}{/* USER CODE END Init */}
+57 
+58   \textcolor{comment}{/* Configure the system clock */}
+59   \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a70af21c671abfcc773614a9a4f63d920}{SystemClock\_Config}();
+60 
+61   \textcolor{comment}{/* USER CODE BEGIN SysInit */}
+62 
+63   \textcolor{comment}{/* USER CODE END SysInit */}
+64 
+65   \textcolor{comment}{/* Initialize all configured peripherals */}
+66   \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_ae89fdd15729ad41a66911190fcbab23a}{MX\_GPIO\_Init}();
+67   MX\_USB\_DEVICE\_Init();
+68 
+69   uint8\_t car=0;
+70   \textcolor{keywordtype}{char} space=\textcolor{charliteral}{' '};
+71     \textcolor{keywordflow}{while} (1)
+72     \{
+73         HAL\_Delay(500);
+74         CDC\_Transmit\_FS(&car, 1);
+75         CDC\_Transmit\_FS((uint8\_t*)space,\textcolor{keyword}{sizeof}(space));
+76         car++;
+77         \textcolor{keywordflow}{if}(car==127)
+78             car=0;
+79     \}
+80   \textcolor{comment}{/* USER CODE END 3 */}
+81 
+82 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_ae89fdd15729ad41a66911190fcbab23a}\label{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_ae89fdd15729ad41a66911190fcbab23a}} 
+\index{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}!M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}}
+\index{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}!Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init()}{MX\_GPIO\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Configure pins as Analog Input Output E\+V\+E\+N\+T\+\_\+\+O\+UT E\+X\+TI 
+
+Definizione alla linea 146 del file main.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+147 \{
+148 
+149   GPIO\_InitTypeDef GPIO\_InitStruct;
+150 
+151   \textcolor{comment}{/* GPIO Ports Clock Enable */}
+152   \_\_HAL\_RCC\_GPIOH\_CLK\_ENABLE();
+153   \_\_HAL\_RCC\_GPIOD\_CLK\_ENABLE();
+154   \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();
+155 
+156   \textcolor{comment}{/*Configure GPIO pin Output Level */}
+157   HAL\_GPIO\_WritePin(GPIOD, GPIO\_PIN\_12, GPIO\_PIN\_RESET);
+158 
+159   \textcolor{comment}{/*Configure GPIO pin : PD12 */}
+160   GPIO\_InitStruct.Pin = GPIO\_PIN\_12;
+161   GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+162   GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+163   GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_LOW;
+164   HAL\_GPIO\_Init(GPIOD, &GPIO\_InitStruct);
+165 
+166 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a70af21c671abfcc773614a9a4f63d920}\label{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\index{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c@{Elaborato5/\+Elaborato5\+\_\+1\+\_\+\+Virtual\+\_\+\+C\+O\+M\+\_\+\+Port/main.\+c}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+System Clock Configuration Configure the main internal regulator output voltage
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Configure the Systick interrupt time
+
+Configure the Systick
+
+Definizione alla linea 86 del file main.\+c.
+
+
+
+Referenzia \+\_\+\+Error\+\_\+\+Handler().
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+87 \{
+88 
+89   RCC\_OscInitTypeDef RCC\_OscInitStruct;
+90   RCC\_ClkInitTypeDef RCC\_ClkInitStruct;
+91 
+94   \_\_HAL\_RCC\_PWR\_CLK\_ENABLE();
+95 
+96   \_\_HAL\_PWR\_VOLTAGESCALING\_CONFIG(PWR\_REGULATOR\_VOLTAGE\_SCALE1);
+97 
+100   RCC\_OscInitStruct.OscillatorType = RCC\_OSCILLATORTYPE\_HSE;
+101   RCC\_OscInitStruct.HSEState = RCC\_HSE\_ON;
+102   RCC\_OscInitStruct.PLL.PLLState = RCC\_PLL\_ON;
+103   RCC\_OscInitStruct.PLL.PLLSource = RCC\_PLLSOURCE\_HSE;
+104   RCC\_OscInitStruct.PLL.PLLM = 8;
+105   RCC\_OscInitStruct.PLL.PLLN = 336;
+106   RCC\_OscInitStruct.PLL.PLLP = RCC\_PLLP\_DIV2;
+107   RCC\_OscInitStruct.PLL.PLLQ = 7;
+108   \textcolor{keywordflow}{if} (HAL\_RCC\_OscConfig(&RCC\_OscInitStruct) != HAL\_OK)
+109   \{
+110     \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+111   \}
+112 
+115   RCC\_ClkInitStruct.ClockType = RCC\_CLOCKTYPE\_HCLK|RCC\_CLOCKTYPE\_SYSCLK
+116                               |RCC\_CLOCKTYPE\_PCLK1|RCC\_CLOCKTYPE\_PCLK2;
+117   RCC\_ClkInitStruct.SYSCLKSource = RCC\_SYSCLKSOURCE\_PLLCLK;
+118   RCC\_ClkInitStruct.AHBCLKDivider = RCC\_SYSCLK\_DIV1;
+119   RCC\_ClkInitStruct.APB1CLKDivider = RCC\_HCLK\_DIV4;
+120   RCC\_ClkInitStruct.APB2CLKDivider = RCC\_HCLK\_DIV2;
+121 
+122   \textcolor{keywordflow}{if} (HAL\_RCC\_ClockConfig(&RCC\_ClkInitStruct, FLASH\_LATENCY\_5) != HAL\_OK)
+123   \{
+124     \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+125   \}
+126 
+129   HAL\_SYSTICK\_Config(HAL\_RCC\_GetHCLKFreq()/1000);
+130 
+133   HAL\_SYSTICK\_CLKSourceConfig(SYSTICK\_CLKSOURCE\_HCLK);
+134 
+135   \textcolor{comment}{/* SysTick\_IRQn interrupt configuration */}
+136   HAL\_NVIC\_SetPriority(SysTick\_IRQn, 0, 0);
+137 \}
+\end{DoxyCode}

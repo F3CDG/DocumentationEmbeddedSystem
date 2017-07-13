@@ -1,0 +1,553 @@
+\hypertarget{main__master__uart_8c}{}\section{Riferimenti per il file Elaborato4/uart/main\+\_\+master\+\_\+uart.c}
+\label{main__master__uart_8c}\index{Elaborato4/uart/main\+\_\+master\+\_\+uart.\+c@{Elaborato4/uart/main\+\_\+master\+\_\+uart.\+c}}
+
+
+main che descrive il master di una trasmissione uart  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Grafo delle dipendenze di inclusione per main\+\_\+master\+\_\+uart.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{main__master__uart_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}{System\+Clock\+\_\+\+Config} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 168000000 H\+C\+L\+K(\+Hz) = 168000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 4 A\+P\+B2 Prescaler = 2 H\+SE Frequency(\+Hz) = 8000000 P\+L\+L\+\_\+M = 8 P\+L\+L\+\_\+N = 336 P\+L\+L\+\_\+P = 2 P\+L\+L\+\_\+Q = 7 V\+D\+D(\+V) = 3.\+3 Main regulator output voltage = Scale1 mode Flash Latency(\+W\+S) = 5. \end{DoxyCompactList}\item 
+static void \hyperlink{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\+\_\+\+Handler} (void)
+\begin{DoxyCompactList}\small\item\em Questa funzione è chiama in caso di errore. \end{DoxyCompactList}\item 
+static void \hyperlink{main__master__uart_8c_abdd9ed49457081071d09e4ff5f336a85}{Setup\+U\+A\+RT} (void)
+\begin{DoxyCompactList}\small\item\em Configurazione U\+A\+RT Si utilizza una U\+S\+A\+RT Asincrona, nello specifico si sceglie U\+S\+A\+R\+T2 che è connessa ai pin P\+A2(\+U\+S\+A\+R\+T2\+\_\+\+T\+X) e P\+A3(\+U\+S\+A\+R\+T2 R\+X) \end{DoxyCompactList}\item 
+static void \hyperlink{main__master__uart_8c_af976f1c2495320f8364f17a107951976}{setup\+\_\+led} (void)
+\begin{DoxyCompactList}\small\item\em Funzione in cui si configura i L\+ED. \end{DoxyCompactList}\item 
+void \hyperlink{main__master__uart_8c_a53e151fe65595af54b21916542c59147}{setup\+\_\+pushbutton} (void)
+\begin{DoxyCompactList}\small\item\em Funzione in cui si configura il push button come G\+P\+I\+O\+\_\+\+I\+N\+P\+UT. \end{DoxyCompactList}\item 
+void \hyperlink{main__master__uart_8c_a0b33edabd7f1c4e4a0bf32c67269be2f}{loop} (void)
+\begin{DoxyCompactList}\small\item\em Loop per la trasmissione/ricezione di un messaggio attraverso il bus U\+A\+RT. \end{DoxyCompactList}\item 
+int \hyperlink{main__master__uart_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\begin{DoxyCompactList}\small\item\em Main program. \end{DoxyCompactList}\item 
+void \hyperlink{main__master__uart_8c_a51234b271615f20600cc5d30a3bc810d}{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Error\+Callback} (U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$\hyperlink{main__slave__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2})
+\begin{DoxyCompactList}\small\item\em Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+U\+A\+R\+T\+\_\+\+Handle\+Type\+Def \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}
+\item 
+uint8\+\_\+t $\ast$ \hyperlink{main__master__uart_8c_add1fa76432b5a682cdaaf91f1869e9c2}{send\+\_\+data}
+\item 
+uint8\+\_\+t $\ast$ \hyperlink{main__master__uart_8c_af3bd0b5a480a3c4ac59f80af890d9fba}{receive\+\_\+data}
+\item 
+uint16\+\_\+t \hyperlink{main__master__uart_8c_a7d95112e3c1b55c7f80a6bfcc6b43961}{L\+E\+DS} \mbox{[}4\mbox{]} = \{G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+12, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+13, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+14, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+15\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+main che descrive il master di una trasmissione uart 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+20-\/\+June-\/2017 
+\end{DoxyDate}
+\begin{DoxyNote}{Nota}
+Si è in attesa che si preme il push button, per poter generare una trasmissione.\+Se la trasmissione è completata con successo, si fa un toggle sul L\+E\+D6, e si procede al polling di una ricezione. Se anche la ricezione è completata con successo, si accende il led associato al dato ricevuto in receive\+\_\+data. 
+\end{DoxyNote}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}\label{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!Error\+\_\+\+Handler@{Error\+\_\+\+Handler}}
+\index{Error\+\_\+\+Handler@{Error\+\_\+\+Handler}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{Error\+\_\+\+Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily static void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Questa funzione è chiama in caso di errore. 
+
+\begin{DoxyNote}{Nota}
+Se richiamata,si entra in un loop (vuoto) infinito 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 265 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenziato da loop(), Setup\+U\+A\+R\+T(), e System\+Clock\+\_\+\+Config().
+
+
+\begin{DoxyCode}
+266 \{
+267   \textcolor{comment}{/* Si accende il LED5*/}
+268   HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_14,GPIO\_PIN\_SET);
+269   \textcolor{keywordflow}{while}(1)
+270   \{
+271   \}
+272 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__uart_8c_a51234b271615f20600cc5d30a3bc810d}\label{main__master__uart_8c_a51234b271615f20600cc5d30a3bc810d}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Error\+Callback}}
+\index{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Error\+Callback}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Error\+Callback()}{HAL\_UART\_ErrorCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Error\+Callback (\begin{DoxyParamCaption}\item[{U\+A\+R\+T\+\_\+\+Handle\+Type\+Def $\ast$}]{huart2 }\end{DoxyParamCaption})}
+
+
+
+Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em huart2} & gestore uart \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Si esegue un\textquotesingle{}operazione di Toggle sul P\+D13(\+L\+E\+D3) 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 135 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+\begin{DoxyCode}
+135                                                               \{
+136   \textcolor{comment}{/* Si accende il LED3 quando*/}
+137     HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_13,GPIO\_PIN\_SET);
+138 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__uart_8c_a0b33edabd7f1c4e4a0bf32c67269be2f}\label{main__master__uart_8c_a0b33edabd7f1c4e4a0bf32c67269be2f}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!loop@{loop}}
+\index{loop@{loop}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Loop per la trasmissione/ricezione di un messaggio attraverso il bus U\+A\+RT. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 221 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenzia Error\+\_\+\+Handler(), huart2, L\+E\+DS, receive\+\_\+data, e send\+\_\+data.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+221                \{
+222 
+223       \textcolor{comment}{/* Si attende che sia premuto il push button */}
+224       \textcolor{keywordflow}{while} (HAL\_GPIO\_ReadPin(GPIOA,GPIO\_PIN\_0) != GPIO\_PIN\_SET) \{
+225 
+226         HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_13);
+227         HAL\_Delay(40);
+228       \}
+229       \textcolor{comment}{/* Si attende che il push button sia rilasciato */}
+230       \textcolor{keywordflow}{while} (HAL\_GPIO\_ReadPin(GPIOA,GPIO\_PIN\_0) != GPIO\_PIN\_RESET);
+231 
+232       \textcolor{comment}{/*Si spegne il led3 */}
+233         HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_13,GPIO\_PIN\_RESET);
+234 
+235         \textcolor{comment}{/*Si trasmette il messaggio da inviare (send\_data) con un timeout di 5 secondi*/}
+236 
+237       \textcolor{keywordflow}{if}(HAL\_UART\_Transmit(&\hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}, (uint8\_t*)\hyperlink{main__master__uart_8c_add1fa76432b5a682cdaaf91f1869e9c2}{send\_data}, TXSIZE, 5000)!= HAL\_OK)
+238       \{
+239         \hyperlink{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+240       \}
+241 
+242       \textcolor{comment}{/* Si accende il LED6 quando il trasferimento è completato */}
+243         HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_15,GPIO\_PIN\_SET);
+244 
+245       \textcolor{comment}{/*Si pone il master in polling per una ricezione*/}
+246       \textcolor{keywordflow}{if}(HAL\_UART\_Receive(&\hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}, (uint8\_t *)\hyperlink{main__master__uart_8c_af3bd0b5a480a3c4ac59f80af890d9fba}{receive\_data}, RXSIZE, 5000) != HAL\_OK)
+247       \{
+248         \hyperlink{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+249       \}
+250 
+251 
+252       \textcolor{comment}{/* Si accende il led associato a arxBuffer quando la ricezione è stata completata */}
+253       HAL\_GPIO\_WritePin(GPIOD,\hyperlink{main__master__uart_8c_a7d95112e3c1b55c7f80a6bfcc6b43961}{LEDS}[send\_data[0]],GPIO\_PIN\_RESET);
+254       send\_data[0] = receive\_data[0];
+255       HAL\_GPIO\_WritePin(GPIOD,\hyperlink{main__master__uart_8c_a7d95112e3c1b55c7f80a6bfcc6b43961}{LEDS}[send\_data[0]],GPIO\_PIN\_SET);
+256 
+257 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__uart_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main__master__uart_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!main@{main}}
+\index{main@{main}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Main program. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 39 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenzia loop(), receive\+\_\+data, send\+\_\+data, setup\+\_\+led(), setup\+\_\+pushbutton(), Setup\+U\+A\+R\+T(), e System\+Clock\+\_\+\+Config().
+
+
+\begin{DoxyCode}
+40 \{
+41 
+42   HAL\_Init();
+43   
+44   \textcolor{comment}{/* Configure the BSP */}
+45   \hyperlink{main__master__uart_8c_af976f1c2495320f8364f17a107951976}{setup\_led}();
+46   \hyperlink{main__master__uart_8c_a53e151fe65595af54b21916542c59147}{setup\_pushbutton}();
+47 
+48   \textcolor{comment}{/* Configure the system clock to 168 MHz */}
+49   \hyperlink{main__master__uart_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}{SystemClock\_Config}();
+50 
+51   \textcolor{comment}{/*##-1- Configure the UART peripheral ######################################*/}
+52   \hyperlink{main__master__uart_8c_abdd9ed49457081071d09e4ff5f336a85}{SetupUART}();
+53   
+54   \hyperlink{main__master__uart_8c_add1fa76432b5a682cdaaf91f1869e9c2}{send\_data} = (uint8\_t*)malloc(\textcolor{keyword}{sizeof}(uint8\_t)*TXSIZE);
+55   \hyperlink{main__master__uart_8c_af3bd0b5a480a3c4ac59f80af890d9fba}{receive\_data} = (uint8\_t*)malloc(\textcolor{keyword}{sizeof}(uint8\_t)*RXSIZE);
+56 
+57   \hyperlink{main__master__uart_8c_add1fa76432b5a682cdaaf91f1869e9c2}{send\_data}[0]=0x00;
+58   \hyperlink{main__master__uart_8c_af3bd0b5a480a3c4ac59f80af890d9fba}{receive\_data}[0]=0x00;
+59 
+60 
+61 
+62   \textcolor{keywordflow}{while} (1)
+63   \{
+64       \hyperlink{main__master__uart_8c_a0b33edabd7f1c4e4a0bf32c67269be2f}{loop}();
+65   \}
+66 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__uart_8c_af976f1c2495320f8364f17a107951976}\label{main__master__uart_8c_af976f1c2495320f8364f17a107951976}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!setup\+\_\+led@{setup\+\_\+led}}
+\index{setup\+\_\+led@{setup\+\_\+led}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+led()}{setup\_led()}}
+{\footnotesize\ttfamily void setup\+\_\+led (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funzione in cui si configura i L\+ED. 
+
+\begin{DoxyNote}{Nota}
+Pin P\+D12\+: L\+E\+D4 
+
+Pin P\+D13\+: L\+E\+D3 
+
+Pin P\+D14\+: L\+E\+D5 
+
+Pin P\+D15\+: L\+E\+D6 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 149 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+149                     \{
+150       \textcolor{comment}{/* Configure LED3, LED4, LED5 and LED6 */}
+151         GPIO\_InitTypeDef GPIO\_InitStruct;
+152 
+153       \textcolor{comment}{/* Abilitazione del clock alla porta GPIOD */}
+154       \_\_HAL\_RCC\_GPIOD\_CLK\_ENABLE();
+155 
+156       \textcolor{comment}{/*Configurazione dei 4 LED: PD12,PD13,PD14,PD15 */}
+157        GPIO\_InitStruct.Pin = GPIO\_PIN\_12 | GPIO\_PIN\_13 | GPIO\_PIN\_14 | GPIO\_PIN\_15;
+158        GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+159        GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+160        GPIO\_InitStruct.Speed = GPIO\_SPEED\_FAST;
+161        HAL\_GPIO\_Init(GPIOD, &GPIO\_InitStruct);
+162        HAL\_GPIO\_WritePin(GPIOD, GPIO\_PIN\_12 | GPIO\_PIN\_13 | GPIO\_PIN\_14 | GPIO\_PIN\_15, GPIO\_PIN\_RESET);
+163 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__uart_8c_a53e151fe65595af54b21916542c59147}\label{main__master__uart_8c_a53e151fe65595af54b21916542c59147}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!setup\+\_\+pushbutton@{setup\+\_\+pushbutton}}
+\index{setup\+\_\+pushbutton@{setup\+\_\+pushbutton}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+pushbutton()}{setup\_pushbutton()}}
+{\footnotesize\ttfamily void setup\+\_\+pushbutton (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Funzione in cui si configura il push button come G\+P\+I\+O\+\_\+\+I\+N\+P\+UT. 
+
+\begin{DoxyNote}{Nota}
+Il push button è associato al pin P\+A0, quindi alla porta G\+P\+I\+OA 
+\end{DoxyNote}
+
+
+Definizione alla linea 169 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+169                            \{
+170       GPIO\_InitTypeDef GPIO\_InitStruct;
+171 
+172       \textcolor{comment}{/* Si abilita la porta associata al PA0 */}
+173       \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();
+174 
+175       GPIO\_InitStruct.Pin = GPIO\_PIN\_0;
+176       GPIO\_InitStruct.Mode = GPIO\_MODE\_INPUT;
+177       GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+178       GPIO\_InitStruct.Speed = GPIO\_SPEED\_FAST;
+179       HAL\_GPIO\_Init(GPIOA, &GPIO\_InitStruct);
+180 
+181 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__uart_8c_abdd9ed49457081071d09e4ff5f336a85}\label{main__master__uart_8c_abdd9ed49457081071d09e4ff5f336a85}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!Setup\+U\+A\+RT@{Setup\+U\+A\+RT}}
+\index{Setup\+U\+A\+RT@{Setup\+U\+A\+RT}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{Setup\+U\+A\+R\+T()}{SetupUART()}}
+{\footnotesize\ttfamily static void Setup\+U\+A\+RT (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Configurazione U\+A\+RT Si utilizza una U\+S\+A\+RT Asincrona, nello specifico si sceglie U\+S\+A\+R\+T2 che è connessa ai pin P\+A2(\+U\+S\+A\+R\+T2\+\_\+\+T\+X) e P\+A3(\+U\+S\+A\+R\+T2 R\+X) 
+
+Si sceglie di settare i seguenti valori \+:
+\begin{DoxyItemize}
+\item Lunghezza = 8 Bits
+\item Stop Bit = 1 bit
+\item Parity = None
+\item Baud\+Rate = 9600 baud
+\item Hardware flow control disabled (R\+TS and C\+TS signals) 
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+\end{DoxyItemize}
+
+Definizione alla linea 197 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenzia Error\+\_\+\+Handler(), e huart2.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+197                            \{
+198     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Instance          = USARTx;
+199 
+200     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Init.BaudRate     = 9600;
+201     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Init.WordLength   = UART\_WORDLENGTH\_8B;
+202     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Init.StopBits     = UART\_STOPBITS\_1;
+203     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Init.Parity       = UART\_PARITY\_NONE;
+204     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Init.HwFlowCtl    = UART\_HWCONTROL\_NONE;
+205     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Init.Mode         = UART\_MODE\_TX\_RX;
+206     \hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}.Init.OverSampling = UART\_OVERSAMPLING\_16;
+207 
+208     \textcolor{keywordflow}{if}(HAL\_UART\_Init(&\hyperlink{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}{huart2}) != HAL\_OK)
+209      \{
+210       \hyperlink{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+211      \}
+212 
+213 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__uart_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}\label{main__master__uart_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily static void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 168000000 H\+C\+L\+K(\+Hz) = 168000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 4 A\+P\+B2 Prescaler = 2 H\+SE Frequency(\+Hz) = 8000000 P\+L\+L\+\_\+M = 8 P\+L\+L\+\_\+N = 336 P\+L\+L\+\_\+P = 2 P\+L\+L\+\_\+Q = 7 V\+D\+D(\+V) = 3.\+3 Main regulator output voltage = Scale1 mode Flash Latency(\+W\+S) = 5. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 88 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenzia Error\+\_\+\+Handler().
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+88                                     \{
+89   RCC\_ClkInitTypeDef RCC\_ClkInitStruct;
+90   RCC\_OscInitTypeDef RCC\_OscInitStruct;
+91 
+92   \textcolor{comment}{/* Enable Power Control clock */}
+93   \_\_PWR\_CLK\_ENABLE();
+94   
+95   \textcolor{comment}{/* The voltage scaling allows optimizing the power consumption when the device is}
+96 \textcolor{comment}{     clocked below the maximum system frequency, to update the voltage scaling value}
+97 \textcolor{comment}{     regarding system frequency refer to product datasheet.  */}
+98   \_\_HAL\_PWR\_VOLTAGESCALING\_CONFIG(PWR\_REGULATOR\_VOLTAGE\_SCALE1);
+99   
+100   \textcolor{comment}{/* Enable HSE Oscillator and activate PLL with HSE as source */}
+101   RCC\_OscInitStruct.OscillatorType  = RCC\_OSCILLATORTYPE\_HSE;
+102   RCC\_OscInitStruct.HSEState        = RCC\_HSE\_ON;
+103   RCC\_OscInitStruct.PLL.PLLState    = RCC\_PLL\_ON;
+104   RCC\_OscInitStruct.PLL.PLLSource   = RCC\_PLLSOURCE\_HSE;
+105   RCC\_OscInitStruct.PLL.PLLM        = 8;
+106   RCC\_OscInitStruct.PLL.PLLN        = 336;
+107   RCC\_OscInitStruct.PLL.PLLP = RCC\_PLLP\_DIV2;
+108   RCC\_OscInitStruct.PLL.PLLQ = 7;
+109   \textcolor{keywordflow}{if}(HAL\_RCC\_OscConfig(&RCC\_OscInitStruct) != HAL\_OK)\{
+110     \hyperlink{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+111   \}
+112 
+113   \textcolor{comment}{/* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 clocks dividers */}
+114   RCC\_ClkInitStruct.ClockType = (RCC\_CLOCKTYPE\_SYSCLK | RCC\_CLOCKTYPE\_HCLK | RCC\_CLOCKTYPE\_PCLK1 | 
+      RCC\_CLOCKTYPE\_PCLK2);
+115   RCC\_ClkInitStruct.SYSCLKSource = RCC\_SYSCLKSOURCE\_PLLCLK;
+116   RCC\_ClkInitStruct.AHBCLKDivider = RCC\_SYSCLK\_DIV1;
+117   RCC\_ClkInitStruct.APB1CLKDivider = RCC\_HCLK\_DIV4;  
+118   RCC\_ClkInitStruct.APB2CLKDivider = RCC\_HCLK\_DIV2;  
+119   \textcolor{keywordflow}{if}(HAL\_RCC\_ClockConfig(&RCC\_ClkInitStruct, FLASH\_LATENCY\_5) != HAL\_OK)\{
+120     \hyperlink{main__master__uart_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+121   \}
+122 
+123   \textcolor{comment}{/* STM32F405x/407x/415x/417x Revision Z devices: prefetch is supported  */}
+124   \textcolor{keywordflow}{if} (HAL\_GetREVID() == 0x1001)\{
+125     \textcolor{comment}{/* Enable the Flash prefetch */}
+126     \_\_HAL\_FLASH\_PREFETCH\_BUFFER\_ENABLE();
+127   \}
+128 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}\label{main__master__uart_8c_aa9479c261d65eecedd3d9582f7f0f89c}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!huart2@{huart2}}
+\index{huart2@{huart2}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{huart2}{huart2}}
+{\footnotesize\ttfamily U\+A\+R\+T\+\_\+\+Handle\+Type\+Def huart2}
+
+
+
+Definizione alla linea 18 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenziato da loop(), e Setup\+U\+A\+R\+T().
+
+\mbox{\Hypertarget{main__master__uart_8c_a7d95112e3c1b55c7f80a6bfcc6b43961}\label{main__master__uart_8c_a7d95112e3c1b55c7f80a6bfcc6b43961}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!L\+E\+DS@{L\+E\+DS}}
+\index{L\+E\+DS@{L\+E\+DS}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{L\+E\+DS}{LEDS}}
+{\footnotesize\ttfamily uint16\+\_\+t L\+E\+DS\mbox{[}4\mbox{]} = \{G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+12, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+13, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+14, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+15\}}
+
+
+
+Definizione alla linea 22 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenziato da loop().
+
+\mbox{\Hypertarget{main__master__uart_8c_af3bd0b5a480a3c4ac59f80af890d9fba}\label{main__master__uart_8c_af3bd0b5a480a3c4ac59f80af890d9fba}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!receive\+\_\+data@{receive\+\_\+data}}
+\index{receive\+\_\+data@{receive\+\_\+data}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{receive\+\_\+data}{receive\_data}}
+{\footnotesize\ttfamily uint8\+\_\+t $\ast$ receive\+\_\+data}
+
+
+
+Definizione alla linea 21 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenziato da loop(), e main().
+
+\mbox{\Hypertarget{main__master__uart_8c_add1fa76432b5a682cdaaf91f1869e9c2}\label{main__master__uart_8c_add1fa76432b5a682cdaaf91f1869e9c2}} 
+\index{main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}!send\+\_\+data@{send\+\_\+data}}
+\index{send\+\_\+data@{send\+\_\+data}!main\+\_\+master\+\_\+uart.\+c@{main\+\_\+master\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{send\+\_\+data}{send\_data}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ send\+\_\+data}
+
+
+
+Definizione alla linea 21 del file main\+\_\+master\+\_\+uart.\+c.
+
+
+
+Referenziato da loop(), e main().
+

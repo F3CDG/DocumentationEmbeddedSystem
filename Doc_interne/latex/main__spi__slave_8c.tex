@@ -1,0 +1,416 @@
+\hypertarget{main__spi__slave_8c}{}\section{Riferimenti per il file Elaborato4/spi/main\+\_\+spi\+\_\+slave.c}
+\label{main__spi__slave_8c}\index{Elaborato4/spi/main\+\_\+spi\+\_\+slave.\+c@{Elaborato4/spi/main\+\_\+spi\+\_\+slave.\+c}}
+
+
+main che descrive lo di una trasmissione spi  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main\+\_\+spi\+\_\+slave.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{main__spi__slave_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}{System\+Clock\+\_\+\+Config} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 168000000 H\+C\+L\+K(\+Hz) = 168000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 4 A\+P\+B2 Prescaler = 2 H\+SE Frequency(\+Hz) = 8000000 P\+L\+L\+\_\+M = 8 P\+L\+L\+\_\+N = 336 P\+L\+L\+\_\+P = 2 P\+L\+L\+\_\+Q = 7 V\+D\+D(\+V) = 3.\+3 Main regulator output voltage = Scale1 mode Flash Latency(\+W\+S) = 5. \end{DoxyCompactList}\item 
+static void \hyperlink{main__spi__slave_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\+\_\+\+Handler} (void)
+\begin{DoxyCompactList}\small\item\em Questa funzione è eseguita in caso di errore. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__slave_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback} (S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$hspi)
+\begin{DoxyCompactList}\small\item\em Funzione Callback richiamata quando la ricezione è completata. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__slave_8c_a3db7835e7e7ac335887f62fedf156926}{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback} (S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$hspi)
+\begin{DoxyCompactList}\small\item\em Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__slave_8c_a68b13f6c7d6c374747fb761485eedc4c}{setup\+\_\+\+L\+ED} ()
+\begin{DoxyCompactList}\small\item\em Funzione in cui si configura i L\+ED. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__slave_8c_a6d4f295da7f350f1a467d24843b7fce7}{setup\+\_\+\+S\+PI} ()
+\begin{DoxyCompactList}\small\item\em Funzione in cui si settano i parametri S\+PI. \end{DoxyCompactList}\item 
+int \hyperlink{main__spi__slave_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+S\+P\+I\+\_\+\+Handle\+Type\+Def \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{Spi\+Handle}
+\item 
+uint8\+\_\+t \hyperlink{main__spi__slave_8c_aa50a27c44ef1297e19dca4faa1b59f58}{dato} \mbox{[}$\,$\mbox{]} =\char`\"{}$\ast$$\ast$$\ast$$\ast$M\+E\+S\+S\+A\+G\+G\+IO S\+PI$\ast$$\ast$$\ast$$\ast$\char`\"{}
+\item 
+uint8\+\_\+t \hyperlink{main__spi__slave_8c_a805c23a07253a1c439b42fefa36cd7d3}{receive\+\_\+data} \mbox{[}S\+I\+ZE\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+main che descrive lo di una trasmissione spi 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+19-\/\+June-\/2017 
+\end{DoxyDate}
+\begin{DoxyNote}{Nota}
+In questo programma è configurato il main di una trasmissione S\+P\+I.\+Quando è premuto il push-\/button si genera una interrupt che fa eseguire la trasmissione di un dato allo slave. 
+\end{DoxyNote}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{main__spi__slave_8c_aec8ff26e953e1b0e8439a193f58974d4}\label{main__spi__slave_8c_aec8ff26e953e1b0e8439a193f58974d4}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!Error\+\_\+\+Handler@{Error\+\_\+\+Handler}}
+\index{Error\+\_\+\+Handler@{Error\+\_\+\+Handler}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{Error\+\_\+\+Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily static void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Questa funzione è eseguita in caso di errore. 
+
+\begin{DoxyNote}{Nota}
+In tal caso si accende il led rosso\+: L\+E\+D5 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 134 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenziato da main(), e setup\+\_\+\+S\+P\+I().
+
+
+\begin{DoxyCode}
+134                                \{
+135     HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_14,GPIO\_PIN\_SET);
+136 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__slave_8c_a3db7835e7e7ac335887f62fedf156926}\label{main__spi__slave_8c_a3db7835e7e7ac335887f62fedf156926}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback}}
+\index{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback()}{HAL\_SPI\_ErrorCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hspi }\end{DoxyParamCaption})}
+
+
+
+Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em hspi} & gestore spi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Si esegue un\textquotesingle{}operazione di Toggle sul P\+D14(\+L\+E\+D5) 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 124 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenzia Spi\+Handle.
+
+
+\begin{DoxyCode}
+124                                                     \{
+125     \textcolor{keywordflow}{if}(hspi->Instance==\hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Instance)
+126      HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_15);
+127 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__slave_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}\label{main__spi__slave_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback}}
+\index{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback()}{HAL\_SPI\_RxCpltCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hspi }\end{DoxyParamCaption})}
+
+
+
+Funzione Callback richiamata quando la ricezione è completata. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em hspi} & gestore spi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Si esegue un\textquotesingle{}operazione di Toggle sul P\+D15(\+L\+E\+D6) 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 113 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenzia Spi\+Handle.
+
+
+\begin{DoxyCode}
+113                                                     \{
+114     \textcolor{keywordflow}{if}(hspi->Instance==\hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Instance)
+115         HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_15);
+116 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__slave_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main__spi__slave_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!main@{main}}
+\index{main@{main}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 33 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenzia Error\+\_\+\+Handler(), receive\+\_\+data, setup\+\_\+\+L\+E\+D(), setup\+\_\+\+S\+P\+I(), Spi\+Handle, e System\+Clock\+\_\+\+Config().
+
+
+\begin{DoxyCode}
+34 \{
+35 
+36   HAL\_Init();
+37   \hyperlink{main__spi__slave_8c_a68b13f6c7d6c374747fb761485eedc4c}{setup\_LED}();
+38   \hyperlink{main__spi__slave_8c_a6d4f295da7f350f1a467d24843b7fce7}{setup\_SPI}();
+39 
+40   \hyperlink{main__spi__slave_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}{SystemClock\_Config}();
+41       \textcolor{comment}{/* Infinite loop */}
+42   \textcolor{keywordflow}{while} (1)
+43   \{
+44       \textcolor{keywordflow}{if}(HAL\_SPI\_Receive\_IT(&\hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}, (uint8\_t *)\hyperlink{main__spi__slave_8c_a805c23a07253a1c439b42fefa36cd7d3}{receive\_data},SIZE) != HAL\_OK)
+45 
+46           \{
+47             \hyperlink{main__spi__slave_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+48           \}
+49           \textcolor{keywordflow}{while} (HAL\_SPI\_GetState(&\hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}) != HAL\_SPI\_STATE\_READY);
+50 
+51   \}
+52 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__slave_8c_a68b13f6c7d6c374747fb761485eedc4c}\label{main__spi__slave_8c_a68b13f6c7d6c374747fb761485eedc4c}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!setup\+\_\+\+L\+ED@{setup\+\_\+\+L\+ED}}
+\index{setup\+\_\+\+L\+ED@{setup\+\_\+\+L\+ED}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+\+L\+E\+D()}{setup\_LED()}}
+{\footnotesize\ttfamily void setup\+\_\+\+L\+ED (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione in cui si configura i L\+ED. 
+
+\begin{DoxyNote}{Nota}
+Pin P\+D12\+: L\+E\+D4 
+
+Pin P\+D13\+: L\+E\+D3 
+
+Pin P\+D14\+: L\+E\+D5 
+
+Pin P\+D15\+: L\+E\+D6 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 63 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+63                 \{
+64       \textcolor{comment}{/* Configure LED3, LED4, LED5 and LED6 */}
+65         GPIO\_InitTypeDef GPIO\_InitStruct;
+66 
+67       \textcolor{comment}{/* Abilitazione del clock alla porta GPIOD */}
+68       \_\_HAL\_RCC\_GPIOD\_CLK\_ENABLE();
+69 
+70       \textcolor{comment}{/*Configurazione dei 4 LED: PD12,PD13,PD14,PD15 */}
+71        GPIO\_InitStruct.Pin = GPIO\_PIN\_12 | GPIO\_PIN\_13 | GPIO\_PIN\_14 | GPIO\_PIN\_15;
+72        GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+73        GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+74        GPIO\_InitStruct.Speed = GPIO\_SPEED\_FAST;
+75        HAL\_GPIO\_Init(GPIOD, &GPIO\_InitStruct);
+76        HAL\_GPIO\_WritePin(GPIOD, GPIO\_PIN\_12 | GPIO\_PIN\_13 | GPIO\_PIN\_14 | GPIO\_PIN\_15, GPIO\_PIN\_RESET);
+77 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__slave_8c_a6d4f295da7f350f1a467d24843b7fce7}\label{main__spi__slave_8c_a6d4f295da7f350f1a467d24843b7fce7}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!setup\+\_\+\+S\+PI@{setup\+\_\+\+S\+PI}}
+\index{setup\+\_\+\+S\+PI@{setup\+\_\+\+S\+PI}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+\+S\+P\+I()}{setup\_SPI()}}
+{\footnotesize\ttfamily void setup\+\_\+\+S\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione in cui si settano i parametri S\+PI. 
+
+\begin{DoxyNote}{Nota}
+Si nota che la modalità è S\+L\+A\+VE 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 85 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenzia Error\+\_\+\+Handler(), e Spi\+Handle.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+85                 \{
+86 
+87       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Instance               = SPI2;
+88       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.Mode             = SPI\_MODE\_SLAVE;
+89       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.BaudRatePrescaler = SPI\_BAUDRATEPRESCALER\_256;
+90       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.Direction         = SPI\_DIRECTION\_2LINES;
+91       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CLKPhase          = SPI\_PHASE\_1EDGE;
+92       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CLKPolarity       = SPI\_POLARITY\_HIGH;
+93       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CRCCalculation    = SPI\_CRCCALCULATION\_DISABLE;
+94       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CRCPolynomial     = 7;
+95       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.DataSize          = SPI\_DATASIZE\_8BIT;
+96       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.FirstBit          = SPI\_FIRSTBIT\_MSB;
+97       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.NSS               = SPI\_NSS\_SOFT;
+98       \hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.TIMode            = SPI\_TIMODE\_DISABLE;
+99 
+100       \textcolor{keywordflow}{if}(HAL\_SPI\_Init(&\hyperlink{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}) != HAL\_OK)
+101       \{
+102         \textcolor{comment}{/* Initialization Error */}
+103         \hyperlink{main__spi__slave_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+104       \}
+105 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__slave_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}\label{main__spi__slave_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily static void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 168000000 H\+C\+L\+K(\+Hz) = 168000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 4 A\+P\+B2 Prescaler = 2 H\+SE Frequency(\+Hz) = 8000000 P\+L\+L\+\_\+M = 8 P\+L\+L\+\_\+N = 336 P\+L\+L\+\_\+P = 2 P\+L\+L\+\_\+Q = 7 V\+D\+D(\+V) = 3.\+3 Main regulator output voltage = Scale1 mode Flash Latency(\+W\+S) = 5. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 158 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+159 \{
+160   RCC\_ClkInitTypeDef RCC\_ClkInitStruct;
+161   RCC\_OscInitTypeDef RCC\_OscInitStruct;
+162 
+163   \textcolor{comment}{/* Enable Power Control clock */}
+164   \_\_HAL\_RCC\_PWR\_CLK\_ENABLE();
+165   
+166   \textcolor{comment}{/* The voltage scaling allows optimizing the power consumption when the device is }
+167 \textcolor{comment}{     clocked below the maximum system frequency, to update the voltage scaling value }
+168 \textcolor{comment}{     regarding system frequency refer to product datasheet.  */}
+169   \_\_HAL\_PWR\_VOLTAGESCALING\_CONFIG(PWR\_REGULATOR\_VOLTAGE\_SCALE1);
+170   
+171   \textcolor{comment}{/* Enable HSE Oscillator and activate PLL with HSE as source */}
+172   RCC\_OscInitStruct.OscillatorType = RCC\_OSCILLATORTYPE\_HSE;
+173   RCC\_OscInitStruct.HSEState = RCC\_HSE\_ON;
+174   RCC\_OscInitStruct.PLL.PLLState = RCC\_PLL\_ON;
+175   RCC\_OscInitStruct.PLL.PLLSource = RCC\_PLLSOURCE\_HSE;
+176   RCC\_OscInitStruct.PLL.PLLM = 8;
+177   RCC\_OscInitStruct.PLL.PLLN = 336;
+178   RCC\_OscInitStruct.PLL.PLLP = RCC\_PLLP\_DIV2;
+179   RCC\_OscInitStruct.PLL.PLLQ = 7;
+180   HAL\_RCC\_OscConfig(&RCC\_OscInitStruct);
+181  
+182   \textcolor{comment}{/* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 }
+183 \textcolor{comment}{     clocks dividers */}
+184   RCC\_ClkInitStruct.ClockType = (RCC\_CLOCKTYPE\_SYSCLK | RCC\_CLOCKTYPE\_HCLK | RCC\_CLOCKTYPE\_PCLK1 | 
+      RCC\_CLOCKTYPE\_PCLK2);
+185   RCC\_ClkInitStruct.SYSCLKSource = RCC\_SYSCLKSOURCE\_PLLCLK;
+186   RCC\_ClkInitStruct.AHBCLKDivider = RCC\_SYSCLK\_DIV1;
+187   RCC\_ClkInitStruct.APB1CLKDivider = RCC\_HCLK\_DIV4;  
+188   RCC\_ClkInitStruct.APB2CLKDivider = RCC\_HCLK\_DIV2;  
+189   HAL\_RCC\_ClockConfig(&RCC\_ClkInitStruct, FLASH\_LATENCY\_5);
+190 
+191   \textcolor{comment}{/* STM32F405x/407x/415x/417x Revision Z devices: prefetch is supported  */}
+192   \textcolor{keywordflow}{if} (HAL\_GetREVID() == 0x1001)
+193   \{
+194     \textcolor{comment}{/* Enable the Flash prefetch */}
+195     \_\_HAL\_FLASH\_PREFETCH\_BUFFER\_ENABLE();
+196   \}
+197 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{main__spi__slave_8c_aa50a27c44ef1297e19dca4faa1b59f58}\label{main__spi__slave_8c_aa50a27c44ef1297e19dca4faa1b59f58}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!dato@{dato}}
+\index{dato@{dato}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{dato}{dato}}
+{\footnotesize\ttfamily uint8\+\_\+t dato\mbox{[}$\,$\mbox{]} =\char`\"{}$\ast$$\ast$$\ast$$\ast$M\+E\+S\+S\+A\+G\+G\+IO S\+PI$\ast$$\ast$$\ast$$\ast$\char`\"{}}
+
+
+
+Definizione alla linea 18 del file main\+\_\+spi\+\_\+slave.\+c.
+
+\mbox{\Hypertarget{main__spi__slave_8c_a805c23a07253a1c439b42fefa36cd7d3}\label{main__spi__slave_8c_a805c23a07253a1c439b42fefa36cd7d3}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!receive\+\_\+data@{receive\+\_\+data}}
+\index{receive\+\_\+data@{receive\+\_\+data}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{receive\+\_\+data}{receive\_data}}
+{\footnotesize\ttfamily uint8\+\_\+t receive\+\_\+data\mbox{[}S\+I\+ZE\mbox{]}}
+
+
+
+Definizione alla linea 19 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}\label{main__spi__slave_8c_a057fba06b45ec2076cb339b772c76ad7}} 
+\index{main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}!Spi\+Handle@{Spi\+Handle}}
+\index{Spi\+Handle@{Spi\+Handle}!main\+\_\+spi\+\_\+slave.\+c@{main\+\_\+spi\+\_\+slave.\+c}}
+\subsubsection{\texorpdfstring{Spi\+Handle}{SpiHandle}}
+{\footnotesize\ttfamily S\+P\+I\+\_\+\+Handle\+Type\+Def Spi\+Handle}
+
+
+
+Definizione alla linea 15 del file main\+\_\+spi\+\_\+slave.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback(), H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback(), main(), e setup\+\_\+\+S\+P\+I().
+

@@ -1,0 +1,306 @@
+\hypertarget{my__bsp__custom_8c}{}\section{Riferimenti per il file Elaborato2/src/my\+\_\+bsp\+\_\+custom.c}
+\label{my__bsp__custom_8c}\index{Elaborato2/src/my\+\_\+bsp\+\_\+custom.\+c@{Elaborato2/src/my\+\_\+bsp\+\_\+custom.\+c}}
+
+
+Implementazione funzioni B\+SP custom S\+T\+M32\+F4 Discovery.  
+
+
+{\ttfamily \#include \char`\"{}my\+\_\+bsp\+\_\+custom.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per my\+\_\+bsp\+\_\+custom.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{my__bsp__custom_8c_a798d5d72ddf4ba1145977bc2b8f99a3c}{init\+\_\+led\+\_\+user} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione inizializza i 4 led utente in modo tale da poter essere utilizzati come display di valori a 4 bit. \end{DoxyCompactList}\item 
+void \hyperlink{my__bsp__custom_8c_ad9484bdb881d37feac04ef24e13d93dd}{init\+\_\+button\+\_\+user} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione inizializza il bottone utente. \end{DoxyCompactList}\item 
+void \hyperlink{my__bsp__custom_8c_afafb0dccf1afd67f04907bfe3ec10883}{init\+\_\+timer2} (uint32\+\_\+t clock)
+\begin{DoxyCompactList}\small\item\em Questa funzione inizializza il timer2. \end{DoxyCompactList}\item 
+void \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\+\_\+led} (uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di scrivere sui led utente. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\+\_\+button} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di leggere lo stato del bottone utente. \end{DoxyCompactList}\item 
+void \hyperlink{my__bsp__custom_8c_af1d5c5b1e9422b8e5e2424b2a8bfd697}{start\+\_\+timer2} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione indica al timer2 l\textquotesingle{}inizio di un countdown. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{my__bsp__custom_8c_a7bd56ea7130eadff5a5bcd100efb1a89}{is\+\_\+timer2\+\_\+stopped} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di interrogare il timer2 se il countdown è avvenuto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Implementazione funzioni B\+SP custom S\+T\+M32\+F4 Discovery. 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+12-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{my__bsp__custom_8c_ad9484bdb881d37feac04ef24e13d93dd}\label{my__bsp__custom_8c_ad9484bdb881d37feac04ef24e13d93dd}} 
+\index{my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}!init\+\_\+button\+\_\+user@{init\+\_\+button\+\_\+user}}
+\index{init\+\_\+button\+\_\+user@{init\+\_\+button\+\_\+user}!my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+button\+\_\+user()}{init\_button\_user()}}
+{\footnotesize\ttfamily void init\+\_\+button\+\_\+user (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione inizializza il bottone utente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 39 del file my\+\_\+bsp\+\_\+custom.\+c.
+
+
+
+Referenziato da init().
+
+
+\begin{DoxyCode}
+39                        \{
+40 
+41     \textcolor{comment}{/*Abilitazione GPIOA*/}
+42     RCC->AHB1ENR |= 1;
+43 
+44     \textcolor{comment}{/*Valore di reset al moder di GPIOA, si indica a PA0 di funzionare da input*/}
+45     GPIOA->MODER=0xA8000000;
+46 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{my__bsp__custom_8c_a798d5d72ddf4ba1145977bc2b8f99a3c}\label{my__bsp__custom_8c_a798d5d72ddf4ba1145977bc2b8f99a3c}} 
+\index{my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}!init\+\_\+led\+\_\+user@{init\+\_\+led\+\_\+user}}
+\index{init\+\_\+led\+\_\+user@{init\+\_\+led\+\_\+user}!my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+led\+\_\+user()}{init\_led\_user()}}
+{\footnotesize\ttfamily void init\+\_\+led\+\_\+user (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione inizializza i 4 led utente in modo tale da poter essere utilizzati come display di valori a 4 bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 21 del file my\+\_\+bsp\+\_\+custom.\+c.
+
+
+
+Referenziato da init().
+
+
+\begin{DoxyCode}
+21                     \{
+22 
+23     \textcolor{comment}{/*Abilitazione a GPIOD*/}
+24     RCC->AHB1ENR |= (1<<3);
+25 
+26     \textcolor{comment}{/*Si indica ai pin 15-14-13-12 di PD di funzionare come output*/}
+27     GPIOD->MODER|=(0x55<<24);
+28 
+29     \textcolor{comment}{/*Si spengono eventualmente i led accesi da un programma eseguito in precedenza*/}
+30     GPIOD->ODR=0x0;
+31 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{my__bsp__custom_8c_afafb0dccf1afd67f04907bfe3ec10883}\label{my__bsp__custom_8c_afafb0dccf1afd67f04907bfe3ec10883}} 
+\index{my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}!init\+\_\+timer2@{init\+\_\+timer2}}
+\index{init\+\_\+timer2@{init\+\_\+timer2}!my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+timer2()}{init\_timer2()}}
+{\footnotesize\ttfamily void init\+\_\+timer2 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{clock }\end{DoxyParamCaption})}
+
+
+
+Questa funzione inizializza il timer2. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em clock} & intero a 32 bit che indica il numero di colpi di clock da contare prima del segnale di timeout \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 55 del file my\+\_\+bsp\+\_\+custom.\+c.
+
+
+
+Referenziato da init().
+
+
+\begin{DoxyCode}
+55                                 \{
+56 
+57     \textcolor{comment}{/*Abilitazione al Timer2*/}
+58     RCC->APB1ENR|=1;
+59 
+60     \textcolor{comment}{/*Si indica al Timer2 che solo un overflow/underflow può generare l'interruzione*/}
+61     TIM2->CR1|=(1<<2);
+62 
+63     \textcolor{comment}{/*Numero di colpi di clock da contare*/}
+64     TIM2->ARR=clock;
+65 
+66     \textcolor{comment}{/*Non si utilizza il prescaler (divisione per 1)*/}
+67     TIM2->PSC=0;
+68 
+69     \textcolor{comment}{/*Azzeramento conteggio*/}
+70     TIM2->CNT=0;
+71 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{my__bsp__custom_8c_a7bd56ea7130eadff5a5bcd100efb1a89}\label{my__bsp__custom_8c_a7bd56ea7130eadff5a5bcd100efb1a89}} 
+\index{my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}!is\+\_\+timer2\+\_\+stopped@{is\+\_\+timer2\+\_\+stopped}}
+\index{is\+\_\+timer2\+\_\+stopped@{is\+\_\+timer2\+\_\+stopped}!my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{is\+\_\+timer2\+\_\+stopped()}{is\_timer2\_stopped()}}
+{\footnotesize\ttfamily uint8\+\_\+t is\+\_\+timer2\+\_\+stopped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di interrogare il timer2 se il countdown è avvenuto. 
+
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Intero} & a 8 bit\+: 1 countdown avvenuto; 0 countdown non avvenuto. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 115 del file my\+\_\+bsp\+\_\+custom.\+c.
+
+
+
+Referenziato da supercar().
+
+
+\begin{DoxyCode}
+115                            \{
+116 
+117     \textcolor{comment}{/*Se l'ultimo bit dello status register è pari a 1 allora il conteggio è terminato*/}
+118     \textcolor{keywordflow}{if}(TIM2->SR&1)\{
+119             \textcolor{comment}{/*Si resetta l'ultimo bit per il prossimo conteggio*/}
+120             TIM2->SR=0;
+121             \textcolor{keywordflow}{return} 1;
+122     \}
+123     \textcolor{keywordflow}{return} 0;
+124 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}\label{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}} 
+\index{my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}!read\+\_\+button@{read\+\_\+button}}
+\index{read\+\_\+button@{read\+\_\+button}!my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{read\+\_\+button()}{read\_button()}}
+{\footnotesize\ttfamily uint8\+\_\+t read\+\_\+button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di leggere lo stato del bottone utente. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em value} & intero a 8 bit che indica il valore da mostrare sui led\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Intero} & a 8 bit\+: 1 bottone premuto; 0 bottone non premuto. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 94 del file my\+\_\+bsp\+\_\+custom.\+c.
+
+
+
+Referenziato da counter(), e toggle\+All().
+
+
+\begin{DoxyCode}
+94                      \{
+95     \textcolor{keywordflow}{return} GPIOA->IDR&1;
+96 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{my__bsp__custom_8c_af1d5c5b1e9422b8e5e2424b2a8bfd697}\label{my__bsp__custom_8c_af1d5c5b1e9422b8e5e2424b2a8bfd697}} 
+\index{my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}!start\+\_\+timer2@{start\+\_\+timer2}}
+\index{start\+\_\+timer2@{start\+\_\+timer2}!my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{start\+\_\+timer2()}{start\_timer2()}}
+{\footnotesize\ttfamily void start\+\_\+timer2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione indica al timer2 l\textquotesingle{}inizio di un countdown. 
+
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 103 del file my\+\_\+bsp\+\_\+custom.\+c.
+
+
+
+Referenziato da supercar().
+
+
+\begin{DoxyCode}
+103                    \{
+104     TIM2->CR1=1;
+105 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}\label{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}} 
+\index{my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}!write\+\_\+led@{write\+\_\+led}}
+\index{write\+\_\+led@{write\+\_\+led}!my\+\_\+bsp\+\_\+custom.\+c@{my\+\_\+bsp\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{write\+\_\+led()}{write\_led()}}
+{\footnotesize\ttfamily void write\+\_\+led (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di scrivere sui led utente. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em value} & intero a 8 bit che indica il valore da mostrare sui led\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 81 del file my\+\_\+bsp\+\_\+custom.\+c.
+
+
+
+Referenziato da counter(), supercar(), e toggle\+All().
+
+
+\begin{DoxyCode}
+81                              \{
+82     GPIOD->ODR|=value<<12;
+83 \}
+\end{DoxyCode}

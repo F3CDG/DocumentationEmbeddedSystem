@@ -1,0 +1,202 @@
+\hypertarget{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c}{}\section{Riferimenti per il file Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.c}
+\label{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c}\index{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}}
+
+
+Esempio di utilizzo delle interruzioni mediante H\+AL su board S\+T\+M32.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4\+\_\+discovery.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}{setup} ()
+\begin{DoxyCompactList}\small\item\em Funzione per inizializzare le periferiche da utilizzare. \end{DoxyCompactList}\item 
+void \hyperlink{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_afe461d27b9c48d5921c00d521181f12f}{loop} ()
+\item 
+void \hyperlink{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback} (uint16\+\_\+t G\+P\+I\+O\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Interrupt Service Routine lanciata da E\+X\+T\+I0. \end{DoxyCompactList}\item 
+int \hyperlink{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+short int \hyperlink{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count} =0
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Esempio di utilizzo delle interruzioni mediante H\+AL su board S\+T\+M32. 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+16-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}\label{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}} 
+\index{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}!H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback@{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback}}
+\index{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback@{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback}!Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback()}{HAL\_GPIO\_EXTI\_Callback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{G\+P\+I\+O\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Interrupt Service Routine lanciata da E\+X\+T\+I0. 
+
+Questa funzione è eseguita quando scatta l\textquotesingle{}interruzione di E\+X\+T\+I0, ovvero quando viene premuto il push button.
+
+\begin{DoxyNote}{Nota}
+Una volta invocata la routine essa implementa una logica custom, in particolare una volta schicciato il bottone utente si provvede ad incrementare di 1 una variabile e mostrato il conteggio sui led. Tale funzione reimplementa una callback 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em G\+P\+I\+O\+\_\+\+Pin} & intero a 16 bit che indica il pin di G\+P\+IO da dove è stata lanciata l\textquotesingle{}interruzione. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}{Parametri}
+{\em G\+P\+I\+O\+\_\+\+Pin} & si indica il pin associato al push button. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+si esegue la Master Transmit in no blocking mode verso lo slave di indirizzo A\+D\+D\+R\+E\+S\+S\+\_\+B. 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}{Parametri}
+{\em G\+P\+I\+O\+\_\+\+Pin} & si indica il pin associato al push button. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+si esegue la transmit. 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 28 del file main.\+c.
+
+
+
+Referenzia count.
+
+
+\begin{DoxyCode}
+28                                               \{
+29     \hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}++;
+30     GPIOD->ODR=\hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}<<12;
+31     \textcolor{keywordflow}{if}(\hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}==15)
+32         \hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}=0;
+33 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_afe461d27b9c48d5921c00d521181f12f}\label{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_afe461d27b9c48d5921c00d521181f12f}} 
+\index{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}!loop@{loop}}
+\index{loop@{loop}!Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 59 del file main.\+c.
+
+
+\begin{DoxyCode}
+59            \{
+60 
+61     HAL\_PWR\_EnterSLEEPMode (PWR\_MAINREGULATOR\_ON, PWR\_SLEEPENTRY\_WFI);
+62 
+63 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 37 del file main.\+c.
+
+
+
+Referenzia loop(), e setup().
+
+
+\begin{DoxyCode}
+38 \{
+39     \hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}{setup}();
+40     \textcolor{keywordflow}{for}(;;) \hyperlink{_elaborato2_2src_2main_8c_af1e28df83629ff23990efe2fa029811f}{loop}();
+41     \textcolor{keywordflow}{return} 1;
+42 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}\label{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}!setup@{setup}}
+\index{setup@{setup}!Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione per inizializzare le periferiche da utilizzare. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 49 del file main.\+c.
+
+
+\begin{DoxyCode}
+49             \{
+50     HAL\_Init();
+51     BSP\_LED\_Init(LED3);
+52     BSP\_LED\_Init(LED4);
+53     BSP\_LED\_Init(LED5);
+54     BSP\_LED\_Init(LED6);
+55     BSP\_PB\_Init(BUTTON\_KEY, BUTTON\_MODE\_EXTI);
+56 
+57 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}\label{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}} 
+\index{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}!count@{count}}
+\index{count@{count}!Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c@{Elaborato3/\+Elaborato3\+\_\+1\+\_\+\+Interrupt\+H\+A\+L/main.\+c}}
+\subsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily short int count =0}
+
+
+
+Definizione alla linea 17 del file main.\+c.
+

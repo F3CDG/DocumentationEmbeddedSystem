@@ -1,0 +1,4313 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{listings,xcolor,courier,bookmark}
+\usepackage{listingsutf8}
+\definecolor{darkblue}{named}{blue}
+\definecolor{darkred}{named}{red}
+\definecolor{grau}{named}{gray}
+\let\Righttorque\relax
+\lstset{
+captionpos=b,
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+keywordstyle=\color{darkblue},
+stringstyle=\color{darkred},
+extendedchars=true,
+basicstyle=\small\ttfamily,
+showstringspaces=false,
+tabsize=2,
+numbers=left,
+numberstyle=\tiny,
+breakautoindent  = true,
+breakindent      = 2em,
+breaklines       = true,
+postbreak        = ,
+prebreak         = \raisebox{-.8ex}[0ex][0ex]{\Righttorque},
+showspaces=false, 
+showtabs=false, 
+showstringspaces=false,
+language=VHDL,
+frame=single,
+morecomment=[s]{--}
+}
+
+
+\renewcommand*{\lstlistingname}{Codice}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{} 
+\fancyfoot{} 
+
+\fancyhead[RO,LE]{\bfseries \leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Tesina in SE: Sistemi Embedded}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\date{}
+\cfoot{}
+\end_preamble
+\use_default_options true
+\master Tesina.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Procedimento
+\end_layout
+
+\begin_layout Subsection
+SPI
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "Esempio-SPI"
+
+\end_inset
+
+Si propone, di seguito, un esempio di comunicazione che utilizza il bus
+ 
+\series bold
+S
+\series default
+erial 
+\series bold
+P
+\series default
+eripheral 
+\series bold
+I
+\series default
+nterface, 
+\series bold
+SPI
+\series default
+.
+ Inizialmente, con l'utilizzo del software 
+\series bold
+STM32CubeMX
+\series default
+, si configurano 2 board STM32F4Discovery: una, la si abilita a funzionare
+ da Master; l'altra, da Slave, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Configurazione-SPI"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/spi_configuration.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Configurazione-SPI"
+
+\end_inset
+
+Configurazione della STM32F4Discovery per SPI
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'esercitazione, di seguito proposta, prevede che, quando viene premuto
+ il push-button sul master, allora viene eseguita la trasmissione di un
+ messaggio testuale dalla board Master a quella Slave.
+ Se la trasmissione è andata a buon fine, si accende il LED 4 sulla board
+ che funge da Master.
+ Simultaneamente, se la ricezione è eseguita con successo, sullo Slave si
+ accende il LED 6.
+\end_layout
+
+\begin_layout Standard
+Si mette in evidenza che il push button sullo Slave è configurato con interrupt
+ abilitata e con un valore di sub-priority pari a 2.
+ Anche il bus SPI2 ha le interrupt abilitate, ma ad un valore di sub-priority
+ pari ad 1.
+ Quando si aziona l'interruzione su EXTI0, è richiama la callback corrispondente
+ in cui viene effettuata la trasmissione in no-blocking mode dal Master
+ allo Slave.
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Funzionamento-SPI"
+
+\end_inset
+
+ si rappresenta il funzionamento dell'esercitazione appena descritta.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/spi.jpg
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Funzionamento-SPI"
+
+\end_inset
+
+Esempio di funzionamento di tasmissione attraverso il bus SPI
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+SPI Master
+\end_layout
+
+\begin_layout Standard
+Di seguito, si riporta il codice implementato per la configurazione di SPI
+ e la ridefinizione delle funzioni 
+\series bold
+_weak 
+\series default
+callback.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=75,caption="funzione setup SPI.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione in cui si settano i parametri SPI
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  *    **/
+\end_layout
+
+\begin_layout Plain Layout
+
+void setup_SPI(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Instance               = SPI2;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.Mode 			 = SPI_MODE_MASTER;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CLKPhase          = SPI_PHASE_1EDGE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CLKPolarity       = SPI_POLARITY_HIGH;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CRCPolynomial     = 7;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.DataSize          = SPI_DATASIZE_8BIT;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.FirstBit          = SPI_FIRSTBIT_MSB;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.NSS               = SPI_NSS_SOFT;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.TIMode            = SPI_TIMODE_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+	  {
+\end_layout
+
+\begin_layout Plain Layout
+
+	    /* Initialization Error */
+\end_layout
+
+\begin_layout Plain Layout
+
+	    Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=223, caption="Callback master"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione Callback richiamata quando il trasferimento è completato
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Si esegue una operazione di Toggle sul PD12(LED4)
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(hspi->Instance==SpiHandle.Instance){
+\end_layout
+
+\begin_layout Plain Layout
+
+		HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_12);
+\end_layout
+
+\begin_layout Plain Layout
+
+		SPI2_NSS_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione Callback richiamata quando c'è stato un'errore durante
+ il trasferimento
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Si esegue un'operazione di Toggle sul PD15(LED6)
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+ void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* Turn LED5 on: Transfer error in reception/transmission process */
+\end_layout
+
+\begin_layout Plain Layout
+
+		HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_15);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Questa funzione è eseguita quando scatta una interruzione di
+ EXTI0,
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	   ovvero quando viene premuto il push button
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param GPIO_Pin: si indica il pin associato al push button.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note  si esegue la transmit.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+\end_layout
+
+\begin_layout Plain Layout
+
+	//si attende che si rilascia il bottone
+\end_layout
+
+\begin_layout Plain Layout
+
+	while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0));
+\end_layout
+
+\begin_layout Plain Layout
+
+	//si abilita il pin not slave select
+\end_layout
+
+\begin_layout Plain Layout
+
+	SPI2_NSS_ENABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	while(HAL_SPI_Transmit_IT(&SpiHandle, (uint8_t *)aTxBuffer, sizeof(aTxBuffer))
+ != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+	while (HAL_SPI_GetState(&SpiHandle) != HAL_SPI_STATE_READY);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+SPI Slave
+\end_layout
+
+\begin_layout Standard
+Di seguito, invece, si riporta il codice per la ricezione del messaggio;
+ la funzione per il settaggio dei parametri utili a configurare il protocollo
+ SPI da Slave; l'implementazione della ridefinizione delle funzioni 
+\series bold
+_weak 
+\series default
+callback.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C,firstnumber=41,caption="main slave"]
+\end_layout
+
+\begin_layout Plain Layout
+
+int main(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_Init();
+\end_layout
+
+\begin_layout Plain Layout
+
+  setup_LED();
+\end_layout
+
+\begin_layout Plain Layout
+
+  setup_SPI();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  SystemClock_Config();
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /* Infinite loop */
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(HAL_SPI_Receive_IT(&SpiHandle, (uint8_t *)receive_data,SIZE) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		  {
+\end_layout
+
+\begin_layout Plain Layout
+
+			Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+		  }
+\end_layout
+
+\begin_layout Plain Layout
+
+		  while (HAL_SPI_GetState(&SpiHandle) != HAL_SPI_STATE_READY);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C,firstnumber=87,caption="funzioni slave"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione in cui si settano i parametri SPI
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Si nota che la modalità è SLAVE
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+   **/
+\end_layout
+
+\begin_layout Plain Layout
+
+void setup_SPI(){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Instance               = SPI2;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.Mode 			   = SPI_MODE_SLAVE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CLKPhase          = SPI_PHASE_1EDGE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CLKPolarity       = SPI_POLARITY_HIGH;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.CRCPolynomial     = 7;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.DataSize          = SPI_DATASIZE_8BIT;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.FirstBit          = SPI_FIRSTBIT_MSB;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.NSS               = SPI_NSS_SOFT;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  SpiHandle.Init.TIMode            = SPI_TIMODE_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(HAL_SPI_Init(&SpiHandle) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+	  {
+\end_layout
+
+\begin_layout Plain Layout
+
+	    /* Initialization Error */
+\end_layout
+
+\begin_layout Plain Layout
+
+	    Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione Callback richiamata quando la ricezione è completata
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param [in] hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Si esegue un'operazione di Toggle sul PD15(LED6)
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(hspi->Instance==SpiHandle.Instance)
+\end_layout
+
+\begin_layout Plain Layout
+
+		HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_15);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione Callback richiamata quando c'è stato un'errore durante
+ il trasferimento
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Si esegue un'operazione di Toggle sul PD14(LED5)
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+ void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(hspi->Instance==SpiHandle.Instance)
+\end_layout
+
+\begin_layout Plain Layout
+
+	 HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_15);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Questa funzione è eseguita in caso di errore.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note  In tal caso si accende il led rosso: LED5
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+static void Error_Handler(void){
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOD,GPIO_PIN_14,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+I2C
+\end_layout
+
+\begin_layout Standard
+Si propone, di seguito, un esempio di trasmissione di un messaggio tra un
+ Master e uno Slave attraverso il bus 
+\series bold
+I
+\series default
+nter 
+\series bold
+I
+\series default
+ntegrated 
+\series bold
+C
+\series default
+ircuit, 
+\series bold
+I2C 
+\series default
+o 
+\series bold
+
+\begin_inset Formula $I^{2}C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Inizialmente con l'utilizzo del software STM32CubeMX si configurano 2 board
+ STM32F3Discovery: una, la si abilita a funzionare da Master; l'altra, da
+ Slave, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Configurazione-I2C"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/i2c_configuration.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Configurazione-I2C"
+
+\end_inset
+
+Configurazione della STM32F4Discovery per I2C
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si ripropone un esempio di funzionamento speculare a quello visto in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Esempio-SPI"
+
+\end_inset
+
+, in cui è stato utilizzato il bus SPI.
+ A differenza del caso precedente in cui il Master e lo Slave sono connessi
+ attraverso 4 canali e il canale NSS è utilizzato per indivuduare lo Slave
+ desiderato, in I2C ogni periferica è settata con un proprio indirizzo su
+ 7 o 10 bit.
+ Il Master, per poter comunicare con uno specifico Slave, deve inviare sul
+ canale SDA prima l'indirizzo dello slave con cui vuole comunicare e successivam
+ente il dato da trasmettere.
+ Nell'esempio realizzato, si utilizza un'indirizzamento a 7 bit.
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FunzionamentoI2C"
+
+\end_inset
+
+ si rappresenta il funzionamento dell'esempio riportato.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/i2c.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FunzionamentoI2C"
+
+\end_inset
+
+Esempio di funzionamento di tasmissione attraverso il bus I2C
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+I2C Master
+\end_layout
+
+\begin_layout Standard
+Si riportano le funzioni principali utilizzate per la trasmissione dal Master
+ allo Slave.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=146,caption="Funzione MX I2C1
+ master.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Configurazione I2C
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	utilizzando un valore di Timing pari a 004C4092A ,partendo da
+ un clock a 72MHz, si ha un timing a 1MHz
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+static void MX_I2C1_Init(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Instance             = I2C1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.Timing          = 0x00C4092A;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.OwnAddress1     = ADDRESS_A;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_I2C_Init(&hi2c1) 	!= HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Configure Analogue filter */
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Configure Digital filter     */
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=176,caption="Funzione MX I2C1
+ master.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+ /*
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione in cui si configurano i GPIO.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+static void MX_GPIO_Init(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitTypeDef GPIO_InitStruct;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* GPIO Ports Clock Enable */
+\end_layout
+
+\begin_layout Plain Layout
+
+  __HAL_RCC_GPIOF_CLK_ENABLE();
+\end_layout
+
+\begin_layout Plain Layout
+
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+\end_layout
+
+\begin_layout Plain Layout
+
+  __HAL_RCC_GPIOE_CLK_ENABLE();
+\end_layout
+
+\begin_layout Plain Layout
+
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Configure GPIO pin Output Level */
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+                          |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,
+ GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Configure GPIO pin : PA0 */
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Configure GPIO pins : PE8 PE9 PE10 PE11 
+\end_layout
+
+\begin_layout Plain Layout
+
+                           PE12 PE13 PE14 PE15 */
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11 
+\end_layout
+
+\begin_layout Plain Layout
+
+                          |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* EXTI interrupt init*/
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 3);
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* USER CODE BEGIN 4 */
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Questa funzione è eseguita quando scatta l'interruzione di EXTI0,
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	   ovvero quando viene premuto il push button
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param GPIO_Pin: si indica il pin associato al push button.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note  si esegue la Master Transmit in no blocking mode verso lo slave
+ di indirizzo ADDRESS_B.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+\end_layout
+
+\begin_layout Plain Layout
+
+	//si attende che si rilascia il bottone
+\end_layout
+
+\begin_layout Plain Layout
+
+	while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)!=0);
+\end_layout
+
+\begin_layout Plain Layout
+
+	//si abilita il pin not slave select
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_
+12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  while(HAL_I2C_Master_Transmit_IT(&hi2c1, (uint16_t)ADDRESS_B, (uint8_t*)send_
+data, TXSIZE)!= HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+	  while (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione Callback richiamata quando il Master completa il trasferime
+nto  verso lo slave
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Si accendono tutti i LED della board
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_I2C_MasterTxCpltCallback (I2C_HandleTypeDef *hi2c){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(hi2c->Instance==hi2c1.Instance){
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_9,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_11,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_12,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_13,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_14,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_15,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione Callback richiamata quando c'è stato un'errore durante
+ il trasferimento
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Sulla board saranno accesi solo i LED 6 e 7, configurati nei pin
+ PE15 e PE11, tutti gli altri saranno spenti
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/void HAL_I2C_ErrorCallback (I2C_HandleTypeDef * hi2c){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(hi2c->Instance==hi2c1.Instance)
+\end_layout
+
+\begin_layout Plain Layout
+
+				{
+\end_layout
+
+\begin_layout Plain Layout
+
+				HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_P
+IN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+				HAL_GPIO_WritePin(GPIOE,GPIO_PIN_15,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+				HAL_GPIO_WritePin(GPIOE,GPIO_PIN_11,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+				while(1);
+\end_layout
+
+\begin_layout Plain Layout
+
+				}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  This function is executed in case of error occurrence.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void _Error_Handler(char * file, int line)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* USER CODE BEGIN Error_Handler_Debug */
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* User can add his own implementation to report the HAL error return
+ state */
+\end_layout
+
+\begin_layout Plain Layout
+
+  while(1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_11);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_Delay(200);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+I2C Slave
+\end_layout
+
+\begin_layout Standard
+Di seguito, invece, si riportano le funzioni utilizzate dallo Slave.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption="main slave.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @name         : main.c
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @authors	  :Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV
+ - Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	  :13-June-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief        : Main program body
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+  *	 In questo programma è configurato il main di una ricezione I2C.
+\end_layout
+
+\begin_layout Plain Layout
+
+  *	 Prima di eseguire un loop infinito si attende di ricevere un messaggio
+ attraverso il bus I2C
+\end_layout
+
+\begin_layout Plain Layout
+
+  *	 dallo slave.
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		I2C2 SLAVE  configuration
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		PB6 (I2C1_SDA) ------> (MASTER_SDA)
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		PB7 (I2C1_SCL) ------> (MASTER_SCL)
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "main.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "stm32f3xx_hal.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/*Definizione di due macro per stabilire gli indirizzi di master(a) e slave(b)*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#define ADDRESS_A      0x18
+\end_layout
+
+\begin_layout Plain Layout
+
+#define ADDRESS_B      0x11
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/*definizione del gestore del bus*/
+\end_layout
+
+\begin_layout Plain Layout
+
+I2C_HandleTypeDef hi2c1;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/*prototipi delle funzioni*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void SystemClock_Config(void);
+\end_layout
+
+\begin_layout Plain Layout
+
+static void MX_GPIO_Init(void);
+\end_layout
+
+\begin_layout Plain Layout
+
+static void MX_I2C1_Init(void);
+\end_layout
+
+\begin_layout Plain Layout
+
+void loop(void);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/*ridefinizione dei prototipi per le callback di EXTI0 e I2CTxClp*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_I2C_SlaveRxCpltCallback (I2C_HandleTypeDef *hi2c);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/*definizione e inizializzazione di un baffer su cui ricevere il messaggio*/
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t send_data[] ="****MESSAGGIO I2C****";
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t receive_data[TXSIZE];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione main in cui vengono inizialmente effettuati i settaggi
+ di HALL, Clock, GPIO e bus
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		e successivamente si attende di ricevere un messaggio dal master
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+int main(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_Init();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  SystemClock_Config();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  MX_GPIO_Init();
+\end_layout
+
+\begin_layout Plain Layout
+
+  MX_I2C1_Init();
+\end_layout
+
+\begin_layout Plain Layout
+
+  if(HAL_I2C_Slave_Receive_IT(&hi2c1, (uint8_t *)receive_data, sizeof(receive_da
+ta)) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+   {
+\end_layout
+
+\begin_layout Plain Layout
+
+     Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+   }
+\end_layout
+
+\begin_layout Plain Layout
+
+   while (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+while(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+	  loop();
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Loop infinito richiamato dalla funzione main.c.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void loop(void){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_15);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_9);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_11);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_13);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_8);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_10);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_12);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_Delay(150);
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_14);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  System Clock Configuration
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         The system Clock is configured as follow :
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            System Clock source            = PLL (HSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            SYSCLK(Hz)                     = 72000000
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            HCLK(Hz)                       = 72000000
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            AHB Prescaler                  = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            APB1 Prescaler                 = 2
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            APB2 Prescaler                 = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            HSE Frequency(Hz)              = 8000000
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            HSE PREDIV                     = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            PLLMUL                         = RCC_PLL_MUL9 (9)
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            Flash Latency(WS)              = 2
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void SystemClock_Config(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitTypeDef RCC_OscInitStruct;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_ClkInitTypeDef RCC_ClkInitStruct;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_PeriphCLKInitTypeDef PeriphClkInit;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Initializes the CPU, AHB and APB busses clocks 
+\end_layout
+
+\begin_layout Plain Layout
+
+    */
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HS
+E;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.HSICalibrationValue = 16;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Initializes the CPU, AHB and APB busses clocks 
+\end_layout
+
+\begin_layout Plain Layout
+
+    */
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+\end_layout
+
+\begin_layout Plain Layout
+
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+\end_layout
+
+\begin_layout Plain Layout
+
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Configure the Systick interrupt time 
+\end_layout
+
+\begin_layout Plain Layout
+
+    */
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Configure the Systick 
+\end_layout
+
+\begin_layout Plain Layout
+
+    */
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* SysTick_IRQn interrupt configuration */
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* I2C1 init function */
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Configurazione I2C
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	utilizzando un valore di Timing pari a 004C4092A ,partendo da
+ un clock a 72MHz, si ha un timing a 1MHz
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+static void MX_I2C1_Init(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Instance             = I2C1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.Timing          = 0x00C4092A;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.OwnAddress1     = ADDRESS_B;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.OwnAddress2     = 0xFF;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	hi2c1.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_I2C_Init(&hi2c1) 	!= HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Configure Analogue filter 
+\end_layout
+
+\begin_layout Plain Layout
+
+    */
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**Configure Digital filter 
+\end_layout
+
+\begin_layout Plain Layout
+
+    */
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _Error_Handler(__FILE__, __LINE__);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/** Configure pins as 
+\end_layout
+
+\begin_layout Plain Layout
+
+        * Analog 
+\end_layout
+
+\begin_layout Plain Layout
+
+        * Input 
+\end_layout
+
+\begin_layout Plain Layout
+
+        * Output
+\end_layout
+
+\begin_layout Plain Layout
+
+        * EVENT_OUT
+\end_layout
+
+\begin_layout Plain Layout
+
+        * EXTI
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+static void MX_GPIO_Init(void)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitTypeDef GPIO_InitStruct;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* GPIO Ports Clock Enable */
+\end_layout
+
+\begin_layout Plain Layout
+
+  __HAL_RCC_GPIOF_CLK_ENABLE();
+\end_layout
+
+\begin_layout Plain Layout
+
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+\end_layout
+
+\begin_layout Plain Layout
+
+  __HAL_RCC_GPIOE_CLK_ENABLE();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Configure GPIO pin Output Level */
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11
+\end_layout
+
+\begin_layout Plain Layout
+
+                          |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,
+ GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Configure GPIO pin : PA0 */
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Configure GPIO pins : PE8 PE9 PE10 PE11
+\end_layout
+
+\begin_layout Plain Layout
+
+                           PE12 PE13 PE14 PE15 */
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11
+\end_layout
+
+\begin_layout Plain Layout
+
+                          |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* EXTI interrupt init*/
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 2);
+\end_layout
+
+\begin_layout Plain Layout
+
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* USER CODE BEGIN 4 */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+\end_layout
+
+\begin_layout Plain Layout
+
+	//si attende che si rilascia il bottone
+\end_layout
+
+\begin_layout Plain Layout
+
+	while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)!=0);
+\end_layout
+
+\begin_layout Plain Layout
+
+	//si abilita il pin not slave select
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_
+12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Funzione Callback richiamata quando lo slave completa il trasferimen
+to  verso lo slave
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note	Si accendono tutti i LED della board
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * **/void HAL_I2C_SlaveRxCpltCallback (I2C_HandleTypeDef *hi2c){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(hi2c->Instance==hi2c1.Instance){
+\end_layout
+
+\begin_layout Plain Layout
+
+		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN
+_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /**
+\end_layout
+
+\begin_layout Plain Layout
+
+    * @brief  Funzione Callback richiamata quando c'è stato un'errore durante
+ il trasferimento
+\end_layout
+
+\begin_layout Plain Layout
+
+    * @param  hspi: gestore spi
+\end_layout
+
+\begin_layout Plain Layout
+
+    * @note	Sulla board saranno accesi solo i LED 6 e 7, configurati nei
+ pin PE15 e PE11, tutti gli altri saranno spenti
+\end_layout
+
+\begin_layout Plain Layout
+
+    * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+    * */
+\end_layout
+
+\begin_layout Plain Layout
+
+void HAL_I2C_ErrorCallback (I2C_HandleTypeDef * hi2c){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(hi2c->Instance==hi2c1.Instance)
+\end_layout
+
+\begin_layout Plain Layout
+
+					{
+\end_layout
+
+\begin_layout Plain Layout
+
+					HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_
+PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+					HAL_GPIO_WritePin(GPIOE,GPIO_PIN_15,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+					HAL_GPIO_WritePin(GPIOE,GPIO_PIN_11,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+					while(1);
+\end_layout
+
+\begin_layout Plain Layout
+
+					}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  This function is executed in case of error occurrence.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void _Error_Handler(char * file, int line)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* USER CODE BEGIN Error_Handler_Debug */
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* User can add his own implementation to report the HAL error return
+ state */
+\end_layout
+
+\begin_layout Plain Layout
+
+  while(1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_11);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_Delay(200);
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* USER CODE END Error_Handler_Debug */ 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#ifdef USE_FULL_ASSERT
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+   * @brief Reports the name of the source file and the source line number
+\end_layout
+
+\begin_layout Plain Layout
+
+   * where the assert_param error has occurred.
+\end_layout
+
+\begin_layout Plain Layout
+
+   * @param file: pointer to the source file name
+\end_layout
+
+\begin_layout Plain Layout
+
+   * @param line: assert_param error line source number
+\end_layout
+
+\begin_layout Plain Layout
+
+   * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+   */
+\end_layout
+
+\begin_layout Plain Layout
+
+void assert_failed(uint8_t* file, uint32_t line)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* USER CODE BEGIN 6 */
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* User can add his own implementation to report the file name and line
+ number,
+\end_layout
+
+\begin_layout Plain Layout
+
+    ex: printf("Wrong parameters value: file %s on line %d
+\backslash
+r
+\backslash
+n", file, line) */
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* USER CODE END 6 */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#endif
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+UART
+\end_layout
+
+\begin_layout Standard
+Di seguito, si propone un esempio di funzionamento di una trasmissione attravers
+o l'utilizzo del bus 
+\series bold
+U
+\series default
+niversal 
+\series bold
+A
+\series default
+synchronous 
+\series bold
+R
+\series default
+eceiver-
+\series bold
+T
+\series default
+ransmitter, 
+\series bold
+UART
+\series default
+.
+ Inizialmente con l'utilizzo del software STM32CubeMX si configurano 2 board
+ STM32F4Discovery:una, la si abilita a funzionare da Master; l'altra, da
+ Slave, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Configurazione-UART"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/uart_configuration.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Configurazione-UART"
+
+\end_inset
+
+Configurazione della STM32F4Discovery per l'uso di UART
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'esercitazione prevede che, quando si preme il push-button sul Master,
+ inizia la trasmissione di un messaggio in cui è presente un valore numerico,
+ inizialmente 0.
+ Se la ricezione va a buon fine, la board che funge da Slave accende il
+ led corrispondente al valore numerico e prima di reinviarlo al master ne
+ incrementa il valore di 1 modulo 4.
+ In questo modo il contenuto del messaggio appartiene constantemente all'iinterv
+allo [0,3].
+ Quando il Master riceve il messaggio dallo Slave, anch'esso accende il
+ led corrispondente al valore ricevuto e si pone in attesa di una successiva
+ trasmissione.
+ In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Funzionamento-UART"
+
+\end_inset
+
+si rappresenta il funzionamento dell'esercitazione descritta.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/uart.jpg
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Funzionamento-UART"
+
+\end_inset
+
+Esempio di funzionamento di tasmissione attraverso il bus UART
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+UART Master
+\end_layout
+
+\begin_layout Standard
+Di seguito, si riporta il codice della funzione 
+\series bold
+SetupUART
+\series default
+ in cui si esegue il settaggio della configurazione UART e della funzione
+ loop, eseguita in un ciclo infinito nel main del Master.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C,firstnumber=189,caption="main master.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Configurazione UART
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         Si utilizza una USART Asincrona, nello specifico si sceglie
+ USART2
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         che è connessa ai pin PA2(USART2_TX) e PA3(USART2 RX)
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         Si sceglie di settare i seguenti valori :
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            - Lunghezza = 8 Bits
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            - Stop Bit = 1 bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            - Parity = None
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            - BaudRate = 9600 baud
+\end_layout
+
+\begin_layout Plain Layout
+
+  *            - Hardware flow control disabled (RTS and CTS signals)
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+static void SetupUART(void){
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Instance          = USART2;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Init.BaudRate     = 9600;
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Init.WordLength   = UART_WORDLENGTH_8B;
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Init.StopBits     = UART_STOPBITS_1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Init.Parity       = UART_PARITY_NONE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Init.Mode         = UART_MODE_TX_RX;
+\end_layout
+
+\begin_layout Plain Layout
+
+	huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(HAL_UART_Init(&huart2) != HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+	 {
+\end_layout
+
+\begin_layout Plain Layout
+
+	  Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+	 }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Loop per la trasmissione/ricezione di un messaggio attraverso
+ il bus UART.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void loop(void){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /* Si attende che sia premuto il push button */
+\end_layout
+
+\begin_layout Plain Layout
+
+	    while (HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0) != GPIO_PIN_SET) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_13);
+\end_layout
+
+\begin_layout Plain Layout
+
+	    HAL_Delay(40);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /* Si attende che il push button sia rilasciato */
+\end_layout
+
+\begin_layout Plain Layout
+
+	  while (HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0) != GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Si spegne il led3 */
+\end_layout
+
+\begin_layout Plain Layout
+
+		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_13,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Si trasmette il messaggio da inviare (send_data) con un timeout di 5
+ secondi*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(HAL_UART_Transmit(&huart2, (uint8_t*)send_data, TXSIZE, 5000)!= HAL_OK){
+\end_layout
+
+\begin_layout Plain Layout
+
+	    Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /* Si accende il LED6 quando il trasferimento è completato */
+\end_layout
+
+\begin_layout Plain Layout
+
+		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Si pone il master in polling per una ricezione*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(HAL_UART_Receive(&huart2, (uint8_t *)receive_data, RXSIZE, 5000) !=
+ HAL_OK){
+\end_layout
+
+\begin_layout Plain Layout
+
+	    Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /* Si accende il led associato a arxBuffer quando la ricezione è stata
+ completata */
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_GPIO_WritePin(GPIOD,LEDS[send_data[0]],GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  send_data[0] = receive_data[0];
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_GPIO_WritePin(GPIOD,LEDS[send_data[0]],GPIO_PIN_SET); 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+UART Slave
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=239,caption="main slave.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Loop per la trasmissione/ricezione di un messaggio attraverso
+ il bus UART.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  None
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void loop(void){
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Si è in polling di ricevere il messaggio dal master*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(HAL_UART_Receive(&huart2, (uint8_t *)receive_data, RXSIZE, 5000) !=
+ HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+	  {
+\end_layout
+
+\begin_layout Plain Layout
+
+	    Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_GPIO_WritePin(GPIOD,LEDS[send_data[0]],GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Si incrementa di 1 modulo 4 il contenuto del messaggio ricevuto*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  send_data[0] = (receive_data[0]+1)%4;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_GPIO_WritePin(GPIOD,LEDS[send_data[0]],GPIO_PIN_SET); 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Si invia al master il valore appena aggiornato*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(HAL_UART_Transmit(&huart2, (uint8_t*)send_data, TXSIZE, 5000)!= HAL_OK)
+\end_layout
+
+\begin_layout Plain Layout
+
+	    {
+\end_layout
+
+\begin_layout Plain Layout
+
+	      Error_Handler();
+\end_layout
+
+\begin_layout Plain Layout
+
+	    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,81 @@
+/*! \mainpage Riepilogo della documentazione interna relativa agli esercizi svolti
+ * 
+ * \section firstintro Capitolo 1  - GPIO custom su Zybo
+ * Questo progetto mostra come sia possibile tramite specifici driver, pilotare una o più periferiche di GPIO. Saranno mostrate 3 versioni ma del tutto equivalenti. 
+ * \subsection firstfirst Prima versione
+ * Libreria HAL driver con relativa applicazione per una GPIO custom scritta in linguaggio C
+ *
+ * \subsection firstsecond Seconda versione
+ * Libreria HAL driver con relativa applicazione per una GPIO custom scritta in linguaggio C orientato agli oggetti.
+ *
+ * \subsection firsttirht Terza versione
+ * Libreria HAL driver con relativa applicazione per una GPIO custom, arricchita del supporto alle interruzioni, scritta in linguaggio C 
+
+ * \section second Capitolo 2- BSP custom per STM32F4
+ *
+ * Questo progetto permette di ottenere una BSP (Board Support Package) custom per la gestione dei led e bottone utente di una board STM32F4 Discovery. Inoltre si aggiunge la possibilità di gestire una periferica di timer funzionalmente equivalente ad un contatore. Oltre all'implementazione di una BSP, vengono proposti 3 semplici driver che ne fanno utilizzo. Infine un esempio di applicativo che utilizza uno di questi 3 driver. 
+
+ * \section tirth Capitolo 3 - Esempi di utilizzo delle interruzioni su board STM
+ * Questo progetto mostra 3 esempi di utilizzo delle interrupt secondo due livelli di astrazione: BARE metal, HAL.
+ * \subsection thirtfirst Interrupt BARE metal
+ * In questo esempio si mostra una semplice ISR implementata a livello BARE metal; si può notare come a tale livello di astrazione è necessaria un'intera gestione dell'evento interrompente. Nell'esempio proposto alla pressione del bottone utente viene generata una interruzione sulla periferica EXTI0, la quale permette ad ogni invocazione di incrementare il valore di una variabile, che nella fattispecie realizza un contatore modulo 16. Si evidenzia come l'ultima istruzione della ISR sia necessaria affinché il processore effettui il cambio di contesto ritornando così all'esecuzione del programma principale.
+ * \subsection thirthsecond Interrupt HAL
+ * Sull'esempio descritto in precedenza, si mostra un modo alternativo per gestire le interruzioni. In particolare a livello HAL è astratto tutto il meccanismo alla corretta gestione dell'interruzione. Si rende necessario solo l'implementazione della logica utente.
+ * \subsection thirtthirth Interrupt BARE metal versione 2
+ * Rispetto alla versione BARE metal descritta in precedenza, l'interruzione viene lanciata su EXTI1. 
+ *
+  * \section fourth Capitolo 4 -  Esempi di utilizzo dei bus seriali su STM
+  * Sono riportati 3 esempi di utilizzo di interconnessione tra due board di STMicroeletrinics in cui si esegue una trasmissione di un messaggio tra una board configurata per essere utilizzata da master e un'altra per essere utilizzata da slave.
+  * \subsection fourthone SPI
+  *	 Quando è premuto il push-button sulla board che funge da master si genera una 	interrupt che fa eseguire la trasmit di un dato allo slave che quando riceve il messaggio fa il toggle su un led. 
+
+
+  *La configurazione tra le due periferiche è la seguente
+
+  * 			MASTER		   SLAVE
+  * 		PB13 (SPI2_SCK) ------> PB13 (SLAVE_SCK)
+  * 		PB14 (SPI2_MISO)------> PB14 (SLAVE_MISO)
+  * 		PB15 (SPI2_MOSI)------> PB15 (SLAVE_MOSI)
+  * 		PB12 (SPI2_NSS) ------> PB12 (SLAVE_NSS)
+  * \subsection fourthtwo I2C
+  *  	 Si simula lo stesso esempio visto per SPI, quando è premuto il push-button sulla board configurata da master si genera una interrupt che fa eseguire la trasmissione di un dato allo slave di un determinato indirizzo concordato.
+  *
+  *La configurazione tra le due periferiche è la seguente
+
+  * 		     MASTER               SLAVE
+  * 		PB6 (I2C1_SDA) ------> PB6 (SLAVE_SDA)
+  * 		PB7 (I2C1_SCL) ------> PB7 (SLAVE_SCL)
+  * \subsection fourththree UART
+  *Si è in attesa che si preme il push button sulla board configurata da master, per poter generare una trasmissione. Se la trasmissione è completata con successo, si fa un toggle sul LED6, e si procede al polling di una ricezione. Se anche la ricezione è completata con successo, si accende il led associato al dato ricevuto in receive_data e si incrementa il valore ricevuto, di una unità per poterlo inviare di nuovo al master.
+  *La configurazione tra le due periferiche è la seguente
+
+  * 		    MASTER 		SLAVE
+  * 		PA2 (UART_TX) ------> PA3 (SLAVE_UART RX)
+  * 		PA3 (UART_RX) ------> PA2 (SLAVE UART TX)
+ 
+ *
+ *
+ * \section fifth Capitolo 5 - Esempi di utilizzo dell'Universal Serial Bus su STM32
+ *
+ * Questo progetto mostra 2 esempi di utilizzo dell'USB su board STM32; il primo evidenzia un semplice meccanismo per l'invio dati in maniera seriale, il secondo invece l'implementazione di un device USB.
+ * \subsection fifthfirst Virtual COM Port
+ * In questo esempio viene mostrato come tramite l'utilizzo della classe CDC (Communication Device Class) sia possibile simulare un trasferimento seriale UART, sfruttando una porta COM virtuale. Tale applicazione può essere sfruttata in altri contesti per stampare messaggi su video a scopo di debug. L'esercizio proposto è implementato sfruttando il middlware (già presente nella libreria CUBE) relativo alle virtual COM port.
+ * \subsubsection fifthsecond Mouse USB
+ * In questo esempio viene mostrato come sfruttando l'accellerometro in dotazione alla board STM32F4 Discovery, è possibile implementare un mouse sfruttando il middlware relativo alle periferiche HID.
+ * \section six Capitolo 6  - Kernel
+ * Tale Capitolo è sprovvisto di documentazione interna.
+ * \section secondintro Capitolo 7  -Driver Linux
+ * In questa documentazione sono presenti dei driver per SO Linux al fine di controllare scrittura e lettura di una GPIO. I driver sono stati sviluppat sia per la GPIO fornita dalla Xilinx, sia per una GPIO custom realizzata ai fini dell'esame di Sistemi Embedded e presente nel capitolo 1 della documentazione.
+ * \subsection seven Prima tipologia di driver
+ *
+ * Con questa tipologia di driver l'accesso ai registri della periferica GPio viene effettuato utilizzando direttamente l'indirizzo fisico della periferica. Per la precisione, dato il meccanismo di virtualizzazione del SO, da tale indirizzo viene ricavato, tramite la system call mmap, un indirizzo virtuale. Tramite questo vengono effettuate le operazioni di lettura e scrittura, fornendo opportunamente alle funzioni gli spiazzamenti dei registri interni della periferica. Per ulteriore approfondimento si rimanda a https://www.xilinx.com/support/documentation/ip_documentation/axi_gpio/v2_0/pg144-axi-gpio.pdf.
+ * \subsection sevensecond Seconda tipologia di driver
+ * 
+ * Il driver è simile al precedente. La principale differenza sta nel fatto che non si accede più alla periferica tramite indirizzo fisico, ma attraverso il device uio file che viene riconosciuto dal SO. E' chiaro che per utilizzare questa tipologia di driver, bisogna configurare il kernel Linux in modo tale da prevedere l'impiego di driver uio. Una volta acceduto alla periferica, il funzionamento è praticamente lo stesso del precedente driver.
+ * \subsection seventhird Terza tipologia di driver
+ * 
+ * Quest'ultima tipologia è simile alla precedente per quanto riguarda la modalità di accesso alla periferica. La differenza sta nell'utilizzo del meccanismo delle interruzioni per la lettura. In base alla GPIO utilizzata, quando avviene un'operazione di lettura, la prima istruzione eseguita è l'abilitazione generale delle interruzioni sulla periferica. Successivamente vengono abilitate le interruzioni dei canali (se la GPIO è della Xilinx), altrimenti viene abilitata la maschera delle interruzioni di ogni singolo port (se la GPIO è quella custom). A questo punto il processo si sospende sulla periferica mediante un'operazione di read. Quando viene risvegliato dall'interruzione, il driver disabilita le interruzioni sopra citate, legge il valore sul porto di input infine comunica al SO di aver servito l'interruzione e pulisce il registro di status della periferica.
+  *
+  * \section eight Capitolo 8 - Esempi di utilizzo del Sistema Operativo FreeRtos su STM32F4Discovery
+   * E' riportato il codice utilizzato per implementare diversi esempi di utilizzo di task attraverso il sistema operativo FreeRTOS. Sono state effettuate diverse simulazioni variando sia il numero di task che il valore delle macro Priority e Delay.
+  */

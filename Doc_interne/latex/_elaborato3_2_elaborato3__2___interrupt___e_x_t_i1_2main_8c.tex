@@ -1,0 +1,218 @@
+\hypertarget{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c}{}\section{Riferimenti per il file Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.c}
+\label{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c}\index{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}}
+
+
+Esempio di utilizzo delle interruzioni B\+A\+RE metal su board S\+T\+M32 e periferica E\+X\+T\+I1.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4\+\_\+discovery.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}{setup} ()
+\item 
+void \hyperlink{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_afe461d27b9c48d5921c00d521181f12f}{loop} ()
+\item 
+void \hyperlink{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a7e9055d1f4a14ef6eb3990a77efc8983}{E\+X\+T\+I1\+\_\+\+I\+R\+Q\+Handler} ()
+\begin{DoxyCompactList}\small\item\em Interrupt Service Routine lanciata da E\+X\+T\+I1. \end{DoxyCompactList}\item 
+int \hyperlink{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\item 
+void \hyperlink{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a7ff248f37eb50892809c4213c4ef48f4}{init\+\_\+pin1C} ()
+\begin{DoxyCompactList}\small\item\em Inizializzazione del pin P\+C1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+short int \hyperlink{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count} =0
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Esempio di utilizzo delle interruzioni B\+A\+RE metal su board S\+T\+M32 e periferica E\+X\+T\+I1. 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+16-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a7e9055d1f4a14ef6eb3990a77efc8983}\label{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a7e9055d1f4a14ef6eb3990a77efc8983}} 
+\index{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}!E\+X\+T\+I1\+\_\+\+I\+R\+Q\+Handler@{E\+X\+T\+I1\+\_\+\+I\+R\+Q\+Handler}}
+\index{E\+X\+T\+I1\+\_\+\+I\+R\+Q\+Handler@{E\+X\+T\+I1\+\_\+\+I\+R\+Q\+Handler}!Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}}
+\subsubsection{\texorpdfstring{E\+X\+T\+I1\+\_\+\+I\+R\+Q\+Handler()}{EXTI1\_IRQHandler()}}
+{\footnotesize\ttfamily void E\+X\+T\+I1\+\_\+\+I\+R\+Q\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Interrupt Service Routine lanciata da E\+X\+T\+I1. 
+
+\begin{DoxyNote}{Nota}
+Una volta invocata la routine essa implementa una logica custom, in particolare schicciato il bottone utente si provvede ad incrementare di 1 una variabile e mostrato il conteggio sui led. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 28 del file main.\+c.
+
+
+
+Referenzia count.
+
+
+\begin{DoxyCode}
+28                        \{
+29     \hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}++;
+30     GPIOD->ODR=\hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}<<12;
+31     \textcolor{keywordflow}{if}(\hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}==15)
+32         \hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}=0;
+33     NVIC\_ClearPendingIRQ(EXTI1\_IRQn);
+34     \_\_HAL\_GPIO\_EXTI\_CLEAR\_IT(GPIO\_PIN\_1);
+35 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a7ff248f37eb50892809c4213c4ef48f4}\label{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a7ff248f37eb50892809c4213c4ef48f4}} 
+\index{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}!init\+\_\+pin1C@{init\+\_\+pin1C}}
+\index{init\+\_\+pin1C@{init\+\_\+pin1C}!Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+pin1\+C()}{init\_pin1C()}}
+{\footnotesize\ttfamily void init\+\_\+pin1C (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inizializzazione del pin P\+C1. 
+
+\begin{DoxyNote}{Nota}
+P\+C1 è settato in modo tale da lanciare interruzioni 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 62 del file main.\+c.
+
+
+
+Referenziato da setup().
+
+
+\begin{DoxyCode}
+62                  \{
+63 
+64     \textcolor{comment}{/*Abilitazione GPIOC*/}
+65     RCC->AHB1ENR |= RCC\_AHB1ENR\_GPIOCEN;
+66 
+67     \textcolor{comment}{/*Si indica che da GPIOC, PC1, arriva un interrupt*/}
+68     SYSCFG->EXTICR[0] &= 0xFF0F;
+69     SYSCFG->EXTICR[0] = SYSCFG\_EXTICR1\_EXTI1\_PC;
+70 
+71     \textcolor{comment}{/*Interupt da GPIOC non mascherato*/}
+72     EXTI->IMR = (1<<1);
+73 
+74     \textcolor{comment}{/*Interrupt su fronte di salita*/}
+75     EXTI->RTSR=(1<<1);
+76 
+77     \textcolor{comment}{/*Settaggio priorità su NVIC*/}
+78     NVIC\_SetPriority(EXTI1\_IRQn,15);
+79 
+80     \textcolor{comment}{/*Abilitazione interrupt su NVIC*/}
+81     NVIC\_EnableIRQ(EXTI1\_IRQn);
+82 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_afe461d27b9c48d5921c00d521181f12f}\label{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_afe461d27b9c48d5921c00d521181f12f}} 
+\index{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}!loop@{loop}}
+\index{loop@{loop}!Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 54 del file main.\+c.
+
+
+\begin{DoxyCode}
+54 \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 37 del file main.\+c.
+
+
+
+Referenzia loop(), e setup().
+
+
+\begin{DoxyCode}
+38 \{
+39 
+40     \hyperlink{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}{setup}();
+41     \textcolor{keywordflow}{for}(;;)\hyperlink{_elaborato2_2src_2main_8c_af1e28df83629ff23990efe2fa029811f}{loop}();
+42 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}\label{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}!setup@{setup}}
+\index{setup@{setup}!Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 44 del file main.\+c.
+
+
+
+Referenzia init\+\_\+pin1\+C().
+
+
+\begin{DoxyCode}
+44             \{
+45 
+46     \hyperlink{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_a7ff248f37eb50892809c4213c4ef48f4}{init\_pin1C}();
+47     BSP\_LED\_Init(LED3);
+48     BSP\_LED\_Init(LED4);
+49     BSP\_LED\_Init(LED5);
+50     BSP\_LED\_Init(LED6);
+51 
+52 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}\label{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c_ae537d34ce0e925e9ac8ca344a74ac312}} 
+\index{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}!count@{count}}
+\index{count@{count}!Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c@{Elaborato3/\+Elaborato3\+\_\+2\+\_\+\+Interrupt\+\_\+\+E\+X\+T\+I1/main.\+c}}
+\subsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily short int count =0}
+
+
+
+Definizione alla linea 20 del file main.\+c.
+

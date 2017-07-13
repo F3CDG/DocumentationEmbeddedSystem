@@ -1,0 +1,372 @@
+\hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c}{}\section{Riferimenti per il file Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.c}
+\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c}\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+
+
+esempio di funzionamento di un mouse attraverso la board S\+T\+M32\+F4\+Discovery  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usb\+\_\+device.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbd\+\_\+hid.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mouse\+\_\+position.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config} (void)
+\item 
+static void \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_ae89fdd15729ad41a66911190fcbab23a}{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init} (void)
+\item 
+static void \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a28dbf2494083ac5f39daa87bf09e4eb3}{M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init} (void)
+\item 
+int \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\item 
+void \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\+\_\+\+Error\+\_\+\+Handler} (char $\ast$file, int line)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+S\+P\+I\+\_\+\+Handle\+Type\+Def \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}
+\item 
+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_afe8a2d9e10b33d5e7906f9f04f95358e}{h\+Usb\+Device\+FS}
+\item 
+uint8\+\_\+t \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+esempio di funzionamento di un mouse attraverso la board S\+T\+M32\+F4\+Discovery 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+05-\/\+July-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a829116a51f1db1a72ebd1120f60719d5}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a829116a51f1db1a72ebd1120f60719d5}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}}
+\index{\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+Error\+\_\+\+Handler()}{\_Error\_Handler()}}
+{\footnotesize\ttfamily void \+\_\+\+Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 242 del file main.\+c.
+
+
+\begin{DoxyCode}
+243 \{
+244   \textcolor{comment}{/* USER CODE BEGIN Error\_Handler\_Debug */}
+245   \textcolor{comment}{/* User can add his own implementation to report the HAL error return state */}
+246   \textcolor{keywordflow}{while}(1) 
+247   \{
+248   \}
+249   \textcolor{comment}{/* USER CODE END Error\_Handler\_Debug */} 
+250 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 42 del file main.\+c.
+
+
+
+Referenzia hspi1, h\+Usb\+Device\+FS, init\+\_\+mouse(), M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init(), M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init(), position\+\_\+on\+\_\+led(), System\+Clock\+\_\+\+Config(), U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer, X, x\+\_\+position(), Y, e y\+\_\+position().
+
+
+\begin{DoxyCode}
+43 \{
+44 
+45   \textcolor{comment}{/* USER CODE BEGIN 1 */}
+46 
+47   \textcolor{comment}{/* USER CODE END 1 */}
+48 
+49   \textcolor{comment}{/* MCU Configuration----------------------------------------------------------*/}
+50 
+51   \textcolor{comment}{/* Reset of all peripherals, Initializes the Flash interface and the Systick. */}
+52   HAL\_Init();
+53 
+54   \textcolor{comment}{/* USER CODE BEGIN Init */}
+55 
+56   \textcolor{comment}{/* USER CODE END Init */}
+57 
+58   \textcolor{comment}{/* Configure the system clock */}
+59   \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a70af21c671abfcc773614a9a4f63d920}{SystemClock\_Config}();
+60 
+61   \textcolor{comment}{/* USER CODE BEGIN SysInit */}
+62 
+63   \textcolor{comment}{/* USER CODE END SysInit */}
+64 
+65   \textcolor{comment}{/* Initialize all configured peripherals */}
+66   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_ae89fdd15729ad41a66911190fcbab23a}{MX\_GPIO\_Init}();
+67   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a28dbf2494083ac5f39daa87bf09e4eb3}{MX\_SPI1\_Init}();
+68   MX\_USB\_DEVICE\_Init();
+69   \textcolor{comment}{/*Inizializzazione device*/}
+70   \hyperlink{mouse__position_8c_a829c4bbe5cfa7a73443caacd7515dfdb}{init\_mouse}(\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1});
+71   uint8\_t x\_prev=0;
+72   uint8\_t y\_prev=0;
+73   \textcolor{comment}{/*Loop infinito per gestione posizione puntatore e tasto sinistro*/}
+74   \textcolor{keywordflow}{while} (1)
+75   \{
+76       \textcolor{comment}{/*Si legge valore tasto sinistro*/}
+77       \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[0]=HAL\_GPIO\_ReadPin(GPIOA,GPIO\_PIN\_0);
+78       
+79       \textcolor{comment}{/*Lettura coordinata X*/}
+80       \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[1]=\hyperlink{mouse__position_8c_adcac7450284cc72897807b1fb13564e5}{x\_position}(\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1});
+81       
+82       \textcolor{comment}{/*Lettura coordinata Y*/}
+83       \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[2]=\hyperlink{mouse__position_8c_aa466ef3e1f89da70907c79eee3cdbd19}{y\_position}(\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1});
+84       
+85       \textcolor{comment}{/*Byte lasciato inutilizzato*/}
+86       \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[3]=0x00;
+87       
+88       \textcolor{comment}{/*Se la soglia di spostamento è superata allora vengono inviati i 4 byte necessari}
+89 \textcolor{comment}{       * allo spostamento del puntatore*/}
+90       \textcolor{keywordflow}{if}(\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[1]-x\_prev>0.25 || \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[1]-x\_prev<-0.25)\{
+91          \textcolor{keywordflow}{if}(\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[2]-y\_prev>0.25 || \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[2]-y\_prev<-0.25)\{
+92               USBD\_HID\_SendReport(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_afe8a2d9e10b33d5e7906f9f04f95358e}{hUsbDeviceFS},\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer},4);
+93               
+94               \textcolor{comment}{/*Illuminazione led in base allo spostamento*/}
+95               \hyperlink{mouse__position_8c_a1714013f54398af5afc84f12bac3e9ad}{position\_on\_led}(\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[1],\hyperlink{mouse__position_8h_ab61e9ecce3eb5509e3805ff67f8ad0f4a58833a3110c570fb05130d40c365d1e4}{X});
+96               \hyperlink{mouse__position_8c_a1714013f54398af5afc84f12bac3e9ad}{position\_on\_led}(\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[2],\hyperlink{mouse__position_8h_ab61e9ecce3eb5509e3805ff67f8ad0f4a5596231eabd6cf29050967d5ac83ad84}{Y});
+97           \}
+98       \}
+99       x\_prev=\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[1];
+100       y\_prev=\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}{USB\_TX\_Buffer}[2];
+101       HAL\_Delay(5);
+102   \textcolor{comment}{/* USER CODE BEGIN 3 */}
+103 
+104   \}
+105   \textcolor{comment}{/* USER CODE END 3 */}
+106 
+107 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_ae89fdd15729ad41a66911190fcbab23a}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_ae89fdd15729ad41a66911190fcbab23a}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}}
+\index{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init()}{MX\_GPIO\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Configure pins as Analog Input Output E\+V\+E\+N\+T\+\_\+\+O\+UT E\+X\+TI 
+
+Definizione alla linea 194 del file main.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+195 \{
+196 
+197   GPIO\_InitTypeDef GPIO\_InitStruct;
+198 
+199   \textcolor{comment}{/* GPIO Ports Clock Enable */}
+200   \_\_HAL\_RCC\_GPIOE\_CLK\_ENABLE();
+201   \_\_HAL\_RCC\_GPIOH\_CLK\_ENABLE();
+202   \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();
+203   \_\_HAL\_RCC\_GPIOD\_CLK\_ENABLE();
+204 
+205   \textcolor{comment}{/*Configure GPIO pin Output Level */}
+206   HAL\_GPIO\_WritePin(GPIOE, GPIO\_PIN\_3, GPIO\_PIN\_RESET);
+207 
+208   \textcolor{comment}{/*Configure GPIO pin Output Level */}
+209   HAL\_GPIO\_WritePin(GPIOD, GPIO\_PIN\_12|GPIO\_PIN\_13|GPIO\_PIN\_14|GPIO\_PIN\_15, GPIO\_PIN\_RESET);
+210 
+211   \textcolor{comment}{/*Configure GPIO pin : PE3 */}
+212   GPIO\_InitStruct.Pin = GPIO\_PIN\_3;
+213   GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+214   GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+215   GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_LOW;
+216   HAL\_GPIO\_Init(GPIOE, &GPIO\_InitStruct);
+217 
+218   \textcolor{comment}{/*Configure GPIO pin : PA0 */}
+219   GPIO\_InitStruct.Pin = GPIO\_PIN\_0;
+220   GPIO\_InitStruct.Mode = GPIO\_MODE\_INPUT;
+221   GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+222   HAL\_GPIO\_Init(GPIOA, &GPIO\_InitStruct);
+223 
+224   \textcolor{comment}{/*Configure GPIO pins : PD12 PD13 PD14 PD15 */}
+225   GPIO\_InitStruct.Pin = GPIO\_PIN\_12|GPIO\_PIN\_13|GPIO\_PIN\_14|GPIO\_PIN\_15;
+226   GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+227   GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+228   GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_LOW;
+229   HAL\_GPIO\_Init(GPIOD, &GPIO\_InitStruct);
+230 
+231 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a28dbf2494083ac5f39daa87bf09e4eb3}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a28dbf2494083ac5f39daa87bf09e4eb3}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init@{M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init}}
+\index{M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init@{M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init()}{MX\_SPI1\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definizione alla linea 165 del file main.\+c.
+
+
+
+Referenzia \+\_\+\+Error\+\_\+\+Handler(), e hspi1.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+166 \{
+167 
+168   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Instance = SPI1;
+169   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.Mode = SPI\_MODE\_MASTER;
+170   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.Direction = SPI\_DIRECTION\_2LINES;
+171   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.DataSize = SPI\_DATASIZE\_8BIT;
+172   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.CLKPolarity = SPI\_POLARITY\_LOW;
+173   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.CLKPhase = SPI\_PHASE\_1EDGE;
+174   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.NSS = SPI\_NSS\_SOFT;
+175   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.BaudRatePrescaler = SPI\_BAUDRATEPRESCALER\_8;
+176   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.FirstBit = SPI\_FIRSTBIT\_MSB;
+177   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.TIMode = SPI\_TIMODE\_DISABLE;
+178   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.CRCCalculation = SPI\_CRCCALCULATION\_DISABLE;
+179   \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}.Init.CRCPolynomial = 10;
+180   \textcolor{keywordflow}{if} (HAL\_SPI\_Init(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}) != HAL\_OK)
+181   \{
+182     \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+183   \}
+184 
+185 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a70af21c671abfcc773614a9a4f63d920}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+System Clock Configuration Configure the main internal regulator output voltage
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Configure the Systick interrupt time
+
+Configure the Systick
+
+Definizione alla linea 111 del file main.\+c.
+
+
+
+Referenzia \+\_\+\+Error\+\_\+\+Handler().
+
+
+\begin{DoxyCode}
+112 \{
+113 
+114   RCC\_OscInitTypeDef RCC\_OscInitStruct;
+115   RCC\_ClkInitTypeDef RCC\_ClkInitStruct;
+116 
+119   \_\_HAL\_RCC\_PWR\_CLK\_ENABLE();
+120 
+121   \_\_HAL\_PWR\_VOLTAGESCALING\_CONFIG(PWR\_REGULATOR\_VOLTAGE\_SCALE1);
+122 
+125   RCC\_OscInitStruct.OscillatorType = RCC\_OSCILLATORTYPE\_HSE;
+126   RCC\_OscInitStruct.HSEState = RCC\_HSE\_ON;
+127   RCC\_OscInitStruct.PLL.PLLState = RCC\_PLL\_ON;
+128   RCC\_OscInitStruct.PLL.PLLSource = RCC\_PLLSOURCE\_HSE;
+129   RCC\_OscInitStruct.PLL.PLLM = 4;
+130   RCC\_OscInitStruct.PLL.PLLN = 72;
+131   RCC\_OscInitStruct.PLL.PLLP = RCC\_PLLP\_DIV2;
+132   RCC\_OscInitStruct.PLL.PLLQ = 3;
+133   \textcolor{keywordflow}{if} (HAL\_RCC\_OscConfig(&RCC\_OscInitStruct) != HAL\_OK)
+134   \{
+135     \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+136   \}
+137 
+140   RCC\_ClkInitStruct.ClockType = RCC\_CLOCKTYPE\_HCLK|RCC\_CLOCKTYPE\_SYSCLK
+141                               |RCC\_CLOCKTYPE\_PCLK1|RCC\_CLOCKTYPE\_PCLK2;
+142   RCC\_ClkInitStruct.SYSCLKSource = RCC\_SYSCLKSOURCE\_PLLCLK;
+143   RCC\_ClkInitStruct.AHBCLKDivider = RCC\_SYSCLK\_DIV1;
+144   RCC\_ClkInitStruct.APB1CLKDivider = RCC\_HCLK\_DIV2;
+145   RCC\_ClkInitStruct.APB2CLKDivider = RCC\_HCLK\_DIV1;
+146 
+147   \textcolor{keywordflow}{if} (HAL\_RCC\_ClockConfig(&RCC\_ClkInitStruct, FLASH\_LATENCY\_2) != HAL\_OK)
+148   \{
+149     \hyperlink{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+150   \}
+151 
+154   HAL\_SYSTICK\_Config(HAL\_RCC\_GetHCLKFreq()/1000);
+155 
+158   HAL\_SYSTICK\_CLKSourceConfig(SYSTICK\_CLKSOURCE\_HCLK);
+159 
+160   \textcolor{comment}{/* SysTick\_IRQn interrupt configuration */}
+161   HAL\_NVIC\_SetPriority(SysTick\_IRQn, 0, 0);
+162 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!hspi1@{hspi1}}
+\index{hspi1@{hspi1}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{hspi1}{hspi1}}
+{\footnotesize\ttfamily S\+P\+I\+\_\+\+Handle\+Type\+Def hspi1}
+
+
+
+Definizione alla linea 20 del file main.\+c.
+
+
+
+Referenziato da main(), e M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init().
+
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_afe8a2d9e10b33d5e7906f9f04f95358e}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_afe8a2d9e10b33d5e7906f9f04f95358e}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!h\+Usb\+Device\+FS@{h\+Usb\+Device\+FS}}
+\index{h\+Usb\+Device\+FS@{h\+Usb\+Device\+FS}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{h\+Usb\+Device\+FS}{hUsbDeviceFS}}
+{\footnotesize\ttfamily U\+S\+B\+D\+\_\+\+Handle\+Type\+Def h\+Usb\+Device\+FS}
+
+
+
+Referenziato da main().
+
+\mbox{\Hypertarget{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}\label{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a1595bde6d8fcbf8461073901d7b57cd5}} 
+\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}!U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer@{U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer}}
+\index{U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer@{U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer}!Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/main.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer}{USB\_TX\_Buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+\_\+\+T\+X\+\_\+\+Buffer\mbox{[}4\mbox{]}}
+
+
+
+Definizione alla linea 37 del file main.\+c.
+
+
+
+Referenziato da main().
+

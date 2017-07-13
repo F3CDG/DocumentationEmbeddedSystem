@@ -1,0 +1,530 @@
+\hypertarget{mygpio__uiointdriver_8h}{}\section{Riferimenti per il file Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/mygpio\+\_\+uiointdriver.h}
+\label{mygpio__uiointdriver_8h}\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/mygpio\+\_\+uiointdriver.\+h@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/mygpio\+\_\+uiointdriver.\+h}}
+
+
+library mygpio\+\_\+uiointdriver gpio  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/mman.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}gpio\+\_\+custom.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per mygpio\+\_\+uiointdriver.\+h\+:
+% FIG 0
+Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\+:
+% FIG 1
+\subsection*{Composti}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def}
+\begin{DoxyCompactList}\small\item\em Data Structure to manage data associated to G\+P\+IO custom peripheral. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mygpio__uiointdriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}{G\+P\+I\+O\+\_\+\+P\+O\+RT}~0xF
+\item 
+\#define \hyperlink{mygpio__uiointdriver_8h_ab702106cf3b3e96750b6845ded4e0299}{R\+E\+S\+ET}~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\#define \hyperlink{mygpio__uiointdriver_8h_acfbc006ea433ad708fdee3e82996e721}{G\+R\+E\+EN}~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}
+\item 
+\#define \hyperlink{mygpio__uiointdriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{B\+O\+L\+D\+W\+H\+I\+TE}~\char`\"{}\textbackslash{}033\mbox{[}1m\textbackslash{}033\mbox{[}37m\char`\"{}
+\item 
+\#define \hyperlink{mygpio__uiointdriver_8h_ada74e7db007a68e763f20c17f2985356}{R\+E\+AD}~1
+\item 
+\#define \hyperlink{mygpio__uiointdriver_8h_aa10f470e996d0f51210d24f442d25e1e}{W\+R\+I\+TE}~0
+\item 
+\#define \hyperlink{mygpio__uiointdriver_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}~sysconf(\+\_\+\+S\+C\+\_\+\+P\+A\+G\+E\+S\+I\+ZE)
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{mygpio__uiointdriver_8h_a7073190cb94354eb9acb652039f77557}{mygpio\+\_\+usage} (char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Describes how \textquotesingle{}mygpio\+\_\+nodriver\textquotesingle{} must be used, specifing all supported options. \end{DoxyCompactList}\item 
+int \hyperlink{mygpio__uiointdriver_8h_ab67f77691723db202f2d9a636e0ac503}{mygpio\+\_\+parse\+\_\+command} (int argc, char $\ast$$\ast$argv, \hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$mygpio)
+\begin{DoxyCompactList}\small\item\em Parses nodriver arguments. \end{DoxyCompactList}\item 
+int \hyperlink{mygpio__uiointdriver_8h_a29375cbc2ac2eab8b232500d1fa35fbd}{mygpio\+\_\+open\+\_\+memory} (\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$mygpio)
+\begin{DoxyCompactList}\small\item\em Opens /dev/mem file in order to access custom G\+P\+IO address and calculates page offset and virtual address of G\+P\+IO file. \end{DoxyCompactList}\item 
+int \hyperlink{mygpio__uiointdriver_8h_a825048e6f5b0801be6f0b7c76c3f6b76}{mygpio\+\_\+read\+\_\+gpio} (\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$mygpio)
+\begin{DoxyCompactList}\small\item\em Reads the $<$mygpio-\/$>$r\+\_\+or\+\_\+w\+\_\+value$>$ in input to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{mygpio__uiointdriver_8h_a8183896dee021f12c473ecc353e3b42c}{mygpio\+\_\+write\+\_\+gpio} (\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$mygpio)
+\begin{DoxyCompactList}\small\item\em Writes $<$mygpio-\/$>$r\+\_\+or\+\_\+w\+\_\+value$>$ in output to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{mygpio__uiointdriver_8h_aec53b5a0f3d713bc067c3d1d0121598f}{mygpio\+\_\+close\+\_\+memory} (\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$mygpio)
+\begin{DoxyCompactList}\small\item\em Closes /dev/mem file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+library mygpio\+\_\+uiointdriver gpio 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+7-\/\+July-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}\label{mygpio__uiointdriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!B\+O\+L\+D\+W\+H\+I\+TE@{B\+O\+L\+D\+W\+H\+I\+TE}}
+\index{B\+O\+L\+D\+W\+H\+I\+TE@{B\+O\+L\+D\+W\+H\+I\+TE}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{B\+O\+L\+D\+W\+H\+I\+TE}{BOLDWHITE}}
+{\footnotesize\ttfamily \#define B\+O\+L\+D\+W\+H\+I\+TE~\char`\"{}\textbackslash{}033\mbox{[}1m\textbackslash{}033\mbox{[}37m\char`\"{}}
+
+Bold White colour 
+
+Definizione alla linea 37 del file mygpio\+\_\+uiointdriver.\+h.
+
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}\label{mygpio__uiointdriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!G\+P\+I\+O\+\_\+\+P\+O\+RT@{G\+P\+I\+O\+\_\+\+P\+O\+RT}}
+\index{G\+P\+I\+O\+\_\+\+P\+O\+RT@{G\+P\+I\+O\+\_\+\+P\+O\+RT}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+P\+O\+RT}{GPIO\_PORT}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+P\+O\+RT~0xF}
+
+G\+P\+IO ports selected to read/write 
+
+Definizione alla linea 32 del file mygpio\+\_\+uiointdriver.\+h.
+
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_acfbc006ea433ad708fdee3e82996e721}\label{mygpio__uiointdriver_8h_acfbc006ea433ad708fdee3e82996e721}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!G\+R\+E\+EN@{G\+R\+E\+EN}}
+\index{G\+R\+E\+EN@{G\+R\+E\+EN}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{G\+R\+E\+EN}{GREEN}}
+{\footnotesize\ttfamily \#define G\+R\+E\+EN~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}}
+
+Green colour 
+
+Definizione alla linea 36 del file mygpio\+\_\+uiointdriver.\+h.
+
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}\label{mygpio__uiointdriver_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}}
+\index{P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+S\+I\+ZE}{PAGE\_SIZE}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+S\+I\+ZE~sysconf(\+\_\+\+S\+C\+\_\+\+P\+A\+G\+E\+S\+I\+ZE)}
+
+Page size used by SO 
+
+Definizione alla linea 44 del file mygpio\+\_\+uiointdriver.\+h.
+
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_ada74e7db007a68e763f20c17f2985356}\label{mygpio__uiointdriver_8h_ada74e7db007a68e763f20c17f2985356}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!R\+E\+AD@{R\+E\+AD}}
+\index{R\+E\+AD@{R\+E\+AD}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+AD}{READ}}
+{\footnotesize\ttfamily \#define R\+E\+AD~1}
+
+Read operation is set 
+
+Definizione alla linea 40 del file mygpio\+\_\+uiointdriver.\+h.
+
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_ab702106cf3b3e96750b6845ded4e0299}\label{mygpio__uiointdriver_8h_ab702106cf3b3e96750b6845ded4e0299}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!R\+E\+S\+ET@{R\+E\+S\+ET}}
+\index{R\+E\+S\+ET@{R\+E\+S\+ET}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+S\+ET}{RESET}}
+{\footnotesize\ttfamily \#define R\+E\+S\+ET~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}}
+
+Reset colour 
+
+Definizione alla linea 35 del file mygpio\+\_\+uiointdriver.\+h.
+
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_aa10f470e996d0f51210d24f442d25e1e}\label{mygpio__uiointdriver_8h_aa10f470e996d0f51210d24f442d25e1e}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!W\+R\+I\+TE@{W\+R\+I\+TE}}
+\index{W\+R\+I\+TE@{W\+R\+I\+TE}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{W\+R\+I\+TE}{WRITE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+TE~0}
+
+Write operation is set 
+
+Definizione alla linea 41 del file mygpio\+\_\+uiointdriver.\+h.
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_aec53b5a0f3d713bc067c3d1d0121598f}\label{mygpio__uiointdriver_8h_aec53b5a0f3d713bc067c3d1d0121598f}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!mygpio\+\_\+close\+\_\+memory@{mygpio\+\_\+close\+\_\+memory}}
+\index{mygpio\+\_\+close\+\_\+memory@{mygpio\+\_\+close\+\_\+memory}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{mygpio\+\_\+close\+\_\+memory()}{mygpio\_close\_memory()}}
+{\footnotesize\ttfamily void mygpio\+\_\+close\+\_\+memory (\begin{DoxyParamCaption}\item[{\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$}]{mygpio }\end{DoxyParamCaption})}
+
+
+
+Closes /dev/mem file. 
+
+mygpio\+\_\+close\+\_\+memory function is called to close memory file
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em mygpio} & data stucture that contains G\+P\+IO data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 165 del file mygpio\+\_\+nodriver.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Type\+Def\+::base\+\_\+address, mygpio\+\_\+\+Type\+Def\+::fd, mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+custom, e P\+A\+G\+E\+\_\+\+S\+I\+ZE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+165                                                 \{
+166     munmap((\textcolor{keywordtype}{void}*)(mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}),
+      \hyperlink{mygpio__nodriver_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{PAGE\_SIZE});
+167     close(mygpio->\hyperlink{structmygpio___type_def_a7dca4ba0fccbbc45369cf551d3688849}{fd});
+168 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_a29375cbc2ac2eab8b232500d1fa35fbd}\label{mygpio__uiointdriver_8h_a29375cbc2ac2eab8b232500d1fa35fbd}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!mygpio\+\_\+open\+\_\+memory@{mygpio\+\_\+open\+\_\+memory}}
+\index{mygpio\+\_\+open\+\_\+memory@{mygpio\+\_\+open\+\_\+memory}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{mygpio\+\_\+open\+\_\+memory()}{mygpio\_open\_memory()}}
+{\footnotesize\ttfamily int mygpio\+\_\+open\+\_\+memory (\begin{DoxyParamCaption}\item[{\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$}]{mygpio }\end{DoxyParamCaption})}
+
+
+
+Opens /dev/mem file in order to access custom G\+P\+IO address and calculates page offset and virtual address of G\+P\+IO file. 
+
+mygpio\+\_\+open\+\_\+memory function is called to open memory file
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in,out}  & {\em mygpio} & data stucture that contains G\+P\+IO data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 117 del file mygpio\+\_\+nodriver.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Type\+Def\+::base\+\_\+address, mygpio\+\_\+\+Type\+Def\+::fd, mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+custom, mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+phy\+\_\+address, M\+A\+S\+K\+\_\+\+S\+I\+ZE, P\+A\+G\+E\+\_\+\+S\+I\+ZE, e mygpio\+\_\+\+Type\+Def\+::uiod.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+117                                               \{
+118     
+119     mygpio->\hyperlink{structmygpio___type_def_a7dca4ba0fccbbc45369cf551d3688849}{fd} = open (\textcolor{stringliteral}{"/dev/mem"}, O\_RDWR);
+120         \textcolor{keywordflow}{if} (mygpio->\hyperlink{structmygpio___type_def_a7dca4ba0fccbbc45369cf551d3688849}{fd} < 1) \{
+121             perror(\textcolor{stringliteral}{"Error to open /dev/mem file"});
+122             \textcolor{keywordflow}{return} -1;
+123         \}
+124         \textcolor{keywordtype}{int} page\_phy\_addr = (mygpio->\hyperlink{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}{gpio\_phy\_address}) & 
+      \hyperlink{mygpio__nodriver_8h_a1b61ddc31ce309189929a66808e857c5}{MASK\_SIZE};
+125         printf(\textcolor{stringliteral}{"page\_phy\_addr %d\(\backslash\)n"},page\_phy\_addr); \textcolor{comment}{//debug}
+126         \textcolor{comment}{/* Calculates page offset */}
+127         off\_t page\_offset = (off\_t)((mygpio->\hyperlink{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}{gpio\_phy\_address}) - page\_phy\_addr);
+128         printf(\textcolor{stringliteral}{"page\_offset %lu\(\backslash\)n"},page\_offset); \textcolor{comment}{//debug}
+129         \textcolor{comment}{/* mmap system call returns virtual page address of GPIO */}
+130         \textcolor{keywordtype}{void}* vrt\_add = mmap(NULL, \hyperlink{mygpio__nodriver_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{PAGE\_SIZE}, PROT\_READ|PROT\_WRITE, MAP\_SHARED, mygpio->
+      \hyperlink{structmygpio___type_def_a7dca4ba0fccbbc45369cf551d3688849}{fd}, page\_phy\_addr);
+131         mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}=vrt\_add + page\_offset; \textcolor{comment}{// base address
+       includes page offset}
+132     \textcolor{keywordflow}{return} 0;
+133 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_ab67f77691723db202f2d9a636e0ac503}\label{mygpio__uiointdriver_8h_ab67f77691723db202f2d9a636e0ac503}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!mygpio\+\_\+parse\+\_\+command@{mygpio\+\_\+parse\+\_\+command}}
+\index{mygpio\+\_\+parse\+\_\+command@{mygpio\+\_\+parse\+\_\+command}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{mygpio\+\_\+parse\+\_\+command()}{mygpio\_parse\_command()}}
+{\footnotesize\ttfamily int mygpio\+\_\+parse\+\_\+command (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$}]{mygpio }\end{DoxyParamCaption})}
+
+
+
+Parses nodriver arguments. 
+
+parse\+\_\+command function is called to parse arguments passed to driver
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em argc} & number of parameters, passed to main function. \\
+\hline
+\mbox{\tt in}  & {\em argv} & parameters passed to main function \\
+\hline
+\mbox{\tt out}  & {\em mygpio} & data stucture that contains G\+P\+IO data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred; 1 Help function is called; 0 Everything is ok.\\
+\hline
+\end{DoxyRetVals}
+Parses nodriver arguments.
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em argc} & number of parameters, passed to main function. \\
+\hline
+\mbox{\tt in}  & {\em argv} & parameters passed to main function \\
+\hline
+\mbox{\tt out}  & {\em mygpio} & data stucture that contains G\+P\+IO data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred; 1 Help function is called; 0 Everything is ok. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 39 del file mygpio\+\_\+nodriver.\+c.
+
+
+
+Referenzia B\+O\+L\+D\+W\+H\+I\+TE, mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+phy\+\_\+address, mygpio\+\_\+usage(), mygpio\+\_\+\+Type\+Def\+::r\+\_\+or\+\_\+w\+\_\+value, mygpio\+\_\+\+Type\+Def\+::r\+\_\+w, R\+E\+AD, R\+E\+S\+ET, mygpio\+\_\+\+Type\+Def\+::uiod, e W\+R\+I\+TE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+39                                                                      \{
+40     \textcolor{keywordtype}{int} index=0;
+41     \textcolor{keywordtype}{int} mandatory\_opt=-1;           \textcolor{comment}{/* Keep track if the mandatory option 'g' is parsed */}
+42     \textcolor{keywordtype}{int} i\_or\_o=0;               \textcolor{comment}{/* Keep track if an i|o operation is requested */}
+43     \textcolor{keyword}{static} \textcolor{keywordtype}{char} *optstring = \textcolor{stringliteral}{":g:io:h"}; \textcolor{comment}{/* Allowed parameters */}
+44 
+45         \textcolor{keywordflow}{while}((index = getopt(argc, argv, optstring)) != -1) \{
+46                 \textcolor{keywordflow}{switch}(index) \{
+47                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}:
+48                     mandatory\_opt=atoi(optarg); \textcolor{comment}{/* Change mandatory\_opt value to memorize that the
+       mandatory option is parsed */}
+49                     mygpio->\hyperlink{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}{gpio\_phy\_address}=strtoul(optarg,NULL, 0);
+50                     \textcolor{comment}{/* Check if address passed is not 0x0 */}
+51                     \textcolor{keywordflow}{if}(mygpio->\hyperlink{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}{gpio\_phy\_address}==0)\{
+52                         printf(\textcolor{stringliteral}{"Wrong physical address inserted!\(\backslash\)n"});
+53                         \textcolor{keywordflow}{return} -1;
+54                     \}                       
+55                     \textcolor{keywordflow}{break};
+56                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+57                     \textcolor{comment}{/* Check if before 'i' option was passed the mandatory option 'g' */}
+58                     \textcolor{keywordflow}{if}(mandatory\_opt!=-1)\{
+59                         mygpio->\hyperlink{structmygpio___type_def_ad380cd40cc8cd86e745f5f14eca7cb44}{r\_w}=\hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ}; \textcolor{comment}{/* Set READ operation for GPIO */}
+60                         i\_or\_o=1;
+61                     \}
+62                     \textcolor{keywordflow}{else}\{
+63                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'g'\(\backslash\)n"});
+64                         \hyperlink{mygpio__nodriver_8c_a7073190cb94354eb9acb652039f77557}{mygpio\_usage}(argv[0]);
+65                         \textcolor{keywordflow}{return} -1;
+66                     \}
+67                     \textcolor{keywordflow}{break};
+68                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}:
+69                     \textcolor{comment}{/* Check if before 'o' option was passed the mandatory option 'g' */}
+70                     \textcolor{keywordflow}{if}(mandatory\_opt!=-1)\{
+71                         mygpio->\hyperlink{structmygpio___type_def_ad380cd40cc8cd86e745f5f14eca7cb44}{r\_w}=\hyperlink{mygpio__nodriver_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}; \textcolor{comment}{/* Set WRITE operation for GPIO */}
+72                         mygpio->\hyperlink{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}{r\_or\_w\_value}=strtoul(optarg, NULL, 0);
+73                         i\_or\_o=1;
+74                     \}
+75                     \textcolor{keywordflow}{else}\{
+76                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'g'\(\backslash\)n"});
+77                         \hyperlink{mygpio__nodriver_8c_a7073190cb94354eb9acb652039f77557}{mygpio\_usage}(argv[0]);
+78                         \textcolor{keywordflow}{return} -1;
+79                     \}
+80                     \textcolor{keywordflow}{break};
+81                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+82                     \hyperlink{mygpio__nodriver_8c_a7073190cb94354eb9acb652039f77557}{mygpio\_usage}(argv[0]);
+83                     \textcolor{keywordflow}{return} 1;
+84                     \textcolor{keywordflow}{break};
+85                 \textcolor{keywordflow}{case} \textcolor{charliteral}{':'}:
+86                     printf(\textcolor{stringliteral}{"Missing argument for '%c' option\(\backslash\)n"}, optopt);
+87                     \hyperlink{mygpio__nodriver_8c_a7073190cb94354eb9acb652039f77557}{mygpio\_usage}(argv[0]);
+88                     \textcolor{keywordflow}{return} -1;
+89                     \textcolor{keywordflow}{break};
+90                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:
+91                     printf(\textcolor{stringliteral}{"Option '%c' not recognized\(\backslash\)n"}, optopt);
+92                     \hyperlink{mygpio__nodriver_8c_a7073190cb94354eb9acb652039f77557}{mygpio\_usage}(argv[0]);
+93                     \textcolor{keywordflow}{return} -1;
+94                     \textcolor{keywordflow}{break};
+95                 \textcolor{keywordflow}{default}:
+96                     \hyperlink{mygpio__nodriver_8c_a7073190cb94354eb9acb652039f77557}{mygpio\_usage}(argv[0]);
+97                     \textcolor{keywordflow}{return} -1;
+98                     \textcolor{keywordflow}{break};
+99                 \}
+100         
+101             \}
+102     \textcolor{comment}{/* Check if an i|o operation is requested */}    
+103     \textcolor{keywordflow}{if}(i\_or\_o==0)\{
+104         printf(\textcolor{stringliteral}{"Can't use "}\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"nodriver "}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"without specify i|o option\(\backslash\)n"});
+105         \hyperlink{mygpio__nodriver_8c_a7073190cb94354eb9acb652039f77557}{mygpio\_usage}(argv[0]);
+106         \textcolor{keywordflow}{return} -1;
+107     \}
+108     \textcolor{keywordflow}{return} 0;
+109 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_a825048e6f5b0801be6f0b7c76c3f6b76}\label{mygpio__uiointdriver_8h_a825048e6f5b0801be6f0b7c76c3f6b76}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!mygpio\+\_\+read\+\_\+gpio@{mygpio\+\_\+read\+\_\+gpio}}
+\index{mygpio\+\_\+read\+\_\+gpio@{mygpio\+\_\+read\+\_\+gpio}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{mygpio\+\_\+read\+\_\+gpio()}{mygpio\_read\_gpio()}}
+{\footnotesize\ttfamily int mygpio\+\_\+read\+\_\+gpio (\begin{DoxyParamCaption}\item[{\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$}]{mygpio }\end{DoxyParamCaption})}
+
+
+
+Reads the $<$mygpio-\/$>$r\+\_\+or\+\_\+w\+\_\+value$>$ in input to G\+P\+IO port. 
+
+mygpio\+\_\+read\+\_\+gpio function is called to do read operation from G\+P\+IO
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in,out}  & {\em mygpio} & data stucture that contains G\+P\+IO data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 140 del file mygpio\+\_\+nodriver.\+c.
+
+
+
+Referenzia mygpio\+\_\+\+Type\+Def\+::fd, mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+custom, gpio\+\_\+custom\+\_\+\+Get\+Status\+Interrupt(), gpio\+\_\+custom\+\_\+\+Get\+Value(), gpio\+\_\+custom\+\_\+\+Set\+Ack\+Interrupt(), gpio\+\_\+custom\+\_\+\+Set\+Enable(), gpio\+\_\+custom\+\_\+\+Set\+Global\+Interrupt(), gpio\+\_\+custom\+\_\+\+Set\+Interrupt\+Mask(), gpio\+\_\+custom\+\_\+\+Set\+Mode(), mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+phy\+\_\+address, G\+P\+I\+O\+\_\+\+P\+O\+RT, H\+I\+GH, L\+OW, mygpio\+\_\+\+Type\+Def\+::r\+\_\+or\+\_\+w\+\_\+value, R\+E\+AD, e mygpio\+\_\+\+Type\+Def\+::uiod.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+140                                              \{
+141     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ad342eaf33c2f058dfd0ada926fa391eb}{gpio\_custom\_SetEnable}(mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}, 
+      \hyperlink{mygpio__nodriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}{GPIO\_PORT}, \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+142     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ad76fd3ba58361de14c7c50bcda7ecffc}{gpio\_custom\_SetMode}(mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}, 
+      \hyperlink{mygpio__nodriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}{GPIO\_PORT}, \hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ});
+143     mygpio->\hyperlink{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}{r\_or\_w\_value}=\hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a27b6cfe1eff5bdd6ba5e61c88c0ea5ee}{gpio\_custom\_GetValue}(mygpio->
+      \hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom},\hyperlink{mygpio__nodriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}{GPIO\_PORT});
+144     printf(\textcolor{stringliteral}{"The value on GPIO %08x input is: %08x\(\backslash\)n"},mygpio->\hyperlink{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}{gpio\_phy\_address},mygpio->
+      \hyperlink{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}{r\_or\_w\_value});
+145 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_a7073190cb94354eb9acb652039f77557}\label{mygpio__uiointdriver_8h_a7073190cb94354eb9acb652039f77557}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!mygpio\+\_\+usage@{mygpio\+\_\+usage}}
+\index{mygpio\+\_\+usage@{mygpio\+\_\+usage}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{mygpio\+\_\+usage()}{mygpio\_usage()}}
+{\footnotesize\ttfamily void mygpio\+\_\+usage (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Describes how \textquotesingle{}mygpio\+\_\+nodriver\textquotesingle{} must be used, specifing all supported options. 
+
+usage function is called to help the user
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies mygpio\+\_\+nodriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & Describes how \textquotesingle{}mygpio\+\_\+nodriver\textquotesingle{} must be used, specifing all supported options.\\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies mygpio\+\_\+nodriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 19 del file mygpio\+\_\+nodriver.\+c.
+
+
+
+Referenzia B\+O\+L\+D\+W\+H\+I\+TE, G\+R\+E\+EN, e R\+E\+S\+ET.
+
+
+
+Referenziato da mygpio\+\_\+parse\+\_\+command().
+
+
+\begin{DoxyCode}
+19                              \{
+20     printf(\textcolor{stringliteral}{"The right way to use this driver is\(\backslash\)n"});
+21     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"%s -g <GPIO\_ADDRESS> -i|-o <VALUE>\(\backslash\)n"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET},name);
+22     printf(\textcolor{stringliteral}{"Please, pay attention:\(\backslash\)n"});
+23     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)t-g"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<GPIO\_ADDR>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <GPIO\_ADDR>\(\backslash\)n\(\backslash\)t\(\backslash\)tspecifies the physical address of GPIO.\(\backslash\)n\(\backslash\)t\(\backslash\)t<GPIO\_ADDR> can be expressed in\(\backslash\)n\(\backslash\)t\(\backslash\)t
+      decimal representation (no prefix),\(\backslash\)n\(\backslash\)t\(\backslash\)toctal representation (0 prefix)\(\backslash\)n\(\backslash\)t\(\backslash\)tor hexadecimal representation\(\backslash\)n\(\backslash\)t
+      \(\backslash\)t(0x or 0X prefix)\(\backslash\)n"});
+24     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-i"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tSpecifies the input value of GPIO at\(\backslash\)n\(\backslash\)t\(\backslash\)t<GPIO\_ADDR>
+       physical address \(\backslash\)n"});
+25     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-o"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<VALUE>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <VALUE> specify\(\backslash\)n\(\backslash\)t\(\backslash\)tthe value must be write on GPIO output \(\backslash\)n"});
+26     \textcolor{keywordflow}{return};
+27 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mygpio__uiointdriver_8h_a8183896dee021f12c473ecc353e3b42c}\label{mygpio__uiointdriver_8h_a8183896dee021f12c473ecc353e3b42c}} 
+\index{mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}!mygpio\+\_\+write\+\_\+gpio@{mygpio\+\_\+write\+\_\+gpio}}
+\index{mygpio\+\_\+write\+\_\+gpio@{mygpio\+\_\+write\+\_\+gpio}!mygpio\+\_\+uiointdriver.\+h@{mygpio\+\_\+uiointdriver.\+h}}
+\subsubsection{\texorpdfstring{mygpio\+\_\+write\+\_\+gpio()}{mygpio\_write\_gpio()}}
+{\footnotesize\ttfamily void mygpio\+\_\+write\+\_\+gpio (\begin{DoxyParamCaption}\item[{\hyperlink{structmygpio___type_def}{mygpio\+\_\+\+Type\+Def} $\ast$}]{mygpio }\end{DoxyParamCaption})}
+
+
+
+Writes $<$mygpio-\/$>$r\+\_\+or\+\_\+w\+\_\+value$>$ in output to G\+P\+IO port. 
+
+mygpio\+\_\+write\+\_\+gpio function is called to do write operation on G\+P\+IO
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in,out}  & {\em mygpio} & data stucture that contains G\+P\+IO data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 152 del file mygpio\+\_\+nodriver.\+c.
+
+
+
+Referenzia mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+custom, gpio\+\_\+custom\+\_\+\+Set\+Enable(), gpio\+\_\+custom\+\_\+\+Set\+Mode(), gpio\+\_\+custom\+\_\+\+Set\+Value(), mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+phy\+\_\+address, G\+P\+I\+O\+\_\+\+P\+O\+RT, H\+I\+GH, L\+OW, mygpio\+\_\+\+Type\+Def\+::r\+\_\+or\+\_\+w\+\_\+value, mygpio\+\_\+\+Type\+Def\+::uiod, e W\+R\+I\+TE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+152                                               \{
+153     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ad342eaf33c2f058dfd0ada926fa391eb}{gpio\_custom\_SetEnable}(mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}, 
+      \hyperlink{mygpio__nodriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}{GPIO\_PORT}, \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+154     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ad76fd3ba58361de14c7c50bcda7ecffc}{gpio\_custom\_SetMode}(mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}, 
+      \hyperlink{mygpio__nodriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}{GPIO\_PORT}, \hyperlink{mygpio__nodriver_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE});
+155     printf(\textcolor{stringliteral}{"Going to write onto GPIO %08x the value %08x\(\backslash\)n"}, mygpio->
+      \hyperlink{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}{gpio\_phy\_address}, mygpio->\hyperlink{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}{r\_or\_w\_value});
+156     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a83c5d47ffd0ec62f672880ba0a54a925}{gpio\_custom\_SetValue}(mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}, 
+      \hyperlink{mygpio__nodriver_8h_ac5d7411fcdf1f2bb51fb57db9fe7c85c}{GPIO\_PORT}, \hyperlink{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}{LOW});
+157     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a83c5d47ffd0ec62f672880ba0a54a925}{gpio\_custom\_SetValue}(mygpio->\hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\_custom}, mygpio->
+      \hyperlink{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}{r\_or\_w\_value}, \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+158 \}
+\end{DoxyCode}

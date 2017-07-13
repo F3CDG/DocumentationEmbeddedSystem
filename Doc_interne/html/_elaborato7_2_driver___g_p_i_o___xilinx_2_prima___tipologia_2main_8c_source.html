@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Esame di Sistemi Embedded 2016/17 - Gruppo 4:  File sorgente Elaborato7/Driver_GPIO_Xilinx/Prima_Tipologia/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="LogoGruppoIV.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Esame di Sistemi Embedded 2016/17 - Gruppo 4
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_ac26826221bc29db0d10143d711cd044.html">Elaborato7</a></li><li class="navelem"><a class="el" href="dir_a9f93bf3e3e61c603b354a3995e9b988.html">Driver_GPIO_Xilinx</a></li><li class="navelem"><a class="el" href="dir_131f8a3f104a4c91ea8fec9d4ab1c288.html">Prima_Tipologia</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">main.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/* Includes ------------------------------------------------------------------*/</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nodriver__header_8h.html">nodriver_header.h</a>&quot;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">   14</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="_elaborato1_21__1___driver___c___no_int_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]){</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> file_descriptor; <span class="comment">/* Memory file descriptor */</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> r_w=<a class="code" href="mygpio__nodriver_8h.html#ada74e7db007a68e763f20c17f2985356">READ</a>;   <span class="comment">/* Saves operation&#39;s type to do with GPIO */</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> r_or_w_value = 0;   <span class="comment">/* Saves read/write value from/on GPIO */</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> ret_parse;  <span class="comment">/* Returned value from parse_command function */</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">unsigned</span> phy_addr, page_off;    <span class="comment">/* Respectively physical address of GPIO and page offset */</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> *virt_addr;    <span class="comment">/* Virtual address of GPIO */</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">/* Check if parse_command function returns error */</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span>((ret_parse=<a class="code" href="nodriver__function_8c.html#ad71f324b0b8d614e948aaba3d3b6adf6">parse_command</a>(argc,argv,&amp;phy_addr,&amp;r_w,&amp;r_or_w_value))==1)</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">else</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span>(ret_parse==-1)</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">/* Check if open_memory function returns error */</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="nodriver__function_8c.html#ab1fce32e83ddc128ebf724c0e9018dbb">open_memory</a>(&amp;file_descriptor,phy_addr,&amp;page_off,&amp;virt_addr)==-1){</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        printf(<span class="stringliteral">&quot;nodriver aborted!\n&quot;</span>);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">//</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"></span>    <span class="keywordflow">if</span> (r_w == <a class="code" href="mygpio__nodriver_8h.html#ada74e7db007a68e763f20c17f2985356">READ</a>) <a class="code" href="nodriver__function_8c.html#a9ed1f99b74a4b2b5e5e376eaece20b2c">read_gpio</a>(&amp;r_or_w_value,virt_addr,page_off);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">else</span> <a class="code" href="nodriver__function_8c.html#a0ac7c00c85fcfbd6c592c298b631b0cf">write_gpio</a>(r_or_w_value,phy_addr,virt_addr,page_off);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="nodriver__function_8c.html#ab362c9c10e96f603b33b2e194cd774a6">close_memory</a>(file_descriptor,virt_addr);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="nodriver__function_8c_html_ab362c9c10e96f603b33b2e194cd774a6"><div class="ttname"><a href="nodriver__function_8c.html#ab362c9c10e96f603b33b2e194cd774a6">close_memory</a></div><div class="ttdeci">void close_memory(int fd, void *virtual_address)</div><div class="ttdoc">Closes /dev/mem file. </div><div class="ttdef"><b>Definition:</b> <a href="nodriver__function_8c_source.html#l00168">nodriver_function.c:168</a></div></div>
+<div class="ttc" id="nodriver__function_8c_html_ab1fce32e83ddc128ebf724c0e9018dbb"><div class="ttname"><a href="nodriver__function_8c.html#ab1fce32e83ddc128ebf724c0e9018dbb">open_memory</a></div><div class="ttdeci">int open_memory(int *fd, int phy_address, int *page_offset, void **virtual_address)</div><div class="ttdoc">Opens /dev/mem file in order to access GPIO address and calculates page offset and virtual address of...</div><div class="ttdef"><b>Definition:</b> <a href="nodriver__function_8c_source.html#l00123">nodriver_function.c:123</a></div></div>
+<div class="ttc" id="nodriver__function_8c_html_a9ed1f99b74a4b2b5e5e376eaece20b2c"><div class="ttname"><a href="nodriver__function_8c.html#a9ed1f99b74a4b2b5e5e376eaece20b2c">read_gpio</a></div><div class="ttdeci">void read_gpio(int *value, void *virtual_address, int page_offset)</div><div class="ttdoc">Reads the in input to GPIO port. </div><div class="ttdef"><b>Definition:</b> <a href="nodriver__function_8c_source.html#l00144">nodriver_function.c:144</a></div></div>
+<div class="ttc" id="nodriver__header_8h_html"><div class="ttname"><a href="nodriver__header_8h.html">nodriver_header.h</a></div></div>
+<div class="ttc" id="_elaborato1_21__1___driver___c___no_int_2main_8c_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="_elaborato1_21__1___driver___c___no_int_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="_elaborato1_21__1___driver___c___no_int_2main_8c_source.html#l00021">main.c:21</a></div></div>
+<div class="ttc" id="nodriver__function_8c_html_a0ac7c00c85fcfbd6c592c298b631b0cf"><div class="ttname"><a href="nodriver__function_8c.html#a0ac7c00c85fcfbd6c592c298b631b0cf">write_gpio</a></div><div class="ttdeci">void write_gpio(int value, int phy_address, void *virtual_address, int page_offset)</div><div class="ttdoc">Writes in output to GPIO port. </div><div class="ttdef"><b>Definition:</b> <a href="nodriver__function_8c_source.html#l00157">nodriver_function.c:157</a></div></div>
+<div class="ttc" id="nodriver__function_8c_html_ad71f324b0b8d614e948aaba3d3b6adf6"><div class="ttname"><a href="nodriver__function_8c.html#ad71f324b0b8d614e948aaba3d3b6adf6">parse_command</a></div><div class="ttdeci">int parse_command(int argc, char **argv, int *address, int *r_w, int *value)</div><div class="ttdoc">Parses nodriver arguments. </div><div class="ttdef"><b>Definition:</b> <a href="nodriver__function_8c_source.html#l00042">nodriver_function.c:42</a></div></div>
+<div class="ttc" id="mygpio__nodriver_8h_html_ada74e7db007a68e763f20c17f2985356"><div class="ttname"><a href="mygpio__nodriver_8h.html#ada74e7db007a68e763f20c17f2985356">READ</a></div><div class="ttdeci">#define READ</div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8h_source.html#l00040">mygpio_nodriver.h:40</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

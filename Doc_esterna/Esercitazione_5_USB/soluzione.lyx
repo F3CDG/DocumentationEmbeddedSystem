@@ -1,0 +1,1514 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{listings,xcolor,courier,bookmark}
+\usepackage{listingsutf8}
+\definecolor{darkblue}{named}{blue}
+\definecolor{darkred}{named}{red}
+\definecolor{grau}{named}{gray}
+\let\Righttorque\relax
+\lstset{
+captionpos=b,
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+keywordstyle=\color{darkblue},
+stringstyle=\color{darkred},
+extendedchars=true,
+basicstyle=\small\ttfamily,
+showstringspaces=false,
+tabsize=2,
+numbers=left,
+numberstyle=\tiny,
+breakautoindent  = true,
+breakindent      = 2em,
+breaklines       = true,
+postbreak        = ,
+prebreak         = \raisebox{-.8ex}[0ex][0ex]{\Righttorque},
+showspaces=false, 
+showtabs=false, 
+showstringspaces=false,
+language=VHDL,
+frame=single,
+morecomment=[s]{--}
+}
+
+
+\renewcommand*{\lstlistingname}{Codice}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{} 
+\fancyfoot{} 
+
+\fancyhead[RO,LE]{\bfseries \leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Tesina in SE: Sistemi Embedded}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\date{}
+\cfoot{}
+\end_preamble
+\use_default_options true
+\master Tesina.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Procedimento
+\end_layout
+
+\begin_layout Subsection
+Invio dati seriali
+\end_layout
+
+\begin_layout Standard
+Un semplice esempio di invio dati tramite USB può essere implementato mediante
+ l'utilizzo dell'interfaccia 
+\series bold
+C
+\series default
+ommunication 
+\series bold
+D
+\series default
+evice 
+\series bold
+C
+\series default
+lass, 
+\series bold
+CDC
+\series default
+, simulando così un trasferimento 
+\series bold
+UART
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Innanzitutto è necessario creare un progetto utilizzando, come già visto
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Bus-Seriali"
+
+\end_inset
+
+, il tool STM32 CubeMX.
+ La seguente figura mostra le impostazioni iniziali.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Conf_iniziali.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Impostazioni iniziali
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La parte più interessante delle impostazioni è proprio quella riguardante
+ USB.
+ A tale scopo, nella scheda di 
+\shape slanted
+Pinout
+\shape default
+, è necessario attivare la periferica USB come OTG ed impostarla come device,
+ infine, bisogna indicare l'utilizzo del middlware USB CDC per l'implementazione
+ di una porta COM virtuale.
+\end_layout
+
+\begin_layout Standard
+Una volta generato il progetto con le relative configurazioni iniziali,
+ si può passare all'implementazione di un semplice applicativo.
+ Si importa, dunque, la libreria per la comunicazione tramite la classe
+ CDC (usbd_cdc_if.h) e si aggiungono al main le seguente righe di codice.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=107, caption=main.c]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  uint8_t car=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  char space=' ';
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+    	HAL_Delay(500);
+\end_layout
+
+\begin_layout Plain Layout
+
+    	CDC_Transmit_FS(&car, 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+    	CDC_Transmit_FS((uint8_t*)space,sizeof(space));
+\end_layout
+
+\begin_layout Plain Layout
+
+    	car++;
+\end_layout
+
+\begin_layout Plain Layout
+
+    	if(car==127)
+\end_layout
+
+\begin_layout Plain Layout
+
+    		car=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mediante la funzione 
+\series bold
+CDC_Transmit_FS
+\series default
+ si inviano serialmente 8 bit per volta, in particolare il frammento di
+ codice appena visto è relativo alla stampa dei caratteri ASCII da 0 a 127.
+ 
+\end_layout
+
+\begin_layout Standard
+Infine, tramite un terminale seriale, è possibile visualizzare a video la
+ stampa di ogni singolo carattere.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/5_1example.png
+	lyxscale 70
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Esempio di esecuzione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Device USB
+\end_layout
+
+\begin_layout Standard
+Sulla falsa riga dell'esercizio precedente, per implementare un device USB
+ tramite una board STM Discovery, è necessario seguire lo stesso procedimento,
+ stavolta, tuttavia, il middlware da impostare è quello relativo alle periferich
+e 
+\series bold
+HID
+\series default
+ (Human Interface Device).
+ In particolare, di seguito si propone l'implementazione di un mouse, sfruttando
+ il chip MEMS in dotazione su STM32F4 Discovery.
+ Questo offre la possibilità di usare un accellerometro tramite bus SPI
+ o I2C (nel caso in esame si è scelto di utilizzare SPI).
+ Di seguito le funzioni implementate:
+\end_layout
+
+\begin_layout Itemize
+init_mouse;
+\end_layout
+
+\begin_layout Itemize
+x_position;
+\end_layout
+
+\begin_layout Itemize
+y_position;
+\end_layout
+
+\begin_layout Itemize
+position_on_led.
+\end_layout
+
+\begin_layout Standard
+Il seguente codice evidenzia i prototipi delle funzioni appena elencate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption=mouse position.h]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+****************
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	mouse_position.h
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @author	Colella Gianni - Guida Ciro - Lombardi Daniele
+\end_layout
+
+\begin_layout Plain Layout
+
+  *		Group IV - Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	05-July-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Libreria per gestione puntatore di un mouse
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+****************
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#ifndef MOUSE_POSITION_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MOUSE_POSITION_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Librerie Incluse ------------------------------------------------------------
+------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "stm32f4xx_hal.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Definizione tipo enumerativo per valori degli assi X e Y
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef enum{
+\end_layout
+
+\begin_layout Plain Layout
+
+	X,
+\end_layout
+
+\begin_layout Plain Layout
+
+	Y
+\end_layout
+
+\begin_layout Plain Layout
+
+}mouse_position_AxisType;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Prototipi funzioni -------------------------------------------------------*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_mouse(SPI_HandleTypeDef); /*!< Inizializzazione dispositivo*/
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t x_position(SPI_HandleTypeDef); /*!< Calcolo posizione su asse X*/
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t y_position(SPI_HandleTypeDef); /*!< Calcolo posizione su asse Y*/
+\end_layout
+
+\begin_layout Plain Layout
+
+void position_on_led(uint8_t position,mouse_position_AxisType); /*!< Illuminazio
+ne led in base al movimento*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#endif /* MOUSE_POSITION_H_ */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+init_mouse
+\end_layout
+
+\begin_layout Standard
+La funzione prevede di inizializzare correttamente l'accellerometro.
+ In particolare, una volta selezionata la periferica, così come previsto
+ dal relativo manuale di riferimento, è necessario inviare l'indirizzo del
+ registro di inizializzazione per risvegliare la periferica.
+ Successivamente è necessario indicare in tale registro che le posizioni
+ costantemente da leggere sono quelle relative all'asse delle ascisse e
+ delle ordinate, infine, così come previsto dal normale utilizzo di un bus
+ SPI, si provvede a deselezionare la periferica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=15, caption="mouse position.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di inizializzare la periferica HID
+ mouse
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note   L'inizializzazione avviene mediante l'utilizzo di SPI
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi1: struttura SPI_HandleTypeDef che contiene le informazioni
+ di configurazione
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 			  della specifica SPI
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void init_mouse(SPI_HandleTypeDef hspi1){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Selezione via software della perificerica accellerometro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si invia l'indirizzo 0x20 su bus SPI per risvegliare il relativo registro
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t address_Acc=0x20;
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_SPI_Transmit(&hspi1,&address_Acc,1,50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Sul registro selezionato si indica che si vuole leggere il valore lungo
+ gli assi X e Y*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t value_Ctrl_Reg1=0x67; /*< Valore da scrivere in Ctrl_Reg1*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_SPI_Transmit(&hspi1,&value_Ctrl_Reg1,1,50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Deselezione via software della periferica accellerometro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+x_position
+\end_layout
+
+\begin_layout Standard
+La funzione restituisce il valore sull'asse X del mouse.
+ In particolare, viene selezionata la periferica; inviato il valore 0x29
+ che funge da abilitazione al registro che contiene i valori d'interesse
+ (aggiungendo 0x80, come riportato nel manuale di riferimento, si richiede
+ al registro un numero di letture multiple); prelevato il valore dal suddetto
+ registro tramite una funzione di ricezione e, infine, deselezionata la
+ periferica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=41, caption="mouse position.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di calcolare la posizione sull'asse
+ X.
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi1: struttura SPI_HandleTypeDef che contiene le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica SPI.
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval Intero senza segno ad 8 bit.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t x_position(SPI_HandleTypeDef hspi1){
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t xval=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Selezione via software della perificerica accellerometro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si invia l'indirizzo 0x29+0x80 su bus SPI per risvegliare il relativo
+ registro */
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si aggiunge 0x80 per indicare alla periferica che voglio più letture
+ dall'asse X */
+\end_layout
+
+\begin_layout Plain Layout
+
+    uint8_t address_Acc=0xA9;
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_SPI_Transmit(&hspi1,&address_Acc,1,50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Lettura valore sull'asse X*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_SPI_Receive(&hspi1,&xval,1,50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Deselezione via software della periferica accellerometro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return xval;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+y_position
+\end_layout
+
+\begin_layout Standard
+La funzione restituisce il valore sull'asse Y del mouse e la sua implementazione
+ è identica a quella precedente, fatta eccezione ovviamente per il registro
+ in cui leggere il valore desiderato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=65, caption="mouse position.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di calcolare la posizione sull'asse
+ Y
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  hspi1: struttura SPI_HandleTypeDef che contiene le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica SPI
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval Intero ad 8 bit.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint8_t y_position(SPI_HandleTypeDef hspi1){
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t yval;
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Selezione via software della perificerica accellerometro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si invia l'indirizzo 0x2B+0x80 su bus SPI per risvegliare il relativo
+ registro */
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Si aggiunge 0x80 per indicare alla periferica che voglio più letture
+ dall'asse Y */
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t address_Acc=0xAB;
+\end_layout
+
+\begin_layout Plain Layout
+
+    HAL_SPI_Transmit(&hspi1,&address_Acc,1,50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Lettura valore sull'asse Y*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_SPI_Receive(&hspi1,&yval,1,50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Deselezione via software della periferica accellerometro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return yval;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+position_on_led
+\end_layout
+
+\begin_layout Standard
+Infine, tramite questa funzione è possibile visualizzare la direzione del
+ mouse sui 4 led utente, in particolare i led 4 e 5 sono quelli relativi
+ al movimento lungo le ascisse, 3 e 6 lungo le ordinate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=89, caption="mouse position.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione in base al movimento della board permette di
+ illuminare i led
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         utente.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in] position: posizione attuale
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  [in] axis: X per illuminare i led relativi alle ascisse, Y per
+ illuminare quelli
+\end_layout
+
+\begin_layout Plain Layout
+
+  *              relativi alle ordinate.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note   I valori X e Y di tipo mouse_position_AxisType sono rispettivamente
+ pari a 0
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         e 1.
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval None.
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void position_on_led(uint8_t position,mouse_position_AxisType axis){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Se il valore di position è relativo all'asse delle ascisse allora si
+ illuminano
+\end_layout
+
+\begin_layout Plain Layout
+
+	 * i led orizzontali di una board STM32F4 discovey*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(axis==X){
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Se il movimento è verso sinistra si illumina il led LD4 e si spegne
+ LD5*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(position>127){
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_12,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_14,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Altrimennti si illumina il led LD5 e si spegne LD4*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		else{
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_14,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_12,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Allo stesso modo di prima si illuminano i led LD3 o LD6 relativi all'asse
+ Y*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	else{
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(position>127){
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_13,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		else{
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_13,GPIO_PIN_SET);
+\end_layout
+
+\begin_layout Plain Layout
+
+			HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,GPIO_PIN_RESET);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver
+\end_layout
+
+\begin_layout Standard
+Infine, grazie alle funzioni precedentemente descritte, è possibile implementare
+ il seguente driver necessario alla gestione del puntatore e del tasto sinistro.
+ Per realizzarlo ci si serve della libreria usb device per HID, la quale
+ offre un middlware pronto all'utilizzo, offrendo, pretanto, un livello
+ di astrazione dell'hardware.
+\end_layout
+
+\begin_layout Standard
+A tal proposito l'implementazione di un mouse necessita l'invio di 4 byte
+ così come descritto dal manuale di riferimento per HID.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=62, caption="main.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Inizializzazione device*/
+\end_layout
+
+\begin_layout Plain Layout
+
+  init_mouse(hspi1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  uint8_t x_prev=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  uint8_t y_prev=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*Loop infinito per gestione posizione puntatore e tasto sinistro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+  	  /*Si legge valore tasto sinistro*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  USB_TX_Buffer[0]=HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Lettura coordinata X*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  USB_TX_Buffer[1]=x_position(hspi1);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Lettura coordinata Y*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  USB_TX_Buffer[2]=y_position(hspi1);
+\end_layout
+
+\begin_layout Plain Layout
+
+	  
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Byte lasciato inutilizzato*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  USB_TX_Buffer[3]=0x00;
+\end_layout
+
+\begin_layout Plain Layout
+
+	  
+\end_layout
+
+\begin_layout Plain Layout
+
+	  /*Se la soglia di spostamento è superata allora vengono inviati i 4 byte
+ necessari allo spostamento del puntatore*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	  if(USB_TX_Buffer[1]-x_prev>0.25 || USB_TX_Buffer[1]-x_prev<-0.25){
+\end_layout
+
+\begin_layout Plain Layout
+
+		 if(USB_TX_Buffer[2]-y_prev>0.25 || USB_TX_Buffer[2]-y_prev<-0.25){
+\end_layout
+
+\begin_layout Plain Layout
+
+			  USBD_HID_SendReport(&hUsbDeviceFS,USB_TX_Buffer,4);
+\end_layout
+
+\begin_layout Plain Layout
+
+			  
+\end_layout
+
+\begin_layout Plain Layout
+
+			  /*Illuminazione led in base allo spostamento*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			  position_on_led(USB_TX_Buffer[1],X);
+\end_layout
+
+\begin_layout Plain Layout
+
+			  position_on_led(USB_TX_Buffer[2],Y);
+\end_layout
+
+\begin_layout Plain Layout
+
+		  }
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }
+\end_layout
+
+\begin_layout Plain Layout
+
+	  x_prev=USB_TX_Buffer[1];
+\end_layout
+
+\begin_layout Plain Layout
+
+	  y_prev=USB_TX_Buffer[2];
+\end_layout
+
+\begin_layout Plain Layout
+
+	  HAL_Delay(5);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nella precedente implementazione è possibile notare come, per evitare che
+ il puntatore si muova indefinitimente a causa delle continue letture della
+ posizione, viene letto il valore attualmente rilevato e lo si confronta
+ col valore precedente: se la soglia impostata viene superata allora vengono
+ trasmessi i byte necessari, viceversa viene conservato il valore precedente.
+\end_layout
+
+\end_body
+\end_document

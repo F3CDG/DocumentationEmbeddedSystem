@@ -1,0 +1,133 @@
+\hypertarget{structmygpio___type_def}{}\section{Riferimenti per la struct mygpio\+\_\+\+Type\+Def}
+\label{structmygpio___type_def}\index{mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}}
+
+
+Data Structure to manage data associated to G\+P\+IO custom peripheral.  
+
+
+
+
+{\ttfamily \#include $<$mygpio\+\_\+nodriver.\+h$>$}
+
+
+
+Diagramma di collaborazione per mygpio\+\_\+\+Type\+Def\+:
+% FIG 0
+\subsection*{Attributi pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$ \hyperlink{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}{gpio\+\_\+custom}
+\item 
+int \hyperlink{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}{gpio\+\_\+phy\+\_\+address}
+\item 
+int \hyperlink{structmygpio___type_def_a7dca4ba0fccbbc45369cf551d3688849}{fd}
+\item 
+int \hyperlink{structmygpio___type_def_ad380cd40cc8cd86e745f5f14eca7cb44}{r\+\_\+w}
+\item 
+uint32\+\_\+t \hyperlink{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}{r\+\_\+or\+\_\+w\+\_\+value}
+\item 
+char $\ast$ \hyperlink{structmygpio___type_def_a40667a00b61db1a77198255f02f25fe9}{uiod}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Data Structure to manage data associated to G\+P\+IO custom peripheral. 
+
+Definizione alla linea 23 del file mygpio\+\_\+nodriver.\+h.
+
+
+
+\subsection{Documentazione dei membri dato}
+\mbox{\Hypertarget{structmygpio___type_def_a7dca4ba0fccbbc45369cf551d3688849}\label{structmygpio___type_def_a7dca4ba0fccbbc45369cf551d3688849}} 
+\index{mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}!fd@{fd}}
+\index{fd@{fd}!mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{fd}{fd}}
+{\footnotesize\ttfamily int mygpio\+\_\+\+Type\+Def\+::fd}
+
+Memory file descriptor 
+
+Definizione alla linea 26 del file mygpio\+\_\+nodriver.\+h.
+
+
+
+Referenziato da mygpio\+\_\+close\+\_\+memory(), mygpio\+\_\+open\+\_\+memory(), e mygpio\+\_\+read\+\_\+gpio().
+
+\mbox{\Hypertarget{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}\label{structmygpio___type_def_a1e4038eb57b6ccd8d94a4f0258961f97}} 
+\index{mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}!gpio\+\_\+custom@{gpio\+\_\+custom}}
+\index{gpio\+\_\+custom@{gpio\+\_\+custom}!mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom}{gpio\_custom}}
+{\footnotesize\ttfamily \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$ mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+custom}
+
+Contains virtual address (page offset included) and offset registers value of G\+P\+IO
+
+Contains virtual address (page offset included) and offset registers value of G\+P\+IO device uio 
+
+Definizione alla linea 24 del file mygpio\+\_\+nodriver.\+h.
+
+
+
+Referenziato da mygpio\+\_\+close\+\_\+memory(), mygpio\+\_\+open\+\_\+memory(), mygpio\+\_\+read\+\_\+gpio(), e mygpio\+\_\+write\+\_\+gpio().
+
+\mbox{\Hypertarget{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}\label{structmygpio___type_def_a3e193df18cdd2d05417e18a99c876cc9}} 
+\index{mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}!gpio\+\_\+phy\+\_\+address@{gpio\+\_\+phy\+\_\+address}}
+\index{gpio\+\_\+phy\+\_\+address@{gpio\+\_\+phy\+\_\+address}!mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{gpio\+\_\+phy\+\_\+address}{gpio\_phy\_address}}
+{\footnotesize\ttfamily int mygpio\+\_\+\+Type\+Def\+::gpio\+\_\+phy\+\_\+address}
+
+Physical address of G\+P\+IO 
+
+Definizione alla linea 25 del file mygpio\+\_\+nodriver.\+h.
+
+
+
+Referenziato da mygpio\+\_\+open\+\_\+memory(), mygpio\+\_\+parse\+\_\+command(), mygpio\+\_\+read\+\_\+gpio(), e mygpio\+\_\+write\+\_\+gpio().
+
+\mbox{\Hypertarget{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}\label{structmygpio___type_def_aab3573a0ca458b76823e4f573eddff10}} 
+\index{mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}!r\+\_\+or\+\_\+w\+\_\+value@{r\+\_\+or\+\_\+w\+\_\+value}}
+\index{r\+\_\+or\+\_\+w\+\_\+value@{r\+\_\+or\+\_\+w\+\_\+value}!mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{r\+\_\+or\+\_\+w\+\_\+value}{r\_or\_w\_value}}
+{\footnotesize\ttfamily uint32\+\_\+t mygpio\+\_\+\+Type\+Def\+::r\+\_\+or\+\_\+w\+\_\+value}
+
+Saves read/write value from/on G\+P\+IO 
+
+Definizione alla linea 28 del file mygpio\+\_\+nodriver.\+h.
+
+
+
+Referenziato da mygpio\+\_\+parse\+\_\+command(), mygpio\+\_\+read\+\_\+gpio(), e mygpio\+\_\+write\+\_\+gpio().
+
+\mbox{\Hypertarget{structmygpio___type_def_ad380cd40cc8cd86e745f5f14eca7cb44}\label{structmygpio___type_def_ad380cd40cc8cd86e745f5f14eca7cb44}} 
+\index{mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}!r\+\_\+w@{r\+\_\+w}}
+\index{r\+\_\+w@{r\+\_\+w}!mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{r\+\_\+w}{r\_w}}
+{\footnotesize\ttfamily int mygpio\+\_\+\+Type\+Def\+::r\+\_\+w}
+
+Saves operation\textquotesingle{}s type to do with G\+P\+IO 
+
+Definizione alla linea 27 del file mygpio\+\_\+nodriver.\+h.
+
+
+
+Referenziato da main(), e mygpio\+\_\+parse\+\_\+command().
+
+\mbox{\Hypertarget{structmygpio___type_def_a40667a00b61db1a77198255f02f25fe9}\label{structmygpio___type_def_a40667a00b61db1a77198255f02f25fe9}} 
+\index{mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}!uiod@{uiod}}
+\index{uiod@{uiod}!mygpio\+\_\+\+Type\+Def@{mygpio\+\_\+\+Type\+Def}}
+\subsubsection{\texorpdfstring{uiod}{uiod}}
+{\footnotesize\ttfamily char $\ast$ mygpio\+\_\+\+Type\+Def\+::uiod}
+
+uio device file corrisponding to G\+P\+IO 
+
+Definizione alla linea 25 del file mygpio\+\_\+uiodriver.\+h.
+
+
+
+Referenziato da mygpio\+\_\+open\+\_\+memory(), mygpio\+\_\+parse\+\_\+command(), mygpio\+\_\+read\+\_\+gpio(), e mygpio\+\_\+write\+\_\+gpio().
+
+
+
+La documentazione per questa struct è stata generata a partire dai seguenti file\+:\begin{DoxyCompactItemize}
+\item 
+Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Prima\+\_\+\+Tipologia/\hyperlink{mygpio__nodriver_8h}{mygpio\+\_\+nodriver.\+h}\item 
+Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Seconda\+\_\+\+Tipologia/\hyperlink{mygpio__uiodriver_8h}{mygpio\+\_\+uiodriver.\+h}\item 
+Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/\hyperlink{mygpio__uiointdriver_8h}{mygpio\+\_\+uiointdriver.\+h}\end{DoxyCompactItemize}

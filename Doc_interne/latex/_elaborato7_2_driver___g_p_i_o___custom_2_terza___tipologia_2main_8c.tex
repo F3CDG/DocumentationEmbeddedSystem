@@ -1,0 +1,92 @@
+\hypertarget{_elaborato7_2_driver___g_p_i_o___custom_2_terza___tipologia_2main_8c}{}\section{Riferimenti per il file Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/main.c}
+\label{_elaborato7_2_driver___g_p_i_o___custom_2_terza___tipologia_2main_8c}\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/main.\+c@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/main.\+c}}
+
+
+driver \char`\"{}mygpio\+\_\+uiointdriver\char`\"{} to control gpio  
+
+
+{\ttfamily \#include \char`\"{}mygpio\+\_\+uiointdriver.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_elaborato7_2_driver___g_p_i_o___custom_2_terza___tipologia_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+driver \char`\"{}mygpio\+\_\+uiointdriver\char`\"{} to control gpio 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+5-\/\+July-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato7_2_driver___g_p_i_o___custom_2_terza___tipologia_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{_elaborato7_2_driver___g_p_i_o___custom_2_terza___tipologia_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/main.\+c@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/main.\+c@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Custom/\+Terza\+\_\+\+Tipologia/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+$<$ First step
+
+Structure and variable declaration
+
+$<$ Second step
+
+mygpio\+\_\+parse\+\_\+command function is called to parse all argument passed to driver mygpio\+\_\+nodriver
+
+$<$ Third step
+
+mygpio\+\_\+open\+\_\+memory function is called to achieve gpio virtual address
+
+$<$ Fourth step
+
+mygpio\+\_\+read\+\_\+gpio is called if r\+\_\+w variable is R\+E\+AD, otherwise is called write\+\_\+gpio function
+
+$<$ First step
+
+mygpio\+\_\+close\+\_\+memory function is called to close memory file and delete file descriptor 
+
+Definizione alla linea 14 del file main.\+c.
+
+
+
+Referenzia mygpio\+\_\+close\+\_\+memory(), mygpio\+\_\+open\+\_\+memory(), mygpio\+\_\+parse\+\_\+command(), mygpio\+\_\+read\+\_\+gpio(), mygpio\+\_\+write\+\_\+gpio(), mygpio\+\_\+\+Type\+Def\+::r\+\_\+w, e R\+E\+AD.
+
+
+\begin{DoxyCode}
+14                                 \{
+17     \hyperlink{structmygpio___type_def}{mygpio\_TypeDef} mygpio; \textcolor{comment}{/* Structure associated to GPIO custom peripheral */}
+18     \textcolor{keywordtype}{int} ret\_parse;      \textcolor{comment}{/* Returned value from mygpio\_parse\_command function */}
+21     \textcolor{comment}{/* Check if parse\_command function returns error */}
+22     \textcolor{keywordflow}{if}((ret\_parse=\hyperlink{mygpio__nodriver_8c_ab67f77691723db202f2d9a636e0ac503}{mygpio\_parse\_command}(argc,argv,&mygpio))==1)
+23         \textcolor{keywordflow}{return} 0;
+24     \textcolor{keywordflow}{else}
+25         \textcolor{keywordflow}{if}(ret\_parse==-1)
+26             \textcolor{keywordflow}{return} -1;
+27     
+30     \textcolor{comment}{/* Check if mygpio\_open\_memory function returns error */}
+31     \textcolor{keywordflow}{if}(\hyperlink{mygpio__nodriver_8c_a29375cbc2ac2eab8b232500d1fa35fbd}{mygpio\_open\_memory}(&mygpio)==-1)\{
+32         printf(\textcolor{stringliteral}{"mygpio\_uiointdriver aborted!\(\backslash\)n"});
+33         \textcolor{keywordflow}{return} -1;
+34     \}
+35     \textcolor{comment}{//}
+38 \textcolor{comment}{}    \textcolor{keywordflow}{if} ((mygpio.\hyperlink{structmygpio___type_def_ad380cd40cc8cd86e745f5f14eca7cb44}{r\_w}) == \hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ}) \{
+39         \textcolor{keywordflow}{if}(\hyperlink{mygpio__nodriver_8c_aa632bf935e4617cf86315fe3041d6ccc}{mygpio\_read\_gpio}(&mygpio)==-1)
+40             \textcolor{keywordflow}{return} -1;
+41     \}
+42     \textcolor{keywordflow}{else} \hyperlink{mygpio__nodriver_8c_a8183896dee021f12c473ecc353e3b42c}{mygpio\_write\_gpio}(&mygpio);
+45     \hyperlink{mygpio__nodriver_8c_aec53b5a0f3d713bc067c3d1d0121598f}{mygpio\_close\_memory}(&mygpio);
+46 
+47     \textcolor{keywordflow}{return} 0;
+48 \}
+\end{DoxyCode}

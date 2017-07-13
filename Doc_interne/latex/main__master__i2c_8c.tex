@@ -1,0 +1,603 @@
+\hypertarget{main__master__i2c_8c}{}\section{Riferimenti per il file Elaborato4/i2c/main\+\_\+master\+\_\+i2c.c}
+\label{main__master__i2c_8c}\index{Elaborato4/i2c/main\+\_\+master\+\_\+i2c.\+c@{Elaborato4/i2c/main\+\_\+master\+\_\+i2c.\+c}}
+
+
+main che descrive il master di una trasmissione i2c  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32f3xx\+\_\+hal.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main\+\_\+master\+\_\+i2c.\+c\+:
+% FIG 0
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{main__master__i2c_8c_aeca3768ca73221c06628d80eb0db14a5}{A\+D\+D\+R\+E\+S\+S\+\_\+A}~0x18
+\item 
+\#define \hyperlink{main__master__i2c_8c_a8b0a8f8c221e3e780949df09a3b8bc1e}{A\+D\+D\+R\+E\+S\+S\+\_\+B}~0x11
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main__master__i2c_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 72000000 H\+C\+L\+K(\+Hz) = 72000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 2 A\+P\+B2 Prescaler = 1 H\+SE Frequency(\+Hz) = 8000000 H\+SE P\+R\+E\+D\+IV = 1 P\+L\+L\+M\+UL = R\+C\+C\+\_\+\+P\+L\+L\+\_\+\+M\+U\+L9 (9) Flash Latency(\+W\+S) = 2. \end{DoxyCompactList}\item 
+static void \hyperlink{main__master__i2c_8c_ae89fdd15729ad41a66911190fcbab23a}{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Funzione in cui si configurano i G\+P\+IO. \end{DoxyCompactList}\item 
+static void \hyperlink{main__master__i2c_8c_a4230d11f81d0b16e112f1cc3f40cb42f}{M\+X\+\_\+\+I2\+C1\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Configurazione I2C. \end{DoxyCompactList}\item 
+static void \hyperlink{main__master__i2c_8c_ae15c3e0969d88cc5a9f22ad1a5d8a9c0}{loop} (void)
+\begin{DoxyCompactList}\small\item\em Loop infinito richiamato dalla funzione main.\+c. \end{DoxyCompactList}\item 
+void \hyperlink{main__master__i2c_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback} (uint16\+\_\+t G\+P\+I\+O\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Questa funzione è eseguita quando scatta l\textquotesingle{}interruzione di E\+X\+T\+I0, ovvero quando viene premuto il push button. \end{DoxyCompactList}\item 
+void \hyperlink{main__master__i2c_8c_aa258e0eb52bbc34002a46dc2db89a84b}{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback} (I2\+C\+\_\+\+Handle\+Type\+Def $\ast$hi2c)
+\begin{DoxyCompactList}\small\item\em Funzione Callback richiamata quando il Master completa il trasferimento verso lo slave. \end{DoxyCompactList}\item 
+int \hyperlink{main__master__i2c_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\begin{DoxyCompactList}\small\item\em Main program. \end{DoxyCompactList}\item 
+void \hyperlink{main__master__i2c_8c_a4d5338cd64a656dfdc4154773bc4f05d}{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Error\+Callback} (I2\+C\+\_\+\+Handle\+Type\+Def $\ast$hi2c)
+\begin{DoxyCompactList}\small\item\em Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. \end{DoxyCompactList}\item 
+void \hyperlink{main__master__i2c_8c_a829116a51f1db1a72ebd1120f60719d5}{\+\_\+\+Error\+\_\+\+Handler} (char $\ast$file, int line)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+I2\+C\+\_\+\+Handle\+Type\+Def \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}
+\item 
+uint8\+\_\+t \hyperlink{main__master__i2c_8c_a2f5eb32d3ab4b7fa85f5918f08b856f8}{send\+\_\+data} \mbox{[}$\,$\mbox{]} =\char`\"{}$\ast$$\ast$$\ast$$\ast$M\+E\+S\+S\+A\+G\+G\+IO I2C$\ast$$\ast$$\ast$$\ast$\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+main che descrive il master di una trasmissione i2c 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+5-\/\+June-\/2017 
+\end{DoxyDate}
+\begin{DoxyNote}{Nota}
+In questo programma è configurato il main di una trasmissione I2C. Quando è premuto il push-\/button si genera una interrupt che fa eseguire la trasmissione di un dato allo slave di indirizzo A\+D\+D\+R\+E\+S\+S\+\_\+B. 
+\end{DoxyNote}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{main__master__i2c_8c_aeca3768ca73221c06628d80eb0db14a5}\label{main__master__i2c_8c_aeca3768ca73221c06628d80eb0db14a5}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!A\+D\+D\+R\+E\+S\+S\+\_\+A@{A\+D\+D\+R\+E\+S\+S\+\_\+A}}
+\index{A\+D\+D\+R\+E\+S\+S\+\_\+A@{A\+D\+D\+R\+E\+S\+S\+\_\+A}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{A\+D\+D\+R\+E\+S\+S\+\_\+A}{ADDRESS\_A}}
+{\footnotesize\ttfamily \#define A\+D\+D\+R\+E\+S\+S\+\_\+A~0x18}
+
+
+
+Definizione alla linea 17 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da M\+X\+\_\+\+I2\+C1\+\_\+\+Init().
+
+\mbox{\Hypertarget{main__master__i2c_8c_a8b0a8f8c221e3e780949df09a3b8bc1e}\label{main__master__i2c_8c_a8b0a8f8c221e3e780949df09a3b8bc1e}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!A\+D\+D\+R\+E\+S\+S\+\_\+B@{A\+D\+D\+R\+E\+S\+S\+\_\+B}}
+\index{A\+D\+D\+R\+E\+S\+S\+\_\+B@{A\+D\+D\+R\+E\+S\+S\+\_\+B}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{A\+D\+D\+R\+E\+S\+S\+\_\+B}{ADDRESS\_B}}
+{\footnotesize\ttfamily \#define A\+D\+D\+R\+E\+S\+S\+\_\+B~0x11}
+
+
+
+Definizione alla linea 18 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback().
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{main__master__i2c_8c_a829116a51f1db1a72ebd1120f60719d5}\label{main__master__i2c_8c_a829116a51f1db1a72ebd1120f60719d5}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}}
+\index{\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+Error\+\_\+\+Handler()}{\_Error\_Handler()}}
+{\footnotesize\ttfamily void \+\_\+\+Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 271 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da M\+X\+\_\+\+I2\+C1\+\_\+\+Init().
+
+
+\begin{DoxyCode}
+272 \{
+273   \textcolor{comment}{/* USER CODE BEGIN Error\_Handler\_Debug */}
+274   \textcolor{comment}{/* User can add his own implementation to report the HAL error return state */}
+275   \textcolor{keywordflow}{while}(1) 
+276   \{
+277 
+278       HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_11);
+279       HAL\_Delay(200);
+280   \}
+281   \textcolor{comment}{/* USER CODE END Error\_Handler\_Debug */} 
+282 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}\label{main__master__i2c_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback@{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback}}
+\index{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback@{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback()}{HAL\_GPIO\_EXTI\_Callback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{G\+P\+I\+O\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Questa funzione è eseguita quando scatta l\textquotesingle{}interruzione di E\+X\+T\+I0, ovvero quando viene premuto il push button. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em G\+P\+I\+O\+\_\+\+Pin} & si indica il pin associato al push button. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+si esegue la Master Transmit in no blocking mode verso lo slave di indirizzo A\+D\+D\+R\+E\+S\+S\+\_\+B. 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 220 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenzia A\+D\+D\+R\+E\+S\+S\+\_\+B, hi2c1, e send\+\_\+data.
+
+
+\begin{DoxyCode}
+220                                               \{
+221     \textcolor{comment}{//si attende che si rilascia il bottone}
+222     \textcolor{keywordflow}{while}(HAL\_GPIO\_ReadPin(GPIOA,GPIO\_PIN\_0)!=0);
+223     \textcolor{comment}{//si abilita il pin not slave select}
+224     HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_8|GPIO\_PIN\_9|GPIO\_PIN\_10|GPIO\_PIN\_11|GPIO\_PIN\_12|GPIO\_PIN\_13|
+      GPIO\_PIN\_14|GPIO\_PIN\_15,GPIO\_PIN\_RESET);
+225 
+226       \textcolor{keywordflow}{while}(HAL\_I2C\_Master\_Transmit\_IT(&\hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}, (uint16\_t)\hyperlink{main__master__i2c_8c_a8b0a8f8c221e3e780949df09a3b8bc1e}{ADDRESS\_B}, (uint8\_t*)
+      \hyperlink{main__master__i2c_8c_a2f5eb32d3ab4b7fa85f5918f08b856f8}{send\_data}, TXSIZE)!= HAL\_OK)
+227       \textcolor{keywordflow}{while} (HAL\_I2C\_GetState(&\hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}) != HAL\_I2C\_STATE\_READY);
+228 
+229 
+230 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_a4d5338cd64a656dfdc4154773bc4f05d}\label{main__master__i2c_8c_a4d5338cd64a656dfdc4154773bc4f05d}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!H\+A\+L\+\_\+\+I2\+C\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Error\+Callback}}
+\index{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Error\+Callback}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Error\+Callback()}{HAL\_I2C\_ErrorCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+I2\+C\+\_\+\+Error\+Callback (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Handle\+Type\+Def $\ast$}]{hi2c }\end{DoxyParamCaption})}
+
+
+
+Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em hspi} & gestore spi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Sulla board saranno accesi solo i L\+ED 6 e 7, configurati nei pin P\+E15 e P\+E11, tutti gli altri saranno spenti 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 256 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+\begin{DoxyCode}
+256                                                             \{
+257     \textcolor{keywordflow}{if}(hi2c->Instance==\hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Instance)
+258                 \{
+259                 HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_8|GPIO\_PIN\_9|GPIO\_PIN\_10|GPIO\_PIN\_11|GPIO\_PIN\_12|
+      GPIO\_PIN\_13|GPIO\_PIN\_14|GPIO\_PIN\_15,GPIO\_PIN\_RESET);
+260                 HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_15,GPIO\_PIN\_SET);
+261                 HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_11,GPIO\_PIN\_SET);
+262                 \textcolor{keywordflow}{while}(1);
+263                 \}
+264 
+265 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_aa258e0eb52bbc34002a46dc2db89a84b}\label{main__master__i2c_8c_aa258e0eb52bbc34002a46dc2db89a84b}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback@{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback}}
+\index{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback@{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback()}{HAL\_I2C\_MasterTxCpltCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Handle\+Type\+Def $\ast$}]{hi2c }\end{DoxyParamCaption})}
+
+
+
+Funzione Callback richiamata quando il Master completa il trasferimento verso lo slave. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em hspi} & gestore spi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Si accendono tutti i L\+ED della board 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 237 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenzia hi2c1.
+
+
+\begin{DoxyCode}
+237                                                            \{
+238     \textcolor{keywordflow}{if}(hi2c->Instance==\hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Instance)\{
+239             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_8,GPIO\_PIN\_SET);
+240             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_9,GPIO\_PIN\_SET);
+241             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_10,GPIO\_PIN\_SET);
+242             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_11,GPIO\_PIN\_SET);
+243             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_12,GPIO\_PIN\_SET);
+244             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_13,GPIO\_PIN\_SET);
+245             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_14,GPIO\_PIN\_SET);
+246             HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_15,GPIO\_PIN\_SET);
+247         \}
+248 
+249 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_ae15c3e0969d88cc5a9f22ad1a5d8a9c0}\label{main__master__i2c_8c_ae15c3e0969d88cc5a9f22ad1a5d8a9c0}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!loop@{loop}}
+\index{loop@{loop}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily static void loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Loop infinito richiamato dalla funzione main.\+c. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 67 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+67                       \{
+68     HAL\_Delay(150);
+69     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_9);
+70     HAL\_Delay(150);
+71     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_10);
+72     HAL\_Delay(150);
+73     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_11);
+74     HAL\_Delay(150);
+75     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_12);
+76     HAL\_Delay(150);
+77     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_13);
+78     HAL\_Delay(150);
+79     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_14);
+80     HAL\_Delay(150);
+81     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_15);
+82     HAL\_Delay(150);
+83     HAL\_GPIO\_TogglePin(GPIOE,GPIO\_PIN\_8);
+84 
+85 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main__master__i2c_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!main@{main}}
+\index{main@{main}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Main program. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 41 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenzia loop(), M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init(), M\+X\+\_\+\+I2\+C1\+\_\+\+Init(), e System\+Clock\+\_\+\+Config().
+
+
+\begin{DoxyCode}
+42 \{
+43 
+44   HAL\_Init();
+45 
+46   \hyperlink{main__master__i2c_8c_a70af21c671abfcc773614a9a4f63d920}{SystemClock\_Config}();
+47 
+48   \hyperlink{main__master__i2c_8c_ae89fdd15729ad41a66911190fcbab23a}{MX\_GPIO\_Init}();
+49   \hyperlink{main__master__i2c_8c_a4230d11f81d0b16e112f1cc3f40cb42f}{MX\_I2C1\_Init}();
+50 
+51 
+52 
+53 
+54   \textcolor{keywordflow}{while} (1)
+55   \{
+56       \hyperlink{main__master__i2c_8c_ae15c3e0969d88cc5a9f22ad1a5d8a9c0}{loop}();
+57   \}
+58 
+59 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_ae89fdd15729ad41a66911190fcbab23a}\label{main__master__i2c_8c_ae89fdd15729ad41a66911190fcbab23a}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}}
+\index{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init@{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init()}{MX\_GPIO\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funzione in cui si configurano i G\+P\+IO. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 175 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+176 \{
+177 
+178   GPIO\_InitTypeDef GPIO\_InitStruct;
+179 
+180   \textcolor{comment}{/* GPIO Ports Clock Enable */}
+181   \_\_HAL\_RCC\_GPIOF\_CLK\_ENABLE();
+182   \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();
+183   \_\_HAL\_RCC\_GPIOE\_CLK\_ENABLE();
+184   \_\_HAL\_RCC\_GPIOB\_CLK\_ENABLE();
+185 
+186   \textcolor{comment}{/*Configure GPIO pin Output Level */}
+187   HAL\_GPIO\_WritePin(GPIOE, GPIO\_PIN\_8|GPIO\_PIN\_9|GPIO\_PIN\_10|GPIO\_PIN\_11 
+188                           |GPIO\_PIN\_12|GPIO\_PIN\_13|GPIO\_PIN\_14|GPIO\_PIN\_15, GPIO\_PIN\_RESET);
+189 
+190   \textcolor{comment}{/*Configure GPIO pin : PA0 */}
+191   GPIO\_InitStruct.Pin = GPIO\_PIN\_0;
+192   GPIO\_InitStruct.Mode = GPIO\_MODE\_IT\_RISING;
+193   GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+194   HAL\_GPIO\_Init(GPIOA, &GPIO\_InitStruct);
+195 
+196   \textcolor{comment}{/*Configure GPIO pins : PE8 PE9 PE10 PE11 }
+197 \textcolor{comment}{                           PE12 PE13 PE14 PE15 */}
+198   GPIO\_InitStruct.Pin = GPIO\_PIN\_8|GPIO\_PIN\_9|GPIO\_PIN\_10|GPIO\_PIN\_11 
+199                           |GPIO\_PIN\_12|GPIO\_PIN\_13|GPIO\_PIN\_14|GPIO\_PIN\_15;
+200   GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+201   GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+202   GPIO\_InitStruct.Speed = GPIO\_SPEED\_FREQ\_LOW;
+203   HAL\_GPIO\_Init(GPIOE, &GPIO\_InitStruct);
+204 
+205   \textcolor{comment}{/* EXTI interrupt init*/}
+206   HAL\_NVIC\_SetPriority(EXTI0\_IRQn, 0, 3);
+207   HAL\_NVIC\_EnableIRQ(EXTI0\_IRQn);
+208 
+209 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_a4230d11f81d0b16e112f1cc3f40cb42f}\label{main__master__i2c_8c_a4230d11f81d0b16e112f1cc3f40cb42f}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!M\+X\+\_\+\+I2\+C1\+\_\+\+Init@{M\+X\+\_\+\+I2\+C1\+\_\+\+Init}}
+\index{M\+X\+\_\+\+I2\+C1\+\_\+\+Init@{M\+X\+\_\+\+I2\+C1\+\_\+\+Init}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{M\+X\+\_\+\+I2\+C1\+\_\+\+Init()}{MX\_I2C1\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+I2\+C1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Configurazione I2C. 
+
+\begin{DoxyNote}{Nota}
+utilizzando un valore di Timing pari a 004\+C4092A ,partendo da un clock a 72\+M\+Hz, si ha un timing a 1\+M\+Hz 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Configure Analogue filter
+
+Configure Digital filter
+
+Definizione alla linea 140 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenzia \+\_\+\+Error\+\_\+\+Handler(), A\+D\+D\+R\+E\+S\+S\+\_\+A, e hi2c1.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+141 \{
+142     \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Instance             = I2C1;
+143     \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Init.Timing          = 0x00C4092A;
+144     \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Init.OwnAddress1     = \hyperlink{main__master__i2c_8c_aeca3768ca73221c06628d80eb0db14a5}{ADDRESS\_A};
+145     \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Init.AddressingMode  = I2C\_ADDRESSINGMODE\_7BIT;
+146     \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Init.DualAddressMode = I2C\_DUALADDRESS\_DISABLE;
+147     \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Init.GeneralCallMode = I2C\_GENERALCALL\_DISABLE;
+148     \hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}.Init.NoStretchMode   = I2C\_NOSTRETCH\_DISABLE;
+149   \textcolor{keywordflow}{if} (HAL\_I2C\_Init(&\hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1})     != HAL\_OK)
+150   \{
+151     \hyperlink{main__master__i2c_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+152   \}
+153 
+156   \textcolor{keywordflow}{if} (HAL\_I2CEx\_ConfigAnalogFilter(&\hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}, I2C\_ANALOGFILTER\_ENABLE) != HAL\_OK)
+157   \{
+158     \hyperlink{main__master__i2c_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+159   \}
+160 
+163   \textcolor{keywordflow}{if} (HAL\_I2CEx\_ConfigDigitalFilter(&\hyperlink{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}{hi2c1}, 0) != HAL\_OK)
+164   \{
+165     \hyperlink{main__master__i2c_8c_a829116a51f1db1a72ebd1120f60719d5}{\_Error\_Handler}(\_\_FILE\_\_, \_\_LINE\_\_);
+166   \}
+167 
+168 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__master__i2c_8c_a70af21c671abfcc773614a9a4f63d920}\label{main__master__i2c_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 72000000 H\+C\+L\+K(\+Hz) = 72000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 2 A\+P\+B2 Prescaler = 1 H\+SE Frequency(\+Hz) = 8000000 H\+SE P\+R\+E\+D\+IV = 1 P\+L\+L\+M\+UL = R\+C\+C\+\_\+\+P\+L\+L\+\_\+\+M\+U\+L9 (9) Flash Latency(\+W\+S) = 2. 
+
+System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 168000000 H\+C\+L\+K(\+Hz) = 168000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 4 A\+P\+B2 Prescaler = 2 H\+SE Frequency(\+Hz) = 8000000 P\+L\+L\+\_\+M = 8 P\+L\+L\+\_\+N = 336 P\+L\+L\+\_\+P = 2 P\+L\+L\+\_\+Q = 7 V\+D\+D(\+V) = 3.\+3 Main regulator output voltage = Scale1 mode Flash Latency(\+W\+S) = 5.
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & System Clock Configuration\\
+\hline
+\end{DoxyRetVals}
+System Clock Configuration\+System Clock Configuration Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Configure the Systick interrupt time
+
+Configure the Systick
+
+Definizione alla linea 103 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+104 \{
+105   RCC\_ClkInitTypeDef RCC\_ClkInitStruct;
+106   RCC\_OscInitTypeDef RCC\_OscInitStruct;
+107 
+108   \textcolor{comment}{/* Enable HSE Oscillator and activate PLL with HSE as source */}
+109   RCC\_OscInitStruct.OscillatorType = RCC\_OSCILLATORTYPE\_HSE;
+110   RCC\_OscInitStruct.HSEState = RCC\_HSE\_ON;
+111   RCC\_OscInitStruct.HSEPredivValue = RCC\_HSE\_PREDIV\_DIV1;
+112   RCC\_OscInitStruct.PLL.PLLState = RCC\_PLL\_ON;
+113   RCC\_OscInitStruct.PLL.PLLSource = RCC\_PLLSOURCE\_HSE;
+114   RCC\_OscInitStruct.PLL.PLLMUL = RCC\_PLL\_MUL9;
+115   \textcolor{keywordflow}{if} (HAL\_RCC\_OscConfig(&RCC\_OscInitStruct)!= HAL\_OK)
+116   \{
+117     \textcolor{comment}{/* Initialization Error */}
+118     \textcolor{keywordflow}{while}(1);
+119   \}
+120 
+121   \textcolor{comment}{/* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2}
+122 \textcolor{comment}{     clocks dividers */}
+123   RCC\_ClkInitStruct.ClockType = (RCC\_CLOCKTYPE\_SYSCLK | RCC\_CLOCKTYPE\_HCLK | RCC\_CLOCKTYPE\_PCLK1 | 
+      RCC\_CLOCKTYPE\_PCLK2);
+124   RCC\_ClkInitStruct.SYSCLKSource = RCC\_SYSCLKSOURCE\_PLLCLK;
+125   RCC\_ClkInitStruct.AHBCLKDivider = RCC\_SYSCLK\_DIV1;
+126   RCC\_ClkInitStruct.APB1CLKDivider = RCC\_HCLK\_DIV2;
+127   RCC\_ClkInitStruct.APB2CLKDivider = RCC\_HCLK\_DIV1;
+128   \textcolor{keywordflow}{if} (HAL\_RCC\_ClockConfig(&RCC\_ClkInitStruct, FLASH\_LATENCY\_2)!= HAL\_OK)
+129   \{
+130     \textcolor{comment}{/* Initialization Error */}
+131     \textcolor{keywordflow}{while}(1);
+132   \}
+133 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}\label{main__master__i2c_8c_af7b2c26e44dadaaa798a5c3d82914ba7}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!hi2c1@{hi2c1}}
+\index{hi2c1@{hi2c1}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{hi2c1}{hi2c1}}
+{\footnotesize\ttfamily I2\+C\+\_\+\+Handle\+Type\+Def hi2c1}
+
+
+
+Definizione alla linea 21 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback(), H\+A\+L\+\_\+\+I2\+C\+\_\+\+Master\+Tx\+Cplt\+Callback(), e M\+X\+\_\+\+I2\+C1\+\_\+\+Init().
+
+\mbox{\Hypertarget{main__master__i2c_8c_a2f5eb32d3ab4b7fa85f5918f08b856f8}\label{main__master__i2c_8c_a2f5eb32d3ab4b7fa85f5918f08b856f8}} 
+\index{main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}!send\+\_\+data@{send\+\_\+data}}
+\index{send\+\_\+data@{send\+\_\+data}!main\+\_\+master\+\_\+i2c.\+c@{main\+\_\+master\+\_\+i2c.\+c}}
+\subsubsection{\texorpdfstring{send\+\_\+data}{send\_data}}
+{\footnotesize\ttfamily uint8\+\_\+t send\+\_\+data\mbox{[}$\,$\mbox{]} =\char`\"{}$\ast$$\ast$$\ast$$\ast$M\+E\+S\+S\+A\+G\+G\+IO I2C$\ast$$\ast$$\ast$$\ast$\char`\"{}}
+
+
+
+Definizione alla linea 33 del file main\+\_\+master\+\_\+i2c.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback().
+

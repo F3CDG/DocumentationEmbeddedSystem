@@ -1,0 +1,10 @@
+digraph "Elaborato7/Driver_GPIO_Custom/Seconda_Tipologia/mygpio_uiodriver.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node8 [label="Elaborato7/Driver_GPIO\l_Custom/Seconda_Tipologia\l/mygpio_uiodriver.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="Elaborato7/Driver_GPIO\l_Custom/Seconda_Tipologia\l/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_elaborato7_2_driver___g_p_i_o___custom_2_seconda___tipologia_2main_8c.html",tooltip="driver \"mygpio_uiodriver\" to control gpio "];
+  Node8 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="Elaborato7/Driver_GPIO\l_Custom/Seconda_Tipologia\l/mygpio_uiodriver.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mygpio__uiodriver_8c.html",tooltip="Functions used for mygpio_uiodriver gpio. "];
+}

@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Esame di Sistemi Embedded 2016/17 - Gruppo 4: Riferimenti per il file Elaborato4/uart/main_slave_uart.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="LogoGruppoIV.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Esame di Sistemi Embedded 2016/17 - Gruppo 4
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a81bac4e371e866f8ac0432bccdb52b.html">Elaborato4</a></li><li class="navelem"><a class="el" href="dir_0a6ceaf6a382346905ef2c7250614778.html">uart</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funzioni</a> &#124;
+<a href="#var-members">Variabili</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per il file main_slave_uart.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>main che descrive il master di una trasmissione uart  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &quot;main.h&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Grafo delle dipendenze di inclusione per main_slave_uart.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="main__slave__uart_8c__incl.png" border="0" usemap="#_elaborato4_2uart_2main__slave__uart_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div>
+<p><a href="main__slave__uart_8c_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funzioni</h2></td></tr>
+<tr class="memitem:ad554cbf06ce0fa6f92a0c4152b8a4c64"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#ad554cbf06ce0fa6f92a0c4152b8a4c64">SystemClock_Config</a> (void)</td></tr>
+<tr class="memdesc:ad554cbf06ce0fa6f92a0c4152b8a4c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">System Clock Configuration The system Clock is configured as follow : System Clock source = PLL (HSE) SYSCLK(Hz) = 168000000 HCLK(Hz) = 168000000 AHB Prescaler = 1 APB1 Prescaler = 4 APB2 Prescaler = 2 HSE Frequency(Hz) = 8000000 PLL_M = 8 PLL_N = 336 PLL_P = 2 PLL_Q = 7 VDD(V) = 3.3 Main regulator output voltage = Scale1 mode Flash Latency(WS) = 5.  <a href="#ad554cbf06ce0fa6f92a0c4152b8a4c64">Continua...</a><br /></td></tr>
+<tr class="separator:ad554cbf06ce0fa6f92a0c4152b8a4c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec8ff26e953e1b0e8439a193f58974d4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a> (void)</td></tr>
+<tr class="memdesc:aec8ff26e953e1b0e8439a193f58974d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione è chiama in caso di errore.  <a href="#aec8ff26e953e1b0e8439a193f58974d4">Continua...</a><br /></td></tr>
+<tr class="separator:aec8ff26e953e1b0e8439a193f58974d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdd9ed49457081071d09e4ff5f336a85"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#abdd9ed49457081071d09e4ff5f336a85">SetupUART</a> (void)</td></tr>
+<tr class="memdesc:abdd9ed49457081071d09e4ff5f336a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configurazione UART Si utilizza una USART Asincrona, nello specifico si sceglie USART2 che è connessa ai pin PA2(USART2_TX) e PA3(USART2 RX)  <a href="#abdd9ed49457081071d09e4ff5f336a85">Continua...</a><br /></td></tr>
+<tr class="separator:abdd9ed49457081071d09e4ff5f336a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53e151fe65595af54b21916542c59147"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#a53e151fe65595af54b21916542c59147">setup_pushbutton</a> (void)</td></tr>
+<tr class="memdesc:a53e151fe65595af54b21916542c59147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione in cui si configura il push button come GPIO_INPUT.  <a href="#a53e151fe65595af54b21916542c59147">Continua...</a><br /></td></tr>
+<tr class="separator:a53e151fe65595af54b21916542c59147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af976f1c2495320f8364f17a107951976"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#af976f1c2495320f8364f17a107951976">setup_led</a> (void)</td></tr>
+<tr class="memdesc:af976f1c2495320f8364f17a107951976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione in cui si configura i LED.  <a href="#af976f1c2495320f8364f17a107951976">Continua...</a><br /></td></tr>
+<tr class="separator:af976f1c2495320f8364f17a107951976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae15c3e0969d88cc5a9f22ad1a5d8a9c0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#ae15c3e0969d88cc5a9f22ad1a5d8a9c0">loop</a> (void)</td></tr>
+<tr class="memdesc:ae15c3e0969d88cc5a9f22ad1a5d8a9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop per la trasmissione/ricezione di un messaggio attraverso il bus UART.  <a href="#ae15c3e0969d88cc5a9f22ad1a5d8a9c0">Continua...</a><br /></td></tr>
+<tr class="separator:ae15c3e0969d88cc5a9f22ad1a5d8a9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
+<tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main program.  <a href="#a840291bc02cba5474a4cb46a9b9566fe">Continua...</a><br /></td></tr>
+<tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51234b271615f20600cc5d30a3bc810d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#a51234b271615f20600cc5d30a3bc810d">HAL_UART_ErrorCallback</a> (UART_HandleTypeDef *<a class="el" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>)</td></tr>
+<tr class="memdesc:a51234b271615f20600cc5d30a3bc810d"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART error callbacks.  <a href="#a51234b271615f20600cc5d30a3bc810d">Continua...</a><br /></td></tr>
+<tr class="separator:a51234b271615f20600cc5d30a3bc810d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variabili</h2></td></tr>
+<tr class="memitem:aa9479c261d65eecedd3d9582f7f0f89c"><td class="memItemLeft" align="right" valign="top">UART_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a></td></tr>
+<tr class="separator:aa9479c261d65eecedd3d9582f7f0f89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add1fa76432b5a682cdaaf91f1869e9c2"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a></td></tr>
+<tr class="separator:add1fa76432b5a682cdaaf91f1869e9c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3bd0b5a480a3c4ac59f80af890d9fba"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#af3bd0b5a480a3c4ac59f80af890d9fba">receive_data</a></td></tr>
+<tr class="separator:af3bd0b5a480a3c4ac59f80af890d9fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d95112e3c1b55c7f80a6bfcc6b43961"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main__slave__uart_8c.html#a7d95112e3c1b55c7f80a6bfcc6b43961">LEDS</a> [4] = {GPIO_PIN_12, GPIO_PIN_13, GPIO_PIN_14, GPIO_PIN_15}</td></tr>
+<tr class="separator:a7d95112e3c1b55c7f80a6bfcc6b43961"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>main che descrive il master di una trasmissione uart </p>
+<dl class="section author"><dt>Autori</dt><dd>Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV - Sistemi Embedded 2016-2017 </dd></dl>
+<dl class="section version"><dt>Versione</dt><dd>V1.0 </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>20-June-2017 </dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Si è in attesa di ricevere un dato dal master.Se la ricezione è completata con successo, si fa un toggle sul led corrispondente al valore specificato nel messaggio ricevuto. Si incrementa di 1 modulo 4 il suddetto valore e si invia di nuovo al Master.Se anche la trasmissione è completata con successo, ritorna nel loop in cui si è in polling per la ricezione. </dd></dl>
+
+<p class="definition">Definizione nel file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+</div><h2 class="groupheader">Documentazione delle funzioni</h2>
+<a id="aec8ff26e953e1b0e8439a193f58974d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec8ff26e953e1b0e8439a193f58974d4">&#9670;&nbsp;</a></span>Error_Handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Error_Handler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Questa funzione è chiama in caso di errore. </p>
+<dl class="section note"><dt>Nota</dt><dd>Se richiamata,si entra in un loop (vuoto) infinito </dd></dl>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00262">262</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00236">loop()</a>, <a class="el" href="main__slave__uart_8c_source.html#l00212">SetupUART()</a>, e <a class="el" href="main__slave__uart_8c_source.html#l00094">SystemClock_Config()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;{</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <span class="comment">/* Si accende il LED5*/</span></div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      HAL_GPIO_WritePin(GPIOD,GPIO_PIN_14,GPIO_PIN_SET);</div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="keywordflow">while</span>(1)</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  {</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  }</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a51234b271615f20600cc5d30a3bc810d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51234b271615f20600cc5d30a3bc810d">&#9670;&nbsp;</a></span>HAL_UART_ErrorCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_ErrorCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>huart2</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>UART error callbacks. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">UartHandle</td><td>UART handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Nota</dt><dd>This example shows a simple way to report transfer error, and you can add your own implementation. </dd></dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00148">148</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="comment">/* Turn LED3 on: Transfer error in reception/transmission process */</span></div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  BSP_LED_On(LED3);</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="ae15c3e0969d88cc5a9f22ad1a5d8a9c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae15c3e0969d88cc5a9f22ad1a5d8a9c0">&#9670;&nbsp;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void loop </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loop per la trasmissione/ricezione di un messaggio attraverso il bus UART. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00236">236</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="main__slave__uart_8c_source.html#l00262">Error_Handler()</a>, <a class="el" href="main__slave__uart_8c_source.html#l00019">huart2</a>, <a class="el" href="main__slave__uart_8c_source.html#l00023">LEDS</a>, <a class="el" href="main__slave__uart_8c_source.html#l00022">receive_data</a>, e <a class="el" href="main__slave__uart_8c_source.html#l00022">send_data</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                      {</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      <span class="comment">/*Si è in polling di ricevere il messaggio dal master*/</span></div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      <span class="keywordflow">if</span>(HAL_UART_Receive(&amp;<a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>, (uint8_t *)<a class="code" href="main__slave__uart_8c.html#af3bd0b5a480a3c4ac59f80af890d9fba">receive_data</a>, RXSIZE, 5000) != HAL_OK)</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <a class="code" href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a>();</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      }</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      HAL_GPIO_WritePin(GPIOD,<a class="code" href="main__slave__uart_8c.html#a7d95112e3c1b55c7f80a6bfcc6b43961">LEDS</a>[<a class="code" href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a>[0]],GPIO_PIN_RESET);</div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      <span class="comment">/*Si incrementa di 1 modulo 4 il contenuto del messaggio ricevuto*/</span></div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <a class="code" href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a>[0] = (receive_data[0]+1)%4;</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      HAL_GPIO_WritePin(GPIOD,<a class="code" href="main__slave__uart_8c.html#a7d95112e3c1b55c7f80a6bfcc6b43961">LEDS</a>[<a class="code" href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a>[0]],GPIO_PIN_SET);</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      <span class="comment">/*Si invia al master il valore appena aggiornato*/</span></div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      <span class="keywordflow">if</span>(HAL_UART_Transmit(&amp;<a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>, (uint8_t*)<a class="code" href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a>, TXSIZE, 5000)!= HAL_OK)</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        {</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;          <a class="code" href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a>();</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div><div class="ttc" id="main__slave__uart_8c_html_add1fa76432b5a682cdaaf91f1869e9c2"><div class="ttname"><a href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a></div><div class="ttdeci">uint8_t * send_data</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00022">main_slave_uart.c:22</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_aec8ff26e953e1b0e8439a193f58974d4"><div class="ttname"><a href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a></div><div class="ttdeci">static void Error_Handler(void)</div><div class="ttdoc">Questa funzione è chiama in caso di errore. </div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00262">main_slave_uart.c:262</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_a7d95112e3c1b55c7f80a6bfcc6b43961"><div class="ttname"><a href="main__slave__uart_8c.html#a7d95112e3c1b55c7f80a6bfcc6b43961">LEDS</a></div><div class="ttdeci">uint16_t LEDS[4]</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00023">main_slave_uart.c:23</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_aa9479c261d65eecedd3d9582f7f0f89c"><div class="ttname"><a href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a></div><div class="ttdeci">UART_HandleTypeDef huart2</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00019">main_slave_uart.c:19</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_af3bd0b5a480a3c4ac59f80af890d9fba"><div class="ttname"><a href="main__slave__uart_8c.html#af3bd0b5a480a3c4ac59f80af890d9fba">receive_data</a></div><div class="ttdeci">uint8_t * receive_data</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00022">main_slave_uart.c:22</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a840291bc02cba5474a4cb46a9b9566fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Main program. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00039">39</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="main__slave__uart_8c_source.html#l00236">loop()</a>, <a class="el" href="main__slave__uart_8c_source.html#l00022">receive_data</a>, <a class="el" href="main__slave__uart_8c_source.html#l00022">send_data</a>, <a class="el" href="main__slave__uart_8c_source.html#l00163">setup_led()</a>, <a class="el" href="main__slave__uart_8c_source.html#l00183">setup_pushbutton()</a>, <a class="el" href="main__slave__uart_8c_source.html#l00212">SetupUART()</a>, e <a class="el" href="main__slave__uart_8c_source.html#l00094">SystemClock_Config()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="comment">/* STM32F4xx HAL library initialization:</span></div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">       - Configure the Flash prefetch, instruction and Data caches</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">       - Configure the Systick to generate an interrupt each 1 msec</span></div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">       - Set NVIC Group Priority to 4</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">       - Global MSP (MCU Support Package) initialization</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     */</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  HAL_Init();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  </div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">/* Configure the BSP */</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="main__slave__uart_8c.html#a53e151fe65595af54b21916542c59147">setup_pushbutton</a>();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="main__slave__uart_8c.html#af976f1c2495320f8364f17a107951976">setup_led</a>();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">/* Configure the system clock to 168 MHz */</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="main__slave__uart_8c.html#ad554cbf06ce0fa6f92a0c4152b8a4c64">SystemClock_Config</a>();</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">/*##-1- Configure the UART peripheral ######################################*/</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="main__slave__uart_8c.html#abdd9ed49457081071d09e4ff5f336a85">SetupUART</a>();</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  </div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a> = (uint8_t*)malloc(<span class="keyword">sizeof</span>(uint8_t)*TXSIZE);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="main__slave__uart_8c.html#af3bd0b5a480a3c4ac59f80af890d9fba">receive_data</a> = (uint8_t*)malloc(<span class="keyword">sizeof</span>(uint8_t)*RXSIZE);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a>[0]=0x00;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="main__slave__uart_8c.html#af3bd0b5a480a3c4ac59f80af890d9fba">receive_data</a>[0]=0x00;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">/* Transmission loop */</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">while</span> (1)</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  {</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <a class="code" href="main__slave__uart_8c.html#ae15c3e0969d88cc5a9f22ad1a5d8a9c0">loop</a>();</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div><div class="ttc" id="main__slave__uart_8c_html_add1fa76432b5a682cdaaf91f1869e9c2"><div class="ttname"><a href="main__slave__uart_8c.html#add1fa76432b5a682cdaaf91f1869e9c2">send_data</a></div><div class="ttdeci">uint8_t * send_data</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00022">main_slave_uart.c:22</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_ae15c3e0969d88cc5a9f22ad1a5d8a9c0"><div class="ttname"><a href="main__slave__uart_8c.html#ae15c3e0969d88cc5a9f22ad1a5d8a9c0">loop</a></div><div class="ttdeci">static void loop(void)</div><div class="ttdoc">Loop per la trasmissione/ricezione di un messaggio attraverso il bus UART. </div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00236">main_slave_uart.c:236</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_ad554cbf06ce0fa6f92a0c4152b8a4c64"><div class="ttname"><a href="main__slave__uart_8c.html#ad554cbf06ce0fa6f92a0c4152b8a4c64">SystemClock_Config</a></div><div class="ttdeci">static void SystemClock_Config(void)</div><div class="ttdoc">System Clock Configuration The system Clock is configured as follow : System Clock source = PLL (HSE)...</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00094">main_slave_uart.c:94</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_af976f1c2495320f8364f17a107951976"><div class="ttname"><a href="main__slave__uart_8c.html#af976f1c2495320f8364f17a107951976">setup_led</a></div><div class="ttdeci">void setup_led(void)</div><div class="ttdoc">Funzione in cui si configura i LED. </div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00163">main_slave_uart.c:163</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_abdd9ed49457081071d09e4ff5f336a85"><div class="ttname"><a href="main__slave__uart_8c.html#abdd9ed49457081071d09e4ff5f336a85">SetupUART</a></div><div class="ttdeci">static void SetupUART(void)</div><div class="ttdoc">Configurazione UART Si utilizza una USART Asincrona, nello specifico si sceglie USART2 che è connessa...</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00212">main_slave_uart.c:212</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_af3bd0b5a480a3c4ac59f80af890d9fba"><div class="ttname"><a href="main__slave__uart_8c.html#af3bd0b5a480a3c4ac59f80af890d9fba">receive_data</a></div><div class="ttdeci">uint8_t * receive_data</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00022">main_slave_uart.c:22</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_a53e151fe65595af54b21916542c59147"><div class="ttname"><a href="main__slave__uart_8c.html#a53e151fe65595af54b21916542c59147">setup_pushbutton</a></div><div class="ttdeci">void setup_pushbutton(void)</div><div class="ttdoc">Funzione in cui si configura il push button come GPIO_INPUT. </div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00183">main_slave_uart.c:183</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af976f1c2495320f8364f17a107951976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af976f1c2495320f8364f17a107951976">&#9670;&nbsp;</a></span>setup_led()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup_led </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funzione in cui si configura i LED. </p>
+<dl class="section note"><dt>Nota</dt><dd>Pin PD12: LED4 </dd>
+<dd>
+Pin PD13: LED3 </dd>
+<dd>
+Pin PD14: LED5 </dd>
+<dd>
+Pin PD15: LED6 </dd></dl>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00163">163</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    {</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="comment">/* Configure LED3, LED4, LED5 and LED6 */</span></div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        GPIO_InitTypeDef GPIO_InitStruct;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="comment">/* Abilitazione del clock alla porta GPIOD */</span></div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      __HAL_RCC_GPIOD_CLK_ENABLE();</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="comment">/*Configurazione dei 4 LED: PD12,PD13,PD14,PD15 */</span></div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;       GPIO_InitStruct.Pin = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;       GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;       GPIO_InitStruct.Pull = GPIO_NOPULL;</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;       GPIO_InitStruct.Speed = GPIO_SPEED_FAST;</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;       HAL_GPIO_Init(GPIOD, &amp;GPIO_InitStruct);</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;       HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_PIN_RESET);</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a53e151fe65595af54b21916542c59147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53e151fe65595af54b21916542c59147">&#9670;&nbsp;</a></span>setup_pushbutton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup_pushbutton </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funzione in cui si configura il push button come GPIO_INPUT. </p>
+<dl class="section note"><dt>Nota</dt><dd>Il push button è associato al pin PA0, quindi alla porta GPIOA </dd></dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00183">183</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                           {</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      GPIO_InitTypeDef GPIO_InitStruct;</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="comment">/* Si abilita la porta associata al PA0 */</span></div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      __HAL_RCC_GPIOA_CLK_ENABLE();</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      GPIO_InitStruct.Pin = GPIO_PIN_0;</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      GPIO_InitStruct.Mode = GPIO_MODE_INPUT;</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      GPIO_InitStruct.Pull = GPIO_NOPULL;</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      GPIO_InitStruct.Speed = GPIO_SPEED_FAST;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="abdd9ed49457081071d09e4ff5f336a85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdd9ed49457081071d09e4ff5f336a85">&#9670;&nbsp;</a></span>SetupUART()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SetupUART </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Configurazione UART Si utilizza una USART Asincrona, nello specifico si sceglie USART2 che è connessa ai pin PA2(USART2_TX) e PA3(USART2 RX) </p>
+<p>Si sceglie di settare i seguenti valori :</p><ul>
+<li>Lunghezza = 8 Bits</li>
+<li>Stop Bit = 1 bit</li>
+<li>Parity = None</li>
+<li>BaudRate = 9600 baud</li>
+<li>Hardware flow control disabled (RTS and CTS signals) <dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00212">212</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="main__slave__uart_8c_source.html#l00262">Error_Handler()</a>, e <a class="el" href="main__slave__uart_8c_source.html#l00019">huart2</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                           {</div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Instance          = USARTx;</div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Init.BaudRate     = 9600;</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Init.WordLength   = UART_WORDLENGTH_8B;</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Init.StopBits     = UART_STOPBITS_1;</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Init.Parity       = UART_PARITY_NONE;</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Init.HwFlowCtl    = UART_HWCONTROL_NONE;</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Init.Mode         = UART_MODE_TX_RX;</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>.Init.OverSampling = UART_OVERSAMPLING_16;</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">if</span>(HAL_UART_Init(&amp;<a class="code" href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a>) != HAL_OK)</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;     {</div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <a class="code" href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a>();</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;     }</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div><div class="ttc" id="main__slave__uart_8c_html_aec8ff26e953e1b0e8439a193f58974d4"><div class="ttname"><a href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a></div><div class="ttdeci">static void Error_Handler(void)</div><div class="ttdoc">Questa funzione è chiama in caso di errore. </div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00262">main_slave_uart.c:262</a></div></div>
+<div class="ttc" id="main__slave__uart_8c_html_aa9479c261d65eecedd3d9582f7f0f89c"><div class="ttname"><a href="main__slave__uart_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a></div><div class="ttdeci">UART_HandleTypeDef huart2</div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00019">main_slave_uart.c:19</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad554cbf06ce0fa6f92a0c4152b8a4c64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad554cbf06ce0fa6f92a0c4152b8a4c64">&#9670;&nbsp;</a></span>SystemClock_Config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SystemClock_Config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>System Clock Configuration The system Clock is configured as follow : System Clock source = PLL (HSE) SYSCLK(Hz) = 168000000 HCLK(Hz) = 168000000 AHB Prescaler = 1 APB1 Prescaler = 4 APB2 Prescaler = 2 HSE Frequency(Hz) = 8000000 PLL_M = 8 PLL_N = 336 PLL_P = 2 PLL_Q = 7 VDD(V) = 3.3 Main regulator output voltage = Scale1 mode Flash Latency(WS) = 5. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00094">94</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="main__slave__uart_8c_source.html#l00262">Error_Handler()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00039">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  RCC_ClkInitTypeDef RCC_ClkInitStruct;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  RCC_OscInitTypeDef RCC_OscInitStruct;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="comment">/* Enable Power Control clock */</span></div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  __PWR_CLK_ENABLE();</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  </div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="comment">/* The voltage scaling allows optimizing the power consumption when the device is </span></div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">     clocked below the maximum system frequency, to update the voltage scaling value </span></div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">     regarding system frequency refer to product datasheet.  */</span></div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  </div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="comment">/* Enable HSE Oscillator and activate PLL with HSE as source */</span></div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  RCC_OscInitStruct.HSEState = RCC_HSE_ON;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  RCC_OscInitStruct.PLL.PLLM = 8;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  RCC_OscInitStruct.PLL.PLLN = 336;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  RCC_OscInitStruct.PLL.PLLQ = 7;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">if</span>(HAL_RCC_OscConfig(&amp;RCC_OscInitStruct) != HAL_OK)</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a>();</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  </div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="comment">/* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 </span></div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">     clocks dividers */</span></div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;  </div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;  </div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">if</span>(HAL_RCC_ClockConfig(&amp;RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  {</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a>();</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  }</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="comment">/* STM32F405x/407x/415x/417x Revision Z devices: prefetch is supported  */</span></div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">if</span> (HAL_GetREVID() == 0x1001)</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  {</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">/* Enable the Flash prefetch */</span></div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    __HAL_FLASH_PREFETCH_BUFFER_ENABLE();</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  }</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div><div class="ttc" id="main__slave__uart_8c_html_aec8ff26e953e1b0e8439a193f58974d4"><div class="ttname"><a href="main__slave__uart_8c.html#aec8ff26e953e1b0e8439a193f58974d4">Error_Handler</a></div><div class="ttdeci">static void Error_Handler(void)</div><div class="ttdoc">Questa funzione è chiama in caso di errore. </div><div class="ttdef"><b>Definition:</b> <a href="main__slave__uart_8c_source.html#l00262">main_slave_uart.c:262</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentazione delle variabili</h2>
+<a id="aa9479c261d65eecedd3d9582f7f0f89c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9479c261d65eecedd3d9582f7f0f89c">&#9670;&nbsp;</a></span>huart2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UART_HandleTypeDef huart2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00019">19</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00236">loop()</a>, e <a class="el" href="main__slave__uart_8c_source.html#l00212">SetupUART()</a>.</p>
+
+</div>
+</div>
+<a id="a7d95112e3c1b55c7f80a6bfcc6b43961"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d95112e3c1b55c7f80a6bfcc6b43961">&#9670;&nbsp;</a></span>LEDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t LEDS[4] = {GPIO_PIN_12, GPIO_PIN_13, GPIO_PIN_14, GPIO_PIN_15}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00023">23</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00236">loop()</a>.</p>
+
+</div>
+</div>
+<a id="af3bd0b5a480a3c4ac59f80af890d9fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3bd0b5a480a3c4ac59f80af890d9fba">&#9670;&nbsp;</a></span>receive_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * receive_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00022">22</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00236">loop()</a>, e <a class="el" href="main__slave__uart_8c_source.html#l00039">main()</a>.</p>
+
+</div>
+</div>
+<a id="add1fa76432b5a682cdaaf91f1869e9c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add1fa76432b5a682cdaaf91f1869e9c2">&#9670;&nbsp;</a></span>send_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* send_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definizione alla linea <a class="el" href="main__slave__uart_8c_source.html#l00022">22</a> del file <a class="el" href="main__slave__uart_8c_source.html">main_slave_uart.c</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main__slave__uart_8c_source.html#l00236">loop()</a>, e <a class="el" href="main__slave__uart_8c_source.html#l00039">main()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

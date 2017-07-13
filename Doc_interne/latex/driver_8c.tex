@@ -1,0 +1,273 @@
+\hypertarget{driver_8c}{}\section{Riferimenti per il file Elaborato2/src/driver.c}
+\label{driver_8c}\index{Elaborato2/src/driver.\+c@{Elaborato2/src/driver.\+c}}
+
+
+Implementazione funzioni per pilotaggio periferiche.  
+
+
+{\ttfamily \#include \char`\"{}driver.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per driver.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{driver_8c_aeed266a1e7ed9e5f20de05db0f02024e}{toggle\+All} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di tutti e 4 i led utente. \end{DoxyCompactList}\item 
+void \hyperlink{driver_8c_a13d137800a4aa08c54508e67722620f4}{counter} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di implementare un contatore modulo 16 e di visualizzare il contenuto sui led. \end{DoxyCompactList}\item 
+void \hyperlink{driver_8c_a7cd563c35d04fafa3c3657de92c1a5a0}{supercar} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di shiftare da destra verso sinistra e viceversa, un bit pari a 1 sui led. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+short int \hyperlink{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}{on} =0
+\item 
+short int \hyperlink{driver_8c_a423d61d4405ebd46d95174d4383b6f13}{dx} =0
+\item 
+short int \hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count} =0
+\item 
+uint8\+\_\+t \hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\+\_\+shift} =1
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Implementazione funzioni per pilotaggio periferiche. 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+12-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{driver_8c_a13d137800a4aa08c54508e67722620f4}\label{driver_8c_a13d137800a4aa08c54508e67722620f4}} 
+\index{driver.\+c@{driver.\+c}!counter@{counter}}
+\index{counter@{counter}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{counter()}{counter()}}
+{\footnotesize\ttfamily void counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di implementare un contatore modulo 16 e di visualizzare il contenuto sui led. 
+
+\begin{DoxyNote}{Nota}
+Il conteggio avviene premendo e successivamente rilasciando il bottone utente 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 52 del file driver.\+c.
+
+
+
+Referenzia count, read\+\_\+button(), e write\+\_\+led().
+
+
+
+Referenziato da loop().
+
+
+\begin{DoxyCode}
+52               \{
+53     \textcolor{comment}{/*Se viene premuto il bottone si computa il conteggio*/}
+54     \textcolor{keywordflow}{if}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}())\{
+55         \textcolor{comment}{/*Si attende che il bottone sia rilasciato*/}
+56         \textcolor{keywordflow}{while}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}());
+57         \hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}++;
+58         \textcolor{comment}{/*Stampa conteggio sui led*/}
+59         \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(\hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count});
+60         \textcolor{comment}{/*Se il conteggio è arrivato a 15 si resetta la variabile associata*/}
+61         \textcolor{keywordflow}{if}(\hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}==15)
+62             \hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}=0;
+63     \}
+64 
+65 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{driver_8c_a7cd563c35d04fafa3c3657de92c1a5a0}\label{driver_8c_a7cd563c35d04fafa3c3657de92c1a5a0}} 
+\index{driver.\+c@{driver.\+c}!supercar@{supercar}}
+\index{supercar@{supercar}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{supercar()}{supercar()}}
+{\footnotesize\ttfamily void supercar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di shiftare da destra verso sinistra e viceversa, un bit pari a 1 sui led. 
+
+Implementazione del driver per il pilotaggio della periferica.
+
+\begin{DoxyNote}{Nota}
+Lo shift avviene una volta ogni 500 ms. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 74 del file driver.\+c.
+
+
+
+Referenzia dx, gpio\+\_\+toggle\+\_\+one(), is\+\_\+timer2\+\_\+stopped(), P\+A\+D\+\_\+\+O\+UT, S\+E\+T\+\_\+\+L\+ED, start\+\_\+timer2(), T\+H\+R\+EE, val\+\_\+shift, write\+\_\+led(), e Z\+E\+RO.
+
+
+\begin{DoxyCode}
+74                \{
+75     \textcolor{comment}{/*Inizio conteggio*/}
+76     \hyperlink{my__bsp__custom_8c_af1d5c5b1e9422b8e5e2424b2a8bfd697}{start\_timer2}();
+77     \textcolor{comment}{/*Se il conteggio è terminato allora inizia lo shift*/}
+78     \textcolor{keywordflow}{if}(\hyperlink{my__bsp__custom_8c_a7bd56ea7130eadff5a5bcd100efb1a89}{is\_timer2\_stopped}())\{
+79         \textcolor{comment}{/*Se non è stato illuminato il led più a sinistra si shifta da destra a sinistra*/}
+80         \textcolor{keywordflow}{if}(!\hyperlink{driver_8c_a423d61d4405ebd46d95174d4383b6f13}{dx})\{
+81                 \hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift}=\hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift}<<1;
+82                 \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(\hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift});
+83                 \textcolor{comment}{/*Se il led illuminato è quello più a sinistra si setta una variabile pari a 1}
+84 \textcolor{comment}{                 * per iniziare lo shift verso destra*/}
+85                 \textcolor{keywordflow}{if}(\hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift}==0x8)
+86                     \hyperlink{driver_8c_a423d61d4405ebd46d95174d4383b6f13}{dx}=1;
+87         \}
+88         \textcolor{keywordflow}{else}\{
+89             \textcolor{comment}{/*Computazione dello shift verso destra*/}
+90             \hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift}=\hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift}>>1;
+91             \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(\hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift});
+92             \textcolor{comment}{/*Se il led illuminato è quello più a destra si setta una variabile pari a 0}
+93 \textcolor{comment}{             * per iniziare lo shift verso sinistra*/}
+94             \textcolor{keywordflow}{if}(\hyperlink{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}{val\_shift}==0x1)
+95                 \hyperlink{driver_8c_a423d61d4405ebd46d95174d4383b6f13}{dx}=0;
+96         \}
+97     \}
+98 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{driver_8c_aeed266a1e7ed9e5f20de05db0f02024e}\label{driver_8c_aeed266a1e7ed9e5f20de05db0f02024e}} 
+\index{driver.\+c@{driver.\+c}!toggle\+All@{toggle\+All}}
+\index{toggle\+All@{toggle\+All}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{toggle\+All()}{toggleAll()}}
+{\footnotesize\ttfamily void toggle\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di tutti e 4 i led utente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 25 del file driver.\+c.
+
+
+
+Referenzia on, read\+\_\+button(), e write\+\_\+led().
+
+
+
+Referenziato da loop().
+
+
+\begin{DoxyCode}
+25                 \{
+26 
+27     \textcolor{comment}{/*Si attende pressione bottone*/}
+28     \textcolor{keywordflow}{if}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}())\{
+29         \textcolor{comment}{/*Si attende rilascio bottone*/}
+30         \textcolor{keywordflow}{while}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}());
+31         \textcolor{comment}{/*Se i led sono spenti allora si accendono*/}
+32         \textcolor{keywordflow}{if}(!\hyperlink{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}{on})\{
+33             \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(0xF);
+34             \hyperlink{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}{on}=1;
+35         \}
+36         \textcolor{keywordflow}{else}\{
+37             \textcolor{comment}{/*Altrimenti si spengono*/}
+38             \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(0x0);
+39             \hyperlink{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}{on}=0;
+40         \}
+41     \}
+42 
+43 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}\label{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}} 
+\index{driver.\+c@{driver.\+c}!count@{count}}
+\index{count@{count}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily short int count =0}
+
+
+
+Definizione alla linea 17 del file driver.\+c.
+
+
+
+Referenziato da counter().
+
+\mbox{\Hypertarget{driver_8c_a423d61d4405ebd46d95174d4383b6f13}\label{driver_8c_a423d61d4405ebd46d95174d4383b6f13}} 
+\index{driver.\+c@{driver.\+c}!dx@{dx}}
+\index{dx@{dx}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{dx}{dx}}
+{\footnotesize\ttfamily short int dx =0}
+
+
+
+Definizione alla linea 16 del file driver.\+c.
+
+
+
+Referenziato da supercar().
+
+\mbox{\Hypertarget{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}\label{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}} 
+\index{driver.\+c@{driver.\+c}!on@{on}}
+\index{on@{on}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{on}{on}}
+{\footnotesize\ttfamily short int on =0}
+
+
+
+Definizione alla linea 15 del file driver.\+c.
+
+
+
+Referenziato da toggle\+All().
+
+\mbox{\Hypertarget{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}\label{driver_8c_af26a51e2d97ccd70197ce2da5d4ab9f0}} 
+\index{driver.\+c@{driver.\+c}!val\+\_\+shift@{val\+\_\+shift}}
+\index{val\+\_\+shift@{val\+\_\+shift}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{val\+\_\+shift}{val\_shift}}
+{\footnotesize\ttfamily uint8\+\_\+t val\+\_\+shift =1}
+
+
+
+Definizione alla linea 18 del file driver.\+c.
+
+
+
+Referenziato da supercar().
+

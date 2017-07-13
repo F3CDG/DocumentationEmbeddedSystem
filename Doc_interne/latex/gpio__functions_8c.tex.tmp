@@ -1,0 +1,422 @@
+\hypertarget{gpio__functions_8c}{}\section{Riferimenti per il file Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/gpio\+\_\+functions.c}
+\label{gpio__functions_8c}\index{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/gpio\+\_\+functions.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/gpio\+\_\+functions.\+c}}
+
+
+Questo file mette a disposizione un firmware per gestire il comportamento della periferica.  
+
+
+{\ttfamily \#include \char`\"{}gpio\+\_\+header.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per gpio\+\_\+functions.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gpio__functions_8c_a884bc5b263fad8501c4beb6128e4848c}{gpio\+\_\+init} (uint32\+\_\+t $\ast$base\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di inizializzare correttamente un G\+P\+IO. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__functions_8c_a49129295b0ac872f833d084384b15dc1}{set\+\_\+value\+\_\+reg} (uint32\+\_\+t reg, uint32\+\_\+t mask, uint32\+\_\+t mask\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di settare all\textquotesingle{}interno di uno specifico registro, dei valori in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__functions_8c_aeea54157b1758f322c9f80a7b8a34a19}{gpio\+\_\+write\+\_\+mask} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di scrivere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__functions_8c_a44bdf7002b25db5ef93d7a4753706ba9}{gpio\+\_\+write\+\_\+one} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t position, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di scrivere un unico all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{gpio__functions_8c_a5c65ade937947342cac436831f024a3c}{gpio\+\_\+read\+\_\+mask} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di leggere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{gpio__functions_8c_ab18e7a479743320788db476b65a798d3}{gpio\+\_\+read\+\_\+one} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t position)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di leggere un unico valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\+\_\+toggle\+\_\+one} (uint32\+\_\+t reg, uint8\+\_\+t set, uint8\+\_\+t position)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di un singolo valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+void \hyperlink{gpio__functions_8c_a03752192a08f5c5f1c802b2233a58698}{gpio\+\_\+toggle\+\_\+mask} (uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di un gruppo di bit all\textquotesingle{}interno di uno specifico registro in base ad una determinata masschera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t $\ast$ \hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\+\_\+gpio\+\_\+pointer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Questo file mette a disposizione un firmware per gestire il comportamento della periferica. 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+10-\/\+May-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{gpio__functions_8c_a884bc5b263fad8501c4beb6128e4848c}\label{gpio__functions_8c_a884bc5b263fad8501c4beb6128e4848c}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!gpio\+\_\+init@{gpio\+\_\+init}}
+\index{gpio\+\_\+init@{gpio\+\_\+init}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+init()}{gpio\_init()}}
+{\footnotesize\ttfamily void gpio\+\_\+init (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{base\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di inizializzare correttamente un G\+P\+IO. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em base\+\_\+addr} & puntatore ad un intero di 32 bit per il corretto indirizzamento della periferica\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 23 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EN, I\+N\+I\+T\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+WN, my\+\_\+gpio\+\_\+pointer, P\+A\+D\+\_\+\+EN, e P\+A\+D\+\_\+\+R\+W\+\_\+N.
+
+
+
+Referenziato da init().
+
+
+\begin{DoxyCode}
+23                                     \{
+24     \textcolor{comment}{/*Verifica se l'indirizzo passato è allineato a 4 byte*/}
+25     assert((uint32\_t)base\_addr%4==0 && \textcolor{stringliteral}{"Base address non allineato a 4 byte"});
+26 
+27     \hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}=base\_addr;
+28 
+29     \textcolor{comment}{/*Configurazione pin di GPIO*/}
+30     *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+\hyperlink{gpio__header_8h_aa521423b6826519fe6ec74bb55c3d007}{PAD\_EN}/4)=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a9b6b577baba111c6e473146eca19b2c9adc582cc6d5ff4ac919a8e25774246ff1}{INIT\_CONFIG\_EN};
+31     *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+\hyperlink{gpio__header_8h_a7131a1cda6cbf6062c0acfc5bef7c57f}{PAD\_RW\_N}/4)=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a9b6b577baba111c6e473146eca19b2c9ac831347c85e0a37b11d8bf8576b5b588}{INIT\_CONFIG\_RWN};
+32 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__functions_8c_a5c65ade937947342cac436831f024a3c}\label{gpio__functions_8c_a5c65ade937947342cac436831f024a3c}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!gpio\+\_\+read\+\_\+mask@{gpio\+\_\+read\+\_\+mask}}
+\index{gpio\+\_\+read\+\_\+mask@{gpio\+\_\+read\+\_\+mask}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+read\+\_\+mask()}{gpio\_read\_mask()}}
+{\footnotesize\ttfamily uint32\+\_\+t gpio\+\_\+read\+\_\+mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di leggere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a leggere in quella posizione, viceversa se 0\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em intero} & a 32 bit \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 104 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia my\+\_\+gpio\+\_\+pointer.
+
+
+
+Referenziato da gpio\+\_\+read\+\_\+one().
+
+
+\begin{DoxyCode}
+104                                                                 \{
+105     mask = mask<<\textcolor{keyword}{set};
+106     \textcolor{keywordflow}{if}(((0x0000000F<<\textcolor{keyword}{set}) & mask) == mask)\{
+107         \textcolor{keywordflow}{return} *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer} + reg/4) & mask;
+108     \}
+109     \textcolor{keywordflow}{return} -1;
+110 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__functions_8c_ab18e7a479743320788db476b65a798d3}\label{gpio__functions_8c_ab18e7a479743320788db476b65a798d3}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!gpio\+\_\+read\+\_\+one@{gpio\+\_\+read\+\_\+one}}
+\index{gpio\+\_\+read\+\_\+one@{gpio\+\_\+read\+\_\+one}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+read\+\_\+one()}{gpio\_read\_one()}}
+{\footnotesize\ttfamily uint32\+\_\+t gpio\+\_\+read\+\_\+one (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di leggere un unico valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la posizione in cui leggere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em intero} & a 32 bit \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 124 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+read\+\_\+mask().
+
+
+
+Referenziato da gpio\+\_\+toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+124                                                                     \{
+125     \textcolor{keywordflow}{return} \hyperlink{gpio__functions_8c_a5c65ade937947342cac436831f024a3c}{gpio\_read\_mask}(reg,\textcolor{keyword}{set},0x1<<position) == (0x1<<(position+\textcolor{keyword}{set}));
+126 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__functions_8c_a03752192a08f5c5f1c802b2233a58698}\label{gpio__functions_8c_a03752192a08f5c5f1c802b2233a58698}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!gpio\+\_\+toggle\+\_\+mask@{gpio\+\_\+toggle\+\_\+mask}}
+\index{gpio\+\_\+toggle\+\_\+mask@{gpio\+\_\+toggle\+\_\+mask}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+toggle\+\_\+mask()}{gpio\_toggle\_mask()}}
+{\footnotesize\ttfamily void gpio\+\_\+toggle\+\_\+mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di un gruppo di bit all\textquotesingle{}interno di uno specifico registro in base ad una determinata masschera. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui effettuare il toggle \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la maschera di bit, in particolare se il valore i-\/esimo è pari a 1 allora in quella posizione si è abilitati ad effettuare il toggle, viceversa non si effettua tale operazione\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 160 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+160                                                               \{
+161     \textcolor{keywordtype}{int} i;
+162     \textcolor{keywordflow}{for}(i=0;i<4;i++)\{
+163         \textcolor{keywordflow}{if}((0x1<<(\textcolor{keyword}{set}*4+i)) == ((0x1<<(\textcolor{keyword}{set}*4+i)) & mask))\{
+164             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(reg, \textcolor{keyword}{set},i+\textcolor{keyword}{set}*4);
+165         \}
+166     \}
+167 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}\label{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!gpio\+\_\+toggle\+\_\+one@{gpio\+\_\+toggle\+\_\+one}}
+\index{gpio\+\_\+toggle\+\_\+one@{gpio\+\_\+toggle\+\_\+one}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+toggle\+\_\+one()}{gpio\_toggle\_one()}}
+{\footnotesize\ttfamily void gpio\+\_\+toggle\+\_\+one (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint8\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di un singolo valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui effettuare il toggle \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 8 bit che specifica la posizione in cui effettuare il toggle\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 141 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+read\+\_\+one(), gpio\+\_\+write\+\_\+one(), H\+I\+GH, e L\+OW.
+
+
+
+Referenziato da gpio\+\_\+toggle\+\_\+mask(), e supercar().
+
+
+\begin{DoxyCode}
+141                                                                 \{
+142     \hyperlink{gpio__functions_8c_ab18e7a479743320788db476b65a798d3}{gpio\_read\_one}(reg,\textcolor{keyword}{set},position) == \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH} ? \hyperlink{gpio__functions_8c_a44bdf7002b25db5ef93d7a4753706ba9}{gpio\_write\_one}(reg ,\textcolor{keyword}{set},
+      position,\hyperlink{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}{LOW}) : gpio\_write\_one(reg,set,position,\hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+143 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__functions_8c_aeea54157b1758f322c9f80a7b8a34a19}\label{gpio__functions_8c_aeea54157b1758f322c9f80a7b8a34a19}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!gpio\+\_\+write\+\_\+mask@{gpio\+\_\+write\+\_\+mask}}
+\index{gpio\+\_\+write\+\_\+mask@{gpio\+\_\+write\+\_\+mask}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+write\+\_\+mask()}{gpio\_write\_mask()}}
+{\footnotesize\ttfamily void gpio\+\_\+write\+\_\+mask (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di scrivere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato \\
+\hline
+{\em value} & intero a 8 bit che indica il valore da scrivere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 65 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia H\+I\+GH, e set\+\_\+value\+\_\+reg().
+
+
+
+Referenziato da gpio\+\_\+write\+\_\+one(), e init().
+
+
+\begin{DoxyCode}
+65                                                                              \{
+66     assert((reg==0 || reg%12!=0) && \textcolor{stringliteral}{"Scrittura in una locazione di memoria non consentita"});
+67     mask = mask<<\textcolor{keyword}{set};
+68     \textcolor{keywordflow}{if}(((0x0000000F<<\textcolor{keyword}{set}) & mask)==mask)
+69         \textcolor{comment}{/*Se value è pari a 1 allora si andrà a scrivere tanti 1 in base alla maschera */}
+70         value == \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH} ? \hyperlink{gpio__functions_8c_a49129295b0ac872f833d084384b15dc1}{set\_value\_reg}(reg,mask,0xF<<\textcolor{keyword}{set}) : set\_value\_reg(reg,mask,0x0);
+71 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__functions_8c_a44bdf7002b25db5ef93d7a4753706ba9}\label{gpio__functions_8c_a44bdf7002b25db5ef93d7a4753706ba9}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!gpio\+\_\+write\+\_\+one@{gpio\+\_\+write\+\_\+one}}
+\index{gpio\+\_\+write\+\_\+one@{gpio\+\_\+write\+\_\+one}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+write\+\_\+one()}{gpio\_write\_one()}}
+{\footnotesize\ttfamily void gpio\+\_\+write\+\_\+one (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{position,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di scrivere un unico all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la posizione in cui scrivere \\
+\hline
+{\em mask\+\_\+value} & intero a 8 bit che indica il valore da scrivere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 86 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia gpio\+\_\+write\+\_\+mask().
+
+
+
+Referenziato da gpio\+\_\+toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+86                                                                                 \{
+87     \hyperlink{gpio__functions_8c_aeea54157b1758f322c9f80a7b8a34a19}{gpio\_write\_mask}(reg, \textcolor{keyword}{set}, 0x1<<position, value);
+88 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{gpio__functions_8c_a49129295b0ac872f833d084384b15dc1}\label{gpio__functions_8c_a49129295b0ac872f833d084384b15dc1}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!set\+\_\+value\+\_\+reg@{set\+\_\+value\+\_\+reg}}
+\index{set\+\_\+value\+\_\+reg@{set\+\_\+value\+\_\+reg}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+value\+\_\+reg()}{set\_value\_reg()}}
+{\footnotesize\ttfamily void set\+\_\+value\+\_\+reg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{reg,  }\item[{uint32\+\_\+t}]{mask,  }\item[{uint32\+\_\+t}]{mask\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di settare all\textquotesingle{}interno di uno specifico registro, dei valori in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato \\
+\hline
+{\em mask\+\_\+value} & intero a 32 bit da scrivere all\textquotesingle{}interno del registro \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 46 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenzia my\+\_\+gpio\+\_\+pointer.
+
+
+
+Referenziato da gpio\+\_\+write\+\_\+mask().
+
+
+\begin{DoxyCode}
+46                                                                    \{
+47     *(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+reg/4) = (*(\hyperlink{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}{my\_gpio\_pointer}+reg/4) & ~mask) | (mask & 
+      mask\_value);
+48 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}\label{gpio__functions_8c_a0c43d62369284e4ef13ccfa722a43f54}} 
+\index{gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}!my\+\_\+gpio\+\_\+pointer@{my\+\_\+gpio\+\_\+pointer}}
+\index{my\+\_\+gpio\+\_\+pointer@{my\+\_\+gpio\+\_\+pointer}!gpio\+\_\+functions.\+c@{gpio\+\_\+functions.\+c}}
+\subsubsection{\texorpdfstring{my\+\_\+gpio\+\_\+pointer}{my\_gpio\_pointer}}
+{\footnotesize\ttfamily uint32\+\_\+t$\ast$ my\+\_\+gpio\+\_\+pointer}
+
+
+
+Definizione alla linea 13 del file gpio\+\_\+functions.\+c.
+
+
+
+Referenziato da gpio\+\_\+init(), gpio\+\_\+read\+\_\+mask(), e set\+\_\+value\+\_\+reg().
+

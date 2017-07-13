@@ -1,0 +1,939 @@
+\hypertarget{uiointdriver__header_8h}{}\section{Riferimenti per il file Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Terza\+\_\+\+Tipologia/uiointdriver\+\_\+header.h}
+\label{uiointdriver__header_8h}\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Terza\+\_\+\+Tipologia/uiointdriver\+\_\+header.\+h@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Terza\+\_\+\+Tipologia/uiointdriver\+\_\+header.\+h}}
+
+
+library \textquotesingle{}uiointdriver\textquotesingle{} for G\+P\+IO  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/mman.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+Grafo delle dipendenze di inclusione per uiointdriver\+\_\+header.\+h\+:
+% FIG 0
+Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\+:
+% FIG 1
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{uiointdriver__header_8h_ab702106cf3b3e96750b6845ded4e0299}{R\+E\+S\+ET}~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\#define \hyperlink{uiointdriver__header_8h_acfbc006ea433ad708fdee3e82996e721}{G\+R\+E\+EN}~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}
+\item 
+\#define \hyperlink{uiointdriver__header_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{B\+O\+L\+D\+W\+H\+I\+TE}~\char`\"{}\textbackslash{}033\mbox{[}1m\textbackslash{}033\mbox{[}37m\char`\"{}
+\item 
+\#define \hyperlink{uiointdriver__header_8h_ada74e7db007a68e763f20c17f2985356}{R\+E\+AD}~0
+\item 
+\#define \hyperlink{uiointdriver__header_8h_aa10f470e996d0f51210d24f442d25e1e}{W\+R\+I\+TE}~1
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a9542a6000bf702bcd6cc746a6ea288a5}{G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE}~0x10000
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a78907649b00f7076af686bcac4cd1b8c}{G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}~0x00
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a6e2a77c24e8a4e2b3800085ac10a8cf6}{G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}~0x04
+\item 
+\#define \hyperlink{uiointdriver__header_8h_aec02b8e8ed2da2cfc630a5b1b3cb0277}{G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}~0x08
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a91469d73222e41cf0b69a0331cb14770}{G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}~0x0C
+\item 
+\#define \hyperlink{uiointdriver__header_8h_aa86e291e533fd0b8093ff97c60efea64}{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}~0x11C
+\item 
+\#define \hyperlink{uiointdriver__header_8h_ae50608cce500f1a7c4b1ccb10e96dbbf}{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET}~0x120
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a77767f33f600c491badef341b5933a06}{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}~0x128
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a03dc218f2d679e6cbe6334770ed2f4d0}{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}~0x00000000
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a6bccfac838bbc2886458f5f0a91480ba}{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}~0x00000000
+\item 
+\#define \hyperlink{uiointdriver__header_8h_adedf1052d53457c5ca12ca50a955e38b}{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}~0x00000000
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a908e3d365058800ff15fa01bbfa6375e}{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}~0x80000000
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a786a31667135fd90322a9695f26718bc}{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}~0x00000001
+\item 
+\#define \hyperlink{uiointdriver__header_8h_ac370d86cccefe89c8218d13a46f3ba66}{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}~0x00000002
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a4eaf81588a4c638427c504a28fcc527d}{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR}~0x00000001
+\item 
+\#define \hyperlink{uiointdriver__header_8h_aa365ae47ef2211207fc9d94aaf061b00}{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR}~0x00000002
+\item 
+\#define \hyperlink{uiointdriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}~1
+\item 
+\#define \hyperlink{uiointdriver__header_8h_ae66d9f4c742e468bb1bec4d89df7ea8e}{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}~2
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{uiointdriver__header_8h_a1ad940455be56209415d328d78622715}{usage} (char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options. \end{DoxyCompactList}\item 
+int \hyperlink{uiointdriver__header_8h_a04435a9f2d74a3152c3cc9c34e2da3d1}{parse\+\_\+command} (int argc, char $\ast$$\ast$argv, char $\ast$$\ast$uiod, int $\ast$channel, int $\ast$r\+\_\+w, int $\ast$value)
+\begin{DoxyCompactList}\small\item\em Parses uiodriver arguments. \end{DoxyCompactList}\item 
+int \hyperlink{uiointdriver__header_8h_ac6c251d508dbd46e49aa0efce35acd03}{open\+\_\+device} (int $\ast$fd, char $\ast$uiod, void $\ast$$\ast$virtual\+\_\+address)
+\begin{DoxyCompactList}\small\item\em Opens uio device file in order to access to it by its virtual address. \end{DoxyCompactList}\item 
+int \hyperlink{uiointdriver__header_8h_a9fce552002ea68e1deb3722a8f0526e0}{read\+\_\+gpio} (int fd, int $\ast$value, char $\ast$uiod, void $\ast$virtual\+\_\+address, int channel)
+\begin{DoxyCompactList}\small\item\em Reads the 
+
+in input to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{uiointdriver__header_8h_a415a74456e81dc0b9e90977b584a28e4}{write\+\_\+gpio} (int value, char $\ast$uiod, void $\ast$virtual\+\_\+address, int channel)
+\begin{DoxyCompactList}\small\item\em Writes 
+
+in output to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{uiointdriver__header_8h_abf66237f202c5bfe377c982c9dcac842}{close\+\_\+device} (int fd, void $\ast$virtual\+\_\+address)
+\begin{DoxyCompactList}\small\item\em Closes /dev/uiox file. \end{DoxyCompactList}\item 
+int \hyperlink{uiointdriver__header_8h_ac319be40d382d9d0b59c14e6b5ef8b43}{G\+P\+I\+O\+\_\+\+Interrupt} (long $\ast$base\+\_\+add, int reg, unsigned long mask)
+\begin{DoxyCompactList}\small\item\em According to the offset $<$reg$>$, modifies the values of enable registers of G\+P\+IO custom peripheral. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+library \textquotesingle{}uiointdriver\textquotesingle{} for G\+P\+IO 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+2-\/\+July-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{uiointdriver__header_8h_aa4ef051614aa0bd503b0a18ee158c5d7}\label{uiointdriver__header_8h_aa4ef051614aa0bd503b0a18ee158c5d7}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!B\+O\+L\+D\+W\+H\+I\+TE@{B\+O\+L\+D\+W\+H\+I\+TE}}
+\index{B\+O\+L\+D\+W\+H\+I\+TE@{B\+O\+L\+D\+W\+H\+I\+TE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{B\+O\+L\+D\+W\+H\+I\+TE}{BOLDWHITE}}
+{\footnotesize\ttfamily \#define B\+O\+L\+D\+W\+H\+I\+TE~\char`\"{}\textbackslash{}033\mbox{[}1m\textbackslash{}033\mbox{[}37m\char`\"{}}
+
+Bold White colour 
+
+Definizione alla linea 26 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a6bccfac838bbc2886458f5f0a91480ba}\label{uiointdriver__header_8h_a6bccfac838bbc2886458f5f0a91480ba}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}}
+\index{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}{CHANNEL\_1\_IER\_DISABLE}}
+{\footnotesize\ttfamily \#define C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE~0x00000000}
+
+G\+P\+IO Channel 1 Interrupt disable mask 
+
+Definizione alla linea 44 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a786a31667135fd90322a9695f26718bc}\label{uiointdriver__header_8h_a786a31667135fd90322a9695f26718bc}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}}
+\index{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}{CHANNEL\_1\_IER\_ENABLE}}
+{\footnotesize\ttfamily \#define C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE~0x00000001}
+
+G\+P\+IO Channel 1 Interrupt enable mask 
+
+Definizione alla linea 47 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a4eaf81588a4c638427c504a28fcc527d}\label{uiointdriver__header_8h_a4eaf81588a4c638427c504a28fcc527d}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR@{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR}}
+\index{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR@{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR}{CHANNEL\_1\_ISR}}
+{\footnotesize\ttfamily \#define C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR~0x00000001}
+
+G\+P\+IO Channel 1 I\+SR mask 
+
+Definizione alla linea 49 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_adedf1052d53457c5ca12ca50a955e38b}\label{uiointdriver__header_8h_adedf1052d53457c5ca12ca50a955e38b}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}}
+\index{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}{CHANNEL\_2\_IER\_DISABLE}}
+{\footnotesize\ttfamily \#define C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE~0x00000000}
+
+G\+P\+IO Channel 2 Interrupt disable mask 
+
+Definizione alla linea 45 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_ac370d86cccefe89c8218d13a46f3ba66}\label{uiointdriver__header_8h_ac370d86cccefe89c8218d13a46f3ba66}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}}
+\index{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE@{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}{CHANNEL\_2\_IER\_ENABLE}}
+{\footnotesize\ttfamily \#define C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE~0x00000002}
+
+G\+P\+IO Channel 2 Interrupt enable mask 
+
+Definizione alla linea 48 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_aa365ae47ef2211207fc9d94aaf061b00}\label{uiointdriver__header_8h_aa365ae47ef2211207fc9d94aaf061b00}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR@{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR}}
+\index{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR@{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR}{CHANNEL\_2\_ISR}}
+{\footnotesize\ttfamily \#define C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR~0x00000002}
+
+G\+P\+IO Channel 2 I\+SR mask 
+
+Definizione alla linea 50 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_aec02b8e8ed2da2cfc630a5b1b3cb0277}\label{uiointdriver__header_8h_aec02b8e8ed2da2cfc630a5b1b3cb0277}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}}
+\index{G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}{GPIO2\_DATA\_OFFSET}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET~0x08}
+
+Offset of G\+P\+I\+O2\+\_\+\+D\+A\+TA register 
+
+Definizione alla linea 36 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a91469d73222e41cf0b69a0331cb14770}\label{uiointdriver__header_8h_a91469d73222e41cf0b69a0331cb14770}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}}
+\index{G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}{GPIO2\_TRI\_OFFSET}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET~0x0C}
+
+Offset of G\+P\+I\+O2\+\_\+\+T\+RI register 
+
+Definizione alla linea 37 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}\label{uiointdriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1@{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}}
+\index{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1@{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}{GPIO\_CHANNEL\_1}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1~1}
+
+G\+P\+IO channel 1 selected 
+
+Definizione alla linea 53 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_ae66d9f4c742e468bb1bec4d89df7ea8e}\label{uiointdriver__header_8h_ae66d9f4c742e468bb1bec4d89df7ea8e}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2@{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}}
+\index{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2@{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}{GPIO\_CHANNEL\_2}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2~2}
+
+G\+P\+IO channel 2 selected 
+
+Definizione alla linea 54 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a78907649b00f7076af686bcac4cd1b8c}\label{uiointdriver__header_8h_a78907649b00f7076af686bcac4cd1b8c}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}}
+\index{G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET}{GPIO\_DATA\_OFFSET}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET~0x00}
+
+Offset of G\+P\+I\+O\+\_\+\+D\+A\+TA register 
+
+Definizione alla linea 34 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a03dc218f2d679e6cbe6334770ed2f4d0}\label{uiointdriver__header_8h_a03dc218f2d679e6cbe6334770ed2f4d0}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE@{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}}
+\index{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE@{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE}{GPIO\_GIER\_DISABLE}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE~0x00000000}
+
+G\+P\+IO Global Interrupt disable mask 
+
+Definizione alla linea 43 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a908e3d365058800ff15fa01bbfa6375e}\label{uiointdriver__header_8h_a908e3d365058800ff15fa01bbfa6375e}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE@{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}}
+\index{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE@{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE}{GPIO\_GIER\_ENABLE}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE~0x80000000}
+
+G\+P\+IO Global Interrupt enable mask 
+
+Definizione alla linea 46 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_aa86e291e533fd0b8093ff97c60efea64}\label{uiointdriver__header_8h_aa86e291e533fd0b8093ff97c60efea64}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}}
+\index{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}{GPIO\_GIER\_OFFSET}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET~0x11C}
+
+Offset of Glogal interrupt enable register 
+
+Definizione alla linea 38 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a77767f33f600c491badef341b5933a06}\label{uiointdriver__header_8h_a77767f33f600c491badef341b5933a06}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}}
+\index{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET}{GPIO\_IP\_IER\_OFFSET}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET~0x128}
+
+Offset of IP Interrupt enable register 
+
+Definizione alla linea 40 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_ae50608cce500f1a7c4b1ccb10e96dbbf}\label{uiointdriver__header_8h_ae50608cce500f1a7c4b1ccb10e96dbbf}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET}}
+\index{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET}{GPIO\_IP\_ISR\_OFFSET}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET~0x120}
+
+Offset of IP Interrupt status register 
+
+Definizione alla linea 39 del file uiointdriver\+\_\+header.\+h.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a9542a6000bf702bcd6cc746a6ea288a5}\label{uiointdriver__header_8h_a9542a6000bf702bcd6cc746a6ea288a5}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE@{G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE}}
+\index{G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE@{G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE}{GPIO\_MAP\_SIZE}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE~0x10000}
+
+Bit mask to extract page address, without offset 
+
+Definizione alla linea 33 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_a6e2a77c24e8a4e2b3800085ac10a8cf6}\label{uiointdriver__header_8h_a6e2a77c24e8a4e2b3800085ac10a8cf6}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}}
+\index{G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET@{G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET}{GPIO\_TRI\_OFFSET}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET~0x04}
+
+Offset of G\+P\+I\+O\+\_\+\+T\+RI register 
+
+Definizione alla linea 35 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_acfbc006ea433ad708fdee3e82996e721}\label{uiointdriver__header_8h_acfbc006ea433ad708fdee3e82996e721}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+R\+E\+EN@{G\+R\+E\+EN}}
+\index{G\+R\+E\+EN@{G\+R\+E\+EN}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+R\+E\+EN}{GREEN}}
+{\footnotesize\ttfamily \#define G\+R\+E\+EN~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}}
+
+Green colour 
+
+Definizione alla linea 25 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_ada74e7db007a68e763f20c17f2985356}\label{uiointdriver__header_8h_ada74e7db007a68e763f20c17f2985356}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!R\+E\+AD@{R\+E\+AD}}
+\index{R\+E\+AD@{R\+E\+AD}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+AD}{READ}}
+{\footnotesize\ttfamily \#define R\+E\+AD~0}
+
+Read operation is set 
+
+Definizione alla linea 29 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_ab702106cf3b3e96750b6845ded4e0299}\label{uiointdriver__header_8h_ab702106cf3b3e96750b6845ded4e0299}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!R\+E\+S\+ET@{R\+E\+S\+ET}}
+\index{R\+E\+S\+ET@{R\+E\+S\+ET}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+S\+ET}{RESET}}
+{\footnotesize\ttfamily \#define R\+E\+S\+ET~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}}
+
+Reset colour 
+
+Definizione alla linea 24 del file uiointdriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{uiointdriver__header_8h_aa10f470e996d0f51210d24f442d25e1e}\label{uiointdriver__header_8h_aa10f470e996d0f51210d24f442d25e1e}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!W\+R\+I\+TE@{W\+R\+I\+TE}}
+\index{W\+R\+I\+TE@{W\+R\+I\+TE}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{W\+R\+I\+TE}{WRITE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+TE~1}
+
+Write operation is set 
+
+Definizione alla linea 30 del file uiointdriver\+\_\+header.\+h.
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{uiointdriver__header_8h_abf66237f202c5bfe377c982c9dcac842}\label{uiointdriver__header_8h_abf66237f202c5bfe377c982c9dcac842}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!close\+\_\+device@{close\+\_\+device}}
+\index{close\+\_\+device@{close\+\_\+device}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{close\+\_\+device()}{close\_device()}}
+{\footnotesize\ttfamily void close\+\_\+device (\begin{DoxyParamCaption}\item[{int}]{fd,  }\item[{void $\ast$}]{virtual\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+Closes /dev/uiox file. 
+
+close\+\_\+device function is called to close uio file
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em fd} & file descriptor name of uio device \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & uio device\textquotesingle{}s virtual address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 226 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenzia G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+226                                                \{
+227     munmap(virtual\_address,\hyperlink{uiodriver__header_8h_a9542a6000bf702bcd6cc746a6ea288a5}{GPIO\_MAP\_SIZE});
+228     close(fd);
+229 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiointdriver__header_8h_ac319be40d382d9d0b59c14e6b5ef8b43}\label{uiointdriver__header_8h_ac319be40d382d9d0b59c14e6b5ef8b43}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!G\+P\+I\+O\+\_\+\+Interrupt@{G\+P\+I\+O\+\_\+\+Interrupt}}
+\index{G\+P\+I\+O\+\_\+\+Interrupt@{G\+P\+I\+O\+\_\+\+Interrupt}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+P\+I\+O\+\_\+\+Interrupt()}{GPIO\_Interrupt()}}
+{\footnotesize\ttfamily int G\+P\+I\+O\+\_\+\+Interrupt (\begin{DoxyParamCaption}\item[{long $\ast$}]{base\+\_\+add,  }\item[{int}]{reg,  }\item[{unsigned long}]{mask }\end{DoxyParamCaption})}
+
+
+
+According to the offset $<$reg$>$, modifies the values of enable registers of G\+P\+IO custom peripheral. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em base\+\_\+add} & virtual base address of G\+P\+IO peripheral \\
+\hline
+\mbox{\tt in}  & {\em reg} & offset value of selected register \\
+\hline
+\mbox{\tt in}  & {\em mask} & register value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em 1.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 295 del file uiointdriver\+\_\+function.\+c.
+
+
+
+Referenziato da read\+\_\+gpio().
+
+
+\begin{DoxyCode}
+296 \{
+297     *((\textcolor{keywordtype}{unsigned} *)(base\_add + (reg/4)))=mask;   
+298     \textcolor{keywordflow}{return} 1;
+299 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiointdriver__header_8h_ac6c251d508dbd46e49aa0efce35acd03}\label{uiointdriver__header_8h_ac6c251d508dbd46e49aa0efce35acd03}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!open\+\_\+device@{open\+\_\+device}}
+\index{open\+\_\+device@{open\+\_\+device}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{open\+\_\+device()}{open\_device()}}
+{\footnotesize\ttfamily int open\+\_\+device (\begin{DoxyParamCaption}\item[{int $\ast$}]{fd,  }\item[{char $\ast$}]{uiod,  }\item[{void $\ast$$\ast$}]{virtual\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+Opens uio device file in order to access to it by its virtual address. 
+
+open\+\_\+device function is called to open file associated to uio device
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em fd} & file descriptor name. \\
+\hline
+\mbox{\tt in}  & {\em uiod} & uio device file corrisponding to G\+P\+IO. \\
+\hline
+\mbox{\tt out}  & {\em virtual\+\_\+address} & uio device file\textquotesingle{}s virtual address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 155 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenzia G\+P\+I\+O\+\_\+\+M\+A\+P\+\_\+\+S\+I\+ZE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+155                                                             \{
+156     *fd = open (uiod, O\_RDWR);
+157         \textcolor{keywordflow}{if} (*fd < 1) \{
+158             perror(\textcolor{stringliteral}{"Error to open uio device file"});
+159             \textcolor{keywordflow}{return} -1;
+160         \}
+161         \textcolor{comment}{/* mmap system call returns virtual address of <uiod> file */}
+162         *virtual\_address = mmap(NULL, \hyperlink{uiodriver__header_8h_a9542a6000bf702bcd6cc746a6ea288a5}{GPIO\_MAP\_SIZE}, PROT\_READ|PROT\_WRITE, MAP\_SHARED, *fd, 0)
+      ;
+163     \textcolor{keywordflow}{return} 0;
+164 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiointdriver__header_8h_a04435a9f2d74a3152c3cc9c34e2da3d1}\label{uiointdriver__header_8h_a04435a9f2d74a3152c3cc9c34e2da3d1}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!parse\+\_\+command@{parse\+\_\+command}}
+\index{parse\+\_\+command@{parse\+\_\+command}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{parse\+\_\+command()}{parse\_command()}}
+{\footnotesize\ttfamily int parse\+\_\+command (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{char $\ast$$\ast$}]{uiod,  }\item[{int $\ast$}]{channel,  }\item[{int $\ast$}]{r\+\_\+w,  }\item[{int $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Parses uiodriver arguments. 
+
+parse\+\_\+command function is called to parse arguments passed to driver
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em argc} & number of parameters, passed to main function. \\
+\hline
+\mbox{\tt in}  & {\em argv} & parameters passed to main function \\
+\hline
+\mbox{\tt out}  & {\em uiod} & uio device file corrisponding to G\+P\+IO \\
+\hline
+\mbox{\tt out}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\mbox{\tt out}  & {\em r\+\_\+w} & specifies if the operation on G\+P\+IO is a read or a write \\
+\hline
+\mbox{\tt out}  & {\em value} & contains the read value (if the operation on G\+P\+IO is a read) or the value to write (if the operation on G\+P\+IO is a write) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred; 1 Help function is called; 0 Everything is ok.\\
+\hline
+\end{DoxyRetVals}
+Parses uiodriver arguments.
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em argc} & number of parameters, passed to main function. \\
+\hline
+\mbox{\tt in}  & {\em argv} & parameters passed to main function \\
+\hline
+\mbox{\tt out}  & {\em uiod} & uio device file corrisponding to G\+P\+IO \\
+\hline
+\mbox{\tt out}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\mbox{\tt out}  & {\em r\+\_\+w} & specifies if the operation on G\+P\+IO is a read or a write \\
+\hline
+\mbox{\tt out}  & {\em value} & contains the read value (if the operation on G\+P\+IO is a read) or the value to write (if the operation on G\+P\+IO is a write) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred; 1 Help function is called; 0 Everything is ok. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 44 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenzia B\+O\+L\+D\+W\+H\+I\+TE, G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1, G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2, R\+E\+AD, R\+E\+S\+ET, usage(), e W\+R\+I\+TE.
+
+
+\begin{DoxyCode}
+44                                                                                     \{
+45     \textcolor{keywordtype}{int} index=0;
+46     \textcolor{keywordtype}{int} man\_opt\_d=-1;   \textcolor{comment}{/* Keep track if the mandatory option 'd' is parsed */}
+47     \textcolor{keywordtype}{int} man\_opt\_c=-1;   \textcolor{comment}{/* Keep track if the mandatory option 'c' is parsed */}
+48     \textcolor{keywordtype}{int} i\_or\_o=0;       \textcolor{comment}{/* Keep track if an i|o operation is requested */}
+49     \textcolor{keyword}{static} \textcolor{keywordtype}{char} *optstring = \textcolor{stringliteral}{":d:c:io:h"};
+50 
+51         \textcolor{keywordflow}{while}((index = getopt(argc, argv, optstring)) != -1) \{
+52                 \textcolor{keywordflow}{switch}(index) \{
+53                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}:
+54                     man\_opt\_d=atoi(optarg); \textcolor{comment}{/* Change mand\_opt\_d value to memorize that the option 'd' is
+       parsed */}
+55                     *uiod=optarg;                       
+56                     \textcolor{keywordflow}{break};
+57                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}:
+58                     man\_opt\_c=atoi(optarg); \textcolor{comment}{/* Change mand\_opt\_c value to memorize that the option 'c' is
+       parsed */}
+59                     \textcolor{comment}{/* Check if before 'c' option was passed the mandatory option 'd' */}
+60                     \textcolor{keywordflow}{if}(man\_opt\_d!=-1)\{
+61                         *channel=atoi(optarg);
+62                     \}
+63                     \textcolor{keywordflow}{else}\{
+64                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'd'\(\backslash\)n"});
+65                         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+66                         \textcolor{keywordflow}{return} -1;
+67                     \}
+68                     \textcolor{keywordflow}{break};
+69                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+70                     \textcolor{comment}{/* Check if before 'i' option was passed the mandatory option 'd' */}
+71                     \textcolor{keywordflow}{if}(man\_opt\_d!=-1)\{
+72                         \textcolor{comment}{/* Check if before 'i' option was passed the mandatory option 'c' */}
+73                         \textcolor{keywordflow}{if}(man\_opt\_c!=-1)\{
+74                             *r\_w=\hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ}; \textcolor{comment}{/* Set READ operation for GPIO */}
+75                             i\_or\_o=1;
+76                         \}
+77                         \textcolor{keywordflow}{else}\{
+78                             printf(\textcolor{stringliteral}{"Missing mandatory parameter 'c'\(\backslash\)n"});
+79                             \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+80                             \textcolor{keywordflow}{return} -1;
+81                         \}       
+82                     \}
+83                     \textcolor{keywordflow}{else}\{
+84                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'd'\(\backslash\)n"});
+85                         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+86                         \textcolor{keywordflow}{return} -1;
+87                     \}
+88                     \textcolor{keywordflow}{break};
+89                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}:
+90                     \textcolor{comment}{/* Check if before 'o' option was passed the mandatory option 'd' */}
+91                     \textcolor{keywordflow}{if}(man\_opt\_d!=-1)\{
+92                         \textcolor{comment}{/* Check if before 'o' option was passed the mandatory option 'c' */}
+93                         \textcolor{keywordflow}{if}(man\_opt\_c!=-1)\{
+94                             *r\_w=\hyperlink{mygpio__nodriver_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}; \textcolor{comment}{/* Set WRITE operation for GPIO */}
+95                             *value=strtoul(optarg, NULL, 0);
+96                             i\_or\_o=1;
+97                         \}
+98                         \textcolor{keywordflow}{else}\{
+99                             printf(\textcolor{stringliteral}{"Missing mandatory parameter 'c'\(\backslash\)n"});
+100                             \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+101                             \textcolor{keywordflow}{return} -1;
+102                         \}   
+103                     \}
+104                     \textcolor{keywordflow}{else}\{
+105                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'g'\(\backslash\)n"});
+106                         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+107                         \textcolor{keywordflow}{return} -1;
+108                     \}
+109                     \textcolor{keywordflow}{break};
+110                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+111                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+112                     \textcolor{keywordflow}{return} 1;
+113                     \textcolor{keywordflow}{break};
+114                 \textcolor{keywordflow}{case} \textcolor{charliteral}{':'}:
+115                     printf(\textcolor{stringliteral}{"Missing argument for '%c' option\(\backslash\)n"}, optopt);
+116                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+117                     \textcolor{keywordflow}{return} -1;
+118                     \textcolor{keywordflow}{break};
+119                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:
+120                     printf(\textcolor{stringliteral}{"Option '%c' not recognized\(\backslash\)n"}, optopt);
+121                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+122                     \textcolor{keywordflow}{return} -1;
+123                     \textcolor{keywordflow}{break};
+124                 \textcolor{keywordflow}{default}:
+125                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+126                     \textcolor{keywordflow}{return} -1;
+127                     \textcolor{keywordflow}{break};
+128                 \}
+129         
+130             \}
+131     \textcolor{comment}{/* Check if channel number is right*/}
+132     \textcolor{keywordflow}{if}(*channel!=\hyperlink{uiodriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}{GPIO\_CHANNEL\_1} && *channel!=\hyperlink{uiodriver__header_8h_ae66d9f4c742e468bb1bec4d89df7ea8e}{GPIO\_CHANNEL\_2})\{
+133         printf(\textcolor{stringliteral}{"Wrong channel number inserted\(\backslash\)n"});
+134         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+135         \textcolor{keywordflow}{return} -1;
+136     \}
+137     
+138     \textcolor{comment}{/* Check if an i|o operation is requested */}    
+139     \textcolor{keywordflow}{if}(i\_or\_o==0)\{
+140         printf(\textcolor{stringliteral}{"Can't use "}\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"uiodriver "}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"without specify i|o option\(\backslash\)n"});
+141         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+142         \textcolor{keywordflow}{return} -1;
+143     \}
+144     \textcolor{keywordflow}{return} 0;   
+145 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiointdriver__header_8h_a9fce552002ea68e1deb3722a8f0526e0}\label{uiointdriver__header_8h_a9fce552002ea68e1deb3722a8f0526e0}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!read\+\_\+gpio@{read\+\_\+gpio}}
+\index{read\+\_\+gpio@{read\+\_\+gpio}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{read\+\_\+gpio()}{read\_gpio()}}
+{\footnotesize\ttfamily int read\+\_\+gpio (\begin{DoxyParamCaption}\item[{int}]{fd,  }\item[{int $\ast$}]{value,  }\item[{char $\ast$}]{uiod,  }\item[{void $\ast$}]{virtual\+\_\+address,  }\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Reads the 
+
+in input to G\+P\+IO port. 
+
+read\+\_\+gpio function is called to do read operation from G\+P\+IO
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em fd} & file descriptor name. \\
+\hline
+\mbox{\tt out}  & {\em value} & read value. \\
+\hline
+\mbox{\tt in}  & {\em uiod} & uio device file corrisponding to G\+P\+IO \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & uio device file\textquotesingle{}s virtual address. \\
+\hline
+\mbox{\tt in}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 175 del file uiointdriver\+\_\+function.\+c.
+
+
+
+Referenzia C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE, C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE, C\+H\+A\+N\+N\+E\+L\+\_\+1\+\_\+\+I\+SR, C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE, C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE, C\+H\+A\+N\+N\+E\+L\+\_\+2\+\_\+\+I\+SR, G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1, G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+D\+I\+S\+A\+B\+LE, G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+E\+N\+A\+B\+LE, G\+P\+I\+O\+\_\+\+G\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O\+\_\+\+Interrupt(), G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+E\+R\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O\+\_\+\+I\+P\+\_\+\+I\+S\+R\+\_\+\+O\+F\+F\+S\+ET, e G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET.
+
+
+\begin{DoxyCode}
+175                                                                                \{
+176     \textcolor{comment}{/* number of bytes read */}
+177     ssize\_t num\_byte;
+178     \textcolor{comment}{/* to test if read operation is correct */}
+179     uint32\_t test\_read=1;
+180 
+181     \textcolor{comment}{/* Set the offsets to access to right gpio channel (1 or 2) */}
+182     \textcolor{keywordtype}{int} gpio\_tri\_off;
+183     \textcolor{keywordtype}{int} gpio\_data\_off;
+184     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} gpio\_cha\_interrupt\_en;
+185     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} gpio\_cha\_interrupt\_dis;
+186     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} gpio\_cha\_isr;
+187     \textcolor{keywordflow}{if}(channel==\hyperlink{uiodriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}{GPIO\_CHANNEL\_1})\{
+188         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a6e2a77c24e8a4e2b3800085ac10a8cf6}{GPIO\_TRI\_OFFSET};
+189         gpio\_data\_off=\hyperlink{uiodriver__header_8h_a78907649b00f7076af686bcac4cd1b8c}{GPIO\_DATA\_OFFSET};
+190         gpio\_cha\_interrupt\_en=\hyperlink{uiointdriver__header_8h_a786a31667135fd90322a9695f26718bc}{CHANNEL\_1\_IER\_ENABLE};
+191         gpio\_cha\_interrupt\_dis=\hyperlink{uiointdriver__header_8h_a6bccfac838bbc2886458f5f0a91480ba}{CHANNEL\_1\_IER\_DISABLE};
+192         gpio\_cha\_isr=\hyperlink{uiointdriver__header_8h_a4eaf81588a4c638427c504a28fcc527d}{CHANNEL\_1\_ISR};
+193     \}
+194     \textcolor{keywordflow}{else}\{
+195         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a91469d73222e41cf0b69a0331cb14770}{GPIO2\_TRI\_OFFSET};
+196         gpio\_data\_off=\hyperlink{uiodriver__header_8h_aec02b8e8ed2da2cfc630a5b1b3cb0277}{GPIO2\_DATA\_OFFSET};
+197         gpio\_cha\_interrupt\_en=\hyperlink{uiointdriver__header_8h_ac370d86cccefe89c8218d13a46f3ba66}{CHANNEL\_2\_IER\_ENABLE};
+198         gpio\_cha\_interrupt\_dis=\hyperlink{uiointdriver__header_8h_adedf1052d53457c5ca12ca50a955e38b}{CHANNEL\_2\_IER\_DISABLE};
+199         gpio\_cha\_isr=\hyperlink{uiointdriver__header_8h_aa365ae47ef2211207fc9d94aaf061b00}{CHANNEL\_2\_ISR};
+200     \}
+201     \textcolor{comment}{/*----------------------------------------------------------*/}
+202 
+203     \textcolor{comment}{/* Set GPIO\_TRI register values to configure the GPIO port as input */}
+204     *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_tri\_off)) = 255;
+205 
+206     \textcolor{keywordflow}{while}(1)\{
+207 
+208         \textcolor{comment}{/* Enable Global Interrupt of GPIO */}
+209         \hyperlink{uiointdriver__function_8c_ac319be40d382d9d0b59c14e6b5ef8b43}{GPIO\_Interrupt}(virtual\_address,\hyperlink{uiointdriver__header_8h_aa86e291e533fd0b8093ff97c60efea64}{GPIO\_GIER\_OFFSET},
+      \hyperlink{uiointdriver__header_8h_a908e3d365058800ff15fa01bbfa6375e}{GPIO\_GIER\_ENABLE});
+210         \textcolor{comment}{/* Enable Channel Interrut of GPIO */}
+211         \hyperlink{uiointdriver__function_8c_ac319be40d382d9d0b59c14e6b5ef8b43}{GPIO\_Interrupt}(virtual\_address,\hyperlink{uiointdriver__header_8h_a77767f33f600c491badef341b5933a06}{GPIO\_IP\_IER\_OFFSET},
+      gpio\_cha\_interrupt\_en);
+212 
+213         \textcolor{comment}{/* to suspend the process on gpio peripheral */}
+214         num\_byte=read(fd,&test\_read,\textcolor{keyword}{sizeof}(test\_read));
+215         \textcolor{keywordflow}{if}(num\_byte!=\textcolor{keyword}{sizeof}(test\_read))\{
+216             printf(\textcolor{stringliteral}{"It occurs an error on read opeartion\(\backslash\)n"});
+217             \textcolor{keywordflow}{return} -1;
+218         \}
+219         \textcolor{keywordflow}{else}\{
+220             \textcolor{comment}{/* Disable Global Interrupt of GPIO */}
+221             \hyperlink{uiointdriver__function_8c_ac319be40d382d9d0b59c14e6b5ef8b43}{GPIO\_Interrupt}(virtual\_address,\hyperlink{uiointdriver__header_8h_aa86e291e533fd0b8093ff97c60efea64}{GPIO\_GIER\_OFFSET},
+      \hyperlink{uiointdriver__header_8h_a03dc218f2d679e6cbe6334770ed2f4d0}{GPIO\_GIER\_DISABLE});
+222             \textcolor{comment}{/* Disable Channel Interrut of GPIO */}
+223             \hyperlink{uiointdriver__function_8c_ac319be40d382d9d0b59c14e6b5ef8b43}{GPIO\_Interrupt}(virtual\_address,\hyperlink{uiointdriver__header_8h_a77767f33f600c491badef341b5933a06}{GPIO\_IP\_IER\_OFFSET},
+      gpio\_cha\_interrupt\_dis);
+224     
+225             \textcolor{comment}{/* Memorize the value from GPIO port in <value> */}
+226             *value = *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_data\_off));
+227             printf(\textcolor{stringliteral}{"The value on channel %d of %s input is: %08x\(\backslash\)n"},channel,uiod,*value);
+228         \}
+229     
+230 \textcolor{comment}{/* In this case the driver don't read the register until the input that cause the interrupt is set to
+       default low position */}
+231 \textcolor{comment}{//      while(*((unsigned *)(virtual\_address + gpio\_data\_off))!=0);}
+232 
+233         \textcolor{comment}{/* test reenable interrupt */}
+234         ssize\_t re\_enable = 1;
+235         \textcolor{comment}{/* to clean interrupt */}
+236         re\_enable = write(fd, &re\_enable, \textcolor{keyword}{sizeof}(re\_enable)); 
+237         \textcolor{keywordflow}{if} (re\_enable < \textcolor{keyword}{sizeof}(re\_enable)) \{
+238             perror(\textcolor{stringliteral}{"write"});
+239             close(fd);
+240             exit(EXIT\_FAILURE);
+241         \}
+242     
+243         \textcolor{comment}{/* Sent ack to GPIO peripheral */}
+244         \hyperlink{uiointdriver__function_8c_ac319be40d382d9d0b59c14e6b5ef8b43}{GPIO\_Interrupt}(virtual\_address, \hyperlink{uiointdriver__header_8h_ae50608cce500f1a7c4b1ccb10e96dbbf}{GPIO\_IP\_ISR\_OFFSET}, gpio\_cha\_isr);
+245     \}
+246     
+247 \}   
+\end{DoxyCode}
+\mbox{\Hypertarget{uiointdriver__header_8h_a1ad940455be56209415d328d78622715}\label{uiointdriver__header_8h_a1ad940455be56209415d328d78622715}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!usage@{usage}}
+\index{usage@{usage}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options. 
+
+usage function is called to help the user
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies nodriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options.\\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies uiodriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options.\\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies uiointdriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 19 del file nodriver\+\_\+function.\+c.
+
+
+
+Referenzia B\+O\+L\+D\+W\+H\+I\+TE, G\+R\+E\+EN, e R\+E\+S\+ET.
+
+
+
+Referenziato da parse\+\_\+command().
+
+
+\begin{DoxyCode}
+19                       \{
+20     printf(\textcolor{stringliteral}{"The right way to use this driver is\(\backslash\)n"});
+21     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"%s -g <GPIO\_ADDRESS> -i|-o <VALUE>\(\backslash\)n"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET},name);
+22     printf(\textcolor{stringliteral}{"Please, pay attention:\(\backslash\)n"});
+23     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)t-g"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<GPIO\_ADDR>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <GPIO\_ADDR>\(\backslash\)n\(\backslash\)t\(\backslash\)tspecifies the physical address of GPIO.\(\backslash\)n\(\backslash\)t\(\backslash\)t<GPIO\_ADDR> can be expressed in\(\backslash\)n\(\backslash\)t\(\backslash\)t
+      decimal representation (no prefix),\(\backslash\)n\(\backslash\)t\(\backslash\)toctal representation (0 prefix)\(\backslash\)n\(\backslash\)t\(\backslash\)tor hexadecimal representation\(\backslash\)n\(\backslash\)t
+      \(\backslash\)t(0x or 0X prefix)\(\backslash\)n"});
+24     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-i"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tSpecifies the input value of GPIO at\(\backslash\)n\(\backslash\)t\(\backslash\)t<GPIO\_ADDR>
+       physical address \(\backslash\)n"});
+25     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-o"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<VALUE>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <VALUE> specify\(\backslash\)n\(\backslash\)t\(\backslash\)tthe value must be write on GPIO output \(\backslash\)n"});
+26     \textcolor{keywordflow}{return};
+27 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiointdriver__header_8h_a415a74456e81dc0b9e90977b584a28e4}\label{uiointdriver__header_8h_a415a74456e81dc0b9e90977b584a28e4}} 
+\index{uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}!write\+\_\+gpio@{write\+\_\+gpio}}
+\index{write\+\_\+gpio@{write\+\_\+gpio}!uiointdriver\+\_\+header.\+h@{uiointdriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{write\+\_\+gpio()}{write\_gpio()}}
+{\footnotesize\ttfamily void write\+\_\+gpio (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{char $\ast$}]{uiod,  }\item[{void $\ast$}]{virtual\+\_\+address,  }\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Writes 
+
+in output to G\+P\+IO port. 
+
+write\+\_\+gpio function is called to do write operation on G\+P\+IO
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em value} & write value. \\
+\hline
+\mbox{\tt in}  & {\em uiod} & uio device file corrisponding to G\+P\+IO \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & uio device file\textquotesingle{}s virtual address. \\
+\hline
+\mbox{\tt in}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 200 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenzia G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1, G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET, e G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET.
+
+
+\begin{DoxyCode}
+200                                                                         \{
+201     \textcolor{comment}{/* Set the offsets to access to right gpio channel (1 or 2) */}
+202     \textcolor{keywordtype}{int} gpio\_tri\_off;
+203     \textcolor{keywordtype}{int} gpio\_data\_off;
+204     \textcolor{keywordflow}{if}(channel==\hyperlink{uiodriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}{GPIO\_CHANNEL\_1})\{
+205         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a6e2a77c24e8a4e2b3800085ac10a8cf6}{GPIO\_TRI\_OFFSET};
+206         gpio\_data\_off=\hyperlink{uiodriver__header_8h_a78907649b00f7076af686bcac4cd1b8c}{GPIO\_DATA\_OFFSET};
+207     \}
+208     \textcolor{keywordflow}{else}\{
+209         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a91469d73222e41cf0b69a0331cb14770}{GPIO2\_TRI\_OFFSET};
+210         gpio\_data\_off=\hyperlink{uiodriver__header_8h_aec02b8e8ed2da2cfc630a5b1b3cb0277}{GPIO2\_DATA\_OFFSET};
+211     \}
+212     \textcolor{comment}{/* Set GPIO\_TRI register values to configure the GPIO port as output */}
+213     *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_tri\_off)) = 0;
+214     printf(\textcolor{stringliteral}{"Value %08x is going to write onto %s (channel %d)\(\backslash\)n"}, value, uiod, channel);
+215     \textcolor{comment}{/* Write <value> in GPIO register */}
+216     *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_data\_off)) = value;
+217 
+218 \}
+\end{DoxyCode}

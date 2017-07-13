@@ -1,0 +1,185 @@
+\hypertarget{_elaborato1_21__1___driver___c___no_int_2main_8c}{}\section{Riferimenti per il file Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.c}
+\label{_elaborato1_21__1___driver___c___no_int_2main_8c}\index{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c}}
+
+
+Programma principale che contiene al suo interno l\textquotesingle{}implemetazione di un particolare driver che pilota la periferica.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}platform.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xil\+\_\+printf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio\+\_\+header.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_elaborato1_21__1___driver___c___no_int_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}{init} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di inizializzare in maniera opportuna la periferica. \end{DoxyCompactList}\item 
+void \hyperlink{_elaborato1_21__1___driver___c___no_int_2main_8c_a7cd563c35d04fafa3c3657de92c1a5a0}{supercar} ()
+\begin{DoxyCompactList}\small\item\em Implementazione del driver per il pilotaggio della periferica. \end{DoxyCompactList}\item 
+int \hyperlink{_elaborato1_21__1___driver___c___no_int_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Programma principale che contiene al suo interno l\textquotesingle{}implemetazione di un particolare driver che pilota la periferica. 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+10-\/\+May-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato1_21__1___driver___c___no_int_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}\label{_elaborato1_21__1___driver___c___no_int_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}} 
+\index{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c}!init@{init}}
+\index{init@{init}!Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di inizializzare in maniera opportuna la periferica. 
+
+Questa funzione inizializza led, bottone utente e timer2.
+
+\begin{DoxyNote}{Nota}
+Si può notare come la periferica di G\+P\+IO è inizializzata in modo tale da utilizzare 8 pin\+: in accordo all\textquotesingle{}header file \hyperlink{gpio__header_8h}{gpio\+\_\+header.\+h} sui primi 4 pin, a partire dai meno significativi vengono mappati degli switch, sui secondi 4 dei led 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 44 del file main.\+c.
+
+
+
+Referenzia \+\_\+\+F\+\_\+, G\+P\+I\+O\+\_\+\+A\+D\+D\+R\+E\+SS, gpio\+\_\+init(), gpio\+\_\+write\+\_\+mask(), H\+I\+GH, L\+OW, P\+A\+D\+\_\+\+EN, P\+A\+D\+\_\+\+O\+UT, e S\+E\+T\+\_\+\+L\+ED.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+44            \{
+45     \hyperlink{gpio__functions_8c_a884bc5b263fad8501c4beb6128e4848c}{gpio\_init}(\hyperlink{gpio__header_8h_afca63cd0c45ddebc9b5f95a9ac9d2aa8}{GPIO\_ADDRESS});
+46     \hyperlink{gpio__functions_8c_aeea54157b1758f322c9f80a7b8a34a19}{gpio\_write\_mask}(\hyperlink{gpio__header_8h_aa521423b6826519fe6ec74bb55c3d007}{PAD\_EN}, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, \hyperlink{gpio__header_8h_a2f13240b5b75c50de1b7ad750c67bbf5}{\_F\_}, \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+47     \hyperlink{gpio__functions_8c_aeea54157b1758f322c9f80a7b8a34a19}{gpio\_write\_mask}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT},\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED},\hyperlink{gpio__header_8h_a2f13240b5b75c50de1b7ad750c67bbf5}{\_F\_},\hyperlink{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}{LOW});
+48 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato1_21__1___driver___c___no_int_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{_elaborato1_21__1___driver___c___no_int_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$Primo passo
+
+$<$Secondo passo 
+
+Definizione alla linea 21 del file main.\+c.
+
+
+
+Referenzia init(), e supercar().
+
+
+\begin{DoxyCode}
+22 \{
+23     init\_platform();
+25     \textcolor{comment}{/*Si inizializza correttamente la periferica*/}
+26     \hyperlink{_elaborato1_21__1___driver___c___no_int_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}{init}();
+28     \textcolor{comment}{/*Si richiama il relativo driver*/}
+29     \hyperlink{_elaborato1_21__1___driver___c___no_int_2main_8c_a7cd563c35d04fafa3c3657de92c1a5a0}{supercar}();
+30     cleanup\_platform();
+31     \textcolor{keywordflow}{return} 0;
+32 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato1_21__1___driver___c___no_int_2main_8c_a7cd563c35d04fafa3c3657de92c1a5a0}\label{_elaborato1_21__1___driver___c___no_int_2main_8c_a7cd563c35d04fafa3c3657de92c1a5a0}} 
+\index{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c}!supercar@{supercar}}
+\index{supercar@{supercar}!Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c@{Elaborato1/1\+\_\+1\+\_\+\+Driver\+\_\+\+C\+\_\+\+No\+Int/main.\+c}}
+\subsubsection{\texorpdfstring{supercar()}{supercar()}}
+{\footnotesize\ttfamily void supercar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implementazione del driver per il pilotaggio della periferica. 
+
+\begin{DoxyNote}{Nota}
+Il driver permette la simulazione del lampeggiamento dei led posti sul muso anteriore di K.\+I.\+T.\+T., famosa auto del telefim Anni \textquotesingle{}80 Supercar. 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 58 del file main.\+c.
+
+
+
+Referenziato da loop(), e main().
+
+
+\begin{DoxyCode}
+58                \{
+59     \textcolor{keywordtype}{int} position=\hyperlink{gpio__header_8h_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO};
+60     \textcolor{keywordtype}{short} \textcolor{keywordtype}{int} \hyperlink{driver_8c_a423d61d4405ebd46d95174d4383b6f13}{dx}=0;
+61     useconds\_t usec = 500000;
+62     \textcolor{keywordflow}{while}(1)\{
+63         usleep(usec);
+64         \textcolor{comment}{/*Il ramo then permette di scorrere l'illuminazione dei led da destra verso sinistra*/}
+65         \textcolor{keywordflow}{if}(!dx)\{
+66             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT}, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+67             usleep(usec);
+68             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT},\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+69             \textcolor{comment}{/*Poiché il driver è specifico per la board Zybo Zynq-7000}
+70 \textcolor{comment}{             * tale controllo prevede che all'illuminazione del quarto led da destra}
+71 \textcolor{comment}{             * viene posta la variabile dx a 1 in modo tale che alla successiva}
+72 \textcolor{comment}{             * iterazione lo scorrimento avvenga da sinistra a destra*/}
+73             \textcolor{keywordflow}{if}(position==\hyperlink{gpio__header_8h_a1859c475c0bde19dfc1101e35d71b939}{THREE})
+74                 dx=1;
+75             \textcolor{keywordflow}{else}
+76                 position++;
+77         \}
+78         \textcolor{comment}{/*Il ramo else permette di scorrere l'illuminazione dei led da sinistra verso destra*/}
+79         \textcolor{keywordflow}{else}\{
+80             position--;
+81             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT}, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+82             usleep(usec);
+83             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT}, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+84             \textcolor{comment}{/*Se lo scorrimento ha raggiunto il led più a destra, allora viene posta}
+85 \textcolor{comment}{             * la variabile dx a 0 in modo tale che alla successiva iterazione,}
+86 \textcolor{comment}{             * avvenga da destra verso sinistra*/}
+87             \textcolor{keywordflow}{if}(position==\hyperlink{gpio__header_8h_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO})\{
+88                 dx=0;
+89                 position++;
+90             \}
+91         \}
+92     \}
+93 
+94 
+95 \}
+\end{DoxyCode}

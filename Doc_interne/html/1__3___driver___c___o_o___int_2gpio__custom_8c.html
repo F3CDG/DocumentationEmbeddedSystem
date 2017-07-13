@@ -1,0 +1,1333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Esame di Sistemi Embedded 2016/17 - Gruppo 4: Riferimenti per il file Elaborato1/1_3_Driver_C_OO_Int/gpio_custom.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="LogoGruppoIV.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Esame di Sistemi Embedded 2016/17 - Gruppo 4
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_5148a54862de01b69f5dbc4f6bfed3e2.html">Elaborato1</a></li><li class="navelem"><a class="el" href="dir_56a15ae4a7f193a2d530d7335e384d4c.html">1_3_Driver_C_OO_Int</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funzioni</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per il file gpio_custom.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Questo file mette a disposizione un firmware per gestire il comportamento della periferica.  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html">gpio_custom.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Grafo delle dipendenze di inclusione per gpio_custom.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="1__3___driver___c___o_o___int_2gpio__custom_8c__incl.png" border="0" usemap="#_elaborato1_21__3___driver___c___o_o___int_2gpio__custom_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div>
+<p><a href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funzioni</h2></td></tr>
+<tr class="memitem:a840eb0c320c546b8696d649d2d2e716c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a840eb0c320c546b8696d649d2d2e716c">gpio_custom_Init</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t base_address)</td></tr>
+<tr class="memdesc:a840eb0c320c546b8696d649d2d2e716c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di inizializzare correttamente un GPIO.  <a href="#a840eb0c320c546b8696d649d2d2e716c">Continua...</a><br /></td></tr>
+<tr class="separator:a840eb0c320c546b8696d649d2d2e716c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a558202632ed9f7d72d497e0c4ac547fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a558202632ed9f7d72d497e0c4ac547fc">gpio_custom_Set_value_reg</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t reg, uint32_t mask, uint32_t mask_value)</td></tr>
+<tr class="memdesc:a558202632ed9f7d72d497e0c4ac547fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare all'interno di uno specifico registro, dei valori in base ad una determinata maschera di bit.  <a href="#a558202632ed9f7d72d497e0c4ac547fc">Continua...</a><br /></td></tr>
+<tr class="separator:a558202632ed9f7d72d497e0c4ac547fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf3992edd1807e36d76be276071960c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#abf3992edd1807e36d76be276071960c6">gpio_custom_Write_mask</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t reg, uint32_t mask, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:abf3992edd1807e36d76be276071960c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di scrivere all'interno di uno specifico registro in base ad una determinata maschera di bit.  <a href="#abf3992edd1807e36d76be276071960c6">Continua...</a><br /></td></tr>
+<tr class="separator:abf3992edd1807e36d76be276071960c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a2720eb5fb02ce0b79029670631802f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a1a2720eb5fb02ce0b79029670631802f">gpio_custom_Write_one</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t reg, uint32_t position, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:a1a2720eb5fb02ce0b79029670631802f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di scrivere un unico valore all'interno di uno specifico registro in base ad una determinata posizione.  <a href="#a1a2720eb5fb02ce0b79029670631802f">Continua...</a><br /></td></tr>
+<tr class="separator:a1a2720eb5fb02ce0b79029670631802f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3350a3b786107c78e1afea41c1d64cef"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a3350a3b786107c78e1afea41c1d64cef">gpio_custom_Read_mask</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t reg, uint32_t mask)</td></tr>
+<tr class="memdesc:a3350a3b786107c78e1afea41c1d64cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere all'interno di uno specifico registro in base ad una determinata maschera di bit.  <a href="#a3350a3b786107c78e1afea41c1d64cef">Continua...</a><br /></td></tr>
+<tr class="separator:a3350a3b786107c78e1afea41c1d64cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c6662df5b2911bfe6100416f3a109e4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a2c6662df5b2911bfe6100416f3a109e4">gpio_custom_Read_one</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t reg, uint32_t position)</td></tr>
+<tr class="memdesc:a2c6662df5b2911bfe6100416f3a109e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere un unico valore all'interno di uno specifico registro in base ad una determinata posizione.  <a href="#a2c6662df5b2911bfe6100416f3a109e4">Continua...</a><br /></td></tr>
+<tr class="separator:a2c6662df5b2911bfe6100416f3a109e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addfcf7a4b48fbd02fed272fa1ff4ede5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#addfcf7a4b48fbd02fed272fa1ff4ede5">gpio_custom_Toggle_one</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t reg, uint8_t position)</td></tr>
+<tr class="memdesc:addfcf7a4b48fbd02fed272fa1ff4ede5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette il toggle di un singolo valore all'interno di uno specifico registro in base ad una determinata posizione.  <a href="#addfcf7a4b48fbd02fed272fa1ff4ede5">Continua...</a><br /></td></tr>
+<tr class="separator:addfcf7a4b48fbd02fed272fa1ff4ede5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3f94ee804472245d978c28e635883e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#aea3f94ee804472245d978c28e635883e">gpio_custom_Toggle_mask</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t reg, uint32_t mask)</td></tr>
+<tr class="memdesc:aea3f94ee804472245d978c28e635883e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette il toggle di un gruppo di bit all'interno di uno specifico registro in base ad una determinata masschera.  <a href="#aea3f94ee804472245d978c28e635883e">Continua...</a><br /></td></tr>
+<tr class="separator:aea3f94ee804472245d978c28e635883e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad342eaf33c2f058dfd0ada926fa391eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#ad342eaf33c2f058dfd0ada926fa391eb">gpio_custom_SetEnable</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:ad342eaf33c2f058dfd0ada926fa391eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare il registro di abilitazione in base ad una maschera di bit.  <a href="#ad342eaf33c2f058dfd0ada926fa391eb">Continua...</a><br /></td></tr>
+<tr class="separator:ad342eaf33c2f058dfd0ada926fa391eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c4f5e2ecee7c48eb3fbb65302975eb8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a5c4f5e2ecee7c48eb3fbb65302975eb8">gpio_custom_GetEnable</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask)</td></tr>
+<tr class="memdesc:a5c4f5e2ecee7c48eb3fbb65302975eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere il registro di abilitazione in base ad una maschera di bit.  <a href="#a5c4f5e2ecee7c48eb3fbb65302975eb8">Continua...</a><br /></td></tr>
+<tr class="separator:a5c4f5e2ecee7c48eb3fbb65302975eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c5d47ffd0ec62f672880ba0a54a925"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a83c5d47ffd0ec62f672880ba0a54a925">gpio_custom_SetValue</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:a83c5d47ffd0ec62f672880ba0a54a925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare il registro pad_out in base ad una maschera di bit.  <a href="#a83c5d47ffd0ec62f672880ba0a54a925">Continua...</a><br /></td></tr>
+<tr class="separator:a83c5d47ffd0ec62f672880ba0a54a925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b6cfe1eff5bdd6ba5e61c88c0ea5ee"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a27b6cfe1eff5bdd6ba5e61c88c0ea5ee">gpio_custom_GetValue</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask)</td></tr>
+<tr class="memdesc:a27b6cfe1eff5bdd6ba5e61c88c0ea5ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere il registro pad_in in base ad una maschera di bit.  <a href="#a27b6cfe1eff5bdd6ba5e61c88c0ea5ee">Continua...</a><br /></td></tr>
+<tr class="separator:a27b6cfe1eff5bdd6ba5e61c88c0ea5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad76fd3ba58361de14c7c50bcda7ecffc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#ad76fd3ba58361de14c7c50bcda7ecffc">gpio_custom_SetMode</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:ad76fd3ba58361de14c7c50bcda7ecffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare il registro read/write_n in base ad una maschera di bit, ossia il modo di funzionamento del GPIO se di input o di output.  <a href="#ad76fd3ba58361de14c7c50bcda7ecffc">Continua...</a><br /></td></tr>
+<tr class="separator:ad76fd3ba58361de14c7c50bcda7ecffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab42bb0b58cfd603d128e194d353cdac7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#ab42bb0b58cfd603d128e194d353cdac7">gpio_custom_GetMode</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask)</td></tr>
+<tr class="memdesc:ab42bb0b58cfd603d128e194d353cdac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere il registro read/write_n in base ad una maschera di bit, ossia di capire la modalità di funzionamento del GPIO.  <a href="#ab42bb0b58cfd603d128e194d353cdac7">Continua...</a><br /></td></tr>
+<tr class="separator:ab42bb0b58cfd603d128e194d353cdac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2b5591f917cba28decf55be64c0d958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#ac2b5591f917cba28decf55be64c0d958">gpio_custom_SetInterruptMask</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:ac2b5591f917cba28decf55be64c0d958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare il registro interrupt mascherate in base ad una maschera di bit.  <a href="#ac2b5591f917cba28decf55be64c0d958">Continua...</a><br /></td></tr>
+<tr class="separator:ac2b5591f917cba28decf55be64c0d958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1381a5bf082be13f9a4102d5cf38a5d2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a1381a5bf082be13f9a4102d5cf38a5d2">gpio_custom_GetInterruptMask</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask)</td></tr>
+<tr class="memdesc:a1381a5bf082be13f9a4102d5cf38a5d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere il registro delle interrupt mascherate in base ad una maschera di bit.  <a href="#a1381a5bf082be13f9a4102d5cf38a5d2">Continua...</a><br /></td></tr>
+<tr class="separator:a1381a5bf082be13f9a4102d5cf38a5d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bc3490848188b85e72a4db5e2c90d5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a5bc3490848188b85e72a4db5e2c90d5d">gpio_custom_SetStatusInterrupt</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:a5bc3490848188b85e72a4db5e2c90d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare il registro di stato delle interrupt in base ad una maschera di bit.  <a href="#a5bc3490848188b85e72a4db5e2c90d5d">Continua...</a><br /></td></tr>
+<tr class="separator:a5bc3490848188b85e72a4db5e2c90d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba6fbeda8a3e5883996606a85b31de61"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#aba6fbeda8a3e5883996606a85b31de61">gpio_custom_GetStatusInterrupt</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask)</td></tr>
+<tr class="memdesc:aba6fbeda8a3e5883996606a85b31de61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere il registro di stato delle interrupt in base ad una maschera di bit.  <a href="#aba6fbeda8a3e5883996606a85b31de61">Continua...</a><br /></td></tr>
+<tr class="separator:aba6fbeda8a3e5883996606a85b31de61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d9b4b8b8c9d6c2847571e527d221e51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a8d9b4b8b8c9d6c2847571e527d221e51">gpio_custom_SetAckInterrupt</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, uint32_t mask, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:a8d9b4b8b8c9d6c2847571e527d221e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare il registro di ack delle interrupt in base ad una maschera di bit.  <a href="#a8d9b4b8b8c9d6c2847571e527d221e51">Continua...</a><br /></td></tr>
+<tr class="separator:a8d9b4b8b8c9d6c2847571e527d221e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a764cc40d65318d8242d8e7831d746005"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#a764cc40d65318d8242d8e7831d746005">gpio_custom_SetGlobalInterrupt</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a> value)</td></tr>
+<tr class="memdesc:a764cc40d65318d8242d8e7831d746005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di settare il registro delle interrupt globali.  <a href="#a764cc40d65318d8242d8e7831d746005">Continua...</a><br /></td></tr>
+<tr class="separator:a764cc40d65318d8242d8e7831d746005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab53393cd2864a075508da54a6c106fcd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c.html#ab53393cd2864a075508da54a6c106fcd">gpio_custom_GetGlobalInterrupt</a> (<a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *gpio)</td></tr>
+<tr class="memdesc:ab53393cd2864a075508da54a6c106fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione permette di leggere il registro delle interrupt globali.  <a href="#ab53393cd2864a075508da54a6c106fcd">Continua...</a><br /></td></tr>
+<tr class="separator:ab53393cd2864a075508da54a6c106fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Questo file mette a disposizione un firmware per gestire il comportamento della periferica. </p>
+<dl class="section author"><dt>Autori</dt><dd>Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV - Sistemi Embedded 2016-2017 </dd></dl>
+<dl class="section version"><dt>Versione</dt><dd>V1.0 </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>28-Jun-2017 </dd></dl>
+
+<p class="definition">Definizione nel file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+</div><h2 class="groupheader">Documentazione delle funzioni</h2>
+<a id="a5c4f5e2ecee7c48eb3fbb65302975eb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c4f5e2ecee7c48eb3fbb65302975eb8">&#9670;&nbsp;</a></span>gpio_custom_GetEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_GetEnable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere il registro di abilitazione in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00216">216</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00040">gpio_custom_PAD_EN</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom_Read_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                                                        {</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    printf(<span class="stringliteral">&quot;Lettura da registro abilitazione\n&quot;</span>);</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a>(gpio,<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#aaf9e8f055509286a481d45f3d31f8b81">gpio_custom_PAD_EN</a>, mask);</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_aaf9e8f055509286a481d45f3d31f8b81"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#aaf9e8f055509286a481d45f3d31f8b81">gpio_custom_PAD_EN</a></div><div class="ttdeci">#define gpio_custom_PAD_EN</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00040">gpio_custom.h:40</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a23d7b98339be9f5ae58689ed9ff7441f"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a></div><div class="ttdeci">uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask)</div><div class="ttdoc">Questa funzione permette di leggere all&amp;#39;interno di uno specifico registro in base ad una determinata ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom.c:119</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab53393cd2864a075508da54a6c106fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab53393cd2864a075508da54a6c106fcd">&#9670;&nbsp;</a></span>gpio_custom_GetGlobalInterrupt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_GetGlobalInterrupt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere il registro delle interrupt globali. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00406">406</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00051">gpio_custom_GIE</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00143">gpio_custom_Read_one()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                                                                  {</div><div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    printf(<span class="stringliteral">&quot;Lettura interrupt globale&quot;</span>);</div><div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a6553b9b4a748450304982ec6dbfc7f01">gpio_custom_Read_one</a>(gpio, <a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a4eb3755b499e054f222b23470eb63653">gpio_custom_GIE</a>, 0x0);</div><div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div><div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a6553b9b4a748450304982ec6dbfc7f01"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a6553b9b4a748450304982ec6dbfc7f01">gpio_custom_Read_one</a></div><div class="ttdeci">uint32_t gpio_custom_Read_one(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t position)</div><div class="ttdoc">Questa funzione permette di leggere un unico valore all&amp;#39;interno di uno specifico registro in base ad ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00143">gpio_custom.c:143</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a4eb3755b499e054f222b23470eb63653"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a4eb3755b499e054f222b23470eb63653">gpio_custom_GIE</a></div><div class="ttdeci">#define gpio_custom_GIE</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00051">gpio_custom.h:51</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1381a5bf082be13f9a4102d5cf38a5d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1381a5bf082be13f9a4102d5cf38a5d2">&#9670;&nbsp;</a></span>gpio_custom_GetInterruptMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_GetInterruptMask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere il registro delle interrupt mascherate in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00325">325</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00048">gpio_custom_IMR</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom_Read_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                                                                               {</div><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    printf(<span class="stringliteral">&quot;Lettura tipologia periferica\n&quot;</span>);</div><div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a>(gpio,<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a156cbe02516b88da8612788d88c1347d">gpio_custom_IMR</a>, mask);</div><div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a23d7b98339be9f5ae58689ed9ff7441f"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a></div><div class="ttdeci">uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask)</div><div class="ttdoc">Questa funzione permette di leggere all&amp;#39;interno di uno specifico registro in base ad una determinata ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom.c:119</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a156cbe02516b88da8612788d88c1347d"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a156cbe02516b88da8612788d88c1347d">gpio_custom_IMR</a></div><div class="ttdeci">#define gpio_custom_IMR</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00048">gpio_custom.h:48</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab42bb0b58cfd603d128e194d353cdac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab42bb0b58cfd603d128e194d353cdac7">&#9670;&nbsp;</a></span>gpio_custom_GetMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_GetMode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere il registro read/write_n in base ad una maschera di bit, ossia di capire la modalità di funzionamento del GPIO. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00289">289</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00039">gpio_custom_PAD_RW_N</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom_Read_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                                                      {</div><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    printf(<span class="stringliteral">&quot;Lettura tipologia periferica\n&quot;</span>);</div><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a>(gpio,<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a975f15ea9a279f61bd1d91452805074a">gpio_custom_PAD_RW_N</a>, mask);</div><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_a975f15ea9a279f61bd1d91452805074a"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a975f15ea9a279f61bd1d91452805074a">gpio_custom_PAD_RW_N</a></div><div class="ttdeci">#define gpio_custom_PAD_RW_N</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00039">gpio_custom.h:39</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a23d7b98339be9f5ae58689ed9ff7441f"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a></div><div class="ttdeci">uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask)</div><div class="ttdoc">Questa funzione permette di leggere all&amp;#39;interno di uno specifico registro in base ad una determinata ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom.c:119</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aba6fbeda8a3e5883996606a85b31de61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba6fbeda8a3e5883996606a85b31de61">&#9670;&nbsp;</a></span>gpio_custom_GetStatusInterrupt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_GetStatusInterrupt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere il registro di stato delle interrupt in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00361">361</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom_Read_mask()</a>, e <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00049">gpio_custom_SR</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>, e <a class="el" href="mygpio__uiointdriver_8c_source.html#l00131">mygpio_read_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                                                                                 {</div><div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    printf(<span class="stringliteral">&quot;Lettura tipologia periferica\n&quot;</span>);</div><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a>(gpio,<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a2941d396f501dcdf7d1d6208d1551e00">gpio_custom_SR</a>, mask);</div><div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a23d7b98339be9f5ae58689ed9ff7441f"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a></div><div class="ttdeci">uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask)</div><div class="ttdoc">Questa funzione permette di leggere all&amp;#39;interno di uno specifico registro in base ad una determinata ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom.c:119</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a2941d396f501dcdf7d1d6208d1551e00"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a2941d396f501dcdf7d1d6208d1551e00">gpio_custom_SR</a></div><div class="ttdeci">#define gpio_custom_SR</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00049">gpio_custom.h:49</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a27b6cfe1eff5bdd6ba5e61c88c0ea5ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27b6cfe1eff5bdd6ba5e61c88c0ea5ee">&#9670;&nbsp;</a></span>gpio_custom_GetValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_GetValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere il registro pad_in in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00253">253</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00041">gpio_custom_PAD_IN</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom_Read_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>, e <a class="el" href="mygpio__nodriver_8c_source.html#l00140">mygpio_read_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                                                       {</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    printf(<span class="stringliteral">&quot;Lettura valori da periferica\n&quot;</span>);</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a>(gpio,<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ae564b3e7d37a6f17a61c0c70c82c45d3">gpio_custom_PAD_IN</a>, mask);</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a23d7b98339be9f5ae58689ed9ff7441f"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a></div><div class="ttdeci">uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask)</div><div class="ttdoc">Questa funzione permette di leggere all&amp;#39;interno di uno specifico registro in base ad una determinata ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom.c:119</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_ae564b3e7d37a6f17a61c0c70c82c45d3"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ae564b3e7d37a6f17a61c0c70c82c45d3">gpio_custom_PAD_IN</a></div><div class="ttdeci">#define gpio_custom_PAD_IN</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00041">gpio_custom.h:41</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a840eb0c320c546b8696d649d2d2e716c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840eb0c320c546b8696d649d2d2e716c">&#9670;&nbsp;</a></span>gpio_custom_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>base_address</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di inizializzare correttamente un GPIO. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">base_addr</td><td>puntatore ad un intero di 32 bit per il corretto indirizzamento della periferica</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00022">22</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom_TypeDef::base_address</a>, <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00033">gpio_custom_TypeDef::gie_offset</a>, <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00051">gpio_custom_GIE</a>, <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00050">gpio_custom_IACK</a>, <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00048">gpio_custom_IMR</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00040">gpio_custom_PAD_EN</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00041">gpio_custom_PAD_IN</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00038">gpio_custom_PAD_OUT</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00039">gpio_custom_PAD_RW_N</a>, <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00049">gpio_custom_SR</a>, <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00032">gpio_custom_TypeDef::iack_offset</a>, <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00030">gpio_custom_TypeDef::imr_offset</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00064">INIT_CONFIG_EN</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00065">INIT_CONFIG_RWN</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00026">gpio_custom_TypeDef::pad_en_offset</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00027">gpio_custom_TypeDef::pad_in_offset</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00024">gpio_custom_TypeDef::pad_out_offset</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00025">gpio_custom_TypeDef::pad_rw_n_offset</a>, e <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00031">gpio_custom_TypeDef::sr_offset</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                                       {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    assert(gpio!=NULL &amp;&amp; <span class="stringliteral">&quot;Errore allocazione di memoria per tipo GPIO&quot;</span>);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    assert(base_address%4==0 &amp;&amp; <span class="stringliteral">&quot;Base address non allineato a 4 byte&quot;</span>);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">base_address</a>=(uint32_t*)base_address;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#a2acf047838d804ed71c46b9c305e651c">pad_en_offset</a>=<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#aaf9e8f055509286a481d45f3d31f8b81">gpio_custom_PAD_EN</a>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#a506ff6030cded799ee3ee361b1fb4e05">pad_in_offset</a>=<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ae564b3e7d37a6f17a61c0c70c82c45d3">gpio_custom_PAD_IN</a>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#aff972444f01c9a62a3406f68a135dbde">pad_out_offset</a>=<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ac8432e7d840c2b72cbfed4a1465fec18">gpio_custom_PAD_OUT</a>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#a4390c6ba1b5edf3651577c4588fd46a6">pad_rw_n_offset</a>=<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a975f15ea9a279f61bd1d91452805074a">gpio_custom_PAD_RW_N</a>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#acfe1beb8be446fbf8cf25f972f8d94bc">gie_offset</a>=<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a4eb3755b499e054f222b23470eb63653">gpio_custom_GIE</a>;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#a19aace2e656510f2de58623aef9640db">iack_offset</a>=<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a213f66690391ce46ca88adb61b256ef3">gpio_custom_IACK</a>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#adcb3a20532084b02d7af698ae73c3c9f">imr_offset</a>=<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a156cbe02516b88da8612788d88c1347d">gpio_custom_IMR</a>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#afd636112e1d82c5c047672f6822c4791">sr_offset</a>=<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a2941d396f501dcdf7d1d6208d1551e00">gpio_custom_SR</a>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_a975f15ea9a279f61bd1d91452805074a"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a975f15ea9a279f61bd1d91452805074a">gpio_custom_PAD_RW_N</a></div><div class="ttdeci">#define gpio_custom_PAD_RW_N</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00039">gpio_custom.h:39</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_aaf9e8f055509286a481d45f3d31f8b81"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#aaf9e8f055509286a481d45f3d31f8b81">gpio_custom_PAD_EN</a></div><div class="ttdeci">#define gpio_custom_PAD_EN</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00040">gpio_custom.h:40</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a156cbe02516b88da8612788d88c1347d"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a156cbe02516b88da8612788d88c1347d">gpio_custom_IMR</a></div><div class="ttdeci">#define gpio_custom_IMR</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00048">gpio_custom.h:48</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_acfe1beb8be446fbf8cf25f972f8d94bc"><div class="ttname"><a href="structgpio__custom___type_def.html#acfe1beb8be446fbf8cf25f972f8d94bc">gpio_custom_TypeDef::gie_offset</a></div><div class="ttdeci">uint8_t gie_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00033">gpio_custom.h:33</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a4eb3755b499e054f222b23470eb63653"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a4eb3755b499e054f222b23470eb63653">gpio_custom_GIE</a></div><div class="ttdeci">#define gpio_custom_GIE</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00051">gpio_custom.h:51</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_a2acf047838d804ed71c46b9c305e651c"><div class="ttname"><a href="structgpio__custom___type_def.html#a2acf047838d804ed71c46b9c305e651c">gpio_custom_TypeDef::pad_en_offset</a></div><div class="ttdeci">uint8_t pad_en_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00026">gpio_custom.h:26</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_a19aace2e656510f2de58623aef9640db"><div class="ttname"><a href="structgpio__custom___type_def.html#a19aace2e656510f2de58623aef9640db">gpio_custom_TypeDef::iack_offset</a></div><div class="ttdeci">uint8_t iack_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00032">gpio_custom.h:32</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_ac8432e7d840c2b72cbfed4a1465fec18"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ac8432e7d840c2b72cbfed4a1465fec18">gpio_custom_PAD_OUT</a></div><div class="ttdeci">#define gpio_custom_PAD_OUT</div><div class="ttdoc">Spiazzamenti registri periferica. </div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00038">gpio_custom.h:38</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a2941d396f501dcdf7d1d6208d1551e00"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a2941d396f501dcdf7d1d6208d1551e00">gpio_custom_SR</a></div><div class="ttdeci">#define gpio_custom_SR</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00049">gpio_custom.h:49</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a213f66690391ce46ca88adb61b256ef3"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a213f66690391ce46ca88adb61b256ef3">gpio_custom_IACK</a></div><div class="ttdeci">#define gpio_custom_IACK</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00050">gpio_custom.h:50</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_ae564b3e7d37a6f17a61c0c70c82c45d3"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ae564b3e7d37a6f17a61c0c70c82c45d3">gpio_custom_PAD_IN</a></div><div class="ttdeci">#define gpio_custom_PAD_IN</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00041">gpio_custom.h:41</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_a506ff6030cded799ee3ee361b1fb4e05"><div class="ttname"><a href="structgpio__custom___type_def.html#a506ff6030cded799ee3ee361b1fb4e05">gpio_custom_TypeDef::pad_in_offset</a></div><div class="ttdeci">uint8_t pad_in_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00027">gpio_custom.h:27</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_afd636112e1d82c5c047672f6822c4791"><div class="ttname"><a href="structgpio__custom___type_def.html#afd636112e1d82c5c047672f6822c4791">gpio_custom_TypeDef::sr_offset</a></div><div class="ttdeci">uint8_t sr_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00031">gpio_custom.h:31</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_aff972444f01c9a62a3406f68a135dbde"><div class="ttname"><a href="structgpio__custom___type_def.html#aff972444f01c9a62a3406f68a135dbde">gpio_custom_TypeDef::pad_out_offset</a></div><div class="ttdeci">uint8_t pad_out_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00024">gpio_custom.h:24</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_adcb3a20532084b02d7af698ae73c3c9f"><div class="ttname"><a href="structgpio__custom___type_def.html#adcb3a20532084b02d7af698ae73c3c9f">gpio_custom_TypeDef::imr_offset</a></div><div class="ttdeci">uint8_t imr_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00030">gpio_custom.h:30</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_a4390c6ba1b5edf3651577c4588fd46a6"><div class="ttname"><a href="structgpio__custom___type_def.html#a4390c6ba1b5edf3651577c4588fd46a6">gpio_custom_TypeDef::pad_rw_n_offset</a></div><div class="ttdeci">uint8_t pad_rw_n_offset</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00025">gpio_custom.h:25</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_ad27f63e553c421cfd3f4353e44e2730c"><div class="ttname"><a href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">gpio_custom_TypeDef::base_address</a></div><div class="ttdeci">uint32_t * base_address</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom.h:23</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3350a3b786107c78e1afea41c1d64cef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3350a3b786107c78e1afea41c1d64cef">&#9670;&nbsp;</a></span>gpio_custom_Read_mask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_Read_mask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere all'interno di uno specifico registro in base ad una determinata maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">reg</td><td>intero a 32 bit che indica lo spiazzamento rispetto all'indirizzo base del registro in cui scrivere </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a leggere in quella posizione, viceversa se 0</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00117">117</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom_TypeDef::base_address</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                                                     {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    assert(gpio!=NULL &amp;&amp; <span class="stringliteral">&quot;Errore allocazione di memoria per tipo GPIO&quot;</span>);</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    assert(gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">base_address</a>!=NULL &amp;&amp; <span class="stringliteral">&quot;Errore allocazione base address GPIO&quot;</span>);</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span>((0x0000000F &amp; mask) == mask){</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">return</span> (gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">base_address</a>[reg/4] &amp; mask);</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div><div class="ttc" id="structgpio__custom___type_def_html_ad27f63e553c421cfd3f4353e44e2730c"><div class="ttname"><a href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">gpio_custom_TypeDef::base_address</a></div><div class="ttdeci">uint32_t * base_address</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom.h:23</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2c6662df5b2911bfe6100416f3a109e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c6662df5b2911bfe6100416f3a109e4">&#9670;&nbsp;</a></span>gpio_custom_Read_one()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t gpio_custom_Read_one </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di leggere un unico valore all'interno di uno specifico registro in base ad una determinata posizione. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">reg</td><td>intero a 32 bit che indica lo spiazzamento rispetto all'indirizzo base del registro in cui scrivere </td></tr>
+    <tr><td class="paramname">position</td><td>intero a 32 bit che specifica la posizione in cui leggere</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">intero</td><td>a 32 bit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00139">139</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom_Read_mask()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                                                                         {</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a>(gpio,reg,0x1&lt;&lt;position) == (0x1&lt;&lt;position);</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a23d7b98339be9f5ae58689ed9ff7441f"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a23d7b98339be9f5ae58689ed9ff7441f">gpio_custom_Read_mask</a></div><div class="ttdeci">uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask)</div><div class="ttdoc">Questa funzione permette di leggere all&amp;#39;interno di uno specifico registro in base ad una determinata ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00119">gpio_custom.c:119</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a558202632ed9f7d72d497e0c4ac547fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a558202632ed9f7d72d497e0c4ac547fc">&#9670;&nbsp;</a></span>gpio_custom_Set_value_reg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_Set_value_reg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare all'interno di uno specifico registro, dei valori in base ad una determinata maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">reg</td><td>intero a 32 bit che indica lo spiazzamento rispetto all'indirizzo base del registro in cui scrivere </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">mask_value</td><td>intero a 32 bit da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00054">54</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom_TypeDef::base_address</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                                                                                          {</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    assert(gpio!=NULL &amp;&amp; <span class="stringliteral">&quot;Errore allocazione di memoria per tipo GPIO&quot;</span>);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    assert(gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">base_address</a>!=NULL &amp;&amp; <span class="stringliteral">&quot;Errore allocazione base address GPIO&quot;</span>);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">base_address</a>[reg/4]=(gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">base_address</a>[reg/4] &amp; ~mask) | (mask &amp; mask_value);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="structgpio__custom___type_def_html_ad27f63e553c421cfd3f4353e44e2730c"><div class="ttname"><a href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">gpio_custom_TypeDef::base_address</a></div><div class="ttdeci">uint32_t * base_address</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom.h:23</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8d9b4b8b8c9d6c2847571e527d221e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d9b4b8b8c9d6c2847571e527d221e51">&#9670;&nbsp;</a></span>gpio_custom_SetAckInterrupt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_SetAckInterrupt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare il registro di ack delle interrupt in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00380">380</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00050">gpio_custom_IACK</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom_Write_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>, e <a class="el" href="mygpio__uiointdriver_8c_source.html#l00131">mygpio_read_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                                                                                                       {</div><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a>(gpio,<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a213f66690391ce46ca88adb61b256ef3">gpio_custom_IACK</a>, mask, value);</div><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    printf(<span class="stringliteral">&quot;Inviato interrupt ack alla periferica\n&quot;</span>);</div><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a0a13e5523c33ca3760f7ed26191fe4f2"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a></div><div class="ttdeci">void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere all&amp;#39;interno di uno specifico registro in base ad una determinata...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom.c:75</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a213f66690391ce46ca88adb61b256ef3"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a213f66690391ce46ca88adb61b256ef3">gpio_custom_IACK</a></div><div class="ttdeci">#define gpio_custom_IACK</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00050">gpio_custom.h:50</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad342eaf33c2f058dfd0ada926fa391eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad342eaf33c2f058dfd0ada926fa391eb">&#9670;&nbsp;</a></span>gpio_custom_SetEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_SetEnable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare il registro di abilitazione in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00199">199</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00040">gpio_custom_PAD_EN</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom_Write_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>, <a class="el" href="mygpio__nodriver_8c_source.html#l00140">mygpio_read_gpio()</a>, e <a class="el" href="mygpio__nodriver_8c_source.html#l00152">mygpio_write_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                                                                               {</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a>(gpio,<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#aaf9e8f055509286a481d45f3d31f8b81">gpio_custom_PAD_EN</a>, mask, value);</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    printf(<span class="stringliteral">&quot;Settaggio registro abilitazione\n&quot;</span>);</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_aaf9e8f055509286a481d45f3d31f8b81"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#aaf9e8f055509286a481d45f3d31f8b81">gpio_custom_PAD_EN</a></div><div class="ttdeci">#define gpio_custom_PAD_EN</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00040">gpio_custom.h:40</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a0a13e5523c33ca3760f7ed26191fe4f2"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a></div><div class="ttdeci">void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere all&amp;#39;interno di uno specifico registro in base ad una determinata...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom.c:75</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a764cc40d65318d8242d8e7831d746005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a764cc40d65318d8242d8e7831d746005">&#9670;&nbsp;</a></span>gpio_custom_SetGlobalInterrupt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_SetGlobalInterrupt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare il registro delle interrupt globali. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00393">393</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00051">gpio_custom_GIE</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00100">gpio_custom_Write_one()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>, e <a class="el" href="mygpio__uiointdriver_8c_source.html#l00131">mygpio_read_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                                                                                           {</div><div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a3d23936fe849d0cda8da48f5c60654be">gpio_custom_Write_one</a>(gpio,<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a4eb3755b499e054f222b23470eb63653">gpio_custom_GIE</a>, 0x0, value);</div><div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    printf(<span class="stringliteral">&quot;Scrittura in registro interrupt globale\n&quot;</span>);</div><div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;}</div><div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a4eb3755b499e054f222b23470eb63653"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a4eb3755b499e054f222b23470eb63653">gpio_custom_GIE</a></div><div class="ttdeci">#define gpio_custom_GIE</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00051">gpio_custom.h:51</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a3d23936fe849d0cda8da48f5c60654be"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a3d23936fe849d0cda8da48f5c60654be">gpio_custom_Write_one</a></div><div class="ttdeci">void gpio_custom_Write_one(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t position, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere un unico all&amp;#39;interno di uno specifico registro in base ad una de...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00100">gpio_custom.c:100</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac2b5591f917cba28decf55be64c0d958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2b5591f917cba28decf55be64c0d958">&#9670;&nbsp;</a></span>gpio_custom_SetInterruptMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_SetInterruptMask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare il registro interrupt mascherate in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00308">308</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00048">gpio_custom_IMR</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom_Write_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>, e <a class="el" href="mygpio__uiointdriver_8c_source.html#l00131">mygpio_read_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                                                                                        {</div><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a>(gpio,<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a156cbe02516b88da8612788d88c1347d">gpio_custom_IMR</a>, mask, value);</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    printf(<span class="stringliteral">&quot;Scrittura in registro delle interrupt mascherate\n&quot;</span>);</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div><div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a156cbe02516b88da8612788d88c1347d"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a156cbe02516b88da8612788d88c1347d">gpio_custom_IMR</a></div><div class="ttdeci">#define gpio_custom_IMR</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00048">gpio_custom.h:48</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a0a13e5523c33ca3760f7ed26191fe4f2"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a></div><div class="ttdeci">void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere all&amp;#39;interno di uno specifico registro in base ad una determinata...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom.c:75</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad76fd3ba58361de14c7c50bcda7ecffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad76fd3ba58361de14c7c50bcda7ecffc">&#9670;&nbsp;</a></span>gpio_custom_SetMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_SetMode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare il registro read/write_n in base ad una maschera di bit, ossia il modo di funzionamento del GPIO se di input o di output. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00272">272</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00039">gpio_custom_PAD_RW_N</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom_Write_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="_elaborato1_21__3___driver___c___o_o___int_2main_8c_source.html#l00033">main()</a>, <a class="el" href="mygpio__nodriver_8c_source.html#l00140">mygpio_read_gpio()</a>, e <a class="el" href="mygpio__nodriver_8c_source.html#l00152">mygpio_write_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                                                                               {</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a>(gpio,<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a975f15ea9a279f61bd1d91452805074a">gpio_custom_PAD_RW_N</a>, mask, value);</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    printf(<span class="stringliteral">&quot;Definita modalità periferica\n&quot;</span>);</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_a975f15ea9a279f61bd1d91452805074a"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a975f15ea9a279f61bd1d91452805074a">gpio_custom_PAD_RW_N</a></div><div class="ttdeci">#define gpio_custom_PAD_RW_N</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00039">gpio_custom.h:39</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a0a13e5523c33ca3760f7ed26191fe4f2"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a></div><div class="ttdeci">void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere all&amp;#39;interno di uno specifico registro in base ad una determinata...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom.c:75</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5bc3490848188b85e72a4db5e2c90d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bc3490848188b85e72a4db5e2c90d5d">&#9670;&nbsp;</a></span>gpio_custom_SetStatusInterrupt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_SetStatusInterrupt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare il registro di stato delle interrupt in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00344">344</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00049">gpio_custom_SR</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom_Write_mask()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                                                                                                          {</div><div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a>(gpio,<a class="code" href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a2941d396f501dcdf7d1d6208d1551e00">gpio_custom_SR</a>, mask, value);</div><div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    printf(<span class="stringliteral">&quot;Scrittura in registro degli interrupt pendenti\n&quot;</span>);</div><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a0a13e5523c33ca3760f7ed26191fe4f2"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a></div><div class="ttdeci">void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere all&amp;#39;interno di uno specifico registro in base ad una determinata...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom.c:75</a></div></div>
+<div class="ttc" id="1__3___driver___c___o_o___int_2gpio__custom_8h_html_a2941d396f501dcdf7d1d6208d1551e00"><div class="ttname"><a href="1__3___driver___c___o_o___int_2gpio__custom_8h.html#a2941d396f501dcdf7d1d6208d1551e00">gpio_custom_SR</a></div><div class="ttdeci">#define gpio_custom_SR</div><div class="ttdef"><b>Definition:</b> <a href="1__3___driver___c___o_o___int_2gpio__custom_8h_source.html#l00049">gpio_custom.h:49</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a83c5d47ffd0ec62f672880ba0a54a925"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c5d47ffd0ec62f672880ba0a54a925">&#9670;&nbsp;</a></span>gpio_custom_SetValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_SetValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di settare il registro pad_out in base ad una maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00235">235</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00038">gpio_custom_PAD_OUT</a>, e <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom_Write_mask()</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="mygpio__nodriver_8c_source.html#l00152">mygpio_write_gpio()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                                                                                {</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a>(gpio,<a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ac8432e7d840c2b72cbfed4a1465fec18">gpio_custom_PAD_OUT</a>, mask, value);</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    printf(<span class="stringliteral">&quot;Scrittura valori su periferica\n&quot;</span>);</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a0a13e5523c33ca3760f7ed26191fe4f2"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a></div><div class="ttdeci">void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere all&amp;#39;interno di uno specifico registro in base ad una determinata...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom.c:75</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8h_html_ac8432e7d840c2b72cbfed4a1465fec18"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#ac8432e7d840c2b72cbfed4a1465fec18">gpio_custom_PAD_OUT</a></div><div class="ttdeci">#define gpio_custom_PAD_OUT</div><div class="ttdoc">Spiazzamenti registri periferica. </div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00038">gpio_custom.h:38</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aea3f94ee804472245d978c28e635883e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3f94ee804472245d978c28e635883e">&#9670;&nbsp;</a></span>gpio_custom_Toggle_mask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_Toggle_mask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette il toggle di un gruppo di bit all'interno di uno specifico registro in base ad una determinata masschera. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">reg</td><td>intero a 32 bit che indica lo spiazzamento rispetto all'indirizzo base del registro in cui effettuare il toggle </td></tr>
+    <tr><td class="paramname">position</td><td>intero a 32 bit che specifica la maschera di bit, in particolare se il valore i-esimo è pari a 1 allora in quella posizione si è abilitati ad effettuare il toggle, viceversa non si effettua tale operazione</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00176">176</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00161">gpio_custom_Toggle_one()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                                                                    {</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">int</span> i;</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">for</span>(i=0;i&lt;4;i++){</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">if</span>((0x1&lt;&lt;i) == ((0x1&lt;&lt;i) &amp; mask)){</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a6b306311e731ae8069974c0ca501c8ac">gpio_custom_Toggle_one</a>(gpio,reg,i);</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a6b306311e731ae8069974c0ca501c8ac"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a6b306311e731ae8069974c0ca501c8ac">gpio_custom_Toggle_one</a></div><div class="ttdeci">void gpio_custom_Toggle_one(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint8_t position)</div><div class="ttdoc">Questa funzione permette il toggle di un singolo valore all&amp;#39;interno di uno specifico registro in base...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00161">gpio_custom.c:161</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="addfcf7a4b48fbd02fed272fa1ff4ede5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addfcf7a4b48fbd02fed272fa1ff4ede5">&#9670;&nbsp;</a></span>gpio_custom_Toggle_one()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_Toggle_one </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette il toggle di un singolo valore all'interno di uno specifico registro in base ad una determinata posizione. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">reg</td><td>intero a 32 bit che indica lo spiazzamento rispetto all'indirizzo base del registro in cui effettuare il toggle </td></tr>
+    <tr><td class="paramname">position</td><td>intero a 8 bit che specifica la posizione in cui effettuare il toggle</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00156">156</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00143">gpio_custom_Read_one()</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00100">gpio_custom_Write_one()</a>, <a class="el" href="gpio__header_8h_source.html#l00041">HIGH</a>, e <a class="el" href="gpio__header_8h_source.html#l00042">LOW</a>.</p>
+<div class="fragment"><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                                                                     {</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a6553b9b4a748450304982ec6dbfc7f01">gpio_custom_Read_one</a>(gpio,reg,position) == <a class="code" href="gpio__header_8h.html#a5bb885982ff66a2e0a0a45a8ee9c35e2">HIGH</a> ? <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a3d23936fe849d0cda8da48f5c60654be">gpio_custom_Write_one</a>(gpio,reg ,position,<a class="code" href="gpio__header_8h.html#ab811d8c6ff3a505312d3276590444289">LOW</a>) : gpio_custom_Write_one(gpio,reg,position,<a class="code" href="gpio__header_8h.html#a5bb885982ff66a2e0a0a45a8ee9c35e2">HIGH</a>);</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a6553b9b4a748450304982ec6dbfc7f01"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a6553b9b4a748450304982ec6dbfc7f01">gpio_custom_Read_one</a></div><div class="ttdeci">uint32_t gpio_custom_Read_one(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t position)</div><div class="ttdoc">Questa funzione permette di leggere un unico valore all&amp;#39;interno di uno specifico registro in base ad ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00143">gpio_custom.c:143</a></div></div>
+<div class="ttc" id="gpio__header_8h_html_ab811d8c6ff3a505312d3276590444289"><div class="ttname"><a href="gpio__header_8h.html#ab811d8c6ff3a505312d3276590444289">LOW</a></div><div class="ttdeci">#define LOW</div><div class="ttdef"><b>Definition:</b> <a href="gpio__header_8h_source.html#l00042">gpio_header.h:42</a></div></div>
+<div class="ttc" id="gpio__header_8h_html_a5bb885982ff66a2e0a0a45a8ee9c35e2"><div class="ttname"><a href="gpio__header_8h.html#a5bb885982ff66a2e0a0a45a8ee9c35e2">HIGH</a></div><div class="ttdeci">#define HIGH</div><div class="ttdoc">Definizione dei valori alto e basso. </div><div class="ttdef"><b>Definition:</b> <a href="gpio__header_8h_source.html#l00041">gpio_header.h:41</a></div></div>
+<div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a3d23936fe849d0cda8da48f5c60654be"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a3d23936fe849d0cda8da48f5c60654be">gpio_custom_Write_one</a></div><div class="ttdeci">void gpio_custom_Write_one(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t position, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere un unico all&amp;#39;interno di uno specifico registro in base ad una de...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00100">gpio_custom.c:100</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf3992edd1807e36d76be276071960c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf3992edd1807e36d76be276071960c6">&#9670;&nbsp;</a></span>gpio_custom_Write_mask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_Write_mask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di scrivere all'interno di uno specifico registro in base ad una determinata maschera di bit. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">reg</td><td>intero a 32 bit che indica lo spiazzamento rispetto all'indirizzo base del registro in cui scrivere </td></tr>
+    <tr><td class="paramname">mask</td><td>intero a 32 bit che specifica una maschera di bit, in particolare se all'i-esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00077">77</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom_TypeDef::base_address</a>, <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00051">gpio_custom_Set_value_reg()</a>, e <a class="el" href="gpio__header_8h_source.html#l00041">HIGH</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                                                                                               {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    assert(gpio!=NULL &amp;&amp; <span class="stringliteral">&quot;Errore allocazione di memoria per tipo GPIO&quot;</span>);</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    assert(gpio-&gt;<a class="code" href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">base_address</a>!=NULL &amp;&amp; <span class="stringliteral">&quot;Errore allocazione base address GPIO&quot;</span>);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span>((0x0000000F &amp; mask) == mask)</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        value == <a class="code" href="gpio__header_8h.html#a5bb885982ff66a2e0a0a45a8ee9c35e2">HIGH</a> ? <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a558202632ed9f7d72d497e0c4ac547fc">gpio_custom_Set_value_reg</a>(gpio,reg,mask,0xF) : gpio_custom_Set_value_reg(gpio,reg,mask,0x0);</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a558202632ed9f7d72d497e0c4ac547fc"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a558202632ed9f7d72d497e0c4ac547fc">gpio_custom_Set_value_reg</a></div><div class="ttdeci">void gpio_custom_Set_value_reg(gpio_custom_TypeDef *gpio, uint32_t reg, uint32_t mask, uint32_t mask_value)</div><div class="ttdoc">Questa funzione permette di settare all&amp;#39;interno di uno specifico registro, dei valori in base ad una ...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00051">gpio_custom.c:51</a></div></div>
+<div class="ttc" id="gpio__header_8h_html_a5bb885982ff66a2e0a0a45a8ee9c35e2"><div class="ttname"><a href="gpio__header_8h.html#a5bb885982ff66a2e0a0a45a8ee9c35e2">HIGH</a></div><div class="ttdeci">#define HIGH</div><div class="ttdoc">Definizione dei valori alto e basso. </div><div class="ttdef"><b>Definition:</b> <a href="gpio__header_8h_source.html#l00041">gpio_header.h:41</a></div></div>
+<div class="ttc" id="structgpio__custom___type_def_html_ad27f63e553c421cfd3f4353e44e2730c"><div class="ttname"><a href="structgpio__custom___type_def.html#ad27f63e553c421cfd3f4353e44e2730c">gpio_custom_TypeDef::base_address</a></div><div class="ttdeci">uint32_t * base_address</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8h_source.html#l00023">gpio_custom.h:23</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1a2720eb5fb02ce0b79029670631802f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a2720eb5fb02ce0b79029670631802f">&#9670;&nbsp;</a></span>gpio_custom_Write_one()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_custom_Write_one </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgpio__custom___type_def.html">gpio_custom_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8h.html#a2433bf2e69bf1711352f9af1ad370661">gpio_custom_ValueType</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Questa funzione permette di scrivere un unico valore all'interno di uno specifico registro in base ad una determinata posizione. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>puntatore alla struttura <a class="el" href="structgpio__custom___type_def.html" title="Definizione struttura dati per la gestione del GPIO. ">gpio_custom_TypeDef</a> che contiene le informazioni di configurazione della specifica GPIO </td></tr>
+    <tr><td class="paramname">reg</td><td>intero a 32 bit che indica lo spiazzamento rispetto all'indirizzo base del registro in cui scrivere </td></tr>
+    <tr><td class="paramname">position</td><td>intero a 32 bit che specifica la posizione in cui scrivere </td></tr>
+    <tr><td class="paramname">value</td><td>valore di tipo gpio_custom_ValueType da scrivere all'interno del registro</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">none</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html#l00099">99</a> del file <a class="el" href="1__3___driver___c___o_o___int_2gpio__custom_8c_source.html">gpio_custom.c</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom_Write_mask()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                                                                                                  {</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a>(gpio,reg, 0x1&lt;&lt;position, value);</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div><div class="ttc" id="1__2___driver___c___o_o___no_int_2gpio__custom_8c_html_a0a13e5523c33ca3760f7ed26191fe4f2"><div class="ttname"><a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c.html#a0a13e5523c33ca3760f7ed26191fe4f2">gpio_custom_Write_mask</a></div><div class="ttdeci">void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t set, uint32_t mask, uint8_t value)</div><div class="ttdoc">Questa funzione permette di scrivere all&amp;#39;interno di uno specifico registro in base ad una determinata...</div><div class="ttdef"><b>Definition:</b> <a href="1__2___driver___c___o_o___no_int_2gpio__custom_8c_source.html#l00075">gpio_custom.c:75</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

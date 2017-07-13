@@ -1,0 +1,228 @@
+\hypertarget{driver_8h}{}\section{Riferimenti per il file Elaborato2/src/driver.h}
+\label{driver_8h}\index{Elaborato2/src/driver.\+h@{Elaborato2/src/driver.\+h}}
+
+
+Libreria per pilotaggio periferiche.  
+
+
+{\ttfamily \#include \char`\"{}my\+\_\+bsp\+\_\+custom.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per driver.\+h\+:
+% FIG 0
+Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\+:
+% FIG 1
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{driver_8h_aeed266a1e7ed9e5f20de05db0f02024e}{toggle\+All} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di tutti e 4 i led utente. \end{DoxyCompactList}\item 
+void \hyperlink{driver_8h_a13d137800a4aa08c54508e67722620f4}{counter} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di implementare un contatore modulo 16 e di visualizzare il contenuto sui led. \end{DoxyCompactList}\item 
+void \hyperlink{driver_8h_a7cd563c35d04fafa3c3657de92c1a5a0}{supercar} ()
+\begin{DoxyCompactList}\small\item\em Implementazione del driver per il pilotaggio della periferica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Libreria per pilotaggio periferiche. 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+12-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{driver_8h_a13d137800a4aa08c54508e67722620f4}\label{driver_8h_a13d137800a4aa08c54508e67722620f4}} 
+\index{driver.\+h@{driver.\+h}!counter@{counter}}
+\index{counter@{counter}!driver.\+h@{driver.\+h}}
+\subsubsection{\texorpdfstring{counter()}{counter()}}
+{\footnotesize\ttfamily void counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di implementare un contatore modulo 16 e di visualizzare il contenuto sui led. 
+
+\begin{DoxyNote}{Nota}
+Il conteggio avviene premendo e successivamente rilasciando il bottone utente 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 52 del file driver.\+c.
+
+
+
+Referenzia count, read\+\_\+button(), e write\+\_\+led().
+
+
+
+Referenziato da loop().
+
+
+\begin{DoxyCode}
+52               \{
+53     \textcolor{comment}{/*Se viene premuto il bottone si computa il conteggio*/}
+54     \textcolor{keywordflow}{if}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}())\{
+55         \textcolor{comment}{/*Si attende che il bottone sia rilasciato*/}
+56         \textcolor{keywordflow}{while}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}());
+57         \hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}++;
+58         \textcolor{comment}{/*Stampa conteggio sui led*/}
+59         \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(\hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count});
+60         \textcolor{comment}{/*Se il conteggio è arrivato a 15 si resetta la variabile associata*/}
+61         \textcolor{keywordflow}{if}(\hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}==15)
+62             \hyperlink{driver_8c_ae537d34ce0e925e9ac8ca344a74ac312}{count}=0;
+63     \}
+64 
+65 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{driver_8h_a7cd563c35d04fafa3c3657de92c1a5a0}\label{driver_8h_a7cd563c35d04fafa3c3657de92c1a5a0}} 
+\index{driver.\+h@{driver.\+h}!supercar@{supercar}}
+\index{supercar@{supercar}!driver.\+h@{driver.\+h}}
+\subsubsection{\texorpdfstring{supercar()}{supercar()}}
+{\footnotesize\ttfamily void supercar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implementazione del driver per il pilotaggio della periferica. 
+
+\begin{DoxyNote}{Nota}
+Il driver permette la simulazione del lampeggiamento dei led posti sul muso anteriore di K.\+I.\+T.\+T., famosa auto del telefim Anni \textquotesingle{}80 Supercar. 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & Implementazione del driver per il pilotaggio della periferica.\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Nota}
+Lo shift avviene una volta ogni 500 ms. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 58 del file main.\+c.
+
+
+
+Referenzia dx, gpio\+\_\+toggle\+\_\+one(), is\+\_\+timer2\+\_\+stopped(), P\+A\+D\+\_\+\+O\+UT, S\+E\+T\+\_\+\+L\+ED, start\+\_\+timer2(), T\+H\+R\+EE, val\+\_\+shift, write\+\_\+led(), e Z\+E\+RO.
+
+
+
+Referenziato da loop(), e main().
+
+
+\begin{DoxyCode}
+58                \{
+59     \textcolor{keywordtype}{int} position=\hyperlink{gpio__header_8h_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO};
+60     \textcolor{keywordtype}{short} \textcolor{keywordtype}{int} \hyperlink{driver_8c_a423d61d4405ebd46d95174d4383b6f13}{dx}=0;
+61     useconds\_t usec = 500000;
+62     \textcolor{keywordflow}{while}(1)\{
+63         usleep(usec);
+64         \textcolor{comment}{/*Il ramo then permette di scorrere l'illuminazione dei led da destra verso sinistra*/}
+65         \textcolor{keywordflow}{if}(!dx)\{
+66             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT}, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+67             usleep(usec);
+68             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT},\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+69             \textcolor{comment}{/*Poiché il driver è specifico per la board Zybo Zynq-7000}
+70 \textcolor{comment}{             * tale controllo prevede che all'illuminazione del quarto led da destra}
+71 \textcolor{comment}{             * viene posta la variabile dx a 1 in modo tale che alla successiva}
+72 \textcolor{comment}{             * iterazione lo scorrimento avvenga da sinistra a destra*/}
+73             \textcolor{keywordflow}{if}(position==\hyperlink{gpio__header_8h_a1859c475c0bde19dfc1101e35d71b939}{THREE})
+74                 dx=1;
+75             \textcolor{keywordflow}{else}
+76                 position++;
+77         \}
+78         \textcolor{comment}{/*Il ramo else permette di scorrere l'illuminazione dei led da sinistra verso destra*/}
+79         \textcolor{keywordflow}{else}\{
+80             position--;
+81             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT}, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+82             usleep(usec);
+83             \hyperlink{gpio__functions_8c_a2a85ace98252a361c05d214d4e9d50db}{gpio\_toggle\_one}(\hyperlink{gpio__header_8h_ac5e64f6f0effa25909e996c9474706fd}{PAD\_OUT}, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a0ee0f8fdf8f1da9ce7fcedb6785dd162ace2a7b262c9d8604a3b99306e55abc9b}{SET\_LED}, position);
+84             \textcolor{comment}{/*Se lo scorrimento ha raggiunto il led più a destra, allora viene posta}
+85 \textcolor{comment}{             * la variabile dx a 0 in modo tale che alla successiva iterazione,}
+86 \textcolor{comment}{             * avvenga da destra verso sinistra*/}
+87             \textcolor{keywordflow}{if}(position==\hyperlink{gpio__header_8h_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO})\{
+88                 dx=0;
+89                 position++;
+90             \}
+91         \}
+92     \}
+93 
+94 
+95 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{driver_8h_aeed266a1e7ed9e5f20de05db0f02024e}\label{driver_8h_aeed266a1e7ed9e5f20de05db0f02024e}} 
+\index{driver.\+h@{driver.\+h}!toggle\+All@{toggle\+All}}
+\index{toggle\+All@{toggle\+All}!driver.\+h@{driver.\+h}}
+\subsubsection{\texorpdfstring{toggle\+All()}{toggleAll()}}
+{\footnotesize\ttfamily void toggle\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di tutti e 4 i led utente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 25 del file driver.\+c.
+
+
+
+Referenzia on, read\+\_\+button(), e write\+\_\+led().
+
+
+
+Referenziato da loop().
+
+
+\begin{DoxyCode}
+25                 \{
+26 
+27     \textcolor{comment}{/*Si attende pressione bottone*/}
+28     \textcolor{keywordflow}{if}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}())\{
+29         \textcolor{comment}{/*Si attende rilascio bottone*/}
+30         \textcolor{keywordflow}{while}(\hyperlink{my__bsp__custom_8c_a1691d6164dbbbbad1605cf0c6e355416}{read\_button}());
+31         \textcolor{comment}{/*Se i led sono spenti allora si accendono*/}
+32         \textcolor{keywordflow}{if}(!\hyperlink{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}{on})\{
+33             \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(0xF);
+34             \hyperlink{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}{on}=1;
+35         \}
+36         \textcolor{keywordflow}{else}\{
+37             \textcolor{comment}{/*Altrimenti si spengono*/}
+38             \hyperlink{my__bsp__custom_8c_aff4be2d534b64463e67c08c0d49aafe3}{write\_led}(0x0);
+39             \hyperlink{driver_8c_a2d0676f1bce076cd011dae063a2f18a7}{on}=0;
+40         \}
+41     \}
+42 
+43 \}
+\end{DoxyCode}

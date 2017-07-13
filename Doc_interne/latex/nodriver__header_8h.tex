@@ -1,0 +1,502 @@
+\hypertarget{nodriver__header_8h}{}\section{Riferimenti per il file Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/nodriver\+\_\+header.h}
+\label{nodriver__header_8h}\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/nodriver\+\_\+header.\+h@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/nodriver\+\_\+header.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/mman.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+Grafo delle dipendenze di inclusione per nodriver\+\_\+header.\+h\+:
+% FIG 0
+Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\+:
+% FIG 1
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{nodriver__header_8h_ab702106cf3b3e96750b6845ded4e0299}{R\+E\+S\+ET}~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\#define \hyperlink{nodriver__header_8h_acfbc006ea433ad708fdee3e82996e721}{G\+R\+E\+EN}~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}
+\item 
+\#define \hyperlink{nodriver__header_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{B\+O\+L\+D\+W\+H\+I\+TE}~\char`\"{}\textbackslash{}033\mbox{[}1m\textbackslash{}033\mbox{[}37m\char`\"{}
+\item 
+\#define \hyperlink{nodriver__header_8h_ada74e7db007a68e763f20c17f2985356}{R\+E\+AD}~0
+\item 
+\#define \hyperlink{nodriver__header_8h_aa10f470e996d0f51210d24f442d25e1e}{W\+R\+I\+TE}~1
+\item 
+\#define \hyperlink{nodriver__header_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}~sysconf(\+\_\+\+S\+C\+\_\+\+P\+A\+G\+E\+S\+I\+ZE)
+\item 
+\#define \hyperlink{nodriver__header_8h_a1b61ddc31ce309189929a66808e857c5}{M\+A\+S\+K\+\_\+\+S\+I\+ZE}~($\sim$(\hyperlink{nodriver__header_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}-\/1))
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{nodriver__header_8h_a1ad940455be56209415d328d78622715}{usage} (char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options. \end{DoxyCompactList}\item 
+int \hyperlink{nodriver__header_8h_ad71f324b0b8d614e948aaba3d3b6adf6}{parse\+\_\+command} (int argc, char $\ast$$\ast$argv, int $\ast$address, int $\ast$r\+\_\+w, int $\ast$value)
+\begin{DoxyCompactList}\small\item\em Parses nodriver arguments. \end{DoxyCompactList}\item 
+int \hyperlink{nodriver__header_8h_ab1fce32e83ddc128ebf724c0e9018dbb}{open\+\_\+memory} (int $\ast$fd, int phy\+\_\+address, int $\ast$page\+\_\+offset, void $\ast$$\ast$virtual\+\_\+address)
+\begin{DoxyCompactList}\small\item\em Opens /dev/mem file in order to access G\+P\+IO address and calculates page offset and virtual address of G\+P\+IO file. \end{DoxyCompactList}\item 
+void \hyperlink{nodriver__header_8h_a9ed1f99b74a4b2b5e5e376eaece20b2c}{read\+\_\+gpio} (int $\ast$value, void $\ast$virtual\+\_\+address, int page\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Reads the 
+
+in input to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{nodriver__header_8h_a0ac7c00c85fcfbd6c592c298b631b0cf}{write\+\_\+gpio} (int value, int phy\+\_\+address, void $\ast$virtual\+\_\+address, int page\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Writes 
+
+in output to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{nodriver__header_8h_ab362c9c10e96f603b33b2e194cd774a6}{close\+\_\+memory} (int fd, void $\ast$virtual\+\_\+address)
+\begin{DoxyCompactList}\small\item\em Closes /dev/mem file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{nodriver__header_8h_aa4ef051614aa0bd503b0a18ee158c5d7}\label{nodriver__header_8h_aa4ef051614aa0bd503b0a18ee158c5d7}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!B\+O\+L\+D\+W\+H\+I\+TE@{B\+O\+L\+D\+W\+H\+I\+TE}}
+\index{B\+O\+L\+D\+W\+H\+I\+TE@{B\+O\+L\+D\+W\+H\+I\+TE}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{B\+O\+L\+D\+W\+H\+I\+TE}{BOLDWHITE}}
+{\footnotesize\ttfamily \#define B\+O\+L\+D\+W\+H\+I\+TE~\char`\"{}\textbackslash{}033\mbox{[}1m\textbackslash{}033\mbox{[}37m\char`\"{}}
+
+Bold White colour 
+
+Definizione alla linea 22 del file nodriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{nodriver__header_8h_acfbc006ea433ad708fdee3e82996e721}\label{nodriver__header_8h_acfbc006ea433ad708fdee3e82996e721}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!G\+R\+E\+EN@{G\+R\+E\+EN}}
+\index{G\+R\+E\+EN@{G\+R\+E\+EN}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{G\+R\+E\+EN}{GREEN}}
+{\footnotesize\ttfamily \#define G\+R\+E\+EN~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}}
+
+Green colour 
+
+Definizione alla linea 21 del file nodriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{nodriver__header_8h_a1b61ddc31ce309189929a66808e857c5}\label{nodriver__header_8h_a1b61ddc31ce309189929a66808e857c5}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!M\+A\+S\+K\+\_\+\+S\+I\+ZE@{M\+A\+S\+K\+\_\+\+S\+I\+ZE}}
+\index{M\+A\+S\+K\+\_\+\+S\+I\+ZE@{M\+A\+S\+K\+\_\+\+S\+I\+ZE}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{M\+A\+S\+K\+\_\+\+S\+I\+ZE}{MASK\_SIZE}}
+{\footnotesize\ttfamily \#define M\+A\+S\+K\+\_\+\+S\+I\+ZE~($\sim$(\hyperlink{nodriver__header_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}-\/1))}
+
+Bit mask to extract page address, without offset 
+
+Definizione alla linea 30 del file nodriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{nodriver__header_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}\label{nodriver__header_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}}
+\index{P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+S\+I\+ZE}{PAGE\_SIZE}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+S\+I\+ZE~sysconf(\+\_\+\+S\+C\+\_\+\+P\+A\+G\+E\+S\+I\+ZE)}
+
+Page size used by SO 
+
+Definizione alla linea 29 del file nodriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{nodriver__header_8h_ada74e7db007a68e763f20c17f2985356}\label{nodriver__header_8h_ada74e7db007a68e763f20c17f2985356}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!R\+E\+AD@{R\+E\+AD}}
+\index{R\+E\+AD@{R\+E\+AD}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+AD}{READ}}
+{\footnotesize\ttfamily \#define R\+E\+AD~0}
+
+Read operation is set 
+
+Definizione alla linea 25 del file nodriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{nodriver__header_8h_ab702106cf3b3e96750b6845ded4e0299}\label{nodriver__header_8h_ab702106cf3b3e96750b6845ded4e0299}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!R\+E\+S\+ET@{R\+E\+S\+ET}}
+\index{R\+E\+S\+ET@{R\+E\+S\+ET}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{R\+E\+S\+ET}{RESET}}
+{\footnotesize\ttfamily \#define R\+E\+S\+ET~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}}
+
+Reset colour 
+
+Definizione alla linea 20 del file nodriver\+\_\+header.\+h.
+
+\mbox{\Hypertarget{nodriver__header_8h_aa10f470e996d0f51210d24f442d25e1e}\label{nodriver__header_8h_aa10f470e996d0f51210d24f442d25e1e}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!W\+R\+I\+TE@{W\+R\+I\+TE}}
+\index{W\+R\+I\+TE@{W\+R\+I\+TE}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{W\+R\+I\+TE}{WRITE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+TE~1}
+
+Write operation is set 
+
+Definizione alla linea 26 del file nodriver\+\_\+header.\+h.
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{nodriver__header_8h_ab362c9c10e96f603b33b2e194cd774a6}\label{nodriver__header_8h_ab362c9c10e96f603b33b2e194cd774a6}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!close\+\_\+memory@{close\+\_\+memory}}
+\index{close\+\_\+memory@{close\+\_\+memory}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{close\+\_\+memory()}{close\_memory()}}
+{\footnotesize\ttfamily void close\+\_\+memory (\begin{DoxyParamCaption}\item[{int}]{fd,  }\item[{void $\ast$}]{virtual\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+Closes /dev/mem file. 
+
+close\+\_\+memory function is called to close memory file
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em fd} & file descriptor name. \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & G\+P\+IO\textquotesingle{}s virtual address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 168 del file nodriver\+\_\+function.\+c.
+
+
+
+Referenzia P\+A\+G\+E\+\_\+\+S\+I\+ZE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+168                                                \{
+169     munmap(virtual\_address,\hyperlink{mygpio__nodriver_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{PAGE\_SIZE});
+170     close(fd);
+171 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{nodriver__header_8h_ab1fce32e83ddc128ebf724c0e9018dbb}\label{nodriver__header_8h_ab1fce32e83ddc128ebf724c0e9018dbb}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!open\+\_\+memory@{open\+\_\+memory}}
+\index{open\+\_\+memory@{open\+\_\+memory}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{open\+\_\+memory()}{open\_memory()}}
+{\footnotesize\ttfamily int open\+\_\+memory (\begin{DoxyParamCaption}\item[{int $\ast$}]{fd,  }\item[{int}]{phy\+\_\+address,  }\item[{int $\ast$}]{page\+\_\+offset,  }\item[{void $\ast$$\ast$}]{virtual\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+Opens /dev/mem file in order to access G\+P\+IO address and calculates page offset and virtual address of G\+P\+IO file. 
+
+open\+\_\+memory function is called to open memory file
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em fd} & file descriptor name. \\
+\hline
+\mbox{\tt in}  & {\em phy\+\_\+address} & G\+P\+IO\textquotesingle{}s physical address. \\
+\hline
+\mbox{\tt out}  & {\em page\+\_\+offset} & page offset which G\+P\+IO finds. \\
+\hline
+\mbox{\tt out}  & {\em virtual\+\_\+address} & G\+P\+IO\textquotesingle{}s virtual address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 123 del file nodriver\+\_\+function.\+c.
+
+
+
+Referenzia M\+A\+S\+K\+\_\+\+S\+I\+ZE, e P\+A\+G\+E\+\_\+\+S\+I\+ZE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+123                                                                                   \{
+124     *fd = open (\textcolor{stringliteral}{"/dev/mem"}, O\_RDWR);
+125         \textcolor{keywordflow}{if} (*fd < 1) \{
+126             perror(\textcolor{stringliteral}{"Error to open /dev/mem file"});
+127             \textcolor{keywordflow}{return} -1;
+128         \}
+129         \textcolor{keywordtype}{int} page\_addr = phy\_address & \hyperlink{mygpio__nodriver_8h_a1b61ddc31ce309189929a66808e857c5}{MASK\_SIZE};
+130         \textcolor{comment}{/* Calculates page offset */}
+131         *page\_offset = phy\_address - page\_addr;
+132         \textcolor{comment}{/* mmap system call returns virtual address of GPIO */}
+133         *virtual\_address = mmap(NULL, \hyperlink{mygpio__nodriver_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{PAGE\_SIZE}, PROT\_READ|PROT\_WRITE, MAP\_SHARED, *fd, page\_addr)
+      ;
+134     \textcolor{keywordflow}{return} 0;
+135 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{nodriver__header_8h_ad71f324b0b8d614e948aaba3d3b6adf6}\label{nodriver__header_8h_ad71f324b0b8d614e948aaba3d3b6adf6}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!parse\+\_\+command@{parse\+\_\+command}}
+\index{parse\+\_\+command@{parse\+\_\+command}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{parse\+\_\+command()}{parse\_command()}}
+{\footnotesize\ttfamily int parse\+\_\+command (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{int $\ast$}]{address,  }\item[{int $\ast$}]{r\+\_\+w,  }\item[{int $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Parses nodriver arguments. 
+
+parse\+\_\+command function is called to parse arguments passed to driver
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em argc} & number of parameters, passed to main function. \\
+\hline
+\mbox{\tt in}  & {\em argv} & parameters passed to main function \\
+\hline
+\mbox{\tt out}  & {\em address} & physical address of G\+P\+IO component \\
+\hline
+\mbox{\tt out}  & {\em r\+\_\+w} & specifies if the operation on G\+P\+IO is a read or a write \\
+\hline
+\mbox{\tt out}  & {\em value} & contains the read value (if the operation on G\+P\+IO is a read) or the value to write (if the operation on G\+P\+IO is a write) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred; 1 Help function is called; 0 Everything is ok. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 42 del file nodriver\+\_\+function.\+c.
+
+
+
+Referenzia B\+O\+L\+D\+W\+H\+I\+TE, R\+E\+AD, R\+E\+S\+ET, usage(), e W\+R\+I\+TE.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+42                                                                         \{
+43     \textcolor{keywordtype}{int} index=0;
+44     \textcolor{keywordtype}{int} mandatory\_opt=-1; \textcolor{comment}{/* Keep track if the mandatory option 'g' is parsed */}
+45     \textcolor{keywordtype}{int} i\_or\_o=0;   \textcolor{comment}{/* Keep track if an i|o operation is requested */}
+46     \textcolor{keyword}{static} \textcolor{keywordtype}{char} *optstring = \textcolor{stringliteral}{":g:io:h"};
+47 
+48         \textcolor{keywordflow}{while}((index = getopt(argc, argv, optstring)) != -1) \{
+49                 \textcolor{keywordflow}{switch}(index) \{
+50                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}:
+51                     mandatory\_opt=atoi(optarg); \textcolor{comment}{/* Change mandatory\_opt value to memorize that the
+       mandatory option is parsed */}
+52                     *address=strtoul(optarg,NULL, 0);
+53                     \textcolor{comment}{/* Check if address passed is not 0x0 */}
+54                     \textcolor{keywordflow}{if}(*address==0)\{
+55                         printf(\textcolor{stringliteral}{"Wrong physical address inserted!\(\backslash\)n"});
+56                         \textcolor{keywordflow}{return} -1;
+57                     \}                       
+58                     \textcolor{keywordflow}{break};
+59                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+60                     \textcolor{comment}{/* Check if before 'i' option was passed the mandatory option 'g' */}
+61                     \textcolor{keywordflow}{if}(mandatory\_opt!=-1)\{
+62                         *r\_w=\hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ}; \textcolor{comment}{/* Set READ operation for GPIO */}
+63                         i\_or\_o=1;
+64                     \}
+65                     \textcolor{keywordflow}{else}\{
+66                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'g'\(\backslash\)n"});
+67                         \hyperlink{nodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+68                         \textcolor{keywordflow}{return} -1;
+69                     \}
+70                     \textcolor{keywordflow}{break};
+71                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}:
+72                     \textcolor{comment}{/* Check if before 'o' option was passed the mandatory option 'g' */}
+73                     \textcolor{keywordflow}{if}(mandatory\_opt!=-1)\{
+74                         *r\_w=\hyperlink{mygpio__nodriver_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}; \textcolor{comment}{/* Set WRITE operation for GPIO */}
+75                         *value=strtoul(optarg, NULL, 0);
+76                         i\_or\_o=1;
+77                     \}
+78                     \textcolor{keywordflow}{else}\{
+79                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'g'\(\backslash\)n"});
+80                         \hyperlink{nodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+81                         \textcolor{keywordflow}{return} -1;
+82                     \}
+83                     \textcolor{keywordflow}{break};
+84                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+85                     \hyperlink{nodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+86                     \textcolor{keywordflow}{return} 1;
+87                     \textcolor{keywordflow}{break};
+88                 \textcolor{keywordflow}{case} \textcolor{charliteral}{':'}:
+89                     printf(\textcolor{stringliteral}{"Missing argument for '%c' option\(\backslash\)n"}, optopt);
+90                     \hyperlink{nodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+91                     \textcolor{keywordflow}{return} -1;
+92                     \textcolor{keywordflow}{break};
+93                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:
+94                     printf(\textcolor{stringliteral}{"Option '%c' not recognized\(\backslash\)n"}, optopt);
+95                     \hyperlink{nodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+96                     \textcolor{keywordflow}{return} -1;
+97                     \textcolor{keywordflow}{break};
+98                 \textcolor{keywordflow}{default}:
+99                     \hyperlink{nodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+100                     \textcolor{keywordflow}{return} -1;
+101                     \textcolor{keywordflow}{break};
+102                 \}
+103         
+104             \}
+105     \textcolor{comment}{/* Check if an i|o operation is requested */}    
+106     \textcolor{keywordflow}{if}(i\_or\_o==0)\{
+107         printf(\textcolor{stringliteral}{"Can't use "}\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"nodriver "}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"without specify i|o option\(\backslash\)n"});
+108         \hyperlink{nodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+109         \textcolor{keywordflow}{return} -1;
+110     \}
+111     \textcolor{keywordflow}{return} 0;
+112 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{nodriver__header_8h_a9ed1f99b74a4b2b5e5e376eaece20b2c}\label{nodriver__header_8h_a9ed1f99b74a4b2b5e5e376eaece20b2c}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!read\+\_\+gpio@{read\+\_\+gpio}}
+\index{read\+\_\+gpio@{read\+\_\+gpio}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{read\+\_\+gpio()}{read\_gpio()}}
+{\footnotesize\ttfamily void read\+\_\+gpio (\begin{DoxyParamCaption}\item[{int $\ast$}]{value,  }\item[{void $\ast$}]{virtual\+\_\+address,  }\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Reads the 
+
+in input to G\+P\+IO port. 
+
+read\+\_\+gpio function is called to do read operation from G\+P\+IO
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em value} & read value. \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & G\+P\+IO\textquotesingle{}s virtual address. \\
+\hline
+\mbox{\tt in}  & {\em page\+\_\+offset} & page offset which G\+P\+IO finds. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em value} & read value. \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & uio device file\textquotesingle{}s virtual address. \\
+\hline
+\mbox{\tt in}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 144 del file nodriver\+\_\+function.\+c.
+
+
+\begin{DoxyCode}
+144                                                                 \{
+145     *value = *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + page\_offset));
+146     printf(\textcolor{stringliteral}{"The value on GPIO input is: %08x\(\backslash\)n"},*value);
+147 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{nodriver__header_8h_a1ad940455be56209415d328d78622715}\label{nodriver__header_8h_a1ad940455be56209415d328d78622715}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!usage@{usage}}
+\index{usage@{usage}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options. 
+
+usage function is called to help the user
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies nodriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options.\\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies uiodriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options.\\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies uiointdriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 19 del file nodriver\+\_\+function.\+c.
+
+
+\begin{DoxyCode}
+19                       \{
+20     printf(\textcolor{stringliteral}{"The right way to use this driver is\(\backslash\)n"});
+21     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"%s -g <GPIO\_ADDRESS> -i|-o <VALUE>\(\backslash\)n"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET},name);
+22     printf(\textcolor{stringliteral}{"Please, pay attention:\(\backslash\)n"});
+23     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)t-g"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<GPIO\_ADDR>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <GPIO\_ADDR>\(\backslash\)n\(\backslash\)t\(\backslash\)tspecifies the physical address of GPIO.\(\backslash\)n\(\backslash\)t\(\backslash\)t<GPIO\_ADDR> can be expressed in\(\backslash\)n\(\backslash\)t\(\backslash\)t
+      decimal representation (no prefix),\(\backslash\)n\(\backslash\)t\(\backslash\)toctal representation (0 prefix)\(\backslash\)n\(\backslash\)t\(\backslash\)tor hexadecimal representation\(\backslash\)n\(\backslash\)t
+      \(\backslash\)t(0x or 0X prefix)\(\backslash\)n"});
+24     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-i"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tSpecifies the input value of GPIO at\(\backslash\)n\(\backslash\)t\(\backslash\)t<GPIO\_ADDR>
+       physical address \(\backslash\)n"});
+25     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-o"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<VALUE>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <VALUE> specify\(\backslash\)n\(\backslash\)t\(\backslash\)tthe value must be write on GPIO output \(\backslash\)n"});
+26     \textcolor{keywordflow}{return};
+27 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{nodriver__header_8h_a0ac7c00c85fcfbd6c592c298b631b0cf}\label{nodriver__header_8h_a0ac7c00c85fcfbd6c592c298b631b0cf}} 
+\index{nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}!write\+\_\+gpio@{write\+\_\+gpio}}
+\index{write\+\_\+gpio@{write\+\_\+gpio}!nodriver\+\_\+header.\+h@{nodriver\+\_\+header.\+h}}
+\subsubsection{\texorpdfstring{write\+\_\+gpio()}{write\_gpio()}}
+{\footnotesize\ttfamily void write\+\_\+gpio (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{int}]{phy\+\_\+address,  }\item[{void $\ast$}]{virtual\+\_\+address,  }\item[{int}]{page\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+Writes 
+
+in output to G\+P\+IO port. 
+
+write\+\_\+gpio function is called to do write operation on G\+P\+IO
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em value} & write value. \\
+\hline
+\mbox{\tt in}  & {\em phy\+\_\+address} & G\+P\+IO\textquotesingle{}s physical address. \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & G\+P\+IO\textquotesingle{}s virtual address. \\
+\hline
+\mbox{\tt in}  & {\em page\+\_\+offset} & page offset which G\+P\+IO finds. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 157 del file nodriver\+\_\+function.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+157                                                                                  \{
+158     printf(\textcolor{stringliteral}{"Going to write onto %08x the value %08x\(\backslash\)n"}, phy\_address, value );
+159     *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + page\_offset)) = value;
+160 \}
+\end{DoxyCode}

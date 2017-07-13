@@ -1,0 +1,245 @@
+\hypertarget{mouse__position_8c}{}\section{Riferimenti per il file Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/mouse\+\_\+position.c}
+\label{mouse__position_8c}\index{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/mouse\+\_\+position.\+c@{Elaborato5/\+Elaborato5\+\_\+2\+\_\+\+Mouse\+\_\+\+H\+I\+D/mouse\+\_\+position.\+c}}
+
+
+Implementazione funzioni per gestione puntatore di un mouse.  
+
+
+{\ttfamily \#include \char`\"{}mouse\+\_\+position.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per mouse\+\_\+position.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{mouse__position_8c_a829c4bbe5cfa7a73443caacd7515dfdb}{init\+\_\+mouse} (S\+P\+I\+\_\+\+Handle\+Type\+Def \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1})
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di inizializzare la periferica H\+ID mouse. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{mouse__position_8c_adcac7450284cc72897807b1fb13564e5}{x\+\_\+position} (S\+P\+I\+\_\+\+Handle\+Type\+Def \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1})
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di calcolare la posizione sull\textquotesingle{}asse X. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{mouse__position_8c_aa466ef3e1f89da70907c79eee3cdbd19}{y\+\_\+position} (S\+P\+I\+\_\+\+Handle\+Type\+Def \hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1})
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di calcolare la posizione sull\textquotesingle{}asse Y. \end{DoxyCompactList}\item 
+void \hyperlink{mouse__position_8c_a1714013f54398af5afc84f12bac3e9ad}{position\+\_\+on\+\_\+led} (uint8\+\_\+t position, \hyperlink{mouse__position_8h_ab61e9ecce3eb5509e3805ff67f8ad0f4}{mouse\+\_\+position\+\_\+\+Axis\+Type} axis)
+\begin{DoxyCompactList}\small\item\em Questa funzione in base al movimento della board permette di illuminare i led utente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Implementazione funzioni per gestione puntatore di un mouse. 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+05-\/\+July-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{mouse__position_8c_a829c4bbe5cfa7a73443caacd7515dfdb}\label{mouse__position_8c_a829c4bbe5cfa7a73443caacd7515dfdb}} 
+\index{mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}!init\+\_\+mouse@{init\+\_\+mouse}}
+\index{init\+\_\+mouse@{init\+\_\+mouse}!mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+mouse()}{init\_mouse()}}
+{\footnotesize\ttfamily void init\+\_\+mouse (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def}]{hspi1 }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di inizializzare la periferica H\+ID mouse. 
+
+\begin{DoxyNote}{Nota}
+L\textquotesingle{}inizializzazione avviene mediante l\textquotesingle{}utilizzo di S\+PI
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parametri}
+{\em hspi1} & struttura S\+P\+I\+\_\+\+Handle\+Type\+Def che contiene le informazioni di configurazione della specifica S\+PI\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 25 del file mouse\+\_\+position.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+25                                         \{
+26 
+27     \textcolor{comment}{/*Selezione via software della perificerica accellerometro*/}
+28     HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_3,GPIO\_PIN\_RESET);
+29     \textcolor{comment}{/*Si invia l'indirizzo 0x20 su bus SPI per risvegliare il relativo registro */}
+30     uint8\_t address\_Acc=0x20;
+31     HAL\_SPI\_Transmit(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1},&address\_Acc,1,50);
+32     \textcolor{comment}{/*Sul registro selezionato si indica che si vuole leggere il valore lungo gli assi X e Y*/}
+33     uint8\_t value\_Ctrl\_Reg1=0x67; \textcolor{comment}{/*< Valore da scrivere in Ctrl\_Reg1*/}
+34     HAL\_SPI\_Transmit(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1},&value\_Ctrl\_Reg1,1,50);
+35     \textcolor{comment}{/*Deselezione via software della periferica accellerometro*/}
+36     HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_3,GPIO\_PIN\_SET);
+37 
+38 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mouse__position_8c_a1714013f54398af5afc84f12bac3e9ad}\label{mouse__position_8c_a1714013f54398af5afc84f12bac3e9ad}} 
+\index{mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}!position\+\_\+on\+\_\+led@{position\+\_\+on\+\_\+led}}
+\index{position\+\_\+on\+\_\+led@{position\+\_\+on\+\_\+led}!mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}}
+\subsubsection{\texorpdfstring{position\+\_\+on\+\_\+led()}{position\_on\_led()}}
+{\footnotesize\ttfamily void position\+\_\+on\+\_\+led (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{position,  }\item[{\hyperlink{mouse__position_8h_ab61e9ecce3eb5509e3805ff67f8ad0f4}{mouse\+\_\+position\+\_\+\+Axis\+Type}}]{axis }\end{DoxyParamCaption})}
+
+
+
+Questa funzione in base al movimento della board permette di illuminare i led utente. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em position} & posizione attuale \\
+\hline
+\mbox{\tt in}  & {\em axis} & X per illuminare i led relativi alle ascisse, Y per illuminare quelli relativi alle ordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+I valori X e Y di tipo mouse\+\_\+position\+\_\+\+Axis\+Type sono rispettivamente pari a 0 e 1.
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 100 del file mouse\+\_\+position.\+c.
+
+
+
+Referenzia X.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+100                                                                    \{
+101 
+102     \textcolor{comment}{/*Se il valore di position è relativo all'asse delle ascisse allora si illuminano}
+103 \textcolor{comment}{     * i led orizzontali di una board STM32F4 discovey*/}
+104     \textcolor{keywordflow}{if}(axis==\hyperlink{mouse__position_8h_ab61e9ecce3eb5509e3805ff67f8ad0f4a58833a3110c570fb05130d40c365d1e4}{X})\{
+105         \textcolor{comment}{/*Se il movimento è verso sinistra si illumina il led LD4 e si spegne LD5*/}
+106         \textcolor{keywordflow}{if}(position>127)\{
+107             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_12,GPIO\_PIN\_SET);
+108             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_14,GPIO\_PIN\_RESET);
+109         \}
+110         \textcolor{comment}{/*Altrimennti si illumina il led LD5 e si spegne LD4*/}
+111         \textcolor{keywordflow}{else}\{
+112             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_14,GPIO\_PIN\_SET);
+113             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_12,GPIO\_PIN\_RESET);
+114         \}
+115     \}
+116     \textcolor{comment}{/*Allo stesso modo di prima si illuminano i led LD3 o LD6 relativi all'asse Y*/}
+117     \textcolor{keywordflow}{else}\{
+118         \textcolor{keywordflow}{if}(position>127)\{
+119             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_15,GPIO\_PIN\_SET);
+120             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_13,GPIO\_PIN\_RESET);
+121         \}
+122         \textcolor{keywordflow}{else}\{
+123             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_13,GPIO\_PIN\_SET);
+124             HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_15,GPIO\_PIN\_RESET);
+125         \}
+126 
+127     \}
+128 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mouse__position_8c_adcac7450284cc72897807b1fb13564e5}\label{mouse__position_8c_adcac7450284cc72897807b1fb13564e5}} 
+\index{mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}!x\+\_\+position@{x\+\_\+position}}
+\index{x\+\_\+position@{x\+\_\+position}!mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}}
+\subsubsection{\texorpdfstring{x\+\_\+position()}{x\_position()}}
+{\footnotesize\ttfamily uint8\+\_\+t x\+\_\+position (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def}]{hspi1 }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di calcolare la posizione sull\textquotesingle{}asse X. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em hspi1} & struttura S\+P\+I\+\_\+\+Handle\+Type\+Def che contiene le informazioni di configurazione della specifica S\+PI.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Intero} & senza segno ad 8 bit. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 49 del file mouse\+\_\+position.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+49                                            \{
+50     uint8\_t xval=0;
+51     \textcolor{comment}{/*Selezione via software della perificerica accellerometro*/}
+52     HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_3,GPIO\_PIN\_RESET);
+53     \textcolor{comment}{/*Si invia l'indirizzo 0x29+0x80 su bus SPI per risvegliare il relativo registro */}
+54     \textcolor{comment}{/*Si aggiunge 0x80 per indicare alla periferica che voglio più letture dall'asse X */}
+55     uint8\_t address\_Acc=0xA9;
+56     HAL\_SPI\_Transmit(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1},&address\_Acc,1,50);
+57     \textcolor{comment}{/*Lettura valore sull'asse X*/}
+58     HAL\_SPI\_Receive(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1},&xval,1,50);
+59     \textcolor{comment}{/*Deselezione via software della periferica accellerometro*/}
+60     HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_3,GPIO\_PIN\_SET);
+61     \textcolor{keywordflow}{return} xval;
+62 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mouse__position_8c_aa466ef3e1f89da70907c79eee3cdbd19}\label{mouse__position_8c_aa466ef3e1f89da70907c79eee3cdbd19}} 
+\index{mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}!y\+\_\+position@{y\+\_\+position}}
+\index{y\+\_\+position@{y\+\_\+position}!mouse\+\_\+position.\+c@{mouse\+\_\+position.\+c}}
+\subsubsection{\texorpdfstring{y\+\_\+position()}{y\_position()}}
+{\footnotesize\ttfamily uint8\+\_\+t y\+\_\+position (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def}]{hspi1 }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di calcolare la posizione sull\textquotesingle{}asse Y. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em hspi1} & struttura S\+P\+I\+\_\+\+Handle\+Type\+Def che contiene le informazioni di configurazione della specifica S\+PI\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Intero} & ad 8 bit. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 73 del file mouse\+\_\+position.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+73                                            \{
+74     uint8\_t yval;
+75     \textcolor{comment}{/*Selezione via software della perificerica accellerometro*/}
+76     HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_3,GPIO\_PIN\_RESET);
+77     \textcolor{comment}{/*Si invia l'indirizzo 0x2B+0x80 su bus SPI per risvegliare il relativo registro */}
+78     \textcolor{comment}{/*Si aggiunge 0x80 per indicare alla periferica che voglio più letture dall'asse Y */}
+79     uint8\_t address\_Acc=0xAB;
+80     HAL\_SPI\_Transmit(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1},&address\_Acc,1,50);
+81     \textcolor{comment}{/*Lettura valore sull'asse Y*/}
+82     HAL\_SPI\_Receive(&\hyperlink{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1},&yval,1,50);
+83     \textcolor{comment}{/*Deselezione via software della periferica accellerometro*/}
+84     HAL\_GPIO\_WritePin(GPIOE,GPIO\_PIN\_3,GPIO\_PIN\_SET);
+85     \textcolor{keywordflow}{return} yval;
+86 \}
+\end{DoxyCode}

@@ -1,0 +1,3378 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{listings,xcolor,courier,bookmark}
+\usepackage{listingsutf8}
+\definecolor{darkblue}{named}{blue}
+\definecolor{darkred}{named}{red}
+\definecolor{grau}{named}{gray}
+\let\Righttorque\relax
+\lstset{
+captionpos=b,
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+keywordstyle=\color{darkblue},
+stringstyle=\color{darkred},
+extendedchars=true,
+basicstyle=\small\ttfamily,
+showstringspaces=false,
+tabsize=2,
+numbers=left,
+numberstyle=\tiny,
+breakautoindent  = true,
+breakindent      = 2em,
+breaklines       = true,
+postbreak        = ,
+prebreak         = \raisebox{-.8ex}[0ex][0ex]{\Righttorque},
+showspaces=false, 
+showtabs=false, 
+showstringspaces=false,
+language=VHDL,
+frame=single,
+morecomment=[s]{--}
+}
+
+
+\renewcommand*{\lstlistingname}{Codice}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{} 
+\fancyfoot{} 
+
+\fancyhead[RO,LE]{\bfseries \leftmark}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Tesina in SE: Sistemi Embedded}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\date{}
+\cfoot{}
+\end_preamble
+\use_default_options true
+\master Tesina.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Driver + Applicazione
+\end_layout
+
+\begin_layout Standard
+L'obiettivo di questa seconda parte dell'elaborato è scrivere un driver
+ in C per pilotare la periferica di GPIO in maniera del tutto automatica.
+\end_layout
+
+\begin_layout Standard
+A tal fine, bisogna innanzitutto creare una libreria in cui dichiarare tutte
+ le funzioni che saranno utilizzate dal driver.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Libreria HAL driver
+\end_layout
+
+\begin_layout Standard
+Nella view C/C++ di SDK, in 
+\series bold
+Project Explorer
+\series default
+, cliccare con tasto destro su 
+\series bold
+gpio → src → New
+\series default
+, cliccare prima su 
+\series bold
+Header File
+\series default
+ e poi ripetere la stessa cosa con 
+\series bold
+Source File
+\series default
+, per creare rispettivamente 
+\shape italic
+\color blue
+gpio_header.h
+\shape default
+\color inherit
+ e 
+\shape italic
+\color blue
+gpio_functions.c
+\shape default
+\color inherit
+.
+ Infine, rinominare il file 
+\shape italic
+helloworld.c
+\shape default
+ in 
+\shape italic
+\color blue
+main.c
+\shape default
+\color inherit
+, fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:src->new"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Img_38.png
+	lyxscale 80
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:src->new"
+
+\end_inset
+
+New Header File e Source File
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dichiarazione macro
+\end_layout
+
+\begin_layout Standard
+Per una corretta implementazione del driver è necessario individuare il
+ base address e conoscere lo spiazzamento tra i vari registri della periferica
+ che è stata implementata.
+ 
+\end_layout
+
+\begin_layout Standard
+A tale scopo nell'esportazione dell'hardware da Vivado a SDK, viene creato
+ un header file sotto il nome di 
+\shape italic
+xparameters.h
+\shape default
+ in cui sono contenuti proprio i parametri suddetti sotto forma di macro
+ (tale header può essere individuato in gpio_bsp/ps7_cortexa9_0/include).
+ Poiché le macro create automaticamente non sono di facile memorizzazione
+ per il programmatore, in 
+\shape italic
+\color blue
+gpio_header.h
+\shape default
+\color inherit
+, dopo aver richiamato la libreria 
+\shape italic
+xparameters.h
+\shape default
+ vengono create delle ulteriori macro che fungono sostanzialmente da alias.
+ Di seguito, si riporta il codice.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=19, caption="gpio header.h"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Macro indirizzo base GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define GPIO_ADDRESS (uint32_t*) XPAR_MY_GPIO_0_S00_AXI_BASEADDR
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Spiazzamenti registri periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define PAD_OUT MY_GPIO_S00_AXI_SLV_REG0_OFFSET /*!< 0x0 */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define PAD_RW_N MY_GPIO_S00_AXI_SLV_REG1_OFFSET /*!< 0x4 */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define PAD_EN MY_GPIO_S00_AXI_SLV_REG2_OFFSET /*!< 0x8 */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define PAD_IN MY_GPIO_S00_AXI_SLV_REG3_OFFSET /*!< 0xC */
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dichiarazione funzioni
+\end_layout
+
+\begin_layout Standard
+Una corretta gestione della periferica di GPIO richiede l'utilizzo delle
+ seguenti funzioni per la gestione dei registri:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+gpio_init
+\series default
+ inizializza un puntatore all'indirizzo corretto della periferica, nonché
+ una corretta configurazione dei relativi pin della periferica in lettura
+ o scrittura;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+set_value_reg 
+\series default
+scrive all'interno di uno specifico registro certi valori, data una certa
+ maschera fornita in input;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+gpio_write_mask
+\series default
+, richiamando la 
+\shape slanted
+set_value_reg
+\shape default
+, mediante una determinata maschera di bit, si occupa di scrivere un valore
+ alto o basso in una determinata porzione del registro selezionata in input;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+gpio_write_one
+\series default
+, data una certa posizione specificata in ingresso, scrive un valore alto
+ o basso in una determinata porzione di un registro;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+gpio_read_mask
+\series default
+, specificata una particolare maschera di bit, restituisce i valori presenti
+ nel registro selezionato in ingresso;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+gpio_read_one
+\series default
+ restituisce il valore di un bit scritto in una specifica posizione di un
+ registro;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+gpio_toggle_mask
+\series default
+, data una certa maschera in ingresso, si occupa di invertire i valori binari
+ all'interno di un registro il cui spiazzamento è fornito come input;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+gpio_toggle_one
+\series default
+,
+\series bold
+ 
+\series default
+allo stesso modo della precedente funzione, data una specifica posizione,
+ inverte un valore da basso ad alto o viceversa, all'interno di un registro.
+\end_layout
+
+\begin_layout Standard
+La seguente porzione di codice evidenzia i prototipi delle funzioni appena
+ descritte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, firstnumber=55, caption="gpio header.h"]
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_init (uint32_t* base_addr);
+\end_layout
+
+\begin_layout Plain Layout
+
+void set_value_reg(uint32_t reg, uint32_t mask,uint32_t mask_value);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_write_mask(uint32_t reg, uint8_t set, uint32_t mask, uint8_t value);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_write_one(uint32_t reg, uint8_t set, uint32_t position, uint8_t
+ value);
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_read_mask(uint32_t reg, uint8_t set, uint32_t mask);
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_read_one(uint32_t reg, uint8_t set, uint32_t position);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_toggle_one(uint32_t reg,uint8_t set,uint8_t position);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_toggle_mask(uint32_t reg, uint8_t set,uint32_t mask);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Implementazione funzioni
+\end_layout
+
+\begin_layout Standard
+Di seguito si riporta l'implementazione di tutte le funzioni.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption="gpio functions.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	gpio_functions.h
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @authors	Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV -
+ Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	10-May-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Questo file mette a disposizione un firmware per gestire il
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 			comportamento della periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "gpio_header.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/*Variabile globale per memorizzare l'indirizzo del base address*/
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t* my_gpio_pointer;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di inizializzare correttamente un GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  base_addr: puntatore ad un intero di 32 bit per il corretto
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 				   indirizzamento della periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_init (uint32_t* base_addr){
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Verifica se l'indirizzo passato è allineato a 4 byte*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert((uint32_t)base_addr%4==0 && "Base address non allineato a 4 byte");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	my_gpio_pointer=base_addr;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/*Configurazione pin di GPIO*/
+\end_layout
+
+\begin_layout Plain Layout
+
+	*(my_gpio_pointer+PAD_EN/4)=INIT_CONFIG_EN;
+\end_layout
+
+\begin_layout Plain Layout
+
+	*(my_gpio_pointer+PAD_RW_N/4)=INIT_CONFIG_RWN;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di settare all'interno di uno specifico
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		registro, dei valori in base ad una determinata maschera di bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask: intero a 32 bit che specifica una maschera di bit, in particola
+re
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        se all'i-esima posizione vi è un valore pari a 1 allora si è
+ abilitati a
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        scrivere in quella posizione, se 0 allora il valore è mascherato
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask_value: intero a 32 bit da scrivere all'interno del registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+void set_value_reg(uint32_t reg, uint32_t mask,uint32_t mask_value){
+\end_layout
+
+\begin_layout Plain Layout
+
+	*(my_gpio_pointer+reg/4) = (*(my_gpio_pointer+reg/4) & ~mask) | (mask &
+ mask_value);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di scrivere all'interno di uno specifico
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		registro in base ad una determinata maschera di bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask: intero a 32 bit che specifica una maschera di bit, in particola
+re
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        se all'i-esima posizione vi è un valore pari a 1 allora si è
+ abilitati a
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        scrivere in quella posizione, se 0 allora il valore è mascherato
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param value: intero a 8 bit che indica il valore da scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_write_mask(uint32_t reg, uint8_t set, uint32_t mask, uint8_t value){
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert((reg==0 || reg%12!=0) && "Scrittura in una locazione di memoria
+ non consentita");
+\end_layout
+
+\begin_layout Plain Layout
+
+	mask = mask<<set;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(((0x0000000F<<set) & mask)==mask)
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Se value è pari a 1 allora si andrà a scrivere tanti 1 in base alla
+ maschera */
+\end_layout
+
+\begin_layout Plain Layout
+
+		value == HIGH ? set_value_reg(reg,mask,0xF<<set) : set_value_reg(reg,mask,0x0)
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di scrivere un unico all'interno di
+ uno
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		specifico registro in base ad una determinata posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 32 bit che specifica la posizione in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask_value: intero a 8 bit che indica il valore da scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_write_one(uint32_t reg, uint8_t set, uint32_t position, uint8_t
+ value){
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio_write_mask(reg, set, 0x1<<position, value);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di leggere all'interno di uno specifico
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         registro in base ad una determinata maschera di bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask: intero a 32 bit che specifica una maschera di bit, in particola
+re
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        se all'i-esima posizione vi è un valore pari a 1 allora si è
+ abilitati a
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        leggere in quella posizione, viceversa se 0
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval intero a 32 bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_read_mask(uint32_t reg,uint8_t set, uint32_t mask){
+\end_layout
+
+\begin_layout Plain Layout
+
+	mask = mask<<set;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(((0x0000000F<<set) & mask) == mask){
+\end_layout
+
+\begin_layout Plain Layout
+
+		return *(my_gpio_pointer + reg/4) & mask;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di leggere un unico valore all'interno
+ di uno
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		specifico registro in base ad una determinata posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 32 bit che specifica la posizione in cui leggere
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval intero a 32 bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_read_one(uint32_t reg, uint8_t set, uint32_t position){
+\end_layout
+
+\begin_layout Plain Layout
+
+	return gpio_read_mask(reg,set,0x1<<position) == (0x1<<(position+set));
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette il toggle di un singolo valore all'interno
+ di
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		uno specifico registro in base ad una determinata posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui effettuare il toggle
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 8 bit che specifica la posizione in cui effettuare
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        il toggle
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_toggle_one(uint32_t reg, uint8_t set,uint8_t position){
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio_read_one(reg,set,position) == HIGH ? gpio_write_one(reg ,set,position,LOW)
+ : gpio_write_one(reg,set,position,HIGH);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette il toggle di un gruppo di bit all'interno
+ di
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		uno specifico registro in base ad una determinata masschera
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui effettuare il toggle
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 32 bit che specifica la maschera di bit, in
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        particolare se il valore i-esimo è pari a 1 allora in quella
+ posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        si è abilitati ad effettuare il toggle, viceversa non si effettua
+ tale
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        operazione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_toggle_mask(uint32_t reg, uint8_t set,uint32_t mask){
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i;
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i=0;i<4;i++){
+\end_layout
+
+\begin_layout Plain Layout
+
+		if((0x1<<(set*4+i)) == ((0x1<<(set*4+i)) & mask)){
+\end_layout
+
+\begin_layout Plain Layout
+
+			gpio_toggle_one(reg, set,i+set*4);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Driver
+\end_layout
+
+\begin_layout Standard
+In questa sezione si mostra un driver che utilizza alcune delle funzioni
+ appena viste, in particolare la simulazione del lampeggiamento dei led
+ posti sul muso anteriore di K.I.T.T., famosa auto del telefim Anni '80 
+\shape slanted
+Supercar.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Codice
+\end_layout
+
+\begin_layout Standard
+Per implementare il driver è necessaria una fase di inizializzazione, mediante
+ la funzione 
+\shape italic
+\color blue
+init
+\shape default
+\color inherit
+, in cui viene settato un puntatore che tiene traccia del base address della
+ periferica e settati i relativi bit dei registri della GPIO.
+ In particolare, si indica al registro delle abilitazioni di rendere disponibili
+ ad essere modificati i bit relativi all'illuminazione dei led e successivamente
+ si provvedere a resettare il registro dati in modo tale da cancellare eventuali
+ valori presenti in precedenza.
+ Successivamente viene richiamata la funzione 
+\shape italic
+\color blue
+supercar
+\color inherit
+ 
+\shape default
+che implementa tutta la logica dello shifting di un singolo bit da destra
+ verso sinistra e viceversa.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption= "main.c"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	mainc
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @authors	Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV -
+ Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	10-May-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Programma principale che contiene al suo interno l'implemetazione
+ di
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 			un particolare driver che pilota la periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "platform.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "xil_printf.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "gpio_header.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <unistd.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void init();
+\end_layout
+
+\begin_layout Plain Layout
+
+void supercar();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    init_platform();
+\end_layout
+
+\begin_layout Plain Layout
+
+    /*!<Primo passo*/
+\end_layout
+
+\begin_layout Plain Layout
+
+    /*Si inizializza correttamente la periferica*/
+\end_layout
+
+\begin_layout Plain Layout
+
+    init();
+\end_layout
+
+\begin_layout Plain Layout
+
+    /*!<Secondo passo*/
+\end_layout
+
+\begin_layout Plain Layout
+
+    /*Si richiama il relativo driver*/
+\end_layout
+
+\begin_layout Plain Layout
+
+    supercar();
+\end_layout
+
+\begin_layout Plain Layout
+
+    cleanup_platform();
+\end_layout
+
+\begin_layout Plain Layout
+
+    return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di inizializzare in maniera opportuna
+ la
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note   Si può notare come la periferica di GPIO è inizializzata in
+ modo tale
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		da utilizzare 8 pin: in accordo all'header file gpio_header.h sui
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		primi 4 pin, a partire dai meno significativi vengono mappati degli
+ switch,
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		sui secondi 4 dei led
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void init(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio_init(GPIO_ADDRESS);
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio_write_mask(PAD_EN, SET_LED, _F_, HIGH);
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio_write_mask(PAD_OUT,SET_LED,_F_,LOW);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Implementazione del driver per il pilotaggio della periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @note   Il driver permette la simulazione del lampeggiamento dei led
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		posti sul muso anteriore di K.I.T.T., famosa auto del telefim
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		Anni '80 Supercar.
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void supercar(){
+\end_layout
+
+\begin_layout Plain Layout
+
+	int position=ZERO;
+\end_layout
+
+\begin_layout Plain Layout
+
+	short int dx=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	useconds_t usec = 500000;
+\end_layout
+
+\begin_layout Plain Layout
+
+	while(1){
+\end_layout
+
+\begin_layout Plain Layout
+
+		usleep(usec);
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Il ramo then permette di scorrere l'illuminazione dei led da destra
+ verso sinistra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(!dx){
+\end_layout
+
+\begin_layout Plain Layout
+
+			gpio_toggle_one(PAD_OUT, SET_LED, position);
+\end_layout
+
+\begin_layout Plain Layout
+
+			usleep(usec);
+\end_layout
+
+\begin_layout Plain Layout
+
+			gpio_toggle_one(PAD_OUT,SET_LED, position);
+\end_layout
+
+\begin_layout Plain Layout
+
+			/*Poiché il driver è specifico per la board Zybo Zynq-7000
+\end_layout
+
+\begin_layout Plain Layout
+
+			 * tale controllo prevede che all'illuminazione del quarto led da destra
+\end_layout
+
+\begin_layout Plain Layout
+
+			 * viene posta la variabile dx a 1 in modo tale che alla successiva
+\end_layout
+
+\begin_layout Plain Layout
+
+			 * iterazione lo scorrimento avvenga da sinistra a destra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			if(position==THREE)
+\end_layout
+
+\begin_layout Plain Layout
+
+				dx=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+			else
+\end_layout
+
+\begin_layout Plain Layout
+
+				position++;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		/*Il ramo else permette di scorrere l'illuminazione dei led da sinistra
+ verso destra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		else{
+\end_layout
+
+\begin_layout Plain Layout
+
+			position--;
+\end_layout
+
+\begin_layout Plain Layout
+
+			gpio_toggle_one(PAD_OUT, SET_LED, position);
+\end_layout
+
+\begin_layout Plain Layout
+
+			usleep(usec);
+\end_layout
+
+\begin_layout Plain Layout
+
+			gpio_toggle_one(PAD_OUT, SET_LED, position);
+\end_layout
+
+\begin_layout Plain Layout
+
+			/*Se lo scorrimento ha raggiunto il led più a destra, allora viene posta
+\end_layout
+
+\begin_layout Plain Layout
+
+			 * la variabile dx a 0 in modo tale che alla successiva iterazione,
+\end_layout
+
+\begin_layout Plain Layout
+
+			 * avvenga da destra verso sinistra*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			if(position==ZERO){
+\end_layout
+
+\begin_layout Plain Layout
+
+				dx=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+				position++;
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Versione object oriented
+\end_layout
+
+\begin_layout Standard
+Di seguito viene mostrato lo stesso codice visto in precedenza rivisto mediante
+ il paradigma della programmazione object oriented.
+ La differenza con la precedente versione è sostanzialmente l'incapsulamento
+ all'interno di una struttura dati delle informazioni riguardo un'istanza
+ di GPIO, ossia del base address e dei relativi spiazzamenti tra i vari
+ registri della periferica.
+ Inoltre, è necessario che ad ogni funzione sia passato un riferimento a
+ tale struttura dati affinché si agisca su una determinata istanza.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Header file
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption= "gpio custom.h"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	gpio_header.h
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @authors	Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV -
+ Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	12-May-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Header file della libreria HAL driver per gestione GPIO custom
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#ifndef SRC_GPIO_CUSTOM_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+#define SRC_GPIO_CUSTOM_H_
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "xparameters.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "my_gpio.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <assert.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Definizione struttura dati per la gestione del GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct{
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint32_t *base_address; /*!< GPIO Base address */
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t pad_out_offset; /*!< GPIO offset registro di pad_out */
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t pad_rw_n_offset; /*!< GPIO offset registro modalità read/write
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t pad_en_offset; /*!< GPIO offset registro abilitazione pin */
+\end_layout
+
+\begin_layout Plain Layout
+
+	uint8_t pad_in_offset; /**!< GPIO offset registro pad_in*/
+\end_layout
+
+\begin_layout Plain Layout
+
+}gpio_custom_TypeDef;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Configurazione dell'indirizzo base
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define GPIO_BASE XPAR_MY_GPIO_0_S00_AXI_BASEADDR
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Spiazzamenti registri periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define gpio_custom_PAD_OUT MY_GPIO_S00_AXI_SLV_REG0_OFFSET /*!< 0x0 */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define gpio_custom_PAD_RW_N MY_GPIO_S00_AXI_SLV_REG1_OFFSET /*!< 0x4 */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define gpio_custom_PAD_EN MY_GPIO_S00_AXI_SLV_REG2_OFFSET /*!< 0x8 */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define gpio_custom_PAD_IN MY_GPIO_S00_AXI_SLV_REG3_OFFSET /*!< 0xC */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Definizione dei valori alto e basso
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef enum{
+\end_layout
+
+\begin_layout Plain Layout
+
+	LOW,
+\end_layout
+
+\begin_layout Plain Layout
+
+	HIGH
+\end_layout
+
+\begin_layout Plain Layout
+
+}gpio_custom_ValueType;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Posizionamento su GPIO di LED e Switch
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef enum{
+\end_layout
+
+\begin_layout Plain Layout
+
+	SET_SWITCH = 0x0,
+\end_layout
+
+\begin_layout Plain Layout
+
+	SET_LED = 0x4
+\end_layout
+
+\begin_layout Plain Layout
+
+}gpio_custom_SetType;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief Impostazione della modalità su ogni pin di GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef enum{
+\end_layout
+
+\begin_layout Plain Layout
+
+	INIT_CONFIG_EN = 0x0,
+\end_layout
+
+\begin_layout Plain Layout
+
+	INIT_CONFIG_RWN = 0xF
+\end_layout
+
+\begin_layout Plain Layout
+
+}gpio_custom_InitType;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/******************Funzioni utente per gestione registri************/
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Init(gpio_custom_TypeDef *gpio, uint32_t base_address);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Set_value_reg(gpio_custom_TypeDef *gpio, uint32_t reg,
+ uint32_t mask,uint32_t mask_value);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio,uint32_t reg, uint8_t
+ set, uint32_t mask, uint8_t value);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Write_one(gpio_custom_TypeDef *gpio,uint32_t reg, uint8_t
+ set, uint32_t position, uint8_t value);
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio,uint32_t reg, uint8_t
+ set, uint32_t mask);
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_custom_Read_one(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t
+ set, uint32_t position);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Toggle_one(gpio_custom_TypeDef *gpio, uint32_t reg,uint8_t
+ set,uint8_t position);
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Toggle_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t
+ set,uint32_t mask);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#endif /* SRC_GPIO_CUSTOM_H_ */
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Implementazione funzioni
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=C, caption= "gpio custom.h"]
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @file    	gpio_custom.c
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @authors	Colella Gianni - Guida Ciro - Lombardi Daniele / Group IV -
+ Sistemi Embedded 2016-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @version 	V1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @date    	12-May-2017
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief   	Questo file mette a disposizione un firmware per gestire il
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 			comportamento della periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  ******************************************************************************
+\end_layout
+
+\begin_layout Plain Layout
+
+*/
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "gpio_custom.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di inizializzare correttamente un GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  base_addr: puntatore ad un intero di 32 bit per il corretto
+ indirizzamento della periferica
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Init(gpio_custom_TypeDef *gpio, uint32_t base_address){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(gpio!=NULL && "Errore allocazione di memoria per tipo GPIO");
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(base_address%4==0 && "Base address non allineato a 4 byte");
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->base_address=(uint32_t*)base_address;
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->pad_en_offset=gpio_custom_PAD_EN;
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->pad_in_offset=gpio_custom_PAD_IN;
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->pad_out_offset=gpio_custom_PAD_OUT;
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->pad_rw_n_offset=gpio_custom_PAD_RW_N;
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->base_address[gpio->pad_en_offset/4]=INIT_CONFIG_EN;
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->base_address[gpio->pad_rw_n_offset/4]=INIT_CONFIG_RWN;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di settare all'interno di uno specifico
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		registro, dei valori in base ad una determinata maschera di bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask: intero a 32 bit che specifica una maschera di bit, in particola
+re
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        se all'i-esima posizione vi è un valore pari a 1 allora si è
+ abilitati a
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        scrivere in quella posizione, se 0 allora il valore è mascherato
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask_value: intero a 32 bit da scrivere all'interno del registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Set_value_reg(gpio_custom_TypeDef *gpio, uint32_t reg,
+ uint32_t mask,uint32_t mask_value){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(gpio!=NULL && "Errore allocazione di memoria per tipo GPIO");
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(gpio->base_address!=NULL && "Errore allocazione base address GPIO");
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio->base_address[reg/4]=(gpio->base_address[reg/4] & ~mask) | (mask &
+ mask_value);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di scrivere all'interno di uno specifico
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		registro in base ad una determinata maschera di bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask: intero a 32 bit che specifica una maschera di bit, in particola
+re
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        se all'i-esima posizione vi è un valore pari a 1 allora si è
+ abilitati a
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        scrivere in quella posizione, se 0 allora il valore è mascherato
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param value: intero a 8 bit che indica il valore da scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Write_mask(gpio_custom_TypeDef *gpio,uint32_t reg, uint8_t
+ set, uint32_t mask, uint8_t value){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(gpio!=NULL && "Errore allocazione di memoria per tipo GPIO");
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(gpio->base_address!=NULL && "Errore allocazione base address GPIO");
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert((reg==0 || reg%12!=0) && "Scrittura in una locazione di memoria
+ non consentita");
+\end_layout
+
+\begin_layout Plain Layout
+
+	mask = mask<<set;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(((0x0000000F<<set) & mask)==mask)
+\end_layout
+
+\begin_layout Plain Layout
+
+		value == HIGH ? gpio_custom_Set_value_reg(gpio,reg,mask,0xF<<set) : gpio_custo
+m_Set_value_reg(gpio,reg,mask,0x0);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di scrivere un unico all'interno di
+ uno
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		specifico registro in base ad una determinata posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 32 bit che specifica la posizione in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask_value: intero a 8 bit che indica il valore da scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Write_one(gpio_custom_TypeDef *gpio,uint32_t reg, uint8_t
+ set, uint32_t position, uint8_t value){
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio_custom_Write_mask(gpio,reg, set, 0x1<<position, value);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di leggere all'interno di uno specifico
+\end_layout
+
+\begin_layout Plain Layout
+
+  *         registro in base ad una determinata maschera di bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param mask: intero a 32 bit che specifica una maschera di bit, in particola
+re
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        se all'i-esima posizione vi è un valore pari a 1 allora si è
+ abilitati a
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        leggere in quella posizione, viceversa se 0
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval intero a 32 bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_custom_Read_mask(gpio_custom_TypeDef *gpio,uint32_t reg, uint8_t
+ set, uint32_t mask){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(gpio!=NULL && "Errore allocazione di memoria per tipo GPIO");
+\end_layout
+
+\begin_layout Plain Layout
+
+	assert(gpio->base_address!=NULL && "Errore allocazione base address GPIO");
+\end_layout
+
+\begin_layout Plain Layout
+
+	mask = mask<<set;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(((0x0000000F<<set) & mask) == mask){
+\end_layout
+
+\begin_layout Plain Layout
+
+		return (gpio->base_address[reg/4] & mask);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette di leggere un unico valore all'interno
+ di uno
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		specifico registro in base ad una determinata posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui scrivere
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 32 bit che specifica la posizione in cui leggere
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval intero a 32 bit
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+uint32_t gpio_custom_Read_one(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t
+ set, uint32_t position){
+\end_layout
+
+\begin_layout Plain Layout
+
+	return gpio_custom_Read_mask(gpio,reg,set,0x1<<position) == (0x1<<(position+set
+));
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette il toggle di un singolo valore all'interno
+ di
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		uno specifico registro in base ad una determinata posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui effettuare il toggle
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 8 bit che specifica la posizione in cui effettuare
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        il toggle
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Toggle_one(gpio_custom_TypeDef *gpio, uint32_t reg,uint8_t
+ set,uint8_t position){
+\end_layout
+
+\begin_layout Plain Layout
+
+	gpio_custom_Read_one(gpio,reg,set,position) == HIGH ? gpio_custom_Write_one(gpi
+o,reg ,set,position,LOW) : gpio_custom_Write_one(gpio,reg,set,position,HIGH);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @brief  Questa funzione permette il toggle di un gruppo di bit all'interno
+ di
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		uno specifico registro in base ad una determinata masschera
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  gpio: puntatore alla struttura gpio_custom_TypeDef che contiene
+ le informazioni
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 		di configurazione della specifica GPIO
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param  reg: intero a 32 bit che indica lo spiazzamento rispetto all'indiriz
+zo
+\end_layout
+
+\begin_layout Plain Layout
+
+  * 	    base del registro in cui effettuare il toggle
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param set: intero a 8 bit che indica lo spiazzamento interno al registro
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @param position: intero a 32 bit che specifica la maschera di bit, in
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        particolare se il valore i-esimo è pari a 1 allora in quella
+ posizione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        si è abilitati ad effettuare il toggle, viceversa non si effettua
+ tale
+\end_layout
+
+\begin_layout Plain Layout
+
+  *        operazione
+\end_layout
+
+\begin_layout Plain Layout
+
+  *
+\end_layout
+
+\begin_layout Plain Layout
+
+  * @retval none
+\end_layout
+
+\begin_layout Plain Layout
+
+  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void gpio_custom_Toggle_mask(gpio_custom_TypeDef *gpio, uint32_t reg, uint8_t
+ set,uint32_t mask){
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i;
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i=0;i<4;i++){
+\end_layout
+
+\begin_layout Plain Layout
+
+		if((0x1<<(set*4+i)) == ((0x1<<(set*4+i)) & mask)){
+\end_layout
+
+\begin_layout Plain Layout
+
+			gpio_custom_Toggle_one(gpio,reg,set,i+set*4);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,584 @@
+\hypertarget{main__spi__master__it_8c}{}\section{Riferimenti per il file Elaborato4/spi/main\+\_\+spi\+\_\+master\+\_\+it.c}
+\label{main__spi__master__it_8c}\index{Elaborato4/spi/main\+\_\+spi\+\_\+master\+\_\+it.\+c@{Elaborato4/spi/main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+
+
+main che descrive il master di una trasmissione spi  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main\+\_\+spi\+\_\+master\+\_\+it.\+c\+:
+% FIG 0
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{main__spi__master__it_8c_a89c7c0b4a1bde00a6bffa9351f953555}{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE}~H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+Write\+Pin(G\+P\+I\+OB,G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+12,G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+\+R\+E\+S\+ET)
+\item 
+\#define \hyperlink{main__spi__master__it_8c_a6d7e51ae4c3fb30dc5431450b2271277}{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE}~H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+Write\+Pin(G\+P\+I\+OB,G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+12, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+\+S\+ET)
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{main__spi__master__it_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}{System\+Clock\+\_\+\+Config} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 168000000 H\+C\+L\+K(\+Hz) = 168000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 4 A\+P\+B2 Prescaler = 2 H\+SE Frequency(\+Hz) = 8000000 P\+L\+L\+\_\+M = 8 P\+L\+L\+\_\+N = 336 P\+L\+L\+\_\+P = 2 P\+L\+L\+\_\+Q = 7 V\+D\+D(\+V) = 3.\+3 Main regulator output voltage = Scale1 mode Flash Latency(\+W\+S) = 5. \end{DoxyCompactList}\item 
+static void \hyperlink{main__spi__master__it_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\+\_\+\+Handler} (void)
+\begin{DoxyCompactList}\small\item\em Questa funzione è eseguita in caso di errore. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__master__it_8c_a68b13f6c7d6c374747fb761485eedc4c}{setup\+\_\+\+L\+ED} ()
+\begin{DoxyCompactList}\small\item\em Funzione in cui si configura i L\+ED. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__master__it_8c_a6d4f295da7f350f1a467d24843b7fce7}{setup\+\_\+\+S\+PI} ()
+\begin{DoxyCompactList}\small\item\em Funzione in cui si settano i parametri S\+PI. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__master__it_8c_ad7cd94ef8558cd24d07a17c1f31fb335}{setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0} ()
+\begin{DoxyCompactList}\small\item\em Funzione in cui si configura il push button come E\+X\+T\+I0. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__master__it_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback} (uint16\+\_\+t G\+P\+I\+O\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Questa funzione è eseguita quando scatta l\textquotesingle{}interruzione di E\+X\+T\+I0, ovvero quando viene premuto il push button. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__master__it_8c_a3db7835e7e7ac335887f62fedf156926}{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback} (S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$hspi)
+\begin{DoxyCompactList}\small\item\em Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__master__it_8c_a0a99ab4f6aa6ee7dc2abca5483910dde}{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback} (S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$hspi)
+\begin{DoxyCompactList}\small\item\em Funzione Callback richiamata quando il trasferimento è completato. \end{DoxyCompactList}\item 
+void \hyperlink{main__spi__master__it_8c_afe461d27b9c48d5921c00d521181f12f}{loop} ()
+\begin{DoxyCompactList}\small\item\em Loop Function. \end{DoxyCompactList}\item 
+int \hyperlink{main__spi__master__it_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+S\+P\+I\+\_\+\+Handle\+Type\+Def \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{Spi\+Handle}
+\item 
+uint8\+\_\+t \hyperlink{main__spi__master__it_8c_a2fa49396e7ffe3ea41090a9991395d68}{a\+Tx\+Buffer} \mbox{[}$\,$\mbox{]} =\char`\"{}$\ast$$\ast$$\ast$$\ast$M\+E\+S\+S\+A\+G\+G\+IO S\+PI$\ast$$\ast$$\ast$$\ast$\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+main che descrive il master di una trasmissione spi 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+19-\/\+June-\/2017 
+\end{DoxyDate}
+\begin{DoxyNote}{Nota}
+In questo programma è configurato il main di una trasmissione S\+P\+I.\+Quando è premuto il push-\/button si genera una interrupt che fa eseguire la trasmissione di un dato allo slave. 
+\end{DoxyNote}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{main__spi__master__it_8c_a6d7e51ae4c3fb30dc5431450b2271277}\label{main__spi__master__it_8c_a6d7e51ae4c3fb30dc5431450b2271277}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE@{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE}}
+\index{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE@{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE}{SPI2\_NSS\_DISABLE}}
+{\footnotesize\ttfamily \#define S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE~H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+Write\+Pin(G\+P\+I\+OB,G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+12, G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+\+S\+ET)}
+
+
+
+Definizione alla linea 24 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback().
+
+\mbox{\Hypertarget{main__spi__master__it_8c_a89c7c0b4a1bde00a6bffa9351f953555}\label{main__spi__master__it_8c_a89c7c0b4a1bde00a6bffa9351f953555}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE@{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE}}
+\index{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE@{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE}{SPI2\_NSS\_ENABLE}}
+{\footnotesize\ttfamily \#define S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE~H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+Write\+Pin(G\+P\+I\+OB,G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+12,G\+P\+I\+O\+\_\+\+P\+I\+N\+\_\+\+R\+E\+S\+ET)}
+
+
+
+Definizione alla linea 23 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback().
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{main__spi__master__it_8c_aec8ff26e953e1b0e8439a193f58974d4}\label{main__spi__master__it_8c_aec8ff26e953e1b0e8439a193f58974d4}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!Error\+\_\+\+Handler@{Error\+\_\+\+Handler}}
+\index{Error\+\_\+\+Handler@{Error\+\_\+\+Handler}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{Error\+\_\+\+Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily static void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Questa funzione è eseguita in caso di errore. 
+
+\begin{DoxyNote}{Nota}
+In caso di errore si accende il led rosso\+: L\+E\+D5 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 143 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da main(), e setup\+\_\+\+S\+P\+I().
+
+
+\begin{DoxyCode}
+144 \{
+145     HAL\_GPIO\_WritePin(GPIOD,GPIO\_PIN\_14,GPIO\_PIN\_SET);
+146 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}\label{main__spi__master__it_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback@{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback}}
+\index{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback@{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback()}{HAL\_GPIO\_EXTI\_Callback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{G\+P\+I\+O\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Questa funzione è eseguita quando scatta l\textquotesingle{}interruzione di E\+X\+T\+I0, ovvero quando viene premuto il push button. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em G\+P\+I\+O\+\_\+\+Pin} & si indica il pin associato al push button. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+si esegue la transmit. 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 243 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenzia a\+Tx\+Buffer, S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+E\+N\+A\+B\+LE, e Spi\+Handle.
+
+
+\begin{DoxyCode}
+243                                               \{
+244     \textcolor{comment}{//si attende che si rilascia il bottone}
+245     \textcolor{keywordflow}{while}(HAL\_GPIO\_ReadPin(GPIOA,GPIO\_PIN\_0));
+246     \textcolor{comment}{//si abilita il pin not slave select}
+247     \hyperlink{main__spi__master__it_8c_a89c7c0b4a1bde00a6bffa9351f953555}{SPI2\_NSS\_ENABLE};
+248     \textcolor{keywordflow}{while}(HAL\_SPI\_Transmit\_IT(&\hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}, (uint8\_t *)\hyperlink{main__spi__master__it_8c_a2fa49396e7ffe3ea41090a9991395d68}{aTxBuffer}, \textcolor{keyword}{sizeof}(aTxBuffer)) != 
+      HAL\_OK)
+249     \textcolor{keywordflow}{while} (HAL\_SPI\_GetState(&\hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}) != HAL\_SPI\_STATE\_READY);
+250 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_a3db7835e7e7ac335887f62fedf156926}\label{main__spi__master__it_8c_a3db7835e7e7ac335887f62fedf156926}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback}}
+\index{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback()}{HAL\_SPI\_ErrorCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Error\+Callback (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hspi }\end{DoxyParamCaption})}
+
+
+
+Funzione Callback richiamata quando c\textquotesingle{}è stato un\textquotesingle{}errore durante il trasferimento. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em hspi} & gestore spi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Si esegue un\textquotesingle{}operazione di Toggle sul P\+D15(\+L\+E\+D6) 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}{Parametri}
+{\em hspi} & gestore spi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Si esegue un\textquotesingle{}operazione di Toggle sul P\+D14(\+L\+E\+D5) 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 228 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+\begin{DoxyCode}
+229 \{
+230   \textcolor{comment}{/* Turn LED5 on: Transfer error in reception/transmission process */}
+231         HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_15);
+232 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_a0a99ab4f6aa6ee7dc2abca5483910dde}\label{main__spi__master__it_8c_a0a99ab4f6aa6ee7dc2abca5483910dde}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback}}
+\index{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback@{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback()}{HAL\_SPI\_TxCpltCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hspi }\end{DoxyParamCaption})}
+
+
+
+Funzione Callback richiamata quando il trasferimento è completato. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em hspi} & gestore spi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Si esegue un\textquotesingle{}operazione di Toggle sul P\+D12(\+L\+E\+D4) 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 215 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenzia S\+P\+I2\+\_\+\+N\+S\+S\+\_\+\+D\+I\+S\+A\+B\+LE, e Spi\+Handle.
+
+
+\begin{DoxyCode}
+215                                                     \{
+216     \textcolor{keywordflow}{if}(hspi->Instance==\hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Instance)\{
+217         HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_12);
+218         \hyperlink{main__spi__master__it_8c_a6d7e51ae4c3fb30dc5431450b2271277}{SPI2\_NSS\_DISABLE};
+219     \}
+220 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_afe461d27b9c48d5921c00d521181f12f}\label{main__spi__master__it_8c_afe461d27b9c48d5921c00d521181f12f}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!loop@{loop}}
+\index{loop@{loop}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Loop Function. 
+
+\begin{DoxyNote}{Nota}
+Toggle del Led4 ogni 0.\+4 s 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 57 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+57            \{
+58     HAL\_GPIO\_TogglePin(GPIOD,GPIO\_PIN\_14);
+59     HAL\_Delay(400);
+60 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main__spi__master__it_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!main@{main}}
+\index{main@{main}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 38 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenzia loop(), setup\+\_\+\+L\+E\+D(), setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0(), setup\+\_\+\+S\+P\+I(), e System\+Clock\+\_\+\+Config().
+
+
+\begin{DoxyCode}
+39 \{
+40   HAL\_Init();
+41   \hyperlink{main__spi__master__it_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}{SystemClock\_Config}();
+42   \hyperlink{main__spi__master__it_8c_a68b13f6c7d6c374747fb761485eedc4c}{setup\_LED}();
+43   \hyperlink{main__spi__master__it_8c_a6d4f295da7f350f1a467d24843b7fce7}{setup\_SPI}();
+44   \hyperlink{main__spi__master__it_8c_ad7cd94ef8558cd24d07a17c1f31fb335}{setup\_pushbutton\_EXTI0}();
+45   \textcolor{comment}{/* Si attende che l'utente premi il bottone per poter avviare la comunicazione*/}
+46   \textcolor{comment}{/* Infinite loop */}
+47 \textcolor{keywordflow}{for}(;;)\{
+48     \hyperlink{main__spi__master__it_8c_afe461d27b9c48d5921c00d521181f12f}{loop}();
+49       \}
+50 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_a68b13f6c7d6c374747fb761485eedc4c}\label{main__spi__master__it_8c_a68b13f6c7d6c374747fb761485eedc4c}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!setup\+\_\+\+L\+ED@{setup\+\_\+\+L\+ED}}
+\index{setup\+\_\+\+L\+ED@{setup\+\_\+\+L\+ED}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+\+L\+E\+D()}{setup\_LED()}}
+{\footnotesize\ttfamily void setup\+\_\+\+L\+ED (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione in cui si configura i L\+ED. 
+
+\begin{DoxyNote}{Nota}
+Pin P\+D12\+: L\+E\+D4 
+
+Pin P\+D13\+: L\+E\+D3 
+
+Pin P\+D14\+: L\+E\+D5 
+
+Pin P\+D15\+: L\+E\+D6 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 97 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+97                 \{
+98       \textcolor{comment}{/* Configure LED3, LED4, LED5 and LED6 */}
+99         GPIO\_InitTypeDef GPIO\_InitStruct;
+100 
+101       \textcolor{comment}{/* Abilitazione del clock alla porta GPIOD */}
+102       \_\_HAL\_RCC\_GPIOD\_CLK\_ENABLE();
+103 
+104       \textcolor{comment}{/*Configurazione dei 4 LED: PD12,PD13,PD14,PD15 */}
+105        GPIO\_InitStruct.Pin = GPIO\_PIN\_12 | GPIO\_PIN\_13 | GPIO\_PIN\_14 | GPIO\_PIN\_15;
+106        GPIO\_InitStruct.Mode = GPIO\_MODE\_OUTPUT\_PP;
+107        GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+108        GPIO\_InitStruct.Speed = GPIO\_SPEED\_FAST;
+109        HAL\_GPIO\_Init(GPIOD, &GPIO\_InitStruct);
+110        HAL\_GPIO\_WritePin(GPIOD, GPIO\_PIN\_12 | GPIO\_PIN\_13 | GPIO\_PIN\_14 | GPIO\_PIN\_15, GPIO\_PIN\_RESET);
+111 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_ad7cd94ef8558cd24d07a17c1f31fb335}\label{main__spi__master__it_8c_ad7cd94ef8558cd24d07a17c1f31fb335}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0@{setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0}}
+\index{setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0@{setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0()}{setup\_pushbutton\_EXTI0()}}
+{\footnotesize\ttfamily void setup\+\_\+pushbutton\+\_\+\+E\+X\+T\+I0 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione in cui si configura il push button come E\+X\+T\+I0. 
+
+\begin{DoxyNote}{Nota}
+Il push button è associato al pin P\+A0 
+
+Configure pins as 
+
+Output\+: P\+D12, P\+D13,P\+D14,P\+D15 (L\+ED), P\+B12(\+N\+S\+S) 
+
+E\+X\+TI\+: P\+A0 
+\end{DoxyNote}
+
+
+Definizione alla linea 120 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+120                              \{
+121       GPIO\_InitTypeDef GPIO\_InitStruct;
+122 
+123       \textcolor{comment}{/* GPIO Ports Clock Enable */}
+124       \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();
+125 
+126       \textcolor{comment}{/*Configure GPIO pin : PA0 */}
+127       GPIO\_InitStruct.Pin = GPIO\_PIN\_0;
+128       GPIO\_InitStruct.Mode = GPIO\_MODE\_IT\_RISING;
+129       GPIO\_InitStruct.Pull = GPIO\_NOPULL;
+130       HAL\_GPIO\_Init(GPIOA, &GPIO\_InitStruct);
+131 
+132       \textcolor{comment}{/* EXTI interrupt init*/}
+133       HAL\_NVIC\_SetPriority(EXTI0\_IRQn, 0, 2);
+134       HAL\_NVIC\_EnableIRQ(EXTI0\_IRQn);
+135 
+136 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_a6d4f295da7f350f1a467d24843b7fce7}\label{main__spi__master__it_8c_a6d4f295da7f350f1a467d24843b7fce7}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!setup\+\_\+\+S\+PI@{setup\+\_\+\+S\+PI}}
+\index{setup\+\_\+\+S\+PI@{setup\+\_\+\+S\+PI}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+\+S\+P\+I()}{setup\_SPI()}}
+{\footnotesize\ttfamily void setup\+\_\+\+S\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione in cui si settano i parametri S\+PI. 
+
+\begin{DoxyNote}{Nota}
+
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Nota}
+Si nota che la modalità è S\+L\+A\+VE 
+\end{DoxyNote}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 67 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenzia Error\+\_\+\+Handler(), e Spi\+Handle.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+67                 \{
+68       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Instance               = SPIx;
+69       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.Mode              = SPI\_MODE\_MASTER;
+70       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.BaudRatePrescaler = SPI\_BAUDRATEPRESCALER\_256;
+71       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.Direction         = SPI\_DIRECTION\_2LINES;
+72       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CLKPhase          = SPI\_PHASE\_1EDGE;
+73       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CLKPolarity       = SPI\_POLARITY\_HIGH;
+74       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CRCCalculation    = SPI\_CRCCALCULATION\_DISABLE;
+75       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.CRCPolynomial     = 7;
+76       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.DataSize          = SPI\_DATASIZE\_8BIT;
+77       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.FirstBit          = SPI\_FIRSTBIT\_MSB;
+78       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.NSS               = SPI\_NSS\_SOFT;
+79       \hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}.Init.TIMode            = SPI\_TIMODE\_DISABLE;
+80 
+81 
+82       \textcolor{keywordflow}{if}(HAL\_SPI\_Init(&\hyperlink{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}{SpiHandle}) != HAL\_OK)
+83       \{
+84         \textcolor{comment}{/* Initialization Error */}
+85         \hyperlink{main__spi__master__it_8c_aec8ff26e953e1b0e8439a193f58974d4}{Error\_Handler}();
+86       \}
+87 
+88 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{main__spi__master__it_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}\label{main__spi__master__it_8c_ad554cbf06ce0fa6f92a0c4152b8a4c64}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily static void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+System Clock Configuration The system Clock is configured as follow \+: System Clock source = P\+LL (H\+SE) S\+Y\+S\+C\+L\+K(\+Hz) = 168000000 H\+C\+L\+K(\+Hz) = 168000000 A\+HB Prescaler = 1 A\+P\+B1 Prescaler = 4 A\+P\+B2 Prescaler = 2 H\+SE Frequency(\+Hz) = 8000000 P\+L\+L\+\_\+M = 8 P\+L\+L\+\_\+N = 336 P\+L\+L\+\_\+P = 2 P\+L\+L\+\_\+Q = 7 V\+D\+D(\+V) = 3.\+3 Main regulator output voltage = Scale1 mode Flash Latency(\+W\+S) = 5. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 168 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+169 \{
+170   RCC\_ClkInitTypeDef RCC\_ClkInitStruct;
+171   RCC\_OscInitTypeDef RCC\_OscInitStruct;
+172 
+173   \textcolor{comment}{/* Enable Power Control clock */}
+174   \_\_HAL\_RCC\_PWR\_CLK\_ENABLE();
+175   
+176   \textcolor{comment}{/* The voltage scaling allows optimizing the power consumption when the device is }
+177 \textcolor{comment}{     clocked below the maximum system frequency, to update the voltage scaling value }
+178 \textcolor{comment}{     regarding system frequency refer to product datasheet.  */}
+179   \_\_HAL\_PWR\_VOLTAGESCALING\_CONFIG(PWR\_REGULATOR\_VOLTAGE\_SCALE1);
+180   
+181   \textcolor{comment}{/* Enable HSE Oscillator and activate PLL with HSE as source */}
+182   RCC\_OscInitStruct.OscillatorType = RCC\_OSCILLATORTYPE\_HSE;
+183   RCC\_OscInitStruct.HSEState = RCC\_HSE\_ON;
+184   RCC\_OscInitStruct.PLL.PLLState = RCC\_PLL\_ON;
+185   RCC\_OscInitStruct.PLL.PLLSource = RCC\_PLLSOURCE\_HSE;
+186   RCC\_OscInitStruct.PLL.PLLM = 8;
+187   RCC\_OscInitStruct.PLL.PLLN = 336;
+188   RCC\_OscInitStruct.PLL.PLLP = RCC\_PLLP\_DIV2;
+189   RCC\_OscInitStruct.PLL.PLLQ = 7;
+190   HAL\_RCC\_OscConfig(&RCC\_OscInitStruct);
+191  
+192   \textcolor{comment}{/* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 }
+193 \textcolor{comment}{     clocks dividers */}
+194   RCC\_ClkInitStruct.ClockType = (RCC\_CLOCKTYPE\_SYSCLK | RCC\_CLOCKTYPE\_HCLK | RCC\_CLOCKTYPE\_PCLK1 | 
+      RCC\_CLOCKTYPE\_PCLK2);
+195   RCC\_ClkInitStruct.SYSCLKSource = RCC\_SYSCLKSOURCE\_PLLCLK;
+196   RCC\_ClkInitStruct.AHBCLKDivider = RCC\_SYSCLK\_DIV1;
+197   RCC\_ClkInitStruct.APB1CLKDivider = RCC\_HCLK\_DIV4;  
+198   RCC\_ClkInitStruct.APB2CLKDivider = RCC\_HCLK\_DIV2;  
+199   HAL\_RCC\_ClockConfig(&RCC\_ClkInitStruct, FLASH\_LATENCY\_5);
+200 
+201   \textcolor{comment}{/* STM32F405x/407x/415x/417x Revision Z devices: prefetch is supported  */}
+202   \textcolor{keywordflow}{if} (HAL\_GetREVID() == 0x1001)
+203   \{
+204     \textcolor{comment}{/* Enable the Flash prefetch */}
+205     \_\_HAL\_FLASH\_PREFETCH\_BUFFER\_ENABLE();
+206   \}
+207 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle variabili}
+\mbox{\Hypertarget{main__spi__master__it_8c_a2fa49396e7ffe3ea41090a9991395d68}\label{main__spi__master__it_8c_a2fa49396e7ffe3ea41090a9991395d68}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!a\+Tx\+Buffer@{a\+Tx\+Buffer}}
+\index{a\+Tx\+Buffer@{a\+Tx\+Buffer}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{a\+Tx\+Buffer}{aTxBuffer}}
+{\footnotesize\ttfamily uint8\+\_\+t a\+Tx\+Buffer\mbox{[}$\,$\mbox{]} =\char`\"{}$\ast$$\ast$$\ast$$\ast$M\+E\+S\+S\+A\+G\+G\+IO S\+PI$\ast$$\ast$$\ast$$\ast$\char`\"{}}
+
+
+
+Definizione alla linea 18 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback().
+
+\mbox{\Hypertarget{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}\label{main__spi__master__it_8c_a057fba06b45ec2076cb339b772c76ad7}} 
+\index{main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}!Spi\+Handle@{Spi\+Handle}}
+\index{Spi\+Handle@{Spi\+Handle}!main\+\_\+spi\+\_\+master\+\_\+it.\+c@{main\+\_\+spi\+\_\+master\+\_\+it.\+c}}
+\subsubsection{\texorpdfstring{Spi\+Handle}{SpiHandle}}
+{\footnotesize\ttfamily S\+P\+I\+\_\+\+Handle\+Type\+Def Spi\+Handle}
+
+
+
+Definizione alla linea 16 del file main\+\_\+spi\+\_\+master\+\_\+it.\+c.
+
+
+
+Referenziato da H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback(), H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Tx\+Cplt\+Callback(), e setup\+\_\+\+S\+P\+I().
+

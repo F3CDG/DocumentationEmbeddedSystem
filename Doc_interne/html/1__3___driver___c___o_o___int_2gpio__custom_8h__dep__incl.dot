@@ -1,0 +1,28 @@
+digraph "Elaborato1/1_3_Driver_C_OO_Int/gpio_custom.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node6 [label="Elaborato1/1_3_Driver\l_C_OO_Int/gpio_custom.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Elaborato1/1_3_Driver\l_C_OO_Int/gpio_custom.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$1__3___driver___c___o_o___int_2gpio__custom_8c.html",tooltip="Questo file mette a disposizione un firmware per gestire il comportamento della periferica. "];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Elaborato1/1_3_Driver\l_C_OO_Int/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_elaborato1_21__3___driver___c___o_o___int_2main_8c.html",tooltip="Programma principale che contiene al suo interno l&#39;implemetazione di un particolare driver che pilota..."];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Elaborato7/Driver_GPIO\l_Custom/Prima_Tipologia\l/mygpio_nodriver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mygpio__nodriver_8h.html",tooltip="library mygpio_nodriver gpio "];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Elaborato7/Driver_GPIO\l_Custom/Prima_Tipologia\l/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_elaborato7_2_driver___g_p_i_o___custom_2_prima___tipologia_2main_8c.html",tooltip="driver \"mygpio_nodriver\" to control gpio "];
+  Node9 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Elaborato7/Driver_GPIO\l_Custom/Prima_Tipologia\l/mygpio_nodriver.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mygpio__nodriver_8c.html",tooltip="Functions used for mygpio_nodriver gpio. "];
+  Node6 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="Elaborato7/Driver_GPIO\l_Custom/Seconda_Tipologia\l/mygpio_uiodriver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mygpio__uiodriver_8h.html",tooltip="library mygpio_uiodriver gpio "];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="Elaborato7/Driver_GPIO\l_Custom/Seconda_Tipologia\l/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_elaborato7_2_driver___g_p_i_o___custom_2_seconda___tipologia_2main_8c.html",tooltip="driver \"mygpio_uiodriver\" to control gpio "];
+  Node12 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="Elaborato7/Driver_GPIO\l_Custom/Seconda_Tipologia\l/mygpio_uiodriver.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mygpio__uiodriver_8c.html",tooltip="Functions used for mygpio_uiodriver gpio. "];
+  Node6 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="Elaborato7/Driver_GPIO\l_Custom/Terza_Tipologia\l/mygpio_uiointdriver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mygpio__uiointdriver_8h.html",tooltip="library mygpio_uiointdriver gpio "];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="Elaborato7/Driver_GPIO\l_Custom/Terza_Tipologia\l/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_elaborato7_2_driver___g_p_i_o___custom_2_terza___tipologia_2main_8c.html",tooltip="driver \"mygpio_uiointdriver\" to control gpio "];
+  Node15 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="Elaborato7/Driver_GPIO\l_Custom/Terza_Tipologia\l/mygpio_uiointdriver.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mygpio__uiointdriver_8c.html",tooltip="Functions used for mygpio_uiointdriver gpio. "];
+}

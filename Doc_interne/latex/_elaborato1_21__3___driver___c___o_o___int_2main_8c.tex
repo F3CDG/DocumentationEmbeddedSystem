@@ -1,0 +1,113 @@
+\hypertarget{_elaborato1_21__3___driver___c___o_o___int_2main_8c}{}\section{Riferimenti per il file Elaborato1/1\+\_\+3\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+Int/main.c}
+\label{_elaborato1_21__3___driver___c___o_o___int_2main_8c}\index{Elaborato1/1\+\_\+3\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+Int/main.\+c@{Elaborato1/1\+\_\+3\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+Int/main.\+c}}
+
+
+Programma principale che contiene al suo interno l\textquotesingle{}implemetazione di un particolare driver che pilota la periferica.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}platform.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xil\+\_\+printf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio\+\_\+custom.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_elaborato1_21__3___driver___c___o_o___int_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Programma principale che contiene al suo interno l\textquotesingle{}implemetazione di un particolare driver che pilota la periferica. 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+28-\/\+Jun-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato1_21__3___driver___c___o_o___int_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{_elaborato1_21__3___driver___c___o_o___int_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{Elaborato1/1\+\_\+3\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+Int/main.\+c@{Elaborato1/1\+\_\+3\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+Int/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato1/1\+\_\+3\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+Int/main.\+c@{Elaborato1/1\+\_\+3\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+Int/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 33 del file main.\+c.
+
+
+
+Referenzia G\+P\+I\+O\+\_\+\+B\+A\+SE, gpio\+\_\+custom\+\_\+\+Get\+Enable(), gpio\+\_\+custom\+\_\+\+Get\+Global\+Interrupt(), gpio\+\_\+custom\+\_\+\+Get\+Interrupt\+Mask(), gpio\+\_\+custom\+\_\+\+Get\+Mode(), gpio\+\_\+custom\+\_\+\+Get\+Status\+Interrupt(), gpio\+\_\+custom\+\_\+\+Get\+Value(), gpio\+\_\+custom\+\_\+\+Init(), gpio\+\_\+custom\+\_\+\+Set\+Ack\+Interrupt(), gpio\+\_\+custom\+\_\+\+Set\+Enable(), gpio\+\_\+custom\+\_\+\+Set\+Global\+Interrupt(), gpio\+\_\+custom\+\_\+\+Set\+Interrupt\+Mask(), gpio\+\_\+custom\+\_\+\+Set\+Mode(), e H\+I\+GH.
+
+
+\begin{DoxyCode}
+34 \{
+35     init\_platform();
+36     uint32\_t ret=0x0;
+37     \hyperlink{structgpio__custom___type_def}{gpio\_custom\_TypeDef} gpio;
+38 
+39     \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a840eb0c320c546b8696d649d2d2e716c}{gpio\_custom\_Init}(&gpio, \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_acce3b8a909ed8b957b4e411dfb7cbd91}{GPIO\_BASE});
+40     \textcolor{keywordflow}{while}(1)\{
+41     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ad342eaf33c2f058dfd0ada926fa391eb}{gpio\_custom\_SetEnable}(&gpio,0xF,\hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+42     ret = \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a5c4f5e2ecee7c48eb3fbb65302975eb8}{gpio\_custom\_GetEnable}(&gpio,0xF);
+43 
+44     \textcolor{keywordflow}{if}(ret!=0)\{
+45         printf(\textcolor{stringliteral}{"OK"});
+46         ret=0;
+47     \}
+48 
+49     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ad76fd3ba58361de14c7c50bcda7ecffc}{gpio\_custom\_SetMode}(&gpio, 0xF, \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+50     ret = \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ab42bb0b58cfd603d128e194d353cdac7}{gpio\_custom\_GetMode}(&gpio,0xF);
+51 
+52     \textcolor{keywordflow}{if}(ret!=0)\{
+53             printf(\textcolor{stringliteral}{"OK"});
+54             ret=0;
+55     \}
+56 
+57     \textcolor{comment}{//gpio\_custom\_SetValue(&gpio, 0xA, HIGH);}
+58     ret = \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a27b6cfe1eff5bdd6ba5e61c88c0ea5ee}{gpio\_custom\_GetValue}(&gpio,0xF);
+59 
+60     \textcolor{keywordflow}{if}(ret!=0)\{
+61             printf(\textcolor{stringliteral}{"OK"});
+62             ret=0;
+63         \}
+64 
+65     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a764cc40d65318d8242d8e7831d746005}{gpio\_custom\_SetGlobalInterrupt}(&gpio);
+66     ret = \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ab53393cd2864a075508da54a6c106fcd}{gpio\_custom\_GetGlobalInterrupt}(&gpio);
+67 
+68 
+69     \textcolor{keywordflow}{if}(ret!=0)\{
+70             printf(\textcolor{stringliteral}{"OK"});
+71             ret=0;
+72         \}
+73 
+74     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_ac2b5591f917cba28decf55be64c0d958}{gpio\_custom\_SetInterruptMask}(&gpio, 0x2, \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+75     ret = \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a1381a5bf082be13f9a4102d5cf38a5d2}{gpio\_custom\_GetInterruptMask}(&gpio,0xF);
+76 
+77     \textcolor{keywordflow}{if}(ret!=0)\{
+78             printf(\textcolor{stringliteral}{"OK"});
+79             ret=0;
+80         \}
+81 
+82     \textcolor{comment}{//gpio\_custom\_SetStatusInterrupt(&gpio, 0x2, HIGH);}
+83     ret = \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_aba6fbeda8a3e5883996606a85b31de61}{gpio\_custom\_GetStatusInterrupt}(&gpio, 0xF);
+84 
+85     \textcolor{keywordflow}{if}(ret!=0)\{
+86             printf(\textcolor{stringliteral}{"OK"});
+87             ret=0;
+88         \}
+89     \hyperlink{1__3___driver___c___o_o___int_2gpio__custom_8c_a8d9b4b8b8c9d6c2847571e527d221e51}{gpio\_custom\_SetAckInterrupt}(&gpio, 0x2, \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+90     \}
+91 
+92     cleanup\_platform();
+93     \textcolor{keywordflow}{return} 0;
+94 \}
+\end{DoxyCode}

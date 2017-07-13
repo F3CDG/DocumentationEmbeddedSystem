@@ -1,0 +1,424 @@
+\hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c}{}\section{Riferimenti per il file Elaborato1/1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.c}
+\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c}\index{Elaborato1/1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{Elaborato1/1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+
+
+Questo file mette a disposizione un firmware per gestire il comportamento della periferica.  
+
+
+{\ttfamily \#include \char`\"{}gpio\+\_\+custom.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per gpio\+\_\+custom.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a840eb0c320c546b8696d649d2d2e716c}{gpio\+\_\+custom\+\_\+\+Init} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t base\+\_\+address)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di inizializzare correttamente un G\+P\+IO. \end{DoxyCompactList}\item 
+void \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a558202632ed9f7d72d497e0c4ac547fc}{gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t reg, uint32\+\_\+t mask, uint32\+\_\+t mask\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di settare all\textquotesingle{}interno di uno specifico registro, dei valori in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+void \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a0a13e5523c33ca3760f7ed26191fe4f2}{gpio\+\_\+custom\+\_\+\+Write\+\_\+mask} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di scrivere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+void \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a3d23936fe849d0cda8da48f5c60654be}{gpio\+\_\+custom\+\_\+\+Write\+\_\+one} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t position, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di scrivere un unico all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a23d7b98339be9f5ae58689ed9ff7441f}{gpio\+\_\+custom\+\_\+\+Read\+\_\+mask} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di leggere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6553b9b4a748450304982ec6dbfc7f01}{gpio\+\_\+custom\+\_\+\+Read\+\_\+one} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t position)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di leggere un unico valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+void \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6b306311e731ae8069974c0ca501c8ac}{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t reg, uint8\+\_\+t set, uint8\+\_\+t position)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di un singolo valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. \end{DoxyCompactList}\item 
+void \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_ab6a3d8984a9152b8660c51122e18aa49}{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask} (\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$gpio, uint32\+\_\+t reg, uint8\+\_\+t set, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette il toggle di un gruppo di bit all\textquotesingle{}interno di uno specifico registro in base ad una determinata masschera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Questo file mette a disposizione un firmware per gestire il comportamento della periferica. 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+12-\/\+May-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a840eb0c320c546b8696d649d2d2e716c}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a840eb0c320c546b8696d649d2d2e716c}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Init@{gpio\+\_\+custom\+\_\+\+Init}}
+\index{gpio\+\_\+custom\+\_\+\+Init@{gpio\+\_\+custom\+\_\+\+Init}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Init()}{gpio\_custom\_Init()}}
+{\footnotesize\ttfamily void gpio\+\_\+custom\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{base\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di inizializzare correttamente un G\+P\+IO. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em base\+\_\+addr} & puntatore ad un intero di 32 bit per il corretto indirizzamento della periferica\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 22 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenziato da init(), e main().
+
+
+\begin{DoxyCode}
+22                                                                        \{
+23 
+24     assert(gpio!=NULL && \textcolor{stringliteral}{"Errore allocazione di memoria per tipo GPIO"});
+25     assert(base\_address%4==0 && \textcolor{stringliteral}{"Base address non allineato a 4 byte"});
+26     gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}=(uint32\_t*)base\_address;
+27     gpio->\hyperlink{structgpio__custom___type_def_a2acf047838d804ed71c46b9c305e651c}{pad\_en\_offset}=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_aaf9e8f055509286a481d45f3d31f8b81}{gpio\_custom\_PAD\_EN};
+28     gpio->\hyperlink{structgpio__custom___type_def_a506ff6030cded799ee3ee361b1fb4e05}{pad\_in\_offset}=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_ae564b3e7d37a6f17a61c0c70c82c45d3}{gpio\_custom\_PAD\_IN};
+29     gpio->\hyperlink{structgpio__custom___type_def_aff972444f01c9a62a3406f68a135dbde}{pad\_out\_offset}=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_ac8432e7d840c2b72cbfed4a1465fec18}{gpio\_custom\_PAD\_OUT};
+30     gpio->\hyperlink{structgpio__custom___type_def_a4390c6ba1b5edf3651577c4588fd46a6}{pad\_rw\_n\_offset}=\hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a975f15ea9a279f61bd1d91452805074a}{gpio\_custom\_PAD\_RW\_N};
+31     gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}[gpio->\hyperlink{structgpio__custom___type_def_a2acf047838d804ed71c46b9c305e651c}{pad\_en\_offset}/4]=
+      \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a9b6b577baba111c6e473146eca19b2c9adc582cc6d5ff4ac919a8e25774246ff1}{INIT\_CONFIG\_EN};
+32     gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}[gpio->\hyperlink{structgpio__custom___type_def_a4390c6ba1b5edf3651577c4588fd46a6}{pad\_rw\_n\_offset}/4]=
+      \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8h_a9b6b577baba111c6e473146eca19b2c9ac831347c85e0a37b11d8bf8576b5b588}{INIT\_CONFIG\_RWN};
+33 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a23d7b98339be9f5ae58689ed9ff7441f}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a23d7b98339be9f5ae58689ed9ff7441f}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Read\+\_\+mask@{gpio\+\_\+custom\+\_\+\+Read\+\_\+mask}}
+\index{gpio\+\_\+custom\+\_\+\+Read\+\_\+mask@{gpio\+\_\+custom\+\_\+\+Read\+\_\+mask}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Read\+\_\+mask()}{gpio\_custom\_Read\_mask()}}
+{\footnotesize\ttfamily uint32\+\_\+t gpio\+\_\+custom\+\_\+\+Read\+\_\+mask (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di leggere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a leggere in quella posizione, viceversa se 0\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em intero} & a 32 bit \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 119 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Type\+Def\+::base\+\_\+address.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Get\+Enable(), gpio\+\_\+custom\+\_\+\+Get\+Interrupt\+Mask(), gpio\+\_\+custom\+\_\+\+Get\+Mode(), gpio\+\_\+custom\+\_\+\+Get\+Status\+Interrupt(), gpio\+\_\+custom\+\_\+\+Get\+Value(), e gpio\+\_\+custom\+\_\+\+Read\+\_\+one().
+
+
+\begin{DoxyCode}
+119                                                                                                   \{
+120 
+121     assert(gpio!=NULL && \textcolor{stringliteral}{"Errore allocazione di memoria per tipo GPIO"});
+122     assert(gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}!=NULL && \textcolor{stringliteral}{"Errore allocazione base address GPIO"});
+123     mask = mask<<\textcolor{keyword}{set};
+124     \textcolor{keywordflow}{if}(((0x0000000F<<\textcolor{keyword}{set}) & mask) == mask)\{
+125         \textcolor{keywordflow}{return} (gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}[reg/4] & mask);
+126     \}
+127     \textcolor{keywordflow}{return} -1;
+128 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6553b9b4a748450304982ec6dbfc7f01}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6553b9b4a748450304982ec6dbfc7f01}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Read\+\_\+one@{gpio\+\_\+custom\+\_\+\+Read\+\_\+one}}
+\index{gpio\+\_\+custom\+\_\+\+Read\+\_\+one@{gpio\+\_\+custom\+\_\+\+Read\+\_\+one}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Read\+\_\+one()}{gpio\_custom\_Read\_one()}}
+{\footnotesize\ttfamily uint32\+\_\+t gpio\+\_\+custom\+\_\+\+Read\+\_\+one (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di leggere un unico valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la posizione in cui leggere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em intero} & a 32 bit \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 143 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Read\+\_\+mask().
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Get\+Global\+Interrupt(), e gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+143                                                                                                       \{
+144     \textcolor{keywordflow}{return} \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a23d7b98339be9f5ae58689ed9ff7441f}{gpio\_custom\_Read\_mask}(gpio,reg,\textcolor{keyword}{set},0x1<<position) == (0x1<<(position+\textcolor{keyword}{set}));
+145 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a558202632ed9f7d72d497e0c4ac547fc}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a558202632ed9f7d72d497e0c4ac547fc}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg@{gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg}}
+\index{gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg@{gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg()}{gpio\_custom\_Set\_value\_reg()}}
+{\footnotesize\ttfamily void gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{reg,  }\item[{uint32\+\_\+t}]{mask,  }\item[{uint32\+\_\+t}]{mask\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di settare all\textquotesingle{}interno di uno specifico registro, dei valori in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato \\
+\hline
+{\em mask\+\_\+value} & intero a 32 bit da scrivere all\textquotesingle{}interno del registro\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 51 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Write\+\_\+mask().
+
+
+\begin{DoxyCode}
+51                                                                                                           \{
+52 
+53     assert(gpio!=NULL && \textcolor{stringliteral}{"Errore allocazione di memoria per tipo GPIO"});
+54     assert(gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}!=NULL && \textcolor{stringliteral}{"Errore allocazione base address GPIO"});
+55     gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}[reg/4]=(gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}[reg/4] & ~mask) | (mask & 
+      mask\_value);
+56 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_ab6a3d8984a9152b8660c51122e18aa49}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_ab6a3d8984a9152b8660c51122e18aa49}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask@{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask}}
+\index{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask@{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask()}{gpio\_custom\_Toggle\_mask()}}
+{\footnotesize\ttfamily void gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di un gruppo di bit all\textquotesingle{}interno di uno specifico registro in base ad una determinata masschera. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui effettuare il toggle \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la maschera di bit, in particolare se il valore i-\/esimo è pari a 1 allora in quella posizione si è abilitati ad effettuare il toggle, viceversa non si effettua tale operazione\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 182 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+182                                                                                                 \{
+183     \textcolor{keywordtype}{int} i;
+184     \textcolor{keywordflow}{for}(i=0;i<4;i++)\{
+185         \textcolor{keywordflow}{if}((0x1<<(\textcolor{keyword}{set}*4+i)) == ((0x1<<(\textcolor{keyword}{set}*4+i)) & mask))\{
+186             \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6b306311e731ae8069974c0ca501c8ac}{gpio\_custom\_Toggle\_one}(gpio,reg,\textcolor{keyword}{set},i+\textcolor{keyword}{set}*4);
+187         \}
+188     \}
+189 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6b306311e731ae8069974c0ca501c8ac}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6b306311e731ae8069974c0ca501c8ac}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one@{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one}}
+\index{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one@{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one()}{gpio\_custom\_Toggle\_one()}}
+{\footnotesize\ttfamily void gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint8\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette il toggle di un singolo valore all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui effettuare il toggle \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 8 bit che specifica la posizione in cui effettuare il toggle\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 161 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Read\+\_\+one(), gpio\+\_\+custom\+\_\+\+Write\+\_\+one(), H\+I\+GH, e L\+OW.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Toggle\+\_\+mask(), e supercar().
+
+
+\begin{DoxyCode}
+161                                                                                                  \{
+162     \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a6553b9b4a748450304982ec6dbfc7f01}{gpio\_custom\_Read\_one}(gpio,reg,\textcolor{keyword}{set},position) == \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH} ? 
+      \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a3d23936fe849d0cda8da48f5c60654be}{gpio\_custom\_Write\_one}(gpio,reg ,\textcolor{keyword}{set},position,\hyperlink{gpio__header_8h_ab811d8c6ff3a505312d3276590444289}{LOW}) : gpio\_custom\_Write\_one(gpio,reg,
+      set,position,\hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH});
+163 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a0a13e5523c33ca3760f7ed26191fe4f2}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a0a13e5523c33ca3760f7ed26191fe4f2}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Write\+\_\+mask@{gpio\+\_\+custom\+\_\+\+Write\+\_\+mask}}
+\index{gpio\+\_\+custom\+\_\+\+Write\+\_\+mask@{gpio\+\_\+custom\+\_\+\+Write\+\_\+mask}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Write\+\_\+mask()}{gpio\_custom\_Write\_mask()}}
+{\footnotesize\ttfamily void gpio\+\_\+custom\+\_\+\+Write\+\_\+mask (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{mask,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di scrivere all\textquotesingle{}interno di uno specifico registro in base ad una determinata maschera di bit. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em mask} & intero a 32 bit che specifica una maschera di bit, in particolare se all\textquotesingle{}i-\/esima posizione vi è un valore pari a 1 allora si è abilitati a scrivere in quella posizione, se 0 allora il valore è mascherato \\
+\hline
+{\em value} & intero a 8 bit che indica il valore da scrivere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 75 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Type\+Def\+::base\+\_\+address, gpio\+\_\+custom\+\_\+\+Set\+\_\+value\+\_\+reg(), e H\+I\+GH.
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Set\+Ack\+Interrupt(), gpio\+\_\+custom\+\_\+\+Set\+Enable(), gpio\+\_\+custom\+\_\+\+Set\+Interrupt\+Mask(), gpio\+\_\+custom\+\_\+\+Set\+Mode(), gpio\+\_\+custom\+\_\+\+Set\+Status\+Interrupt(), gpio\+\_\+custom\+\_\+\+Set\+Value(), gpio\+\_\+custom\+\_\+\+Write\+\_\+one(), e init().
+
+
+\begin{DoxyCode}
+75                                                                                                            
+         \{
+76 
+77     assert(gpio!=NULL && \textcolor{stringliteral}{"Errore allocazione di memoria per tipo GPIO"});
+78     assert(gpio->\hyperlink{structgpio__custom___type_def_ad27f63e553c421cfd3f4353e44e2730c}{base\_address}!=NULL && \textcolor{stringliteral}{"Errore allocazione base address GPIO"});
+79     assert((reg==0 || reg%12!=0) && \textcolor{stringliteral}{"Scrittura in una locazione di memoria non consentita"});
+80     mask = mask<<\textcolor{keyword}{set};
+81     \textcolor{keywordflow}{if}(((0x0000000F<<\textcolor{keyword}{set}) & mask)==mask)
+82         value == \hyperlink{gpio__header_8h_a5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH} ? \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a558202632ed9f7d72d497e0c4ac547fc}{gpio\_custom\_Set\_value\_reg}(gpio,reg,mask,0xF<<\textcolor{keyword}{set}) : 
+      gpio\_custom\_Set\_value\_reg(gpio,reg,mask,0x0);
+83 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a3d23936fe849d0cda8da48f5c60654be}\label{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a3d23936fe849d0cda8da48f5c60654be}} 
+\index{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}!gpio\+\_\+custom\+\_\+\+Write\+\_\+one@{gpio\+\_\+custom\+\_\+\+Write\+\_\+one}}
+\index{gpio\+\_\+custom\+\_\+\+Write\+\_\+one@{gpio\+\_\+custom\+\_\+\+Write\+\_\+one}!1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c@{1\+\_\+2\+\_\+\+Driver\+\_\+\+C\+\_\+\+O\+O\+\_\+\+No\+Int/gpio\+\_\+custom.\+c}}
+\subsubsection{\texorpdfstring{gpio\+\_\+custom\+\_\+\+Write\+\_\+one()}{gpio\_custom\_Write\_one()}}
+{\footnotesize\ttfamily void gpio\+\_\+custom\+\_\+\+Write\+\_\+one (\begin{DoxyParamCaption}\item[{\hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} $\ast$}]{gpio,  }\item[{uint32\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{set,  }\item[{uint32\+\_\+t}]{position,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di scrivere un unico all\textquotesingle{}interno di uno specifico registro in base ad una determinata posizione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em gpio} & puntatore alla struttura \hyperlink{structgpio__custom___type_def}{gpio\+\_\+custom\+\_\+\+Type\+Def} che contiene le informazioni di configurazione della specifica G\+P\+IO \\
+\hline
+{\em reg} & intero a 32 bit che indica lo spiazzamento rispetto all\textquotesingle{}indirizzo base del registro in cui scrivere \\
+\hline
+{\em set} & intero a 8 bit che indica lo spiazzamento interno al registro \\
+\hline
+{\em position} & intero a 32 bit che specifica la posizione in cui scrivere \\
+\hline
+{\em mask\+\_\+value} & intero a 8 bit che indica il valore da scrivere\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 100 del file gpio\+\_\+custom.\+c.
+
+
+
+Referenzia gpio\+\_\+custom\+\_\+\+Write\+\_\+mask().
+
+
+
+Referenziato da gpio\+\_\+custom\+\_\+\+Set\+Global\+Interrupt(), e gpio\+\_\+custom\+\_\+\+Toggle\+\_\+one().
+
+
+\begin{DoxyCode}
+100                                                                                                            
+            \{
+101     \hyperlink{1__2___driver___c___o_o___no_int_2gpio__custom_8c_a0a13e5523c33ca3760f7ed26191fe4f2}{gpio\_custom\_Write\_mask}(gpio,reg, \textcolor{keyword}{set}, 0x1<<position, value);
+102 \}
+\end{DoxyCode}

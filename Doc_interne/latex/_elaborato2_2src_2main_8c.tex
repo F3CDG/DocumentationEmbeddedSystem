@@ -1,0 +1,205 @@
+\hypertarget{_elaborato2_2src_2main_8c}{}\section{Riferimenti per il file Elaborato2/src/main.c}
+\label{_elaborato2_2src_2main_8c}\index{Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}}
+
+
+Main per pilotaggio periferiche.  
+
+
+{\ttfamily \#include \char`\"{}driver.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_elaborato2_2src_2main_8c_a3471840b6814518cf2a8e4041b4953a4}{T\+O\+G\+G\+L\+E\+A\+LL}~0
+\item 
+\#define \hyperlink{_elaborato2_2src_2main_8c_a7194053a42881b1b4bc8546b4c8713e9}{C\+O\+U\+N\+T\+ER}~1
+\item 
+\#define \hyperlink{_elaborato2_2src_2main_8c_a8b9b9ffb815961c8b974b517ee2bfb6c}{S\+U\+P\+E\+R\+C\+AR}~2
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_elaborato2_2src_2main_8c_af1e28df83629ff23990efe2fa029811f}{loop} (short int f)
+\begin{DoxyCompactList}\small\item\em Questa funzione permette di selezionare ed eseguire un driver tra quelli implementati. \end{DoxyCompactList}\item 
+void \hyperlink{_elaborato2_2src_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}{init} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione inizializza led, bottone utente e timer2. \end{DoxyCompactList}\item 
+int \hyperlink{_elaborato2_2src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Main per pilotaggio periferiche. 
+
+\begin{DoxyAuthor}{Autore}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+12-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{_elaborato2_2src_2main_8c_a7194053a42881b1b4bc8546b4c8713e9}\label{_elaborato2_2src_2main_8c_a7194053a42881b1b4bc8546b4c8713e9}} 
+\index{Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}!C\+O\+U\+N\+T\+ER@{C\+O\+U\+N\+T\+ER}}
+\index{C\+O\+U\+N\+T\+ER@{C\+O\+U\+N\+T\+ER}!Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}}
+\subsubsection{\texorpdfstring{C\+O\+U\+N\+T\+ER}{COUNTER}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+ER~1}
+
+
+
+Definizione alla linea 16 del file main.\+c.
+
+
+
+Referenziato da loop().
+
+\mbox{\Hypertarget{_elaborato2_2src_2main_8c_a8b9b9ffb815961c8b974b517ee2bfb6c}\label{_elaborato2_2src_2main_8c_a8b9b9ffb815961c8b974b517ee2bfb6c}} 
+\index{Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}!S\+U\+P\+E\+R\+C\+AR@{S\+U\+P\+E\+R\+C\+AR}}
+\index{S\+U\+P\+E\+R\+C\+AR@{S\+U\+P\+E\+R\+C\+AR}!Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}}
+\subsubsection{\texorpdfstring{S\+U\+P\+E\+R\+C\+AR}{SUPERCAR}}
+{\footnotesize\ttfamily \#define S\+U\+P\+E\+R\+C\+AR~2}
+
+
+
+Definizione alla linea 17 del file main.\+c.
+
+
+
+Referenziato da loop(), e main().
+
+\mbox{\Hypertarget{_elaborato2_2src_2main_8c_a3471840b6814518cf2a8e4041b4953a4}\label{_elaborato2_2src_2main_8c_a3471840b6814518cf2a8e4041b4953a4}} 
+\index{Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}!T\+O\+G\+G\+L\+E\+A\+LL@{T\+O\+G\+G\+L\+E\+A\+LL}}
+\index{T\+O\+G\+G\+L\+E\+A\+LL@{T\+O\+G\+G\+L\+E\+A\+LL}!Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}}
+\subsubsection{\texorpdfstring{T\+O\+G\+G\+L\+E\+A\+LL}{TOGGLEALL}}
+{\footnotesize\ttfamily \#define T\+O\+G\+G\+L\+E\+A\+LL~0}
+
+
+
+Definizione alla linea 15 del file main.\+c.
+
+
+
+Referenziato da loop().
+
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato2_2src_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}\label{_elaborato2_2src_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}} 
+\index{Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}!init@{init}}
+\index{init@{init}!Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Questa funzione inizializza led, bottone utente e timer2. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 37 del file main.\+c.
+
+
+
+Referenzia init\+\_\+button\+\_\+user(), init\+\_\+led\+\_\+user(), e init\+\_\+timer2().
+
+
+\begin{DoxyCode}
+37            \{
+38     \hyperlink{my__bsp__custom_8c_a798d5d72ddf4ba1145977bc2b8f99a3c}{init\_led\_user}();
+39     \hyperlink{my__bsp__custom_8c_ad9484bdb881d37feac04ef24e13d93dd}{init\_button\_user}();
+40     \hyperlink{my__bsp__custom_8c_afafb0dccf1afd67f04907bfe3ec10883}{init\_timer2}(8000000);
+41 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato2_2src_2main_8c_af1e28df83629ff23990efe2fa029811f}\label{_elaborato2_2src_2main_8c_af1e28df83629ff23990efe2fa029811f}} 
+\index{Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}!loop@{loop}}
+\index{loop@{loop}!Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}\item[{short int}]{f }\end{DoxyParamCaption})}
+
+
+
+Questa funzione permette di selezionare ed eseguire un driver tra quelli implementati. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 49 del file main.\+c.
+
+
+
+Referenzia C\+O\+U\+N\+T\+ER, counter(), S\+U\+P\+E\+R\+C\+AR, supercar(), T\+O\+G\+G\+L\+E\+A\+LL, e toggle\+All().
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+49                       \{
+50 
+51     \textcolor{keywordflow}{switch}(f)\{
+52 
+53         \textcolor{keywordflow}{case} \hyperlink{_elaborato2_2src_2main_8c_a3471840b6814518cf2a8e4041b4953a4}{TOGGLEALL}:
+54             \hyperlink{driver_8c_aeed266a1e7ed9e5f20de05db0f02024e}{toggleAll}();
+55             \textcolor{keywordflow}{break};
+56 
+57         \textcolor{keywordflow}{case} \hyperlink{_elaborato2_2src_2main_8c_a7194053a42881b1b4bc8546b4c8713e9}{COUNTER}:
+58             \hyperlink{driver_8c_a13d137800a4aa08c54508e67722620f4}{counter}();
+59             \textcolor{keywordflow}{break};
+60 
+61         \textcolor{keywordflow}{case} \hyperlink{_elaborato2_2src_2main_8c_a8b9b9ffb815961c8b974b517ee2bfb6c}{SUPERCAR}:
+62             \hyperlink{_elaborato1_21__1___driver___c___no_int_2main_8c_a7cd563c35d04fafa3c3657de92c1a5a0}{supercar}();
+63             \textcolor{keywordflow}{break};
+64 
+65         \textcolor{keywordflow}{default}:
+66             \textcolor{keywordflow}{break};
+67     \}
+68 
+69 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_elaborato2_2src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{_elaborato2_2src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato2/src/main.\+c@{Elaborato2/src/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definizione alla linea 23 del file main.\+c.
+
+
+
+Referenzia init(), loop(), e S\+U\+P\+E\+R\+C\+AR.
+
+
+\begin{DoxyCode}
+24 \{
+25 
+26     \hyperlink{_elaborato1_21__1___driver___c___no_int_2main_8c_a02fd73d861ef2e4aabb38c0c9ff82947}{init}();
+27     \textcolor{keywordflow}{for}(;;) \hyperlink{_elaborato2_2src_2main_8c_af1e28df83629ff23990efe2fa029811f}{loop}(\hyperlink{_elaborato2_2src_2main_8c_a8b9b9ffb815961c8b974b517ee2bfb6c}{SUPERCAR});
+28     \textcolor{keywordflow}{return} 1;
+29 \}
+\end{DoxyCode}

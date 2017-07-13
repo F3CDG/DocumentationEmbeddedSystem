@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Esame di Sistemi Embedded 2016/17 - Gruppo 4:  File sorgente Elaborato5/Elaborato5_2_Mouse_HID/mouse_position.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="LogoGruppoIV.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Esame di Sistemi Embedded 2016/17 - Gruppo 4
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f9eec4450ad97ea85015598c78d19c1c.html">Elaborato5</a></li><li class="navelem"><a class="el" href="dir_edf6a7274db98fc02ba78e9b8990af85.html">Elaborato5_2_Mouse_HID</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mouse_position.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mouse__position_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef MOUSE_POSITION_H_</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define MOUSE_POSITION_H_</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/* Librerie Incluse ------------------------------------------------------------------*/</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;stm32f4xx_hal.h&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>{</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4a58833a3110c570fb05130d40c365d1e4">   21</a></span>&#160;    <a class="code" href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4a58833a3110c570fb05130d40c365d1e4">X</a>,</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4a5596231eabd6cf29050967d5ac83ad84">   22</a></span>&#160;    <a class="code" href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}<a class="code" href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4">mouse_position_AxisType</a>;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* Prototipi funzioni -------------------------------------------------------*/</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mouse__position_8h.html#a2e3ca52ee63638f662168b0fa288b98a">init_mouse</a>(SPI_HandleTypeDef); </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;uint8_t <a class="code" href="mouse__position_8h.html#a63f46318cee210936e50ee265fe6fda4">x_position</a>(SPI_HandleTypeDef); </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;uint8_t <a class="code" href="mouse__position_8h.html#afa1a56b63cfa8f2a1f7e6c7e2f679e3e">y_position</a>(SPI_HandleTypeDef); </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mouse__position_8h.html#aa0187a21a3175a7e3ab5e299c2cca0df">position_on_led</a>(uint8_t position,<a class="code" href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4">mouse_position_AxisType</a>); </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MOUSE_POSITION_H_ */</span><span class="preprocessor"></span></div><div class="ttc" id="mouse__position_8h_html_afa1a56b63cfa8f2a1f7e6c7e2f679e3e"><div class="ttname"><a href="mouse__position_8h.html#afa1a56b63cfa8f2a1f7e6c7e2f679e3e">y_position</a></div><div class="ttdeci">uint8_t y_position(SPI_HandleTypeDef)</div><div class="ttdoc">Questa funzione permette di calcolare la posizione sull&amp;#39;asse Y. </div><div class="ttdef"><b>Definition:</b> <a href="mouse__position_8c_source.html#l00073">mouse_position.c:73</a></div></div>
+<div class="ttc" id="mouse__position_8h_html_a2e3ca52ee63638f662168b0fa288b98a"><div class="ttname"><a href="mouse__position_8h.html#a2e3ca52ee63638f662168b0fa288b98a">init_mouse</a></div><div class="ttdeci">void init_mouse(SPI_HandleTypeDef)</div><div class="ttdoc">Questa funzione permette di inizializzare la periferica HID mouse. </div><div class="ttdef"><b>Definition:</b> <a href="mouse__position_8c_source.html#l00025">mouse_position.c:25</a></div></div>
+<div class="ttc" id="mouse__position_8h_html_ab61e9ecce3eb5509e3805ff67f8ad0f4"><div class="ttname"><a href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4">mouse_position_AxisType</a></div><div class="ttdeci">mouse_position_AxisType</div><div class="ttdoc">Definizione tipo enumerativo per valori degli assi X e Y. </div><div class="ttdef"><b>Definition:</b> <a href="mouse__position_8h_source.html#l00020">mouse_position.h:20</a></div></div>
+<div class="ttc" id="mouse__position_8h_html_a63f46318cee210936e50ee265fe6fda4"><div class="ttname"><a href="mouse__position_8h.html#a63f46318cee210936e50ee265fe6fda4">x_position</a></div><div class="ttdeci">uint8_t x_position(SPI_HandleTypeDef)</div><div class="ttdoc">Questa funzione permette di calcolare la posizione sull&amp;#39;asse X. </div><div class="ttdef"><b>Definition:</b> <a href="mouse__position_8c_source.html#l00049">mouse_position.c:49</a></div></div>
+<div class="ttc" id="mouse__position_8h_html_ab61e9ecce3eb5509e3805ff67f8ad0f4a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdef"><b>Definition:</b> <a href="mouse__position_8h_source.html#l00021">mouse_position.h:21</a></div></div>
+<div class="ttc" id="mouse__position_8h_html_ab61e9ecce3eb5509e3805ff67f8ad0f4a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="mouse__position_8h.html#ab61e9ecce3eb5509e3805ff67f8ad0f4a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdef"><b>Definition:</b> <a href="mouse__position_8h_source.html#l00022">mouse_position.h:22</a></div></div>
+<div class="ttc" id="mouse__position_8h_html_aa0187a21a3175a7e3ab5e299c2cca0df"><div class="ttname"><a href="mouse__position_8h.html#aa0187a21a3175a7e3ab5e299c2cca0df">position_on_led</a></div><div class="ttdeci">void position_on_led(uint8_t position, mouse_position_AxisType)</div><div class="ttdoc">Questa funzione in base al movimento della board permette di illuminare i led utente. </div><div class="ttdef"><b>Definition:</b> <a href="mouse__position_8c_source.html#l00100">mouse_position.c:100</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

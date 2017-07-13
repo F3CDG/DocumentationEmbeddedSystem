@@ -1,0 +1,432 @@
+\hypertarget{uiodriver__function_8c}{}\section{Riferimenti per il file Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Seconda\+\_\+\+Tipologia/uiodriver\+\_\+function.c}
+\label{uiodriver__function_8c}\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Seconda\+\_\+\+Tipologia/uiodriver\+\_\+function.\+c@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Seconda\+\_\+\+Tipologia/uiodriver\+\_\+function.\+c}}
+
+
+Functions used for \textquotesingle{}uiodriver\textquotesingle{} G\+P\+IO.  
+
+
+{\ttfamily \#include \char`\"{}uiodriver\+\_\+header.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per uiodriver\+\_\+function.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage} (char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Describes how \textquotesingle{}uiodriver\textquotesingle{} must be used, specifing all supported options. \end{DoxyCompactList}\item 
+int \hyperlink{uiodriver__function_8c_a04435a9f2d74a3152c3cc9c34e2da3d1}{parse\+\_\+command} (int argc, char $\ast$$\ast$argv, char $\ast$$\ast$uiod, int $\ast$channel, int $\ast$r\+\_\+w, int $\ast$value)
+\begin{DoxyCompactList}\small\item\em Parses uiodriver arguments. \end{DoxyCompactList}\item 
+int \hyperlink{uiodriver__function_8c_ac6c251d508dbd46e49aa0efce35acd03}{open\+\_\+device} (int $\ast$fd, char $\ast$uiod, void $\ast$$\ast$virtual\+\_\+address)
+\begin{DoxyCompactList}\small\item\em Opens uio device file in order to access to it by its virtual address. \end{DoxyCompactList}\item 
+void \hyperlink{uiodriver__function_8c_a3e1ba55a0934d46ff668c541df937c46}{read\+\_\+gpio} (int $\ast$value, void $\ast$virtual\+\_\+address, int channel)
+\begin{DoxyCompactList}\small\item\em Reads the 
+
+in input to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{uiodriver__function_8c_a415a74456e81dc0b9e90977b584a28e4}{write\+\_\+gpio} (int value, char $\ast$uiod, void $\ast$virtual\+\_\+address, int channel)
+\begin{DoxyCompactList}\small\item\em Writes 
+
+in output to G\+P\+IO port. \end{DoxyCompactList}\item 
+void \hyperlink{uiodriver__function_8c_abf66237f202c5bfe377c982c9dcac842}{close\+\_\+device} (int fd, void $\ast$virtual\+\_\+address)
+\begin{DoxyCompactList}\small\item\em Closes /dev/uiox file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Functions used for \textquotesingle{}uiodriver\textquotesingle{} G\+P\+IO. 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+24-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{uiodriver__function_8c_abf66237f202c5bfe377c982c9dcac842}\label{uiodriver__function_8c_abf66237f202c5bfe377c982c9dcac842}} 
+\index{uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}!close\+\_\+device@{close\+\_\+device}}
+\index{close\+\_\+device@{close\+\_\+device}!uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}}
+\subsubsection{\texorpdfstring{close\+\_\+device()}{close\_device()}}
+{\footnotesize\ttfamily void close\+\_\+device (\begin{DoxyParamCaption}\item[{int}]{fd,  }\item[{void $\ast$}]{virtual\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+Closes /dev/uiox file. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em fd} & file descriptor name of uio device \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & uio device\textquotesingle{}s virtual address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 226 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+226                                                \{
+227     munmap(virtual\_address,\hyperlink{uiodriver__header_8h_a9542a6000bf702bcd6cc746a6ea288a5}{GPIO\_MAP\_SIZE});
+228     close(fd);
+229 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiodriver__function_8c_ac6c251d508dbd46e49aa0efce35acd03}\label{uiodriver__function_8c_ac6c251d508dbd46e49aa0efce35acd03}} 
+\index{uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}!open\+\_\+device@{open\+\_\+device}}
+\index{open\+\_\+device@{open\+\_\+device}!uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}}
+\subsubsection{\texorpdfstring{open\+\_\+device()}{open\_device()}}
+{\footnotesize\ttfamily int open\+\_\+device (\begin{DoxyParamCaption}\item[{int $\ast$}]{fd,  }\item[{char $\ast$}]{uiod,  }\item[{void $\ast$$\ast$}]{virtual\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+Opens uio device file in order to access to it by its virtual address. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em fd} & file descriptor name. \\
+\hline
+\mbox{\tt in}  & {\em uiod} & uio device file corrisponding to G\+P\+IO. \\
+\hline
+\mbox{\tt out}  & {\em virtual\+\_\+address} & uio device file\textquotesingle{}s virtual address. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 155 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenziato da main().
+
+
+\begin{DoxyCode}
+155                                                             \{
+156     *fd = open (uiod, O\_RDWR);
+157         \textcolor{keywordflow}{if} (*fd < 1) \{
+158             perror(\textcolor{stringliteral}{"Error to open uio device file"});
+159             \textcolor{keywordflow}{return} -1;
+160         \}
+161         \textcolor{comment}{/* mmap system call returns virtual address of <uiod> file */}
+162         *virtual\_address = mmap(NULL, \hyperlink{uiodriver__header_8h_a9542a6000bf702bcd6cc746a6ea288a5}{GPIO\_MAP\_SIZE}, PROT\_READ|PROT\_WRITE, MAP\_SHARED, *fd, 0)
+      ;
+163     \textcolor{keywordflow}{return} 0;
+164 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiodriver__function_8c_a04435a9f2d74a3152c3cc9c34e2da3d1}\label{uiodriver__function_8c_a04435a9f2d74a3152c3cc9c34e2da3d1}} 
+\index{uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}!parse\+\_\+command@{parse\+\_\+command}}
+\index{parse\+\_\+command@{parse\+\_\+command}!uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}}
+\subsubsection{\texorpdfstring{parse\+\_\+command()}{parse\_command()}}
+{\footnotesize\ttfamily int parse\+\_\+command (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{char $\ast$$\ast$}]{uiod,  }\item[{int $\ast$}]{channel,  }\item[{int $\ast$}]{r\+\_\+w,  }\item[{int $\ast$}]{value }\end{DoxyParamCaption})}
+
+
+
+Parses uiodriver arguments. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em argc} & number of parameters, passed to main function. \\
+\hline
+\mbox{\tt in}  & {\em argv} & parameters passed to main function \\
+\hline
+\mbox{\tt out}  & {\em uiod} & uio device file corrisponding to G\+P\+IO \\
+\hline
+\mbox{\tt out}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\mbox{\tt out}  & {\em r\+\_\+w} & specifies if the operation on G\+P\+IO is a read or a write \\
+\hline
+\mbox{\tt out}  & {\em value} & contains the read value (if the operation on G\+P\+IO is a read) or the value to write (if the operation on G\+P\+IO is a write) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em Integer} & status\+: -\/1 An error occurred; 1 Help function is called; 0 Everything is ok. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 44 del file uiodriver\+\_\+function.\+c.
+
+
+\begin{DoxyCode}
+44                                                                                     \{
+45     \textcolor{keywordtype}{int} index=0;
+46     \textcolor{keywordtype}{int} man\_opt\_d=-1;   \textcolor{comment}{/* Keep track if the mandatory option 'd' is parsed */}
+47     \textcolor{keywordtype}{int} man\_opt\_c=-1;   \textcolor{comment}{/* Keep track if the mandatory option 'c' is parsed */}
+48     \textcolor{keywordtype}{int} i\_or\_o=0;       \textcolor{comment}{/* Keep track if an i|o operation is requested */}
+49     \textcolor{keyword}{static} \textcolor{keywordtype}{char} *optstring = \textcolor{stringliteral}{":d:c:io:h"};
+50 
+51         \textcolor{keywordflow}{while}((index = getopt(argc, argv, optstring)) != -1) \{
+52                 \textcolor{keywordflow}{switch}(index) \{
+53                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}:
+54                     man\_opt\_d=atoi(optarg); \textcolor{comment}{/* Change mand\_opt\_d value to memorize that the option 'd' is
+       parsed */}
+55                     *uiod=optarg;                       
+56                     \textcolor{keywordflow}{break};
+57                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}:
+58                     man\_opt\_c=atoi(optarg); \textcolor{comment}{/* Change mand\_opt\_c value to memorize that the option 'c' is
+       parsed */}
+59                     \textcolor{comment}{/* Check if before 'c' option was passed the mandatory option 'd' */}
+60                     \textcolor{keywordflow}{if}(man\_opt\_d!=-1)\{
+61                         *channel=atoi(optarg);
+62                     \}
+63                     \textcolor{keywordflow}{else}\{
+64                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'd'\(\backslash\)n"});
+65                         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+66                         \textcolor{keywordflow}{return} -1;
+67                     \}
+68                     \textcolor{keywordflow}{break};
+69                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+70                     \textcolor{comment}{/* Check if before 'i' option was passed the mandatory option 'd' */}
+71                     \textcolor{keywordflow}{if}(man\_opt\_d!=-1)\{
+72                         \textcolor{comment}{/* Check if before 'i' option was passed the mandatory option 'c' */}
+73                         \textcolor{keywordflow}{if}(man\_opt\_c!=-1)\{
+74                             *r\_w=\hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ}; \textcolor{comment}{/* Set READ operation for GPIO */}
+75                             i\_or\_o=1;
+76                         \}
+77                         \textcolor{keywordflow}{else}\{
+78                             printf(\textcolor{stringliteral}{"Missing mandatory parameter 'c'\(\backslash\)n"});
+79                             \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+80                             \textcolor{keywordflow}{return} -1;
+81                         \}       
+82                     \}
+83                     \textcolor{keywordflow}{else}\{
+84                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'd'\(\backslash\)n"});
+85                         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+86                         \textcolor{keywordflow}{return} -1;
+87                     \}
+88                     \textcolor{keywordflow}{break};
+89                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}:
+90                     \textcolor{comment}{/* Check if before 'o' option was passed the mandatory option 'd' */}
+91                     \textcolor{keywordflow}{if}(man\_opt\_d!=-1)\{
+92                         \textcolor{comment}{/* Check if before 'o' option was passed the mandatory option 'c' */}
+93                         \textcolor{keywordflow}{if}(man\_opt\_c!=-1)\{
+94                             *r\_w=\hyperlink{mygpio__nodriver_8h_aa10f470e996d0f51210d24f442d25e1e}{WRITE}; \textcolor{comment}{/* Set WRITE operation for GPIO */}
+95                             *value=strtoul(optarg, NULL, 0);
+96                             i\_or\_o=1;
+97                         \}
+98                         \textcolor{keywordflow}{else}\{
+99                             printf(\textcolor{stringliteral}{"Missing mandatory parameter 'c'\(\backslash\)n"});
+100                             \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+101                             \textcolor{keywordflow}{return} -1;
+102                         \}   
+103                     \}
+104                     \textcolor{keywordflow}{else}\{
+105                         printf(\textcolor{stringliteral}{"Missing mandatory parameter 'g'\(\backslash\)n"});
+106                         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+107                         \textcolor{keywordflow}{return} -1;
+108                     \}
+109                     \textcolor{keywordflow}{break};
+110                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+111                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+112                     \textcolor{keywordflow}{return} 1;
+113                     \textcolor{keywordflow}{break};
+114                 \textcolor{keywordflow}{case} \textcolor{charliteral}{':'}:
+115                     printf(\textcolor{stringliteral}{"Missing argument for '%c' option\(\backslash\)n"}, optopt);
+116                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+117                     \textcolor{keywordflow}{return} -1;
+118                     \textcolor{keywordflow}{break};
+119                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}:
+120                     printf(\textcolor{stringliteral}{"Option '%c' not recognized\(\backslash\)n"}, optopt);
+121                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+122                     \textcolor{keywordflow}{return} -1;
+123                     \textcolor{keywordflow}{break};
+124                 \textcolor{keywordflow}{default}:
+125                     \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+126                     \textcolor{keywordflow}{return} -1;
+127                     \textcolor{keywordflow}{break};
+128                 \}
+129         
+130             \}
+131     \textcolor{comment}{/* Check if channel number is right*/}
+132     \textcolor{keywordflow}{if}(*channel!=\hyperlink{uiodriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}{GPIO\_CHANNEL\_1} && *channel!=\hyperlink{uiodriver__header_8h_ae66d9f4c742e468bb1bec4d89df7ea8e}{GPIO\_CHANNEL\_2})\{
+133         printf(\textcolor{stringliteral}{"Wrong channel number inserted\(\backslash\)n"});
+134         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+135         \textcolor{keywordflow}{return} -1;
+136     \}
+137     
+138     \textcolor{comment}{/* Check if an i|o operation is requested */}    
+139     \textcolor{keywordflow}{if}(i\_or\_o==0)\{
+140         printf(\textcolor{stringliteral}{"Can't use "}\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"uiodriver "}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"without specify i|o option\(\backslash\)n"});
+141         \hyperlink{uiodriver__function_8c_a1ad940455be56209415d328d78622715}{usage}(argv[0]);
+142         \textcolor{keywordflow}{return} -1;
+143     \}
+144     \textcolor{keywordflow}{return} 0;   
+145 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiodriver__function_8c_a3e1ba55a0934d46ff668c541df937c46}\label{uiodriver__function_8c_a3e1ba55a0934d46ff668c541df937c46}} 
+\index{uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}!read\+\_\+gpio@{read\+\_\+gpio}}
+\index{read\+\_\+gpio@{read\+\_\+gpio}!uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}}
+\subsubsection{\texorpdfstring{read\+\_\+gpio()}{read\_gpio()}}
+{\footnotesize\ttfamily void read\+\_\+gpio (\begin{DoxyParamCaption}\item[{int $\ast$}]{value,  }\item[{void $\ast$}]{virtual\+\_\+address,  }\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Reads the 
+
+in input to G\+P\+IO port. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em value} & read value. \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & uio device file\textquotesingle{}s virtual address. \\
+\hline
+\mbox{\tt in}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 173 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenzia G\+P\+I\+O2\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O2\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET, G\+P\+I\+O\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1, G\+P\+I\+O\+\_\+\+D\+A\+T\+A\+\_\+\+O\+F\+F\+S\+ET, e G\+P\+I\+O\+\_\+\+T\+R\+I\+\_\+\+O\+F\+F\+S\+ET.
+
+
+\begin{DoxyCode}
+173                                                             \{
+174     \textcolor{comment}{/* Set the offsets to access to right gpio channel (1 or 2) */}
+175     \textcolor{keywordtype}{int} gpio\_tri\_off;
+176     \textcolor{keywordtype}{int} gpio\_data\_off;
+177     \textcolor{keywordflow}{if}(channel==\hyperlink{uiodriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}{GPIO\_CHANNEL\_1})\{
+178         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a6e2a77c24e8a4e2b3800085ac10a8cf6}{GPIO\_TRI\_OFFSET};
+179         gpio\_data\_off=\hyperlink{uiodriver__header_8h_a78907649b00f7076af686bcac4cd1b8c}{GPIO\_DATA\_OFFSET};
+180     \}
+181     \textcolor{keywordflow}{else}\{
+182         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a91469d73222e41cf0b69a0331cb14770}{GPIO2\_TRI\_OFFSET};
+183         gpio\_data\_off=\hyperlink{uiodriver__header_8h_aec02b8e8ed2da2cfc630a5b1b3cb0277}{GPIO2\_DATA\_OFFSET};
+184     \}   
+185     \textcolor{comment}{/* Set GPIO\_TRI register values to configure the GPIO port as input */}
+186     *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_tri\_off)) = 255;
+187     \textcolor{comment}{/* Memorize the value from GPIO port in <value> */}
+188     *value = *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_data\_off));
+189     printf(\textcolor{stringliteral}{"The value on channel %d GPIO input is: %08x\(\backslash\)n"},channel,*value);
+190 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiodriver__function_8c_a1ad940455be56209415d328d78622715}\label{uiodriver__function_8c_a1ad940455be56209415d328d78622715}} 
+\index{uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}!usage@{usage}}
+\index{usage@{usage}!uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Describes how \textquotesingle{}uiodriver\textquotesingle{} must be used, specifing all supported options. 
+
+Describes how \textquotesingle{}nodriver\textquotesingle{} must be used, specifing all supported options.
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Specifies uiodriver name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 19 del file uiodriver\+\_\+function.\+c.
+
+
+
+Referenzia B\+O\+L\+D\+W\+H\+I\+TE, G\+R\+E\+EN, e R\+E\+S\+ET.
+
+
+
+Referenziato da parse\+\_\+command().
+
+
+\begin{DoxyCode}
+19                       \{
+20     printf(\textcolor{stringliteral}{"The right way to use this driver is\(\backslash\)n"});
+21     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"%s -d <UIO\_DEV\_FILE> -c <CHANNEL> -i|-o <VALUE>\(\backslash\)n"}
+      \hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET},name);
+22     printf(\textcolor{stringliteral}{"Please, pay attention:\(\backslash\)n"});
+23     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)t-d"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<UIO\_DEV\_FILE>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <UIO\_DEV\_FILE>\(\backslash\)n\(\backslash\)t\(\backslash\)tspecifies the uio device file corrisponding\(\backslash\)n\(\backslash\)t\(\backslash\)t to GPIO, for example
+       /dev/uio0.\(\backslash\)n"});
+24     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-c"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<CHANNEL>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <CHANNEL> specify\(\backslash\)n\(\backslash\)t\(\backslash\)tthe GPIO channel to use \(\backslash\)n\(\backslash\)t\(\backslash\)tThis number must be 1 or 2"});
+25     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-i"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tSpecifies the input value of GPIO \(\backslash\)n\(\backslash\)t\(\backslash\)tcorrisponding
+       to <UIO\_DEV\_FILE> \(\backslash\)n"});
+26     printf(\hyperlink{mygpio__nodriver_8h_aa4ef051614aa0bd503b0a18ee158c5d7}{BOLDWHITE}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t-o"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET} \hyperlink{mygpio__nodriver_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}\textcolor{stringliteral}{"\(\backslash\)t<VALUE>"}\hyperlink{mygpio__nodriver_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)t\(\backslash\)tThe mandatory
+       parameter <VALUE> specify\(\backslash\)n\(\backslash\)t\(\backslash\)tthe value must be write on GPIO output \(\backslash\)n"});
+27     \textcolor{keywordflow}{return};
+28 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{uiodriver__function_8c_a415a74456e81dc0b9e90977b584a28e4}\label{uiodriver__function_8c_a415a74456e81dc0b9e90977b584a28e4}} 
+\index{uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}!write\+\_\+gpio@{write\+\_\+gpio}}
+\index{write\+\_\+gpio@{write\+\_\+gpio}!uiodriver\+\_\+function.\+c@{uiodriver\+\_\+function.\+c}}
+\subsubsection{\texorpdfstring{write\+\_\+gpio()}{write\_gpio()}}
+{\footnotesize\ttfamily void write\+\_\+gpio (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{char $\ast$}]{uiod,  }\item[{void $\ast$}]{virtual\+\_\+address,  }\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Writes 
+
+in output to G\+P\+IO port. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em value} & write value. \\
+\hline
+\mbox{\tt in}  & {\em uiod} & uio device file corrisponding to G\+P\+IO \\
+\hline
+\mbox{\tt in}  & {\em virtual\+\_\+address} & uio device file\textquotesingle{}s virtual address. \\
+\hline
+\mbox{\tt in}  & {\em channel} & number corrisponding to G\+P\+IO channel \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valori di ritorno}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definizione alla linea 200 del file uiodriver\+\_\+function.\+c.
+
+
+\begin{DoxyCode}
+200                                                                         \{
+201     \textcolor{comment}{/* Set the offsets to access to right gpio channel (1 or 2) */}
+202     \textcolor{keywordtype}{int} gpio\_tri\_off;
+203     \textcolor{keywordtype}{int} gpio\_data\_off;
+204     \textcolor{keywordflow}{if}(channel==\hyperlink{uiodriver__header_8h_a4f0172bedfc5bf880e406808cd6b5e4c}{GPIO\_CHANNEL\_1})\{
+205         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a6e2a77c24e8a4e2b3800085ac10a8cf6}{GPIO\_TRI\_OFFSET};
+206         gpio\_data\_off=\hyperlink{uiodriver__header_8h_a78907649b00f7076af686bcac4cd1b8c}{GPIO\_DATA\_OFFSET};
+207     \}
+208     \textcolor{keywordflow}{else}\{
+209         gpio\_tri\_off=\hyperlink{uiodriver__header_8h_a91469d73222e41cf0b69a0331cb14770}{GPIO2\_TRI\_OFFSET};
+210         gpio\_data\_off=\hyperlink{uiodriver__header_8h_aec02b8e8ed2da2cfc630a5b1b3cb0277}{GPIO2\_DATA\_OFFSET};
+211     \}
+212     \textcolor{comment}{/* Set GPIO\_TRI register values to configure the GPIO port as output */}
+213     *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_tri\_off)) = 0;
+214     printf(\textcolor{stringliteral}{"Value %08x is going to write onto %s (channel %d)\(\backslash\)n"}, value, uiod, channel);
+215     \textcolor{comment}{/* Write <value> in GPIO register */}
+216     *((\textcolor{keywordtype}{unsigned} *)(virtual\_address + gpio\_data\_off)) = value;
+217 
+218 \}
+\end{DoxyCode}

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Esame di Sistemi Embedded 2016/17 - Gruppo 4: Riepilogo della documentazione interna relativa agli esercizi svolti</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="LogoGruppoIV.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Esame di Sistemi Embedded 2016/17 - Gruppo 4
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Riepilogo della documentazione interna relativa agli esercizi svolti </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="firstintro"></a>
+Capitolo 1  - GPIO custom su Zybo</h1>
+<p>Questo progetto mostra come sia possibile tramite specifici driver, pilotare una o più periferiche di GPIO. Saranno mostrate 3 versioni ma del tutto equivalenti. </p>
+<h2><a class="anchor" id="firstfirst"></a>
+Prima versione</h2>
+<p>Libreria HAL driver con relativa applicazione per una GPIO custom scritta in linguaggio C</p>
+<h2><a class="anchor" id="firstsecond"></a>
+Seconda versione</h2>
+<p>Libreria HAL driver con relativa applicazione per una GPIO custom scritta in linguaggio C orientato agli oggetti.</p>
+<h2><a class="anchor" id="firsttirht"></a>
+Terza versione</h2>
+<p>Libreria HAL driver con relativa applicazione per una GPIO custom, arricchita del supporto alle interruzioni, scritta in linguaggio C</p>
+<h1><a class="anchor" id="second"></a>
+Capitolo 2- BSP custom per STM32F4</h1>
+<p>Questo progetto permette di ottenere una BSP (Board Support Package) custom per la gestione dei led e bottone utente di una board STM32F4 Discovery. Inoltre si aggiunge la possibilità di gestire una periferica di timer funzionalmente equivalente ad un contatore. Oltre all'implementazione di una BSP, vengono proposti 3 semplici driver che ne fanno utilizzo. Infine un esempio di applicativo che utilizza uno di questi 3 driver.</p>
+<h1><a class="anchor" id="tirth"></a>
+Capitolo 3 - Esempi di utilizzo delle interruzioni su board STM</h1>
+<p>Questo progetto mostra 3 esempi di utilizzo delle interrupt secondo due livelli di astrazione: BARE metal, HAL. </p>
+<h2><a class="anchor" id="thirtfirst"></a>
+Interrupt BARE metal</h2>
+<p>In questo esempio si mostra una semplice ISR implementata a livello BARE metal; si può notare come a tale livello di astrazione è necessaria un'intera gestione dell'evento interrompente. Nell'esempio proposto alla pressione del bottone utente viene generata una interruzione sulla periferica EXTI0, la quale permette ad ogni invocazione di incrementare il valore di una variabile, che nella fattispecie realizza un contatore modulo 16. Si evidenzia come l'ultima istruzione della ISR sia necessaria affinché il processore effettui il cambio di contesto ritornando così all'esecuzione del programma principale. </p>
+<h2><a class="anchor" id="thirthsecond"></a>
+Interrupt HAL</h2>
+<p>Sull'esempio descritto in precedenza, si mostra un modo alternativo per gestire le interruzioni. In particolare a livello HAL è astratto tutto il meccanismo alla corretta gestione dell'interruzione. Si rende necessario solo l'implementazione della logica utente. </p>
+<h2><a class="anchor" id="thirtthirth"></a>
+Interrupt BARE metal versione 2</h2>
+<p>Rispetto alla versione BARE metal descritta in precedenza, l'interruzione viene lanciata su EXTI1.</p>
+<h1><a class="anchor" id="fourth"></a>
+Capitolo 4 -  Esempi di utilizzo dei bus seriali su STM</h1>
+<p>Sono riportati 3 esempi di utilizzo di interconnessione tra due board di STMicroeletrinics in cui si esegue una trasmissione di un messaggio tra una board configurata per essere utilizzata da master e un'altra per essere utilizzata da slave. </p>
+<h2><a class="anchor" id="fourthone"></a>
+SPI</h2>
+<p>Quando è premuto il push-button sulla board che funge da master si genera una interrupt che fa eseguire la trasmit di un dato allo slave che quando riceve il messaggio fa il toggle su un led.</p>
+<p>La configurazione tra le due periferiche è la seguente </p><pre class="fragment">        MASTER         SLAVE
+    PB13 (SPI2_SCK) ------&gt; PB13 (SLAVE_SCK)
+    PB14 (SPI2_MISO)------&gt; PB14 (SLAVE_MISO)
+    PB15 (SPI2_MOSI)------&gt; PB15 (SLAVE_MOSI)
+    PB12 (SPI2_NSS) ------&gt; PB12 (SLAVE_NSS)
+</pre> <h2><a class="anchor" id="fourthtwo"></a>
+I2C</h2>
+<p>Si simula lo stesso esempio visto per SPI, quando è premuto il push-button sulla board configurata da master si genera una interrupt che fa eseguire la trasmissione di un dato allo slave di un determinato indirizzo concordato.</p>
+<p>La configurazione tra le due periferiche è la seguente </p><pre class="fragment">         MASTER               SLAVE
+    PB6 (I2C1_SDA) ------&gt; PB6 (SLAVE_SDA)
+    PB7 (I2C1_SCL) ------&gt; PB7 (SLAVE_SCL)
+</pre> <h2><a class="anchor" id="fourththree"></a>
+UART</h2>
+<p>Si è in attesa che si preme il push button sulla board configurata da master, per poter generare una trasmissione. Se la trasmissione è completata con successo, si fa un toggle sul LED6, e si procede al polling di una ricezione. Se anche la ricezione è completata con successo, si accende il led associato al dato ricevuto in receive_data e si incrementa il valore ricevuto, di una unità per poterlo inviare di nuovo al master. La configurazione tra le due periferiche è la seguente </p><pre class="fragment">        MASTER      SLAVE
+    PA2 (UART_TX) ------&gt; PA3 (SLAVE_UART RX)
+    PA3 (UART_RX) ------&gt; PA2 (SLAVE UART TX)
+</pre><h1><a class="anchor" id="fifth"></a>
+Capitolo 5 - Esempi di utilizzo dell'Universal Serial Bus su STM32</h1>
+<p>Questo progetto mostra 2 esempi di utilizzo dell'USB su board STM32; il primo evidenzia un semplice meccanismo per l'invio dati in maniera seriale, il secondo invece l'implementazione di un device USB. </p>
+<h2><a class="anchor" id="fifthfirst"></a>
+Virtual COM Port</h2>
+<p>In questo esempio viene mostrato come tramite l'utilizzo della classe CDC (Communication Device Class) sia possibile simulare un trasferimento seriale UART, sfruttando una porta COM virtuale. Tale applicazione può essere sfruttata in altri contesti per stampare messaggi su video a scopo di debug. L'esercizio proposto è implementato sfruttando il middlware (già presente nella libreria CUBE) relativo alle virtual COM port. </p>
+<h3><a class="anchor" id="fifthsecond"></a>
+Mouse USB</h3>
+<p>In questo esempio viene mostrato come sfruttando l'accellerometro in dotazione alla board STM32F4 Discovery, è possibile implementare un mouse sfruttando il middlware relativo alle periferiche HID. </p>
+<h1><a class="anchor" id="six"></a>
+Capitolo 6  - Kernel</h1>
+<p>Tale Capitolo è sprovvisto di documentazione interna. </p>
+<h1><a class="anchor" id="secondintro"></a>
+Capitolo 7  -Driver Linux</h1>
+<p>In questa documentazione sono presenti dei driver per SO Linux al fine di controllare scrittura e lettura di una GPIO. I driver sono stati sviluppat sia per la GPIO fornita dalla Xilinx, sia per una GPIO custom realizzata ai fini dell'esame di Sistemi Embedded e presente nel capitolo 1 della documentazione. </p>
+<h2><a class="anchor" id="seven"></a>
+Prima tipologia di driver</h2>
+<p>Con questa tipologia di driver l'accesso ai registri della periferica GPio viene effettuato utilizzando direttamente l'indirizzo fisico della periferica. Per la precisione, dato il meccanismo di virtualizzazione del SO, da tale indirizzo viene ricavato, tramite la system call mmap, un indirizzo virtuale. Tramite questo vengono effettuate le operazioni di lettura e scrittura, fornendo opportunamente alle funzioni gli spiazzamenti dei registri interni della periferica. Per ulteriore approfondimento si rimanda a <a href="https://www.xilinx.com/support/documentation/ip_documentation/axi_gpio/v2_0/pg144-axi-gpio.pdf">https://www.xilinx.com/support/documentation/ip_documentation/axi_gpio/v2_0/pg144-axi-gpio.pdf</a>. </p>
+<h2><a class="anchor" id="sevensecond"></a>
+Seconda tipologia di driver</h2>
+<p>Il driver è simile al precedente. La principale differenza sta nel fatto che non si accede più alla periferica tramite indirizzo fisico, ma attraverso il device uio file che viene riconosciuto dal SO. E' chiaro che per utilizzare questa tipologia di driver, bisogna configurare il kernel Linux in modo tale da prevedere l'impiego di driver uio. Una volta acceduto alla periferica, il funzionamento è praticamente lo stesso del precedente driver. </p>
+<h2><a class="anchor" id="seventhird"></a>
+Terza tipologia di driver</h2>
+<p>Quest'ultima tipologia è simile alla precedente per quanto riguarda la modalità di accesso alla periferica. La differenza sta nell'utilizzo del meccanismo delle interruzioni per la lettura. In base alla GPIO utilizzata, quando avviene un'operazione di lettura, la prima istruzione eseguita è l'abilitazione generale delle interruzioni sulla periferica. Successivamente vengono abilitate le interruzioni dei canali (se la GPIO è della Xilinx), altrimenti viene abilitata la maschera delle interruzioni di ogni singolo port (se la GPIO è quella custom). A questo punto il processo si sospende sulla periferica mediante un'operazione di read. Quando viene risvegliato dall'interruzione, il driver disabilita le interruzioni sopra citate, legge il valore sul porto di input infine comunica al SO di aver servito l'interruzione e pulisce il registro di status della periferica.</p>
+<h1><a class="anchor" id="eight"></a>
+Capitolo 8 - Esempi di utilizzo del Sistema Operativo FreeRtos su STM32F4Discovery</h1>
+<p>E' riportato il codice utilizzato per implementare diversi esempi di utilizzo di task attraverso il sistema operativo FreeRTOS. Sono state effettuate diverse simulazioni variando sia il numero di task che il valore delle macro Priority e Delay. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

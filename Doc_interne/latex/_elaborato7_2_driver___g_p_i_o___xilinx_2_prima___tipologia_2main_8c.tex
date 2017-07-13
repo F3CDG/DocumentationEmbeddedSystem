@@ -1,0 +1,93 @@
+\hypertarget{_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c}{}\section{Riferimenti per il file Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/main.c}
+\label{_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c}\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/main.\+c@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/main.\+c}}
+
+
+driver \char`\"{}nodriver\char`\"{} to control gpio  
+
+
+{\ttfamily \#include \char`\"{}nodriver\+\_\+header.\+h\char`\"{}}\newline
+Grafo delle dipendenze di inclusione per main.\+c\+:
+% FIG 0
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+driver \char`\"{}nodriver\char`\"{} to control gpio 
+
+\begin{DoxyAuthor}{Autori}
+Colella Gianni -\/ Guida Ciro -\/ Lombardi Daniele / Group IV -\/ Sistemi Embedded 2016-\/2017 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+V1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+22-\/\+June-\/2017 
+\end{DoxyDate}
+
+
+\subsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/main.\+c@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/main.\+c}!main@{main}}
+\index{main@{main}!Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/main.\+c@{Elaborato7/\+Driver\+\_\+\+G\+P\+I\+O\+\_\+\+Xilinx/\+Prima\+\_\+\+Tipologia/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+$<$ First step
+
+Variables Declaration
+
+$<$ Second step
+
+parse\+\_\+command function is called to parse all argument passed to driver nodriver
+
+$<$ Third step
+
+open\+\_\+memory function is called to achieve gpio virtual address
+
+$<$ Fourth step
+
+read\+\_\+gpio is called if r\+\_\+w variable is R\+E\+AD, otherwise is called write\+\_\+gpio function
+
+$<$ First step
+
+close\+\_\+memory function is called to close memory file and delete file descriptor 
+
+Definizione alla linea 14 del file main.\+c.
+
+
+
+Referenzia close\+\_\+memory(), open\+\_\+memory(), parse\+\_\+command(), R\+E\+AD, read\+\_\+gpio(), e write\+\_\+gpio().
+
+
+\begin{DoxyCode}
+14                                 \{
+17     \textcolor{keywordtype}{int} file\_descriptor; \textcolor{comment}{/* Memory file descriptor */}
+18     \textcolor{keywordtype}{int} r\_w=\hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ};   \textcolor{comment}{/* Saves operation's type to do with GPIO */}
+19     \textcolor{keywordtype}{int} r\_or\_w\_value = 0;   \textcolor{comment}{/* Saves read/write value from/on GPIO */}
+20     \textcolor{keywordtype}{int} ret\_parse;  \textcolor{comment}{/* Returned value from parse\_command function */}
+21 
+22     \textcolor{keywordtype}{unsigned} phy\_addr, page\_off;    \textcolor{comment}{/* Respectively physical address of GPIO and page offset */}
+23     \textcolor{keywordtype}{void} *virt\_addr;    \textcolor{comment}{/* Virtual address of GPIO */}
+26     \textcolor{comment}{/* Check if parse\_command function returns error */}
+27     \textcolor{keywordflow}{if}((ret\_parse=\hyperlink{nodriver__function_8c_ad71f324b0b8d614e948aaba3d3b6adf6}{parse\_command}(argc,argv,&phy\_addr,&r\_w,&r\_or\_w\_value))==1)
+28         \textcolor{keywordflow}{return} 0;
+29     \textcolor{keywordflow}{else}
+30         \textcolor{keywordflow}{if}(ret\_parse==-1)
+31             \textcolor{keywordflow}{return} -1;
+34     \textcolor{comment}{/* Check if open\_memory function returns error */}
+35     \textcolor{keywordflow}{if}(\hyperlink{nodriver__function_8c_ab1fce32e83ddc128ebf724c0e9018dbb}{open\_memory}(&file\_descriptor,phy\_addr,&page\_off,&virt\_addr)==-1)\{
+36         printf(\textcolor{stringliteral}{"nodriver aborted!\(\backslash\)n"});
+37         \textcolor{keywordflow}{return} -1;
+38     \}
+39     \textcolor{comment}{//}
+42 \textcolor{comment}{}    \textcolor{keywordflow}{if} (r\_w == \hyperlink{mygpio__nodriver_8h_ada74e7db007a68e763f20c17f2985356}{READ}) \hyperlink{nodriver__function_8c_a9ed1f99b74a4b2b5e5e376eaece20b2c}{read\_gpio}(&r\_or\_w\_value,virt\_addr,page\_off);
+43     \textcolor{keywordflow}{else} \hyperlink{nodriver__function_8c_a0ac7c00c85fcfbd6c592c298b631b0cf}{write\_gpio}(r\_or\_w\_value,phy\_addr,virt\_addr,page\_off);
+46     \hyperlink{nodriver__function_8c_ab362c9c10e96f603b33b2e194cd774a6}{close\_memory}(file\_descriptor,virt\_addr);
+47 
+48     \textcolor{keywordflow}{return} 0;
+49 \}
+\end{DoxyCode}

@@ -1,0 +1,10 @@
+digraph "Elaborato1/1_2_Driver_C_OO_NoInt/gpio_custom.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node4 [label="Elaborato1/1_2_Driver\l_C_OO_NoInt/gpio_custom.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="Elaborato1/1_2_Driver\l_C_OO_NoInt/gpio_custom.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$1__2___driver___c___o_o___no_int_2gpio__custom_8c.html",tooltip="Questo file mette a disposizione un firmware per gestire il comportamento della periferica. "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Elaborato1/1_2_Driver\l_C_OO_NoInt/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_elaborato1_21__2___driver___c___o_o___no_int_2main_8c.html",tooltip="Programma principale che contiene al suo interno l&#39;implemetazione di un particolare driver che pilota..."];
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Esame di Sistemi Embedded 2016/17 - Gruppo 4:  File sorgente Elaborato7/Driver_GPIO_Custom/Prima_Tipologia/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="LogoGruppoIV.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Esame di Sistemi Embedded 2016/17 - Gruppo 4
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_ac26826221bc29db0d10143d711cd044.html">Elaborato7</a></li><li class="navelem"><a class="el" href="dir_c8beae3eeda76ec7450e5e18a5d77667.html">Driver_GPIO_Custom</a></li><li class="navelem"><a class="el" href="dir_ffeb27aac69b05ad2df632d2f26506b7.html">Prima_Tipologia</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">main.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_elaborato7_2_driver___g_p_i_o___custom_2_prima___tipologia_2main_8c.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/* Includes ------------------------------------------------------------------*/</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mygpio__nodriver_8h.html">mygpio_nodriver.h</a>&quot;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="_elaborato7_2_driver___g_p_i_o___custom_2_prima___tipologia_2main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">   14</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="_elaborato1_21__1___driver___c___no_int_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]){</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structmygpio___type_def.html">mygpio_TypeDef</a> mygpio; <span class="comment">/* Structure associated to GPIO custom peripheral */</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> ret_parse;      <span class="comment">/* Returned value from mygpio_parse_command function */</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">/* Check if mygpio_parse_command function returns error */</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span>((ret_parse=<a class="code" href="mygpio__nodriver_8c.html#ab67f77691723db202f2d9a636e0ac503">mygpio_parse_command</a>(argc,argv,&amp;mygpio))==1)</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">else</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">if</span>(ret_parse==-1)</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">/* Check if mygpio_open_memory function returns error */</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="mygpio__nodriver_8c.html#a29375cbc2ac2eab8b232500d1fa35fbd">mygpio_open_memory</a>(&amp;mygpio)==-1){</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        printf(<span class="stringliteral">&quot;nodriver aborted!\n&quot;</span>);</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"></span>    <span class="keywordflow">if</span> ((mygpio.<a class="code" href="structmygpio___type_def.html#ad380cd40cc8cd86e745f5f14eca7cb44">r_w</a>) == <a class="code" href="mygpio__nodriver_8h.html#ada74e7db007a68e763f20c17f2985356">READ</a>) <a class="code" href="mygpio__nodriver_8c.html#aa632bf935e4617cf86315fe3041d6ccc">mygpio_read_gpio</a>(&amp;mygpio);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">else</span> <a class="code" href="mygpio__nodriver_8c.html#a8183896dee021f12c473ecc353e3b42c">mygpio_write_gpio</a>(&amp;mygpio);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="mygpio__nodriver_8c.html#aec53b5a0f3d713bc067c3d1d0121598f">mygpio_close_memory</a>(&amp;mygpio);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div><div class="ttc" id="mygpio__nodriver_8c_html_aec53b5a0f3d713bc067c3d1d0121598f"><div class="ttname"><a href="mygpio__nodriver_8c.html#aec53b5a0f3d713bc067c3d1d0121598f">mygpio_close_memory</a></div><div class="ttdeci">void mygpio_close_memory(mygpio_TypeDef *mygpio)</div><div class="ttdoc">Closes /dev/mem file. </div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8c_source.html#l00165">mygpio_nodriver.c:165</a></div></div>
+<div class="ttc" id="structmygpio___type_def_html_ad380cd40cc8cd86e745f5f14eca7cb44"><div class="ttname"><a href="structmygpio___type_def.html#ad380cd40cc8cd86e745f5f14eca7cb44">mygpio_TypeDef::r_w</a></div><div class="ttdeci">int r_w</div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8h_source.html#l00027">mygpio_nodriver.h:27</a></div></div>
+<div class="ttc" id="mygpio__nodriver_8c_html_a29375cbc2ac2eab8b232500d1fa35fbd"><div class="ttname"><a href="mygpio__nodriver_8c.html#a29375cbc2ac2eab8b232500d1fa35fbd">mygpio_open_memory</a></div><div class="ttdeci">int mygpio_open_memory(mygpio_TypeDef *mygpio)</div><div class="ttdoc">Opens /dev/mem file in order to access custom GPIO address and calculates page offset and virtual add...</div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8c_source.html#l00117">mygpio_nodriver.c:117</a></div></div>
+<div class="ttc" id="mygpio__nodriver_8h_html"><div class="ttname"><a href="mygpio__nodriver_8h.html">mygpio_nodriver.h</a></div><div class="ttdoc">library mygpio_nodriver gpio </div></div>
+<div class="ttc" id="_elaborato1_21__1___driver___c___no_int_2main_8c_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="_elaborato1_21__1___driver___c___no_int_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="_elaborato1_21__1___driver___c___no_int_2main_8c_source.html#l00021">main.c:21</a></div></div>
+<div class="ttc" id="structmygpio___type_def_html"><div class="ttname"><a href="structmygpio___type_def.html">mygpio_TypeDef</a></div><div class="ttdoc">Data Structure to manage data associated to GPIO custom peripheral. </div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8h_source.html#l00023">mygpio_nodriver.h:23</a></div></div>
+<div class="ttc" id="mygpio__nodriver_8c_html_a8183896dee021f12c473ecc353e3b42c"><div class="ttname"><a href="mygpio__nodriver_8c.html#a8183896dee021f12c473ecc353e3b42c">mygpio_write_gpio</a></div><div class="ttdeci">void mygpio_write_gpio(mygpio_TypeDef *mygpio)</div><div class="ttdoc">Writes &lt;mygpio-&gt;r_or_w_value&gt; in output to GPIO port. </div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8c_source.html#l00152">mygpio_nodriver.c:152</a></div></div>
+<div class="ttc" id="mygpio__nodriver_8c_html_aa632bf935e4617cf86315fe3041d6ccc"><div class="ttname"><a href="mygpio__nodriver_8c.html#aa632bf935e4617cf86315fe3041d6ccc">mygpio_read_gpio</a></div><div class="ttdeci">void mygpio_read_gpio(mygpio_TypeDef *mygpio)</div><div class="ttdoc">Reads the &lt;mygpio-&gt;r_or_w_value&gt; in input to GPIO port. </div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8c_source.html#l00140">mygpio_nodriver.c:140</a></div></div>
+<div class="ttc" id="mygpio__nodriver_8h_html_ada74e7db007a68e763f20c17f2985356"><div class="ttname"><a href="mygpio__nodriver_8h.html#ada74e7db007a68e763f20c17f2985356">READ</a></div><div class="ttdeci">#define READ</div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8h_source.html#l00040">mygpio_nodriver.h:40</a></div></div>
+<div class="ttc" id="mygpio__nodriver_8c_html_ab67f77691723db202f2d9a636e0ac503"><div class="ttname"><a href="mygpio__nodriver_8c.html#ab67f77691723db202f2d9a636e0ac503">mygpio_parse_command</a></div><div class="ttdeci">int mygpio_parse_command(int argc, char **argv, mygpio_TypeDef *mygpio)</div><div class="ttdoc">Parses nodriver arguments. </div><div class="ttdef"><b>Definition:</b> <a href="mygpio__nodriver_8c_source.html#l00039">mygpio_nodriver.c:39</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

@@ -1,0 +1,10 @@
+digraph "Elaborato7/Driver_GPIO_Xilinx/Prima_Tipologia/nodriver_header.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node7 [label="Elaborato7/Driver_GPIO\l_Xilinx/Prima_Tipologia\l/nodriver_header.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Elaborato7/Driver_GPIO\l_Xilinx/Prima_Tipologia\l/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c.html",tooltip="driver \"nodriver\" to control gpio "];
+  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Elaborato7/Driver_GPIO\l_Xilinx/Prima_Tipologia\l/nodriver_function.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$nodriver__function_8c.html",tooltip="Functions used for nodriver gpio. "];
+}

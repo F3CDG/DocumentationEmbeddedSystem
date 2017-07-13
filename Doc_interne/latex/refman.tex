@@ -1,0 +1,211 @@
+\documentclass[twoside]{book}
+
+% Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage[export]{adjustbox} % also loads graphicx
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
+\usepackage[table]{xcolor}
+
+% NLS support packages
+\usepackage[italian]{babel}
+
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{3ex plus 2ex minus 2ex}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Generato da Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Generato da Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+\usepackage{caption}
+\captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+
+%===== C O N T E N T S =====
+
+\begin{document}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false,
+             bookmarksnumbered=true,
+             pdfencoding=unicode
+            }
+\pagenumbering{alph}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}%
+{\Large Esame di Sistemi Embedded 2016/17 -\/ Gruppo 4 }\\
+\vspace*{1cm}
+{\large Generato da Doxygen 1.8.14}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+%--- Begin generated contents ---
+\chapter{Riepilogo della documentazione interna relativa agli esercizi svolti}
+\label{index}\hypertarget{index}{}\input{index}
+\chapter{Indice dei tipi composti}
+\input{annotated}
+\chapter{Indice dei file}
+\input{files}
+\chapter{Documentazione delle classi}
+\input{structgpio__custom___type_def}
+\input{structmygpio___type_def}
+\chapter{Documentazione dei file}
+\input{gpio__functions_8c}
+\input{gpio__header_8h}
+\input{_elaborato1_21__1___driver___c___no_int_2main_8c}
+\input{_elaborato1_21__2___driver___c___o_o___no_int_2main_8c}
+\input{_elaborato1_21__3___driver___c___o_o___int_2main_8c}
+\input{_elaborato2_2src_2main_8c}
+\input{_elaborato3_2_elaborato3__1___interrupt_b_a_r_e_2main_8c}
+\input{_elaborato3_2_elaborato3__1___interrupt_h_a_l_2main_8c}
+\input{_elaborato3_2_elaborato3__2___interrupt___e_x_t_i1_2main_8c}
+\input{_elaborato5_2_elaborato5__1___virtual___c_o_m___port_2main_8c}
+\input{_elaborato5_2_elaborato5__2___mouse___h_i_d_2main_8c}
+\input{_elaborato7_2_driver___g_p_i_o___custom_2_prima___tipologia_2main_8c}
+\input{_elaborato7_2_driver___g_p_i_o___custom_2_seconda___tipologia_2main_8c}
+\input{_elaborato7_2_driver___g_p_i_o___custom_2_terza___tipologia_2main_8c}
+\input{_elaborato7_2_driver___g_p_i_o___xilinx_2_prima___tipologia_2main_8c}
+\input{_elaborato7_2_driver___g_p_i_o___xilinx_2_seconda___tipologia_2main_8c}
+\input{_elaborato7_2_driver___g_p_i_o___xilinx_2_terza___tipologia_2main_8c}
+\input{_elaborato8_2main_8c}
+\input{1__2___driver___c___o_o___no_int_2gpio__custom_8c}
+\input{1__3___driver___c___o_o___int_2gpio__custom_8c}
+\input{1__2___driver___c___o_o___no_int_2gpio__custom_8h}
+\input{1__3___driver___c___o_o___int_2gpio__custom_8h}
+\input{driver_8c}
+\input{driver_8h}
+\input{my__bsp__custom_8c}
+\input{my__bsp__custom_8h}
+\input{main__master__i2c_8c}
+\input{main__slave__i2c_8c}
+\input{main__spi__master__it_8c}
+\input{main__spi__slave_8c}
+\input{main__master__uart_8c}
+\input{main__slave__uart_8c}
+\input{mouse__position_8c}
+\input{mouse__position_8h}
+\input{mygpio__nodriver_8c}
+\input{mygpio__nodriver_8h}
+\input{mygpio__uiodriver_8c}
+\input{mygpio__uiodriver_8h}
+\input{mygpio__uiointdriver_8c}
+\input{mygpio__uiointdriver_8h}
+\input{nodriver__function_8c}
+\input{nodriver__header_8h}
+\input{uiodriver__function_8c}
+\input{uiodriver__header_8h}
+\input{uiointdriver__function_8c}
+\input{uiointdriver__header_8h}
+\input{mainpage_8dox}
+%--- End generated contents ---
+
+% Index
+\backmatter
+\newpage
+\phantomsection
+\clearemptydoublepage
+\addcontentsline{toc}{chapter}{Indice}
+\printindex
+
+\end{document}
